@@ -1,6 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 
+import PlusSolid from '../../svg/plus-solid';
+import BarcodeSolid from '../../svg/barcode-solid';
+import SearchSolid from '../../svg/search-solid';
+import ShevronRightSolid from '../../svg/chevron-right-solid';
+
+
 const headerStyles = StyleSheet.create({
     headContainer: {
         flex: 3,
@@ -14,24 +20,24 @@ const headerStyles = StyleSheet.create({
     },
     middleContainer: {
         flexDirection:'row',
-        backgroundColor:'rgb(230,230,5)',
+        backgroundColor:'rgba(96,165,38,1.0)',
         flex:3,
     },
     searchContainer: {
         flexDirection:'row',
         justifyContent: 'center',
         //alignSelf: 'center',
-        flex: 1
+        flex: 9
     },
     searchInput: {
         backgroundColor: 'rgba(240,240,240,1.0)',
-        borderRadius: 5,
+        borderRadius: 20,
         flexDirection:'row',
-        flex: 0.94
+        flex: 0.94,
     },
     drugstorePickerContainer: {
         flexDirection: 'row',
-        backgroundColor: 'rgb(100,100,255)',
+        backgroundColor: 'rgba(255,255,255,1.0)',
         flex: 3,
     },
     drugstorePicker: {
@@ -39,7 +45,6 @@ const headerStyles = StyleSheet.create({
         justifyContent: 'center',
         alignSelf: 'stretch',
         flex: 1,
-        backgroundColor: 'darkgrey',
     },
 });
 
@@ -47,11 +52,19 @@ const Logo = () => {
     return (
         <View style={headerStyles.logoContainer}>
         <Text style={{fontSize: 30}}>
-         LOGO
+        LOGO
         </Text>
         </View>
     );
 };
+
+const Space = (props) => {
+    return (
+        <View style={{width: props.width, height: props.height}} />
+    );
+};
+
+const color="rgba(236,111,39,1.0)";
 
 const Header = () => {
     return (
@@ -60,19 +73,34 @@ const Header = () => {
             <View style={headerStyles.middleContainer}>
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>
-                        <Text> @ </Text>
+                        <Space width="2%" />
+                        <View style={{width: '5%', justifyContent: "center"}}>
+                            <SearchSolid color={color} />
+                        </ View>
+                        <Space width="2%" />
                         <TextInput
                         placeholder='Поиск лекарства...'
                         />
                     </View>
-                    <Text style={{fontSize: 30}}>|||</Text>
+                    <Space width="2%" />
+                    <View style={{width: '10%', justifyContent: "center"}}>
+                        <BarcodeSolid color={color} />
+                    </ View>
                 </View>
             </View>
+            <Space height="5%" />
             <View style={headerStyles.drugstorePickerContainer}>
                 <View style={headerStyles.drugstorePicker}>
-                    <Text style={{flex:1, alignSelf: 'center', fontSize: 30}}>+</Text>
-                    <Text style={{flex:8, backgroundColor: 'lightpink', alignSelf: 'center'}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <Text style={{flex:1, alignSelf: 'center', fontSize: 30}}>&gt;</Text>
+                    <Space width="1%" />
+                    <View style={{width: '5%', justifyContent: "center"}}>
+                        <PlusSolid color={color} />
+                    </ View>
+                    <Space width="5%" />
+                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Выберите аптеку, чтобы искать товары только в ней</Text>
+                    <View style={{width: '5%', justifyContent: "center", alignSelf: 'center',}}>
+                        <ShevronRightSolid color={color} />
+                    </ View>
+                    <Space width="1%" />
                 </View>
             </View>
         </View>
