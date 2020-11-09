@@ -20,7 +20,7 @@ const bottomStyles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 5,
         shadowRadius: 5,
-        elevation: 2,
+        elevation: 6,
     },
     buttonContainer: {
         flex: 2,
@@ -28,7 +28,7 @@ const bottomStyles = StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        width: '40%',
+        height: '60%',
         justifyContent: "center"
     },
     text: {

@@ -74,30 +74,38 @@ const Header = () => {
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>
                         <Space width="2%" />
-                        <View style={{width: '5%', justifyContent: "center"}}>
-                            <SearchSolid color={color} />
-                        </ View>
+                        <View>
+                            <View style={{flex: 25}} />
+                            <View style={{flex: 50, justifyContent: "center", alignSelf: "center"}}>
+                                <SearchSolid color={color} />
+                            </ View>
+                            <View style={{flex: 25}} />
+                        </View>
                         <Space width="2%" />
                         <TextInput
                         placeholder='Поиск лекарства...'
                         />
                     </View>
                     <Space width="2%" />
-                    <View style={{width: '10%', justifyContent: "center"}}>
-                        <BarcodeSolid color={color} />
-                    </ View>
+                    <View>
+                        <View style={{flex: 15}} />
+                        <View style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
+                            <BarcodeSolid color={color} />
+                        </ View>
+                        <View style={{flex: 15}} />
+                    </View>
                 </View>
             </View>
             <Space height="5%" />
             <View style={headerStyles.drugstorePickerContainer}>
                 <View style={headerStyles.drugstorePicker}>
                     <Space width="1%" />
-                    <View style={{width: '5%', justifyContent: "center"}}>
-                        <PlusSolid color={color} />
+                    <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
+                        <PlusSolid color="white" />
                     </ View>
                     <Space width="5%" />
                     <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <View style={{width: '5%', justifyContent: "center", alignSelf: 'center',}}>
+                    <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                         <ShevronRightSolid color={color} />
                     </ View>
                     <Space width="1%" />

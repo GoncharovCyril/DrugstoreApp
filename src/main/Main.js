@@ -13,10 +13,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         width: '100%',
     },
-    other: {
-        flex: 6,
-        backgroundColor: 'rgba(20,180,180,1.0)'
-    },
 });
 
 
@@ -24,11 +20,7 @@ const Main = () => {
     return (
         <View style={styles.container}>
             <Header />
-            <View style={styles.other}>
-                <ScrollView>
-                    
-                </ScrollView>
-            </View>
+            <Scroller />
             <Bottom />
         </ View>
     );
