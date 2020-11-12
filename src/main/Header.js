@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
 import PlusSolid from '../../svg/plus-solid';
 import BarcodeSolid from '../../svg/barcode-solid';
@@ -66,10 +66,14 @@ const Space = (props) => {
 
 const color="rgba(236,111,39,1.0)";
 
-const Header = () => {
+const Header = ({navigation}) => {
     return (
         <View style={headerStyles.headContainer}>
             <Logo />
+            <Button
+                title="ok"
+                onPress={() => navigation.navigate("DrugScreen")}
+            />
             <View style={headerStyles.middleContainer}>
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>

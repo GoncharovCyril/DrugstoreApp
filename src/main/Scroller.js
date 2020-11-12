@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
 
 
@@ -112,6 +112,42 @@ const AdSlider = () => {
     );
 };
 
+const BuyButton2 = ({ navigation }) => {
+    return (
+        <View style={{
+            alignItems: "flex-end",
+            backgroundColor: "rgb(92,158,36)",
+            borderRadius: 18,
+        }}>
+            <Text style={{
+                color: "white",
+                alignSelf: "center",
+            }}>Купить</Text>
+        </View>
+    );
+};
+
+const BuyButton = ({ navigation }) => {
+    return (
+        <View style={{
+            alignItems: "center",
+            backgroundColor: "rgb(92,158,36)",
+            borderRadius: 18,
+        }}>
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('DrugScreen');
+                }}
+            >
+                <Text style={{
+                    color: "white",
+                    alignSelf: "center",
+                }}>Купить</Text>
+            </TouchableOpacity>
+        </View>
+    );
+};
+
 const DrugView = (props) => {
     return (
         <View style={{
@@ -135,9 +171,9 @@ const DrugView = (props) => {
                     shadowRadius: 5,
                     elevation: 5,
                 }}>
-                    <View style={{flex: 1}} />
+                    <View style={{flex: 5}} />
                     <View style={{
-                        flex: 35,
+                        flex: 30,
                         alignItems: "center",
                         justifyContent: "space-around"
                     }}>
@@ -160,7 +196,7 @@ const DrugView = (props) => {
                         </Text>
                     </ View>
 
-                    <View style={{flex: 65}}>
+                    <View style={{flex: 60}}>
                         <View >
                             <Text> {props.description}</Text>
                         </View>
@@ -174,20 +210,12 @@ const DrugView = (props) => {
                                 <View style={{alignItems: "flex-end"}}>
                                     <Text> {props.price}</Text>
                                 </View>
-                                <View style={{
-                                    alignItems: "flex-end",
-                                    backgroundColor: "rgb(92,158,36)",
-                                    borderRadius: 18,
-                                }}>
-                                    <Text style={{
-                                        color: "white",
-                                        alignSelf: "center",
-                                    }}>Купить</Text>
-                                </View>
+                                <BuyButton />
                             </View>
                         </View>
 
                     </View>
+                    <View style={{flex: 5}} />
                 </View>
                 <View style={{flex:0.5}} />
             </ View>
@@ -198,13 +226,12 @@ const DrugView = (props) => {
     );
 };
 
-const Scroller = () => {
+const Scroller = ({ navigation }) => {
     return (
         <View style={scrollStyles.scrollContainer}>
             <ScrollView>
                 <View style={{flex:1}}>
                     <AdSlider />
-
                     <View style={{flex: 0.5}} />
 
                     <View style={scrollStyles.virusPicker}>

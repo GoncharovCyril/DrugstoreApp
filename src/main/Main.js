@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 import Header from './Header.js';
 import Scroller from './Scroller.js';
 import Bottom from './Bottom.js';
@@ -16,13 +16,18 @@ const styles = StyleSheet.create({
 });
 
 
-const Main = () => {
+const Main = ({ navigation }) => {
     return (
+        <View style={{flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center'}}>
         <View style={styles.container}>
             <Header />
             <Scroller />
             <Bottom />
         </ View>
+        </View>
     );
 };
 
