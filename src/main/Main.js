@@ -24,8 +24,7 @@ const Main = ({ navigation }) => {
         justifyContent: 'center'}}>
         <View style={styles.container}>
             <Header />
-            <Scroller />
-            <Bottom />
+            <Scroller navigation={navigation} />
         </ View>
         </View>
     );

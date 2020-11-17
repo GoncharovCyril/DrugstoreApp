@@ -51,9 +51,9 @@ const headerStyles = StyleSheet.create({
 const Logo = () => {
     return (
         <View style={headerStyles.logoContainer}>
-        <Text style={{fontSize: 30}}>
-        LOGO
-        </Text>
+            <Text style={{fontSize: 30}}>
+                LOGO
+            </Text>
         </View>
     );
 };
@@ -66,14 +66,12 @@ const Space = (props) => {
 
 const color="rgba(236,111,39,1.0)";
 
+
+
 const Header = ({navigation}) => {
     return (
         <View style={headerStyles.headContainer}>
             <Logo />
-            <Button
-                title="ok"
-                onPress={() => navigation.navigate("DrugScreen")}
-            />
             <View style={headerStyles.middleContainer}>
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>

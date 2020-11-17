@@ -136,7 +136,7 @@ const BuyButton = ({ navigation }) => {
         }}>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate('DrugScreen');
+                    navigation.navigate('Drug');
                 }}
             >
                 <Text style={{
@@ -210,7 +210,7 @@ const DrugView = (props) => {
                                 <View style={{alignItems: "flex-end"}}>
                                     <Text> {props.price}</Text>
                                 </View>
-                                <BuyButton />
+                                <BuyButton navigation={props.navigation}/>
                             </View>
                         </View>
 
@@ -248,12 +248,14 @@ const Scroller = ({ navigation }) => {
                         dealer="ГлаксоСмитКляйн Трейдинг ЗАО (США)"
                         price="329,00 руб."
                         availability="Есть в наличии"
+                        navigation={navigation}
                     />
                     <DrugView
                         description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
                         dealer="ПроизводствоПроизводствоПроизводство"
                         price="666666"
                         availability="Есть в наличии"
+                        navigation={navigation}
                     />
 
                 </View>
