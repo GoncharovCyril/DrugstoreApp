@@ -9,7 +9,16 @@ function PlusSolid(props) {
           borderRadius: 10000,
           backgroundColor: 'rgb(226,94,18)',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+
+          borderWidth: 1,
+          borderColor: "white",
+
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 0 },
+          shadowOpacity: 5,
+          shadowRadius: 5,
+          elevation: 6,
       }}>
         <View style={{flex: 1}} />
         <View style={{

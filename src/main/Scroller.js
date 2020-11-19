@@ -83,7 +83,7 @@ const scrollStyles = StyleSheet.create({
         backgroundColor: 'rgba(240,240,240,1.0)'
     },
     adSlider: {
-        height: 160,
+        height: 180,
         backgroundColor: "pink",
     },
     virusPicker: {
@@ -95,18 +95,24 @@ const scrollStyles = StyleSheet.create({
 });
 
 const images = [
-    require('./img/yin-yang.png'),
-    require('./img/yin-yang.png'),
-    require('./img/yin-yang.png'),
+    require('./img/drug1.jpg'),
+    require('./img/drug2.jpg'),
 ];
 
-const AdSlider = () => {
+const AdSlider = ({ navigation }) => {
     return (
         <View style={scrollStyles.adSlider}>
             <SliderBox
                 images={images}
                 dotColor="rgb(226,94,18)"
                 inactiveDotColor="rgb(92,158,36)"
+                resizeMode="stretch"
+
+                onCurrentImagePressed={ index => {
+                    // alert(index);
+                    navigation.navigate("Drug");
+
+                }}
             />
         </View>
     );
@@ -176,7 +182,8 @@ const DrugView = (props) => {
                                     width: "100%",
                                     height: "100%"
                                 }}
-                                source = {require('./img/yin-yang.png')}
+                                source = {require('./img/drug1.jpg')}
+                                resizeMode="contain"
                             />
                         </View>
                         <Text style={{
@@ -221,7 +228,7 @@ const Scroller = ({ navigation }) => {
         <View style={scrollStyles.scrollContainer}>
             <ScrollView>
                 <View style={{flex:1}}>
-                    <AdSlider />
+                    <AdSlider navigation={navigation} />
                     <View style={{flex: 0.5}} />
 
                     <TouchableOpacity
@@ -336,7 +343,7 @@ const Scroller = ({ navigation }) => {
                     </TouchableOpacity>
 
                     <View style={{height: 5}} />
-                    
+
                     <TouchableOpacity
                         onPress={() => {
                             navigation.navigate('Drug');

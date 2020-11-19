@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 
 import PlusSolid from '../../svg/plus-solid-circle';
 import BarcodeSolid from '../../svg/barcode-solid';
@@ -76,7 +76,11 @@ const Header = ({navigation}) => {
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>
                         <Space width="2%" />
-                        <View>
+                        <View
+                            style={{
+                                flex:8,
+                            }}
+                        >
                             <View style={{flex: 25}} />
                             <View style={{flex: 50, justifyContent: "center", alignSelf: "center"}}>
                                 <SearchSolid color={color} />
@@ -85,7 +89,12 @@ const Header = ({navigation}) => {
                         </View>
                         <Space width="2%" />
                         <TextInput
-                        placeholder='Поиск лекарства...'
+                            style={{
+                                borderWidth:1,
+                                alignSelf: "stretch",
+                                flex: 92
+                            }}
+                            placeholder='Поиск лекарства...'
                         />
                     </View>
                     <Space width="2%" />
@@ -99,7 +108,11 @@ const Header = ({navigation}) => {
                 </View>
             </View>
             <Space height="5%" />
-            <View style={headerStyles.drugstorePickerContainer}>
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('Drug');
+                }}
+                style={headerStyles.drugstorePickerContainer}>
                 <View style={headerStyles.drugstorePicker}>
                     <Space width="1%" />
                     <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
@@ -112,7 +125,7 @@ const Header = ({navigation}) => {
                     </ View>
                     <Space width="1%" />
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 };

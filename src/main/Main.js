@@ -23,7 +23,7 @@ const Main = ({ navigation }) => {
         alignItems: 'center',
         justifyContent: 'center'}}>
         <View style={styles.container}>
-            <Header />
+            <Header navigation={navigation} />
             <Scroller navigation={navigation} />
         </ View>
         </View>
