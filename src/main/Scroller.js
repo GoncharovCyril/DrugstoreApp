@@ -112,20 +112,6 @@ const AdSlider = () => {
     );
 };
 
-const BuyButton2 = ({ navigation }) => {
-    return (
-        <View style={{
-            alignItems: "flex-end",
-            backgroundColor: "rgb(92,158,36)",
-            borderRadius: 18,
-        }}>
-            <Text style={{
-                color: "white",
-                alignSelf: "center",
-            }}>Купить</Text>
-        </View>
-    );
-};
 
 const BuyButton = ({ navigation }) => {
     return (
@@ -136,7 +122,7 @@ const BuyButton = ({ navigation }) => {
         }}>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate('Drug');
+                    navigation.navigate('ShopsList');
                 }}
             >
                 <Text style={{
@@ -150,12 +136,16 @@ const BuyButton = ({ navigation }) => {
 
 const DrugView = (props) => {
     return (
-        <View style={{
-            height: 180,
-            flex: 1,
-            flexDirection: "row",
-            borderWidth: 1,
-        }}>
+        <TouchableOpacity
+            onPress={() => {
+                props.navigation.navigate('Drug');
+            }}
+            style={{
+                height: 180,
+                flex: 1,
+                flexDirection: "row",
+            }}
+        >
             <View style={{flex:0.3}} />
             <View style={{flex:9}} >
                 <View style={{flex:0.5}} />
@@ -222,7 +212,7 @@ const DrugView = (props) => {
             <View style={{flex:0.3}} />
 
 
-        </View>
+        </TouchableOpacity>
     );
 };
 
@@ -234,14 +224,19 @@ const Scroller = ({ navigation }) => {
                     <AdSlider />
                     <View style={{flex: 0.5}} />
 
-                    <View style={scrollStyles.virusPicker}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Drug');
+                        }}
+                        style={scrollStyles.virusPicker}
+                    >
                         <View style={{flex:0.2}} />
                         <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>От простуды и вирусов</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
                         <View style={{flex:0.2}} />
-                    </View>
+                    </TouchableOpacity>
 
                     <DrugView
                         description="Терафлю от гриппа и простуды, порошок, со вкусом лимона, 10 пакетиков"
@@ -257,6 +252,113 @@ const Scroller = ({ navigation }) => {
                         availability="Есть в наличии"
                         navigation={navigation}
                     />
+                    <DrugView
+                        description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
+                        dealer="ПроизводствоПроизводствоПроизводство"
+                        price="666666"
+                        availability="Есть в наличии"
+                        navigation={navigation}
+                    />
+
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Drug');
+                        }}
+                        style={scrollStyles.virusPicker}
+                    >
+                        <View style={{flex:0.2}} />
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Лучшие лекарства</Text>
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                            <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <View style={{flex:0.2}} />
+                    </TouchableOpacity>
+
+                    <DrugView
+                        description="Терафлю от гриппа и простуды, порошок, со вкусом лимона, 10 пакетиков"
+                        dealer="ГлаксоСмитКляйн Трейдинг ЗАО (США)"
+                        price="329,00 руб."
+                        availability="Есть в наличии"
+                        navigation={navigation}
+                    />
+                    <DrugView
+                        description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
+                        dealer="ПроизводствоПроизводствоПроизводство"
+                        price="666666"
+                        availability="Есть в наличии"
+                        navigation={navigation}
+                    />
+
+
+
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Drug');
+                        }}
+                        style={{
+                            height: 40,
+                            backgroundColor: "white",
+                            flexDirection: "row",
+                        }}
+                    >
+                        <View style={{flex:0.2}} />
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
+                            <PlusSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Лучшие лекарства</Text>
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                            <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <View style={{flex:0.2}} />
+                    </TouchableOpacity>
+
+                    <View style={{height: 5}} />
+
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Drug');
+                        }}
+                        style={{
+                            height: 40,
+                            backgroundColor: "white",
+                            flexDirection: "row",
+                        }}
+                    >
+                        <View style={{flex:0.2}} />
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
+                            <VirusSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>COVID-2019</Text>
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                            <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <View style={{flex:0.2}} />
+                    </TouchableOpacity>
+
+                    <View style={{height: 5}} />
+                    
+                    <TouchableOpacity
+                        onPress={() => {
+                            navigation.navigate('Drug');
+                        }}
+                        style={{
+                            height: 40,
+                            backgroundColor: "white",
+                            flexDirection: "row",
+                        }}
+                    >
+                        <View style={{flex:0.2}} />
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
+                            <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Обратная связь</Text>
+                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                            <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                        </ View>
+                        <View style={{flex:0.2}} />
+                    </TouchableOpacity>
+
+
 
                 </View>
             </ScrollView>

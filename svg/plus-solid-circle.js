@@ -4,7 +4,18 @@ import Svg, { Path } from "react-native-svg"
 
 function PlusSolid(props) {
   return (
-      <View style={{ aspectRatio: 1, width: "100%", height: "100%"}}>
+      <View style={{
+          aspectRatio: 1,
+          borderRadius: 10000,
+          backgroundColor: 'rgb(226,94,18)',
+          justifyContent: 'center',
+          alignItems: 'center'
+      }}>
+        <View style={{flex: 1}} />
+        <View style={{
+            width: "100%",
+            flex: 8
+        }}>
             <Svg
               aria-hidden="true"
               data-prefix="fas"
@@ -18,6 +29,9 @@ function PlusSolid(props) {
               />
             </Svg>
         </View>
+        <View style={{flex: 1}} />
+
+      </View>
   )
 }
 

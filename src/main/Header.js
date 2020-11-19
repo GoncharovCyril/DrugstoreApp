@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
-import PlusSolid from '../../svg/plus-solid';
+import PlusSolid from '../../svg/plus-solid-circle';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
