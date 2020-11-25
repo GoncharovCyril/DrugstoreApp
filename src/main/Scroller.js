@@ -188,6 +188,7 @@ const DrugView = (props) => {
                         </View>
                         <Text style={{
                             flex:5,
+                            color: "rgb(106,106,106)",
                         }}>
                             {props.availability}
                         </Text>
@@ -312,7 +313,7 @@ const Scroller = ({ navigation }) => {
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <PlusSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Лучшие лекарства</Text>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>Лучшие лекарства</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
@@ -335,7 +336,7 @@ const Scroller = ({ navigation }) => {
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <VirusSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>COVID-2019</Text>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>COVID-2019</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
@@ -358,7 +359,7 @@ const Scroller = ({ navigation }) => {
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Обратная связь</Text>
+                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>Обратная связь</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>

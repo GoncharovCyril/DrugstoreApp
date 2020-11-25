@@ -89,6 +89,13 @@ function MedicineTab({ state, descriptors, navigation }) {
             ShopsList: (<MapMarketAltSolid color={isFocused ? activeColor : color} />),
             Menu: (<BarsSolid color={isFocused ? activeColor : color} />),
         };
+        const labels = {
+            Home: "Главная",
+            Catalog: "Каталог",
+            Basket: "Корзина",
+            ShopsList: "Аптеки",
+            Menu: "Меню",
+        }
 
 
         return (
@@ -104,7 +111,10 @@ function MedicineTab({ state, descriptors, navigation }) {
                 <View style={bottomStyles.button}>
                     {icons[label]}
                 </ View>
-                <Text>{label}</Text>
+                <Text style={{
+                    color: isFocused ? activeColor : color,
+                }}>
+                    {labels[label]}</Text>
           </TouchableOpacity>
         );
       })}

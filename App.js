@@ -8,12 +8,11 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import MedicineTab from './src/main/MedicineTab';
 import Main from './src/main/Main';
-import Header from './src/main/Header';
-import Drug from './src/main/Drug';
-import Catalog from './src/main/Catalog';
-import Basket from './src/main/Basket';
-import ShopsList from './src/main/ShopsList';
-import Menu from './src/main/Menu';
+import Drug from './src/drug/Drug';
+import Catalog from './src/catalog/Catalog';
+import Basket from './src/basket/Basket';
+import ShopsList from './src/shopslist/ShopsList';
+import Menu from './src/menu/Menu';
 
 
 const styles = StyleSheet.create({

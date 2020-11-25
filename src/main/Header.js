@@ -100,9 +100,13 @@ const Header = ({navigation}) => {
                     <Space width="2%" />
                     <View>
                         <View style={{flex: 15}} />
-                        <View style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate('Drug');
+                            }}
+                            style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
                             <BarcodeSolid color={color} />
-                        </ View>
+                        </ TouchableOpacity>
                         <View style={{flex: 15}} />
                     </View>
                 </View>
@@ -119,7 +123,7 @@ const Header = ({navigation}) => {
                         <PlusSolid color="white" />
                     </ View>
                     <Space width="5%" />
-                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Выберите аптеку, чтобы искать товары только в ней</Text>
+                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)"}}>Выберите аптеку, чтобы искать товары только в ней</Text>
                     <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                         <ShevronRightSolid color={color} />
                     </ View>
