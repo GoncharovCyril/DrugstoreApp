@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import MedicineTab from './src/main/MedicineTab';
+import MedicineTab from './src/MedicineTab';
 import Main from './src/main/Main';
 import Drug from './src/drug/Drug';
 import Catalog from './src/catalog/Catalog';

@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 
-import HomeSolid from '../../svg/home-solid';
-import ListUlSolid from '../../svg/list-ul-solid';
-import ShoppingBasketSolid from '../../svg/shopping-basket-solid';
-import MapMarketAltSolid from '../../svg/map-market-alt-solid';
-import BarsSolid from '../../svg/bars-solid';
+import HomeSolid from '../svg/home-solid';
+import ListUlSolid from '../svg/list-ul-solid';
+import ShoppingBasketSolid from '../svg/shopping-basket-solid';
+import MapMarketAltSolid from '../svg/map-market-alt-solid';
+import BarsSolid from '../svg/bars-solid';
 
 
 const bottomStyles = StyleSheet.create({

@@ -3,78 +3,10 @@ import { StyleSheet, Text, View, ScrollView, TextInput, Image, Button, Touchable
 import { SliderBox } from "react-native-image-slider-box";
 
 
-import BarcodeSolid from '../../svg/barcode-solid';
-import BarsSolid from '../../svg/bars-solid';
-import CapsulesSolid from '../../svg/capsules-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import HomeSolid from '../../svg/home-solid';
-import InstagramBrands from '../../svg/instagram-brands';
-import ListUlSolid from '../../svg/list-ul-solid';
-import MapMarketAltSolid from '../../svg/map-market-alt-solid';
-import OdnoklassnikiBrands from '../../svg/odnoklassniki-brands';
 import PlusSolid from '../../svg/plus-solid';
-import SearchSolid from '../../svg/search-solid';
-import ShoppingBasketSolid from '../../svg/shopping-basket-solid';
-import TelegramPlaneBrands from '../../svg/telegram-plane-brands';
 import VirusSolid from '../../svg/virus-solid';
-import VkBrands from '../../svg/vk-brands';
-
-
-const ImageList = () => {
-    return (
-        <View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <BarcodeSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <BarsSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <CapsulesSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <ShevronRightSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <CommentMedicalSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <HomeSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <InstagramBrands color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <ListUlSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <MapMarketAltSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <OdnoklassnikiBrands color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <PlusSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <SearchSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <ShoppingBasketSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <TelegramPlaneBrands color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <VirusSolid color="red" />
-            </ View>
-            <View style={{width: '20%', justifyContent: "center"}}>
-                <VkBrands color="red" />
-            </ View>
-        </View>
-    );
-};
 
 
 const scrollStyles = StyleSheet.create({
@@ -91,6 +23,13 @@ const scrollStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignSelf: 'stretch',
+    },
+    bottomMenuText: {
+        flex:8,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        color:"rgb(106,106,106)",
+        fontSize: 16
     },
 });
 
@@ -121,12 +60,14 @@ const AdSlider = ({ navigation }) => {
 
 const BuyButton = ({ navigation }) => {
     return (
-        <View style={{
-            alignItems: "center",
-            backgroundColor: "rgb(92,158,36)",
-            borderRadius: 18,
-        }}>
             <TouchableOpacity
+                style={{
+                    alignItems: "center",
+                    justifyContent: 'center',
+                    backgroundColor: "rgb(92,158,36)",
+                    borderRadius: 18,
+                    flex: 1
+                }}
                 onPress={() => {
                     navigation.navigate('ShopsList');
                 }}
@@ -134,9 +75,10 @@ const BuyButton = ({ navigation }) => {
                 <Text style={{
                     color: "white",
                     alignSelf: "center",
+                    textAlignVertical: 'center',
+                    fontSize: 16
                 }}>Купить</Text>
             </TouchableOpacity>
-        </View>
     );
 };
 
@@ -157,7 +99,7 @@ const DrugView = (props) => {
                 <View style={{flex:0.5}} />
                 <View style={{
                     backgroundColor: "white",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     borderRadius: 18,
                     flex: 9,
 
@@ -167,53 +109,70 @@ const DrugView = (props) => {
                     shadowRadius: 5,
                     elevation: 5,
                 }}>
-                    <View style={{flex: 5}} />
+                    <View style={{flex:6}} />
                     <View style={{
-                        flex: 30,
-                        alignItems: "center",
-                        justifyContent: "space-around"
+                        flex:88,
+                        flexDirection: "row",
                     }}>
+                        <View style={{flex: 3}} />
                         <View style={{
-                            width: "100%",
-                            flex: 5
+                            flex: 24,
+                            alignItems: "center",
+                            justifyContent: "space-around"
                         }}>
-                            <Image
-                                style={{
-                                    width: "100%",
-                                    height: "100%"
-                                }}
-                                source = {require('./img/drug1.jpg')}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <Text style={{
-                            flex:5,
-                            color: "rgb(106,106,106)",
-                        }}>
-                            {props.availability}
-                        </Text>
-                    </ View>
-
-                    <View style={{flex: 60}}>
-                        <View >
-                            <Text> {props.description}</Text>
-                        </View>
-                        <View>
-                            <Text style={{color:"rgb(106,106,106)"}}> {props.dealer}</Text>
-                        </View>
-
-                        <View style={{flexDirection:"row", borderWidth: 1}}>
-                            <View style={{flex:1}} />
-                            <View style={{flex:1, borderWidth: 1}}>
-                                <View style={{alignItems: "flex-end"}}>
-                                    <Text> {props.price}</Text>
-                                </View>
-                                <BuyButton navigation={props.navigation}/>
+                            <View style={{
+                                width: "100%",
+                                flex: 5,
+                                borderWidth: 1
+                            }}>
+                                <Image
+                                    style={{
+                                        width: "100%",
+                                        height: "100%"
+                                    }}
+                                    source = {require('./img/drug1.jpg')}
+                                    resizeMode="contain"
+                                />
                             </View>
-                        </View>
+                            <Text style={{
+                                flex:5,
+                                color: "rgb(106,106,106)",
+                                borderWidth: 1,
+                                textAlign: 'center',
+                                fontSize: 12
+                            }}>
+                                {props.availability}
+                            </Text>
+                        </ View>
+                        <View style={{flex: 2}} />
+                        <View style={{flex: 68}}>
+                            <View style={{flex: 160, borderWidth: 1}}>
+                                <Text style={{fontSize: 13}}>{props.description}</Text>
+                                <Text style={{color:"rgb(106,106,106)", fontSize: 13}}>{props.dealer}</Text>
+                            </View>
 
+
+                            <View style={{flexDirection:"row", flex: 63+73}}>
+                                <View style={{flex:7}} />
+                                <View style={{flex:5, borderWidth: 1, flexDirection: 'column'}}>
+                                        <Text style={{
+                                            alignSelf: "flex-end",
+                                            borderWidth: 1,
+                                            flex:1,
+                                            textAlignVertical: 'center',
+                                            borderWidth: 1,
+                                            fontWeight: 'bold',
+                                        }}>
+                                            {props.price}
+                                            </Text>
+                                    <BuyButton navigation={props.navigation}/>
+                                </View>
+                            </View>
+
+                        </View>
+                        <View style={{flex: 3}} />
                     </View>
-                    <View style={{flex: 5}} />
+                    <View style={{flex:6}} />
                 </View>
                 <View style={{flex:0.5}} />
             </ View>
@@ -230,7 +189,7 @@ const Scroller = ({ navigation }) => {
             <ScrollView>
                 <View style={{flex:1}}>
                     <AdSlider navigation={navigation} />
-                    <View style={{flex: 0.5}} />
+                    <View style={{height: 10}} />
 
                     <TouchableOpacity
                         onPress={() => {
@@ -238,12 +197,12 @@ const Scroller = ({ navigation }) => {
                         }}
                         style={scrollStyles.virusPicker}
                     >
-                        <View style={{flex:0.2}} />
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>От простуды и вирусов</Text>
+                        <View style={{flex:0.4}} />
+                        <Text style={{flex:9, alignSelf: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 22}}>От простуды и вирусов</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <View style={{flex:0.2}} />
+                        <View style={{flex:0.3}} />
                     </TouchableOpacity>
 
                     <DrugView
@@ -254,10 +213,10 @@ const Scroller = ({ navigation }) => {
                         navigation={navigation}
                     />
                     <DrugView
-                        description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
-                        dealer="ПроизводствоПроизводствоПроизводство"
-                        price="666666"
-                        availability="Есть в наличии"
+                        description=""
+                        dealer=""
+                        price=""
+                        availability=""
                         navigation={navigation}
                     />
                     <DrugView
@@ -274,12 +233,12 @@ const Scroller = ({ navigation }) => {
                         }}
                         style={scrollStyles.virusPicker}
                     >
-                        <View style={{flex:0.2}} />
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center'}}>Лучшие лекарства</Text>
+                        <View style={{flex:0.4}} />
+                        <Text style={{flex:9, alignSelf: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 22}}>Лучшие лекарства</Text>
                         <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <View style={{flex:0.2}} />
+                        <View style={{flex:0.3}} />
                     </TouchableOpacity>
 
                     <DrugView
@@ -304,17 +263,18 @@ const Scroller = ({ navigation }) => {
                             navigation.navigate('Drug');
                         }}
                         style={{
-                            height: 40,
+                            height: 50,
                             backgroundColor: "white",
                             flexDirection: "row",
                         }}
                     >
-                        <View style={{flex:0.2}} />
+                        <View style={{flex:0.3}} />
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <PlusSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>Лучшие лекарства</Text>
-                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                        <View style={{flex:0.2}} />
+                        <Text style={scrollStyles.bottomMenuText}>Лучшие лекарства</Text>
+                        <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
                         <View style={{flex:0.2}} />
@@ -327,17 +287,18 @@ const Scroller = ({ navigation }) => {
                             navigation.navigate('Drug');
                         }}
                         style={{
-                            height: 40,
+                            height: 50,
                             backgroundColor: "white",
                             flexDirection: "row",
                         }}
                     >
-                        <View style={{flex:0.2}} />
+                        <View style={{flex:0.3}} />
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <VirusSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>COVID-2019</Text>
-                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                        <View style={{flex:0.2}} />
+                        <Text style={scrollStyles.bottomMenuText}>COVID-2019</Text>
+                        <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
                         <View style={{flex:0.2}} />
@@ -350,17 +311,18 @@ const Scroller = ({ navigation }) => {
                             navigation.navigate('Drug');
                         }}
                         style={{
-                            height: 40,
+                            height: 50,
                             backgroundColor: "white",
                             flexDirection: "row",
                         }}
                     >
-                        <View style={{flex:0.2}} />
+                        <View style={{flex:0.3}} />
                         <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
                             <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
                         </ View>
-                        <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color:"rgb(106,106,106)"}}>Обратная связь</Text>
-                        <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                        <View style={{flex:0.2}} />
+                        <Text style={scrollStyles.bottomMenuText}>Обратная связь</Text>
+                        <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
                             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
                         </ View>
                         <View style={{flex:0.2}} />
