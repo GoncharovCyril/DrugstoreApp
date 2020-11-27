@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
-import Header from './Header.js';
+import Header from './MainHeader.js';
 import Scroller from './Scroller.js';
 import Bottom from './Bottom.js';
 

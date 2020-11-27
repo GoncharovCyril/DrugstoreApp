@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 
-import PlusSolid from '../../svg/plus-solid-circle';
+import Logo from '../Logo';
+
+import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
@@ -48,15 +50,7 @@ const headerStyles = StyleSheet.create({
     },
 });
 
-const Logo = () => {
-    return (
-        <View style={headerStyles.logoContainer}>
-            <Text style={{fontSize: 30}}>
-                LOGO
-            </Text>
-        </View>
-    );
-};
+
 
 const Space = (props) => {
     return (
@@ -71,7 +65,7 @@ const color="rgba(236,111,39,1.0)";
 const Header = ({navigation}) => {
     return (
         <View style={headerStyles.headContainer}>
-            <Logo />
+            <Logo flex='4'/>
             <View style={headerStyles.middleContainer}>
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>

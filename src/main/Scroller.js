@@ -16,7 +16,7 @@ const scrollStyles = StyleSheet.create({
     },
     adSlider: {
         height: 180,
-        backgroundColor: "pink",
+        backgroundColor: "white",
     },
     virusPicker: {
         height: 40,
