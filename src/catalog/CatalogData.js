@@ -4,6 +4,7 @@ const DATA = [
         title: 'Лекарства и БАД',
         action: () => {setData([])},
         data: [],
+        next: "Catalog1",
     },
     {
         id: 1,
