@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
 
+import MedicineList from "../medicine-list/MedicineList";
+import MedicineData from "../medicine-list/testMedicineData";
+
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
@@ -205,27 +208,7 @@ const Scroller = ({ navigation }) => {
                         <View style={{flex:0.3}} />
                     </TouchableOpacity>
 
-                    <DrugView
-                        description="Терафлю от гриппа и простуды, порошок, со вкусом лимона, 10 пакетиков"
-                        dealer="ГлаксоСмитКляйн Трейдинг ЗАО (США)"
-                        price="329,00 руб."
-                        availability="Есть в наличии"
-                        navigation={navigation}
-                    />
-                    <DrugView
-                        description=""
-                        dealer=""
-                        price=""
-                        availability=""
-                        navigation={navigation}
-                    />
-                    <DrugView
-                        description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
-                        dealer="ПроизводствоПроизводствоПроизводство"
-                        price="666666"
-                        availability="Есть в наличии"
-                        navigation={navigation}
-                    />
+                    <MedicineList navigation={navigation} data={MedicineData.slice(0,3)}/>
 
                     <TouchableOpacity
                         onPress={() => {
@@ -241,22 +224,7 @@ const Scroller = ({ navigation }) => {
                         <View style={{flex:0.3}} />
                     </TouchableOpacity>
 
-                    <DrugView
-                        description="Терафлю от гриппа и простуды, порошок, со вкусом лимона, 10 пакетиков"
-                        dealer="ГлаксоСмитКляйн Трейдинг ЗАО (США)"
-                        price="329,00 руб."
-                        availability="Есть в наличии"
-                        navigation={navigation}
-                    />
-                    <DrugView
-                        description="ОписаниеОписаниеОписаниеОписаниеОписаниеОписание"
-                        dealer="ПроизводствоПроизводствоПроизводство"
-                        price="666666"
-                        availability="Есть в наличии"
-                        navigation={navigation}
-                    />
-
-
+                    <MedicineList navigation={navigation} data={MedicineData.slice(0,2)}/>
 
                     <TouchableOpacity
                         onPress={() => {

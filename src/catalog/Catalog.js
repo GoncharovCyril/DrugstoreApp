@@ -42,9 +42,9 @@ const MainCatalog = ({navigation}) => {
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
             <Header />
             <View style={{flex: 6}} >
-                <View style={{flex: 19}} />
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
+                        ListHeaderComponent={<View style={{height: 8}} />}
                         data={CatalogData}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
@@ -65,9 +65,9 @@ const Catalog1 = ({navigation}) => {
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
             <Header />
             <View style={{flex: 6}} >
-                <View style={{flex: 19}} />
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
+                        ListHeaderComponent={<View style={{height: 8}} />}
                         data={Data1}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
