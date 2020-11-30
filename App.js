@@ -33,11 +33,21 @@ const Stack = createStackNavigator();
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+import MainHeader from "./src/main/MainHeader";
+
+
+function LogoTitle() {
+    return (
+        <View style={{height: 100, backgroundColor: 'red'}}>
+            <MainHeader />
+        </View>
+    );
+  }
 
 const Home = () => {
     return (
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
-            <MainStack.Screen name="Main" component={Main} />
+            <MainStack.Screen name="Main" component={Main} options={{ header: props => <LogoTitle {...props} /> }}/>
             <MainStack.Screen name="Drug" component={Drug} />
         </MainStack.Navigator>
     )
