@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
+import MedicineList from '../medicine-list/MedicineList';
+import medicineData from '../medicine-list/testMedicineData';
+
 
 const Bucket = ({navigation}) => {
-    const label = (2 < 5) ? <Text> drug1 </Text> : <Text> drug2 </Text>;
     return (
-        <View>
-            {label}
+        <View style={{flex:1}}> 
+            <MedicineList navigation={navigation} data={medicineData}/>
         </View>
     );
 };
