@@ -36,7 +36,7 @@ const Tab = createBottomTabNavigator();
 
 const Home = () => {
     return (
-        <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: false}}>
+        <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
             <MainStack.Screen name="Main" component={Main} />
             <MainStack.Screen name="Drug" component={Drug} />
         </MainStack.Navigator>
