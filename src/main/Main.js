@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
-import Header from './MainHeader.js';
-import Scroller from './Scroller.js';
-import Bottom from './Bottom.js';
+import Header from './MainHeader';
+import Scroller from './Scroller';
+import Bottom from './Bottom';
 
 
 const styles = StyleSheet.create({
@@ -23,7 +23,6 @@ const Main = ({ navigation }) => {
         alignItems: 'center',
         justifyContent: 'center'}}>
         <View style={styles.container}>
-            <Header navigation={navigation} />
             <Scroller navigation={navigation} />
         </ View>
         </View>

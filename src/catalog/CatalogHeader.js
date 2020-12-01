@@ -60,8 +60,6 @@ const Space = (props) => {
 
 const color="rgba(236,111,39,1.0)";
 
-
-
 const Header = ({navigation}) => {
     return (
         <View style={headerStyles.headContainer}>
@@ -130,4 +128,25 @@ const Header = ({navigation}) => {
     );
 };
 
-export default Header;
+const mainHeader = {
+    headerMode: "screen",
+    headerStyle: {height: 155,},
+    header: ({ scene, previous, navigation }) => {
+        const { options } = scene.descriptor;
+        const title = options.headerTitle !== undefined
+            ? options.headerTitle
+            : options.title !== undefined
+            ? options.title
+            : scene.route.name;
+
+        return (
+            <View style={options.headerStyle} >
+                <Header navigation={navigation} backButton={
+                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                } />  
+            </View>          
+        );
+    },
+};
+
+export default mainHeader;

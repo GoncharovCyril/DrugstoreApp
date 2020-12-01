@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatLis
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Header from './CatalogHeader';
+import catalogHeader from './CatalogHeader';
 
 import CatalogData from './CatalogData';
 import Data1 from './Data1';
@@ -40,7 +40,6 @@ const MainCatalog = ({navigation}) => {
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
-            <Header />
             <View style={{flex: 6}} >
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
@@ -63,7 +62,6 @@ const Catalog1 = ({navigation}) => {
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
-            <Header />
             <View style={{flex: 6}} >
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
@@ -83,7 +81,7 @@ const CatalogStack = createStackNavigator();
 const Catalog = () => {
     return(
             <CatalogStack.Navigator initialRouteName="MainCatalog">
-                <CatalogStack.Screen name="MainCatalog" component={MainCatalog} />
+                <CatalogStack.Screen name="MainCatalog" component={MainCatalog} options={catalogHeader} />
                 <CatalogStack.Screen name="Catalog1" component={Catalog1} />
             </CatalogStack.Navigator>
     );

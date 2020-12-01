@@ -21,14 +21,8 @@ const logoStyles = StyleSheet.create({
 
 const Logo = (props) => {
     return (
-        <View style={{
-            alignSelf: 'center',
-            justifyContent: 'center',
-            flex: parseFloat(props.flex),
-            borderWidth: 1,
-        }}>
-            <Text style={{fontSize: 30}}>LOGO</Text>
-
+        <View>
+            <Text style={{fontSize: 30, textAlign: 'center'}}>LOGO</Text>
         </View>
     );
 };

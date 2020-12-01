@@ -62,10 +62,18 @@ const color="rgba(236,111,39,1.0)";
 
 
 
-const Header = ({navigation}) => {
+const Header = ({navigation, backButton}) => {
     return (
         <View style={headerStyles.headContainer}>
-            <Logo flex='4'/>
+            <View style={{flex: 4, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 20}}>
+                    {backButton}
+                </View>
+                <View style={{flex: 60, justifyContent: 'center'}}>
+                    <Logo />
+                </View>
+                <View style={{flex: 20}} />
+            </View>
             <View style={headerStyles.middleContainer}>
                 <View style={headerStyles.searchContainer}>
                     <View style={headerStyles.searchInput}>
@@ -128,4 +136,27 @@ const Header = ({navigation}) => {
     );
 };
 
-export default Header;
+
+const mainHeader = {
+    headerMode: "screen",
+    headerStyle: {height: 155,},
+    header: ({ scene, previous, navigation }) => {
+        const { options } = scene.descriptor;
+        const title = options.headerTitle !== undefined
+            ? options.headerTitle
+            : options.title !== undefined
+            ? options.title
+            : scene.route.name;
+
+        return (
+            <View style={options.headerStyle} >
+                <Header navigation={navigation} backButton={
+                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                } />  
+            </View>
+            
+        );
+    },
+};
+
+export default mainHeader;

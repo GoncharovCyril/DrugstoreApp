@@ -7,9 +7,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import MedicineTab from './src/MedicineTab';
+
 import Main from './src/main/Main';
+import mainHeader from './src/main/MainHeader';
+
 import Drug from './src/drug/Drug';
+
 import Catalog from './src/catalog/Catalog';
+import catalogHeader from './src/catalog/CatalogHeader';
+
 import Basket from './src/basket/Basket';
 import ShopsList from './src/shopslist/ShopsList';
 import Menu from './src/menu/Menu';
@@ -36,40 +42,43 @@ const Tab = createBottomTabNavigator();
 import MainHeader from "./src/main/MainHeader";
 
 
-function LogoTitle() {
-    return (
-        <View style={{height: 100, backgroundColor: 'red'}}>
-            <MainHeader />
-        </View>
-    );
-  }
+const options = {
+    headerMode: "screen",
+    headerStyle: {height: 155,},
+    header: ({ scene, previous, navigation }) => {
+        const { options } = scene.descriptor;
+        const title = options.headerTitle !== undefined
+            ? options.headerTitle
+            : options.title !== undefined
+            ? options.title
+            : scene.route.name;
+
+        return (
+            <View style={options.headerStyle} >
+                <MainHeader navigation={navigation} backButton={
+                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                } />  
+            </View>
+            
+        );
+    },
+};
 
 const Home = () => {
     return (
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
-            <MainStack.Screen name="Main" component={Main} options={{ header: props => <LogoTitle {...props} /> }}/>
-            <MainStack.Screen name="Drug" component={Drug} />
+            <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
+            <MainStack.Screen name="Drug" component={Drug} options={mainHeader} />
         </MainStack.Navigator>
     )
 };
-
-// const App = () => {
-//     return (
-//         <NavigationContainer>
-//             <Stack.Navigator initialRouteName="Home">
-//                 <Stack.Screen name="Main" component={Main} />
-//                 <Stack.Screen name="Drug" component={Drug} />
-//             </Stack.Navigator>
-//         </NavigationContainer>
-//     );
-// }
 
 const App = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator initialRouteName="Home" tabBar={props => <MedicineTab {...props} />}>
                 <Tab.Screen name="Home" component={Home} />
-                <Tab.Screen name="Catalog" component={Catalog} />
+                <Tab.Screen name="Catalog" component={Catalog}/>
                 <Tab.Screen name="Basket" component={Basket} />
                 <Tab.Screen name="ShopsList" component={ShopsList} />
                 <Tab.Screen name="Menu" component={Menu} />
