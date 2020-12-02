@@ -9,19 +9,22 @@ import subcatalogHeader from './SubCatalogHeader';
 import CatalogItem from './CatalogItem';
 
 import CatalogData from './data/CatalogData';
-import Data1 from './data/Data1';
-
+import SubData from './data/SubData';
 
 const catalogStyles = StyleSheet.create({
 
 });
 
 
-const MainCatalog = ({navigation}) => {
+const MainCatalog = ({navigation, route}) => {
 
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
-            navigation.navigate(item.next);
+            // navigation.navigate(item.next);
+            navigation.navigate("SubCatalog", {
+                id: item.id,
+                data: SubData[item.id]
+            });
         }} />
     );
 
@@ -31,7 +34,7 @@ const MainCatalog = ({navigation}) => {
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
                         ListHeaderComponent={<View style={{height: 8}} />}
-                        data={CatalogData}
+                        data={route.params.data}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                     />
@@ -41,10 +44,13 @@ const MainCatalog = ({navigation}) => {
     );
 };
 
-const Catalog1 = ({navigation}) => {
+const SubCatalog = ({navigation, route}) => {
     
     const renderItem = ({ item }) => (
-        <CatalogItem title={item.title} action={item.action} />
+        <CatalogItem title={item.title} action={() =>{
+            // navigation.navigate(item.next);
+            // alert(route.params);
+        }} />
     );
 
     return (
@@ -53,7 +59,7 @@ const Catalog1 = ({navigation}) => {
                 <SafeAreaView style={{flex: 1246}}>
                     <FlatList 
                         ListHeaderComponent={<View style={{height: 8}} />}
-                        data={Data1}
+                        data={route.params.data}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                     />
@@ -68,8 +74,8 @@ const CatalogStack = createStackNavigator();
 const Catalog = () => {
     return(
             <CatalogStack.Navigator initialRouteName="MainCatalog">
-                <CatalogStack.Screen name="MainCatalog" component={MainCatalog} options={catalogHeader} />
-                <CatalogStack.Screen name="Catalog1" component={Catalog1} options={subcatalogHeader} />
+                <CatalogStack.Screen name="MainCatalog" initialParams={{data: CatalogData}} component={MainCatalog} options={catalogHeader} />
+                <CatalogStack.Screen name="SubCatalog" component={SubCatalog} options={subcatalogHeader} />
             </CatalogStack.Navigator>
     );
 };

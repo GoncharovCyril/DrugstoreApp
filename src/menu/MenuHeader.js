@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
 import LittleLogo from '../LittleLogo';
 
+import BackButton from "../BackButton";
+
+
 import navigationHeadStyle from "../navigationHeadStyles";
 
 const headerStyles = StyleSheet.create({
@@ -48,7 +51,7 @@ const menuHeader = {
         return (
             <View style={options.headerStyle} >
                 <Header navigation={navigation} backButton={
-                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                    previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>
             

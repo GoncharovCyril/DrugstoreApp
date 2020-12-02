@@ -7,6 +7,9 @@ import navigationHeadStyle from "../navigationHeadStyles";
 
 import subcatalogNames from "./SubCatalogDict";
 
+import BackButton from "../BackButton";
+
+
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
@@ -167,9 +170,9 @@ const subHeader = {
             <View style={options.headerStyle} >
                 <Header 
                     navigation={navigation} 
-                    title={subcatalogNames[title]}
+                    title={subcatalogNames[scene.route.params.id]}
                     backButton={
-                        previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                        previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>          
         );

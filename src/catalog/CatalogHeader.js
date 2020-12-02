@@ -5,6 +5,9 @@ import Logo from '../Logo';
 
 import LittleLogo from '../LittleLogo';
 
+import BackButton from "../BackButton";
+
+
 import navigationHeadStyle from "../navigationHeadStyles";
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
@@ -166,7 +169,7 @@ const mainHeader = {
         return (
             <View style={options.headerStyle} >
                 <Header navigation={navigation} backButton={
-                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                    previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>          
         );

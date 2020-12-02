@@ -1,22 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 const itemStyles = StyleSheet.create({
     catalogItem: {
-        height: 40,
+        height: 50,
+    },
+    catalogButton: {
+        flex: 113,
+        backgroundColor: 'white',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
 });
 
 const CatalogItem = ({title, action}) => (
-    <TouchableOpacity 
-        style={itemStyles.catalogItem}
-        onPress={action}
-    >
-        <View style={{flex: 115, backgroundColor: 'white', justifyContent: 'center'}}>
-            <Text>{title}</Text>
-        </View>
-        <View style={{flex: 2}} />
-    </TouchableOpacity>
+    <View style={itemStyles.catalogItem}>
+        <TouchableOpacity
+            style={itemStyles.catalogButton}
+            onPress={action}
+        >
+            <View style={{flex: 32}} />
+            <View style={{flex: 741}}>
+                <Text style={{ fontSize: 16 }}>{title}</Text>
+            </View>
+            <View style={{flex: 30}}>
+                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+            </ View>
+            <View style={{flex: 25}} />
+        </TouchableOpacity>
+        <View style={{ flex: 4 }} />
+    </View>
 );
+
 
 export default CatalogItem;

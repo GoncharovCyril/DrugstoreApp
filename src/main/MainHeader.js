@@ -5,6 +5,8 @@ import Logo from '../Logo';
 
 import navigationHeadStyle from "../navigationHeadStyles";
 
+import BackButton from "../BackButton";
+
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
@@ -159,7 +161,7 @@ const mainHeader = {
         return (
             <View style={options.headerStyle} >
                 <Header navigation={navigation} backButton={
-                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                    previous ? < BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>
             
