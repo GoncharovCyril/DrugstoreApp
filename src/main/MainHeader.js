@@ -3,27 +3,35 @@ import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } fr
 
 import Logo from '../Logo';
 
+import navigationHeadStyle from "../navigationHeadStyles";
+
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 
+
+
 const headerStyles = StyleSheet.create({
     headContainer: {
         flex: 3,
         justifyContent: 'center',
-        backgroundColor: 'rgba(96,165,38,1.0)',
     },
+    topContainer: {
+        flex: 4, 
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        alignItems: 'center'},
     logoContainer: {
         alignSelf: 'center',
         justifyContent: 'center',
         flex: 4,
     },
     middleContainer: {
+        flex:2,
         flexDirection:'row',
         backgroundColor:'rgba(96,165,38,1.0)',
-        flex:3,
     },
     searchContainer: {
         flexDirection:'row',
@@ -65,7 +73,7 @@ const color="rgba(236,111,39,1.0)";
 const Header = ({navigation, backButton}) => {
     return (
         <View style={headerStyles.headContainer}>
-            <View style={{flex: 4, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+            <View style={headerStyles.topContainer}>
                 <View style={{flex: 20}}>
                     {backButton}
                 </View>
@@ -114,11 +122,11 @@ const Header = ({navigation, backButton}) => {
                 </View>
             </View>
             <Space height="5%" />
-            <TouchableOpacity
+            <TouchableOpacity style={headerStyles.drugstorePickerContainer}
                 onPress={() => {
                     navigation.navigate('Drug');
                 }}
-                style={headerStyles.drugstorePickerContainer}>
+                >
                 <View style={headerStyles.drugstorePicker}>
                     <Space width="1%" />
                     <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
@@ -139,7 +147,7 @@ const Header = ({navigation, backButton}) => {
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: {height: 155,},
+    headerStyle: navigationHeadStyle.mainHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

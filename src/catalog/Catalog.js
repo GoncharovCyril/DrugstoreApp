@@ -1,33 +1,20 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, SafeAreaView, FlatList } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import catalogHeader from './CatalogHeader';
+import subcatalogHeader from './SubCatalogHeader';
+import CatalogItem from './CatalogItem';
 
-import CatalogData from './CatalogData';
-import Data1 from './Data1';
+import CatalogData from './data/CatalogData';
+import Data1 from './data/Data1';
 
 
 const catalogStyles = StyleSheet.create({
-    catalogItem: {
-        height: 40,
-    },
-});
 
-const CatalogItem = ({title, action}) => (
-    <TouchableOpacity 
-        style={catalogStyles.catalogItem}
-        onPress={action}
-    >
-        <View style={{flex: 115, backgroundColor: 'white',}}>
-            <Text>{title}</Text>
-        </View>
-        <View style={{flex: 2}} />
-    </TouchableOpacity>
-);
+});
 
 
 const MainCatalog = ({navigation}) => {
@@ -82,7 +69,7 @@ const Catalog = () => {
     return(
             <CatalogStack.Navigator initialRouteName="MainCatalog">
                 <CatalogStack.Screen name="MainCatalog" component={MainCatalog} options={catalogHeader} />
-                <CatalogStack.Screen name="Catalog1" component={Catalog1} />
+                <CatalogStack.Screen name="Catalog1" component={Catalog1} options={subcatalogHeader} />
             </CatalogStack.Navigator>
     );
 };

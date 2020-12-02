@@ -85,21 +85,19 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                             <View style={{
                                 width: "100%",
                                 flex: 5,
-                                borderWidth: 1
                             }}>
                                 <Image
                                     style={{
                                         width: "100%",
                                         height: "100%"
                                     }}
-                                    source = {require('./drug1.jpg')}
+                                    source = {require('../../img/drug1.jpg')}
                                     resizeMode="contain"
                                 />
                             </View>
                             <Text style={{
                                 flex:5,
                                 color: "rgb(106,106,106)",
-                                borderWidth: 1,
                                 textAlign: 'center',
                                 fontSize: 12
                             }}>
@@ -108,7 +106,7 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                         </ View>
                         <View style={{flex: 2}} />
                         <View style={{flex: 68}}>
-                            <View style={{flex: 160, borderWidth: 1}}>
+                            <View style={{flex: 160}}>
                                 <Text style={{fontSize: 13}}>{description}</Text>
                                 <Text style={{color:"rgb(106,106,106)", fontSize: 13}}>{dealer}</Text>
                             </View>
@@ -116,13 +114,11 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
 
                             <View style={{flexDirection:"row", flex: 63+73}}>
                                 <View style={{flex:7}} />
-                                <View style={{flex:5, borderWidth: 1, flexDirection: 'column'}}>
+                                <View style={{flex:5, flexDirection: 'column'}}>
                                         <Text style={{
                                             alignSelf: "flex-end",
-                                            borderWidth: 1,
                                             flex:1,
                                             textAlignVertical: 'center',
-                                            borderWidth: 1,
                                             fontWeight: 'bold',
                                         }}>
                                             {price}

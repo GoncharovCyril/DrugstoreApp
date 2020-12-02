@@ -3,17 +3,14 @@ import { View, Image } from 'react-native';
 
 const Logo = (props) => {
     return (
-        <View style={{}}>
             <Image
                 style={{
                     width: "100%",
-                    height: "100%",
-                    borderWidth: 1,
+                    height: "100%"
                 }}
-                source={require('../img/logo.png')}
+                source={require('../img/little-logo.png')}
                 resizeMode="contain"
             />
-        </View>
     );
 };
 

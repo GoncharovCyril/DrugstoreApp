@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import Header from './MenuHeader';
 
 import MapMarketAltSolid from '../../svg/map-market-alt-solid';
@@ -167,14 +170,13 @@ const RoundButtons = () => {
 };
 
 
-const Menu = ({navigation}) => {
+const MenuScreen = ({navigation}) => {
     return (
         <View style={{
             justifyContent: 'flex-start',
             width: '100%',
             flex:1,
         }}>
-            <Header />
             <View style={{flex:1390, backgroundColor: 'rgb(240,240,240)'}}>
                 <CityPicker />
                 <View style={{flex: 46}} />
@@ -186,5 +188,17 @@ const Menu = ({navigation}) => {
         </View>
     );
 };
+
+
+const MenuStack = createStackNavigator();
+
+const Menu = () => {
+    return(
+            <MenuStack.Navigator initialRouteName="MenuScreen">
+                <MenuStack.Screen name="MenuScreen" component={MenuScreen} options={Header}/>
+            </MenuStack.Navigator>
+    );
+};
+
 
 export default Menu;

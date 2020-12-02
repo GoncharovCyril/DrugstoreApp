@@ -22,8 +22,8 @@ const adSliderStyles=StyleSheet.create({
 });
 
 const images = [
-    require('./drug1.jpg'),
-    require('./drug2.jpg'),
+    require('../../img/drug1.jpg'),
+    require('../../img/drug2.jpg'),
 ];
 
 const AdSlider = ({ navigation }) => {

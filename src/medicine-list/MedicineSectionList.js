@@ -44,7 +44,13 @@ const SectionHeader = ({title, navigation}) => (
         style={medicineListStyles.virusPicker}
     >
         <View style={{ flex: 0.4 }} />
-        <Text style={{ flex: 9, alignSelf: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 22 }}>{title}</Text>
+        <Text style={{ 
+            flex: 9, 
+            alignSelf: 'center', 
+            justifyContent: 'center', 
+            fontWeight: 'bold', 
+            fontSize: 22 
+            }}>{title}</Text>
         <View style={{ height: '50%', justifyContent: "center", alignSelf: 'center', }}>
             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
         </ View>

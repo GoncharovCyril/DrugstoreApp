@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 
-import Logo from '../Logo';
-
 import LittleLogo from '../LittleLogo';
 
 import navigationHeadStyle from "../navigationHeadStyles";
+
+import subcatalogNames from "./SubCatalogDict";
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
@@ -68,7 +68,7 @@ const Space = (props) => {
 
 const color="rgba(236,111,39,1.0)";
 
-const Header = ({navigation, backButton}) => {
+const Header = ({navigation, backButton, title}) => {
     return (
         <View style={headerStyles.headContainer}>
             <View style={headerStyles.topContainer}>
@@ -84,7 +84,7 @@ const Header = ({navigation, backButton}) => {
                             <Text style={{
                                 color: 'white',
                                 fontSize: 22,
-                            }}> Каталог</Text>
+                            }}> {title}</Text>
                         </View>
                         <View style={{ flex: 20 }} />
                     </View>
@@ -152,7 +152,7 @@ const Header = ({navigation, backButton}) => {
     );
 };
 
-const mainHeader = {
+const subHeader = {
     headerMode: "screen",
     headerStyle: navigationHeadStyle.catalogHeader,
     header: ({ scene, previous, navigation }) => {
@@ -165,12 +165,15 @@ const mainHeader = {
 
         return (
             <View style={options.headerStyle} >
-                <Header navigation={navigation} backButton={
-                    previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
+                <Header 
+                    navigation={navigation} 
+                    title={subcatalogNames[title]}
+                    backButton={
+                        previous ? < Button title="back" onPress={navigation.goBack} /> : undefined
                 } />  
             </View>          
         );
     },
 };
 
-export default mainHeader;
+export default subHeader;
