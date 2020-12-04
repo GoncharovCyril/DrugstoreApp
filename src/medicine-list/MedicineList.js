@@ -1,6 +1,6 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,9 +14,31 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
+const wait= (timeout) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeout);
+    });
+}
 
+const Footer = () => (
+<View style={{backgroundColor: 'red', height: 50}}>
 
-const MedicineList = ({navigation, data}) => {
+</View>);
+
+const MedicineList = ({navigation, bata}) => {
+
+    const [refreshing, setRefreshing] = React.useState(false);
+    const [data, setData] = React.useState(DATA)
+    const [bottom, setBottom] = React.useState(undefined);
+
+    const [count, setCount] = React.useState(3);
+
+    const onRefresh = React.useCallback(() => {
+            setRefreshing(true);
+            setBottom(<Footer />)
+            //setData(data.concat(data));
+            wait(2000).then(() => {setRefreshing(false); setBottom(undefined)});
+    }, []);
 
     const renderItem = ({ item }) => (
         <ListItem navigation={navigation} id={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
@@ -28,8 +50,12 @@ const MedicineList = ({navigation, data}) => {
                 <SafeAreaView style={{flex: 1}}>
                     <FlatList 
                         data={data}
+                        ListFooterComponent={bottom}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
+                        refreshing={refreshing} 
+                        onEndReached={onRefresh}
+                        onEndReachedThreshold={1}
                     />
                 </SafeAreaView>
             </ View>

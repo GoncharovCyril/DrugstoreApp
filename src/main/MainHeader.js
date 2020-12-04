@@ -161,7 +161,7 @@ const mainHeader = {
         return (
             <View style={options.headerStyle} >
                 <Header navigation={navigation} backButton={
-                    previous ? < BackButton action={navigation.goBack} /> : undefined
+                    previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>
             

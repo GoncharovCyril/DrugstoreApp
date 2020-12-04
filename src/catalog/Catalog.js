@@ -15,8 +15,22 @@ const catalogStyles = StyleSheet.create({
 
 });
 
+const wait= (timeout) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeout);
+    });
+}
 
 const MainCatalog = ({navigation, route}) => {
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
+
 
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
@@ -37,6 +51,8 @@ const MainCatalog = ({navigation, route}) => {
                         data={route.params.data}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
+                        refreshing={refreshing} 
+                        onRefresh={onRefresh}
                     />
                 </SafeAreaView>
             </ View>
