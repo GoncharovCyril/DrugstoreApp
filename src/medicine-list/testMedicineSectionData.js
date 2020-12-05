@@ -6,7 +6,7 @@ const DATA = [
         data: listData.slice(0,3),
     },
     {
-        title: "Лучшие лекарства",
+        title: "Лучшие предложения",
         data: listData.slice(3,5),
     }];
 

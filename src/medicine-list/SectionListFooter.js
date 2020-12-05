@@ -38,6 +38,7 @@ const footerStyles=StyleSheet.create({
 
 const Footer = ({navigation}) => (
     <View>
+        <View style={{height: 12}} />
         <TouchableOpacity
             onPress={() => {
                 navigation.navigate('Drug');
@@ -49,7 +50,7 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '50%', justifyContent: "center", alignSelf: "center" }}>
+            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
                 <PlusSolid color="rgba(236,111,39,1.0)" />
             </ View>
             <View style={{ flex: 0.2 }} />
@@ -60,7 +61,7 @@ const Footer = ({navigation}) => (
             <View style={{ flex: 0.2 }} />
         </TouchableOpacity>
 
-        <View style={{ height: 5 }} />
+        <View style={{ height: 10 }} />
 
         <TouchableOpacity
             onPress={() => {
@@ -73,7 +74,7 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '50%', justifyContent: "center", alignSelf: "center" }}>
+            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
                 <VirusSolid color="rgba(236,111,39,1.0)" />
             </ View>
             <View style={{ flex: 0.2 }} />
@@ -84,7 +85,7 @@ const Footer = ({navigation}) => (
             <View style={{ flex: 0.2 }} />
         </TouchableOpacity>
 
-        <View style={{ height: 5 }} />
+        <View style={{ height: 10 }} />
 
         <TouchableOpacity
             onPress={() => {
@@ -97,7 +98,7 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '50%', justifyContent: "center", alignSelf: "center" }}>
+            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
                 <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
             </ View>
             <View style={{ flex: 0.2 }} />

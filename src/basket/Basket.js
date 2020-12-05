@@ -10,11 +10,12 @@ import sectionData from '../medicine-list/testMedicineSectionData';
 
 {/* <MedicineList navigation={navigation} data={sectionData}/> */}
 
+{/* <MedicineList /> */}
+
 
 const Bucket = ({navigation}) => {
     return (
         <View style={{flex:1}}> 
-            <MedicineList />
         </View>
     );
 };

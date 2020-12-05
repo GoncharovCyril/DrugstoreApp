@@ -16,14 +16,14 @@ import InstagramBrandsRound from '../../svg/rounds/instagram-brands-round';
 
 const menuStyles = StyleSheet.create({
     cityPicker: {
-        flex: 115,
+        flex: 167,
         backgroundColor: 'white',
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
     },
     buttonsContainer: {
-        flex: 583,
+        flex: 768,
     },
     menuButton: {
         flex: 115,
@@ -33,7 +33,8 @@ const menuStyles = StyleSheet.create({
         flexDirection: 'row',
     },
     menuSpace: {
-        flex: 2
+        // flex: 2
+        height: 1
     },
     roundButtonsContainer: {
         flex: 81,
@@ -46,12 +47,14 @@ const CityPicker = () => {
     return (
         <TouchableOpacity style={menuStyles.cityPicker}>
             <View style={{flex: 32}} />
-            <View style={{flex: 36}}>
+            <View style={{
+                flex: 46,
+                }}>
                 <MapMarketAltSolid color="rgba(236,111,39,1.0)" />
             </ View>
             <View style={{flex: 23}} />
 
-            <View style={{flex: 680}}>
+            <View style={{flex: 670}}>
                 <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>Донецк</Text>
             </View>
             <View style={{flex: 30}}>
@@ -104,48 +107,43 @@ const MenuButtonConnect = (props) => {
 
 
 
-const MenuButtons = () => {
+const MenuButtons = ({navigation}) => {
     return (
         <View style={menuStyles.buttonsContainer}>
             <MenuButton
                 text="Личный кабинет"
                 onPress={()=>{
-                    alert(1);
                 }}
             />
             <View style={menuStyles.menuSpace} />
             <MenuButton
                 text="Заказы"
                 onPress={()=>{
-                    alert(1);
                 }}
             />
             <View style={menuStyles.menuSpace} />
             <MenuButton
                 text="Акции"
                 onPress={()=>{
-                    alert(1);
                 }}
             />
             <View style={menuStyles.menuSpace} />
             <MenuButton
                 text="Оставьте отзыв"
                 onPress={()=>{
-                    alert(1);
                 }}
             />
             <View style={menuStyles.menuSpace} />
             <MenuButtonConnect
                 text="Обратная связь"
                 onPress={()=>{
-                    alert(5);
                 }}
             />
         </View>
     );
 };
 
-const RoundButtons = () => {
+const RoundButtons = ({navigation}) => {
     return (
         <View style={menuStyles.roundButtonsContainer}>
             <View style={{flex: 32}} />
@@ -179,11 +177,11 @@ const MenuScreen = ({navigation}) => {
         }}>
             <View style={{flex:1390, backgroundColor: 'rgb(240,240,240)'}}>
                 <CityPicker />
-                <View style={{flex: 46}} />
+                <View style={{flex: 60}} />
                 <MenuButtons />
                 <View style={{flex: 39}} />
                 <RoundButtons />
-                <View style={{flex:586}} />
+                <View style={{flex:370}} />
             </ View>
         </View>
     );

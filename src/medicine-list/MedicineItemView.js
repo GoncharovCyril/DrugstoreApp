@@ -27,7 +27,7 @@ const BuyButton = ({ navigation }) => {
                     alignItems: "center",
                     justifyContent: 'center',
                     backgroundColor: "rgb(92,158,36)",
-                    borderRadius: 18,
+                    borderRadius: 15,
                     flex: 1
                 }}
                 onPress={() => {
@@ -38,7 +38,7 @@ const BuyButton = ({ navigation }) => {
                     color: "white",
                     alignSelf: "center",
                     textAlignVertical: 'center',
-                    fontSize: 16
+                    fontSize: 15
                 }}>Купить</Text>
             </TouchableOpacity>
     );
@@ -71,16 +71,16 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                     shadowRadius: 5,
                     elevation: 5,
                 }}>
-                    <View style={{flex:6}} />
+                    <View style={{flex:10}} />
                     <View style={{
-                        flex:88,
+                        flex:84,
                         flexDirection: "row",
                     }}>
-                        <View style={{flex: 3}} />
+                        <View style={{flex: 5}} />
                         <View style={{
-                            flex: 24,
+                            flex: 22,
                             alignItems: "center",
-                            justifyContent: "space-around"
+                            justifyContent: "space-around",
                         }}>
                             <View style={{
                                 width: "100%",
@@ -89,26 +89,32 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                                 <Image
                                     style={{
                                         width: "100%",
-                                        height: "100%"
+                                        height: "100%",
                                     }}
-                                    source = {require('../../img/drug1.jpg')}
+                                    source = {require('../../img/drug4.png')}
                                     resizeMode="contain"
                                 />
                             </View>
+                            <View style={{flex: 0.5}} />
                             <Text style={{
-                                flex:5,
+                                flex:4.5,
                                 color: "rgb(106,106,106)",
                                 textAlign: 'center',
-                                fontSize: 12
+                                fontSize: 11
                             }}>
                                 {availability}
                             </Text>
                         </ View>
                         <View style={{flex: 2}} />
-                        <View style={{flex: 68}}>
+                        <View style={{flex: 67}}>
                             <View style={{flex: 160}}>
-                                <Text style={{fontSize: 13}}>{description}</Text>
-                                <Text style={{color:"rgb(106,106,106)", fontSize: 13}}>{dealer}</Text>
+                                <View style={{flex:6., flexDirection: 'row'}}>
+                                    <View style={{width: 2}} />
+                                    <Text style={{fontSize: 12.5}}>{description}</Text>
+                                </View>
+                                <View style={{flex:4}}>
+                                    <Text style={{color:"rgb(106,106,106)", fontSize: 12}}>{dealer}</Text>
+                                </View>
                             </View>
 
 
@@ -128,7 +134,7 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                             </View>
 
                         </View>
-                        <View style={{flex: 3}} />
+                        <View style={{flex: 4}} />
                     </View>
                     <View style={{flex:6}} />
                 </View>

@@ -81,9 +81,7 @@ const Header = ({navigation, backButton, title}) => {
                             {backButton}
                         </View>
                         <View style={{ flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                            <View style={{ height: 40, width: 40 }}>
-                                <LittleLogo />
-                            </View>
+                            
                             <Text style={{
                                 color: 'white',
                                 fontSize: 22,
@@ -113,14 +111,13 @@ const Header = ({navigation, backButton, title}) => {
                             style={{
                                 alignSelf: "stretch",
                                 flex: 92,
-                                fontSize: 20
+                                fontSize: 18
                             }}
                             placeholder='Поиск лекарства...'
                         />
                     </View>
                     <Space width="2%" />
                     <View>
-                        <View style={{flex: 15}} />
                         <TouchableOpacity
                             onPress={() => {
                                 navigation.navigate('Drug');
@@ -128,27 +125,26 @@ const Header = ({navigation, backButton, title}) => {
                             style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
                             <BarcodeSolid color={color} />
                         </ TouchableOpacity>
-                        <View style={{flex: 15}} />
                     </View>
                 </View>
             </View>
-            <Space height="5%" />
+            <Space height="10%" />
             <TouchableOpacity
                 onPress={() => {
                     navigation.navigate('Drug');
                 }}
                 style={headerStyles.drugstorePickerContainer}>
                 <View style={headerStyles.drugstorePicker}>
-                    <Space width="1%" />
-                    <View style={{height: '50%', justifyContent: "center", alignSelf: "center"}}>
+                    <Space width="3%" />
+                    <View style={{height: '45%', justifyContent: "center", alignSelf: "center"}}>
                         <PlusSolid color="white" />
                     </ View>
-                    <Space width="5%" />
+                    <Space width="3%" />
                     <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)", fontSize: 16}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <View style={{height: '50%', justifyContent: "center", alignSelf: 'center',}}>
+                    <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
                         <ShevronRightSolid color={color} />
                     </ View>
-                    <Space width="1%" />
+                    <Space width="3%" />
                 </View>
             </TouchableOpacity>
         </View>

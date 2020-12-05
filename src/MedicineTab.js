@@ -19,9 +19,9 @@ const bottomStyles = StyleSheet.create({
 
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 5,
+        shadowOpacity: 20,
         shadowRadius: 5,
-        elevation: 6,
+        elevation: 16,
     },
     buttonContainer: {
         flex: 2,

@@ -16,31 +16,34 @@ import VirusSolid from '../../svg/virus-solid';
 
 const adSliderStyles=StyleSheet.create({
     adSlider: {
-        height: 180,
-        backgroundColor: "white",
+        height: 200,
     },
 });
 
 const images = [
     require('../../img/drug1.jpg'),
-    require('../../img/drug2.jpg'),
+    require('../../img/drug2.png'),
 ];
 
 const AdSlider = ({ navigation }) => {
     return (
         <View style={adSliderStyles.adSlider}>
-            <SliderBox
-                images={images}
-                dotColor="rgb(226,94,18)"
-                inactiveDotColor="rgb(92,158,36)"
-                resizeMode="stretch"
+            <View style={{flex: 19, backgroundColor: "white",}}>
+                <SliderBox
+                    images={images}
+                    dotColor="rgb(226,94,18)"
+                    inactiveDotColor="rgb(92,158,36)"
+                    resizeMode="stretch"
 
-                onCurrentImagePressed={ index => {
-                    // alert(index);
-                    navigation.navigate("Drug");
+                    onCurrentImagePressed={ index => {
+                        // alert(index);
+                        navigation.navigate("Drug");
 
-                }}
-            />
+                    }}
+                />
+            </View>
+            
+            <View style={{flex: 1,}} />
         </View>
     );
 };

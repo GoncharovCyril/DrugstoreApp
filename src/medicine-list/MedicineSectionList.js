@@ -51,7 +51,7 @@ const SectionHeader = ({title, navigation}) => (
             fontWeight: 'bold', 
             fontSize: 22 
             }}>{title}</Text>
-        <View style={{ height: '50%', justifyContent: "center", alignSelf: 'center', }}>
+        <View style={{ height: '40%', justifyContent: "center", alignSelf: 'center', }}>
             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
         </ View>
         <View style={{ flex: 0.3 }} />
@@ -70,7 +70,9 @@ const MedicineList = ({navigation, data}) => {
             <View style={{flex: 6}} >
                 <SafeAreaView style={{flex: 1}}>
                     <SectionList 
-                        ListHeaderComponent={<AdSlider navigation={navigation} />}
+                        ListHeaderComponent={
+                            <AdSlider navigation={navigation} />
+                        }
 
                         sections={data}
                         renderItem={renderItem}
