@@ -1,24 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
-import {TabView} from 'react-native-tab-view';
+import { TabView } from 'react-native-tab-view';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import Animated from 'react-native-reanimated';
 
 
-const ShopsTabBar = ({state, descriptors, navigation, position}) => {
-    return (
-        <View style={{ flexDirection: 'row', paddingTop: 20 }}>
+const ShopsTabBar = ({ state, descriptors, navigation, position }) => {
+  return (
+    <View style={{ flexDirection: 'row', paddingTop: 20 }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-            ? options.title
-            : route.name;
+              ? options.title
+              : route.name;
 
         const isFocused = state.index === index;
 
@@ -61,9 +61,9 @@ const ShopsTabBar = ({state, descriptors, navigation, position}) => {
         );
       })}
     </View>
-    );
+  );
 };
 
 
 
- export default ShopsTabBar;
+export default ShopsTabBar;

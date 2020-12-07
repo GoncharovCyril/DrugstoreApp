@@ -34,7 +34,6 @@ const MainCatalog = ({navigation, route}) => {
 
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
-            // navigation.navigate(item.next);
             navigation.navigate("SubCatalog", {
                 id: item.id,
                 data: SubData[item.id]
