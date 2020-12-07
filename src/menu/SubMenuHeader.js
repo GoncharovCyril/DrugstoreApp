@@ -16,7 +16,7 @@ const headerStyles = StyleSheet.create({
     },
 });
 
-const Header = ({navigation, backButton, title}) => {
+const Header = ({navigation, backButton}) => {
     return (
         <View style={{ flex: 1 }}>
             <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
@@ -30,7 +30,7 @@ const Header = ({navigation, backButton, title}) => {
                         <Text style={{ 
                             color: 'white', 
                             fontSize: 22, 
-                            }}> {title}</Text>
+                            }}> Меню</Text>
                 </View>
                 <View style={{flex: 20}} />
             </View>
@@ -39,25 +39,28 @@ const Header = ({navigation, backButton, title}) => {
 };
 
 const titles={
-    MenuScreen: "Меню",
-    PersonalAreaScreen: "Личный кабинет",
-    OrdersScreen: "Заказы",
-    PromotionsScreen: "Акции",
-    ReviewScreen: "Оставьте отзыв",
-    CallbackScreen: "Обратная связь",
+    MenuScreen: "",
+    PersonalAreaScreen: "",
+    OrdersScreen: "",
+    PromotionsScreen: "",
+    ReviewScreen: "",
+    CallbackScreen: "",
 };
 
-const menuHeader = {
+const submenuHeader = {
     headerMode: "screen",
     headerStyle: navigationHeadStyle.menuHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
-
-        const title=titles[scene.route.name];
+        const title = options.headerTitle !== undefined
+            ? options.headerTitle
+            : options.title !== undefined
+            ? options.title
+            : scene.route.name;
 
         return (
             <View style={options.headerStyle} >
-                <Header title={title} navigation={navigation} backButton={
+                <Header navigation={navigation} backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>
@@ -66,4 +69,4 @@ const menuHeader = {
     },
 };
 
-export default menuHeader;
+export default submenuHeader;

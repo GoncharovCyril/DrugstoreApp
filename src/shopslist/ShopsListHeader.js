@@ -47,7 +47,7 @@ const titles={
     CallbackScreen: "Обратная связь",
 };
 
-const menuHeader = {
+const shopslistHeader = {
     headerMode: "screen",
     headerStyle: navigationHeadStyle.menuHeader,
     header: ({ scene, previous, navigation }) => {
@@ -57,7 +57,7 @@ const menuHeader = {
 
         return (
             <View style={options.headerStyle} >
-                <Header title={title} navigation={navigation} backButton={
+                <Header title="Аптеки" navigation={navigation} backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>
@@ -66,4 +66,4 @@ const menuHeader = {
     },
 };
 
-export default menuHeader;
+export default shopslistHeader;

@@ -13,12 +13,6 @@ function PlusSolid(props) {
 
           borderWidth: 1,
           borderColor: "white",
-
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 5,
-          shadowRadius: 5,
-          elevation: 6,
       }}>
         <View style={{flex: 1}} />
         <View style={{

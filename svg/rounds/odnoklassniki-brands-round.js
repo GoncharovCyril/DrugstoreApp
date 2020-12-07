@@ -10,17 +10,9 @@ function OdnoklassnikiBrands(props) {
           backgroundColor: props.roundColor,
           justifyContent: 'center',
           alignItems: 'center',
-
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 5,
-          shadowRadius: 5,
-          elevation: 6,
       }}>
-        <View style={{flex: 1}} />
         <View style={{
-            width: "65%",
-            flex: 8
+            width: "45%",
         }}>
             <Svg
               aria-hidden="true"
@@ -36,7 +28,6 @@ function OdnoklassnikiBrands(props) {
               />
             </Svg>
         </View>
-        <View style={{flex: 1}} />
       </View>
 
   )

@@ -10,17 +10,9 @@ function VkBrands(props) {
           backgroundColor: props.roundColor,
           justifyContent: 'center',
           alignItems: 'center',
-
-          shadowColor: props.shadowColor,
-          shadowOffset: { width: 0, height: 0 },
-          shadowOpacity: 5,
-          shadowRadius: 5,
-          elevation: 6,
       }}>
-        <View style={{flex: 1}} />
         <View style={{
             width: "65%",
-            flex: 8
         }}>
             <Svg
               aria-hidden="true"
@@ -35,7 +27,6 @@ function VkBrands(props) {
               />
             </Svg>
         </View>
-        <View style={{flex: 1}} />
       </View>
   )
 }

@@ -90,7 +90,9 @@ const Footer = () => (
 
 const List = () => {
 
-    const [refreshing, setRefreshing] = useState(false);
+    const [refreshing, setRefreshing] = React.useState(false);
+    const [data, setData] = React.useState(DATA)
+    const [bottom, setBottom] = React.useState(undefined);
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);

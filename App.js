@@ -64,20 +64,13 @@ const options = {
     },
 };
 
-const Home = () => {
-    return (
-        <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
-            <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
-            <MainStack.Screen name="Drug" component={Drug} options={mainHeader} />
-        </MainStack.Navigator>
-    )
-};
+
 
 const App = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator initialRouteName="Home" tabBar={props => <MedicineTab {...props} />}>
-                <Tab.Screen name="Home" component={Home} />
+            <Tab.Navigator initialRouteName="Main" tabBar={props => <MedicineTab {...props} />}>
+                <Tab.Screen name="Main" component={Main} />
                 <Tab.Screen name="Catalog" component={Catalog}/>
                 <Tab.Screen name="Basket" component={Basket} />
                 <Tab.Screen name="ShopsList" component={ShopsList} />

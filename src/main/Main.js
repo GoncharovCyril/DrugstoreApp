@@ -1,8 +1,12 @@
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import mainHeader from './MainHeader';
+
+import Drug from '../drug/Drug';
+
 import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
-import Header from './MainHeader';
 import Scroller from './Scroller';
-import Bottom from './Bottom';
 
 
 const styles = StyleSheet.create({
@@ -29,4 +33,15 @@ const Main = ({ navigation }) => {
     );
 };
 
-export default Main;
+const MainStack = createStackNavigator();
+
+const MainScreen = () => {
+    return (
+        <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
+            <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
+            <MainStack.Screen name="Drug" component={Drug} options={mainHeader} />
+        </MainStack.Navigator>
+    )
+};
+
+export default MainScreen;

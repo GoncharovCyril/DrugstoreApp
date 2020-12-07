@@ -81,7 +81,9 @@ const Header = ({navigation, backButton, title}) => {
                             {backButton}
                         </View>
                         <View style={{ flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                            
+                            <View style={{ height: 40, width: 40 }}>
+                                <LittleLogo />
+                            </View>
                             <Text style={{
                                 color: 'white',
                                 fontSize: 22,

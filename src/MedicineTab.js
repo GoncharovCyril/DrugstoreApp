@@ -54,12 +54,6 @@ function MedicineTab({ state, descriptors, navigation }) {
     <View style={bottomStyles.bottomContainer}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
 
         const isFocused = state.index === index;
 
@@ -83,14 +77,14 @@ function MedicineTab({ state, descriptors, navigation }) {
         };
 
         const icons = {
-            Home: (<HomeSolid color={isFocused ? activeColor : color} />),
+            Main: (<HomeSolid color={isFocused ? activeColor : color} />),
             Catalog: (<ListUlSolid color={isFocused ? activeColor : color} />),
             Basket: (<ShoppingBasketSolid color={isFocused ? activeColor : color} />),
             ShopsList: (<MapMarketAltSolid color={isFocused ? activeColor : color} />),
             Menu: (<BarsSolid color={isFocused ? activeColor : color} />),
         };
         const labels = {
-            Home: "Главная",
+            Main: "Главная",
             Catalog: "Каталог",
             Basket: "Корзина",
             ShopsList: "Аптеки",
@@ -109,12 +103,12 @@ function MedicineTab({ state, descriptors, navigation }) {
             style={bottomStyles.buttonContainer}
           >
                 <View style={bottomStyles.button}>
-                    {icons[label]}
+                    {icons[route.name]}
                 </ View>
                 <Text style={{
                     color: isFocused ? activeColor : color,
                 }}>
-                    {labels[label]}</Text>
+                    {labels[route.name]}</Text>
           </TouchableOpacity>
         );
       })}
