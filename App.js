@@ -64,12 +64,12 @@ const options = {
     },
 };
 
-
+// tabBar={props => <MedicineTab {...props} />} 
 
 const App = () => {
     return (
         <NavigationContainer>
-            <Tab.Navigator initialRouteName="Main" tabBar={props => <MedicineTab {...props} />}>
+            <Tab.Navigator initialRouteName="Main" tabBarOptions={{keyboardHidesTabBar: 'true'}} tabBar={props => <MedicineTab {...props} />} >
                 <Tab.Screen name="Main" component={Main} />
                 <Tab.Screen name="Catalog" component={Catalog}/>
                 <Tab.Screen name="Basket" component={Basket} />

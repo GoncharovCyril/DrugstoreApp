@@ -26,6 +26,7 @@
     "react-native-screens": "~2.10.1",
     "react-native-shadow": "^1.2.2",
     "react-native-svg": "12.1.0",
+    "react-native-svg-uri": "^1.2.3",
     "react-native-tab-view": "^2.15.2",
     "react-native-web": "~0.13.12"
   },

@@ -35,7 +35,10 @@ const Main = ({ navigation }) => {
 
 const MainStack = createStackNavigator();
 
-const MainScreen = () => {
+const MainScreen = ({navigation, route}) => {
+
+    navigation.setOptions({tabBarVisible: 'false'});
+
     return (
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
             <MainStack.Screen name="Main" component={Main} options={mainHeader}/>

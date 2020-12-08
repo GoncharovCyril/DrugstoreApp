@@ -11,7 +11,7 @@ import BarsSolid from '../svg/bars-solid';
 
 const bottomStyles = StyleSheet.create({
     bottomContainer: {
-        height: "8%",
+        height: 50,
         justifyContent: 'center',
         backgroundColor: 'rgba(255,255,255,1.0)',
         flexDirection: 'row',
@@ -45,6 +45,7 @@ const color="rgba(106,106,106,1.0)";
 
 function MedicineTab({ state, descriptors, navigation }) {
   const focusedOptions = descriptors[state.routes[state.index].key].options;
+
 
   if (focusedOptions.tabBarVisible === false) {
     return null;

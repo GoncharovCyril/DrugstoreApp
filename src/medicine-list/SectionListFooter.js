@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import PlusSolid from '../../svg/plus-solid';
+import PlusSolid from '../../svg/plus-solid copy';
 import VirusSolid from '../../svg/virus-solid';
 
 
@@ -50,8 +50,11 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
-                <PlusSolid color="rgba(236,111,39,1.0)" />
+            <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
+                <Image source={require("../../img/plus-solid.png")} style={{
+                    width: "100%",
+                    height: "100%",
+                }} resizeMode="contain" />
             </ View>
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>Лучшие лекарства</Text>
@@ -74,8 +77,11 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
-                <VirusSolid color="rgba(236,111,39,1.0)" />
+            <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
+                <Image source={require("../../img/virus-solid.png")} style={{
+                    width: "100%",
+                    height: "100%",
+                }} resizeMode="contain" />
             </ View>
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>COVID-2019</Text>
@@ -98,8 +104,11 @@ const Footer = ({navigation}) => (
             }}
         >
             <View style={{ flex: 0.3 }} />
-            <View style={{ height: '45%', justifyContent: "center", alignSelf: "center" }}>
-                <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
+            <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
+                <Image source={require("../../img/comment-medical-solid.png")} style={{
+                    width: "100%",
+                    height: "100%",
+                }} resizeMode="contain" />
             </ View>
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>Обратная связь</Text>
