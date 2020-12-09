@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Keyboard } from 'react-native';
 
 
 import HomeSolid from '../svg/home-solid';
@@ -46,12 +46,28 @@ const color="rgba(106,106,106,1.0)";
 function MedicineTab({ state, descriptors, navigation }) {
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
+  const [isVisible, setVisible] = React.useState(true);
+
 
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
 
+
+  const show = event => {
+    setVisible(false);
+  }
+
+  const hide = event => {
+    setVisible(true);
+  }
+
+  Keyboard.addListener("keyboardDidShow", show);
+  Keyboard.addListener("keyboardDidHide", hide);
+
+
   return (
+    isVisible ?
     <View style={bottomStyles.bottomContainer}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
@@ -114,6 +130,8 @@ function MedicineTab({ state, descriptors, navigation }) {
         );
       })}
     </View>
+    :
+    null
   );
 }
 
