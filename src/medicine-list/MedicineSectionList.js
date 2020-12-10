@@ -43,18 +43,18 @@ const SectionHeader = ({title, navigation}) => (
         }}
         style={medicineListStyles.virusPicker}
     >
-        <View style={{ flex: 0.4 }} />
+        <View style={{ flex: 3 }} />
         <Text style={{ 
-            flex: 9, 
+            flex: 94, 
             alignSelf: 'center', 
             justifyContent: 'center', 
             fontWeight: 'bold', 
             fontSize: 22 
             }}>{title}</Text>
-        <View style={{ height: '40%', justifyContent: "center", alignSelf: 'center', }}>
+        <View style={{ height: '40%', justifyContent: "center", alignSelf: 'center'}}>
             <ShevronRightSolid color="rgba(236,111,39,1.0)" />
         </ View>
-        <View style={{ flex: 0.3 }} />
+        <View style={{ flex: 3 }} />
     </TouchableOpacity>
 );
 

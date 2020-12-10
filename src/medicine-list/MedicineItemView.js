@@ -1,37 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { event } from 'react-native-reanimated';
 
 import { BoxShadow } from 'react-native-shadow';
+
+import BuyButton from './BuyButton';
 
 
 const styles = StyleSheet.create({
 
 });
-
-const BuyButton = ({ navigation }) => {
-    return (
-            <TouchableOpacity
-                style={{
-                    alignItems: "center",
-                    justifyContent: 'center',
-                    backgroundColor: "rgb(92,158,36)",
-                    borderRadius: 15,
-                    flex: 1
-                }}
-                onPress={() => {
-                    navigation.navigate('ShopsList');
-                }}
-            >
-                <Text style={{
-                    color: "white",
-                    alignSelf: "center",
-                    textAlignVertical: 'center',
-                    fontSize: 15
-                }}>Купить</Text>
-            </TouchableOpacity>
-    );
-};
-
 
 const viewH = 180;
 const viewW = 345;
@@ -49,14 +27,38 @@ const shadowOpt = {
 }
 
 const DrugView = ({navigation, id, description, dealer, price, availability}) => {
+
+    const [viewWidth, setWidth] = React.useState(345);
+
     return (
-        <View style={{
+        <View 
+        style={{
             height: viewH + 20,
             width: "100%",
             justifyContent: "center",
-            alignItems: "center"
-        }}>
-            <BoxShadow setting={shadowOpt}>
+            alignItems: "center",
+        }}
+
+        onLayout={(event) => {
+            const {x, y, width, height} = event.nativeEvent.layout;
+            
+            setWidth(width*0.94);
+            //360
+        }}
+
+        
+        >
+            <BoxShadow setting={{
+                width: viewWidth,
+                height: viewH,
+                color: "#ACCA92",
+                border: 4,
+                radius: 15,
+                opacity: 0.4,
+                x: 0,
+                y: 0,
+                style: {}
+            }}>
                 <TouchableOpacity
                     onPress={() => {
                         navigation.navigate('Drug');
@@ -67,7 +69,7 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                         flexDirection: "column",
                         borderRadius: 18,
                         height: viewH,
-                        width: viewW,
+                        width: viewWidth,
                     }}>
                     <View style={{ flex: 10 }} />
                     <View style={{

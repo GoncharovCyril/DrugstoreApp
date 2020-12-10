@@ -66,6 +66,9 @@ function MedicineTab({ state, descriptors, navigation }) {
   Keyboard.addListener("keyboardDidHide", hide);
 
 
+  alert(Object.keys(state))
+
+
   return (
     isVisible ?
     <View style={bottomStyles.bottomContainer}>
@@ -108,7 +111,6 @@ function MedicineTab({ state, descriptors, navigation }) {
             Menu: "Меню",
         }
 
-
         return (
           <TouchableOpacity
             accessibilityRole="button"
@@ -126,6 +128,7 @@ function MedicineTab({ state, descriptors, navigation }) {
                     color: isFocused ? activeColor : color,
                 }}>
                     {labels[route.name]}</Text>
+                <Text>a</Text>
           </TouchableOpacity>
         );
       })}

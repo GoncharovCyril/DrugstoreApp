@@ -37,6 +37,7 @@ const MainStack = createStackNavigator();
 
 const MainScreen = ({navigation, route}) => {
 
+
     return (
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
             <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
