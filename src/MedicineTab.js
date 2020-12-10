@@ -53,7 +53,6 @@ function MedicineTab({ state, descriptors, navigation }) {
     return null;
   }
 
-
   const show = event => {
     setVisible(false);
   }
@@ -64,10 +63,6 @@ function MedicineTab({ state, descriptors, navigation }) {
 
   Keyboard.addListener("keyboardDidShow", show);
   Keyboard.addListener("keyboardDidHide", hide);
-
-
-  alert(Object.keys(state))
-
 
   return (
     isVisible ?

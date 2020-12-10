@@ -1,10 +1,14 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
+
+import productsReducer from './src/redux/ProductsReducer';
 
 import MedicineTab from './src/MedicineTab';
 
@@ -66,17 +70,22 @@ const options = {
 
 // tabBar={props => <MedicineTab {...props} />} 
 
+
+const store = createStore(productsReducer);
+
 const App = () => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator initialRouteName="Main" tabBarOptions={{keyboardHidesTabBar: 'true'}} tabBar={props => <MedicineTab {...props} />} >
-                <Tab.Screen name="Main" component={Main} />
-                <Tab.Screen name="Catalog" component={Catalog}/>
-                <Tab.Screen name="Basket" component={Basket} />
-                <Tab.Screen name="ShopsList" component={ShopsList} />
-                <Tab.Screen name="Menu" component={Menu} />
-            </Tab.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer>
+                <Tab.Navigator initialRouteName="Main" tabBarOptions={{ keyboardHidesTabBar: 'true' }} tabBar={props => <MedicineTab {...props} />} onNa>
+                    <Tab.Screen name="Main" component={Main} />
+                    <Tab.Screen name="Catalog" component={Catalog} />
+                    <Tab.Screen name="Basket" component={Basket} />
+                    <Tab.Screen name="ShopsList" component={ShopsList} />
+                    <Tab.Screen name="Menu" component={Menu} />
+                </Tab.Navigator>
+            </NavigationContainer>
+        </Provider>
     );
 }
 

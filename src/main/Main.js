@@ -1,5 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import {connect} from 'react-redux';
+
 
 import mainHeader from './MainHeader';
 
@@ -46,4 +48,9 @@ const MainScreen = ({navigation, route}) => {
     )
 };
 
-export default MainScreen;
+const mapStateToProps = (state) => {
+    const {products} = state;
+    return {products};
+};
+
+export default connect(mapStateToProps)(MainScreen);

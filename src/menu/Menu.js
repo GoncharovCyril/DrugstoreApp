@@ -1,13 +1,11 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
+import { StyleSheet} from 'react-native';
+ 
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Header from './MenuHeader';
-import CityPicker from './CityPicker';
-import MenuButtons from './MenuButtons';
-import RoundButtons from './RoundButtons';
 
+import MenuScreen from './MenuScreen';
 import PersonalAreaScreen from './personal-area/PersonalArea';
 import OrdersScreen from './orders/Orders';
 import PromotionsScreen from './promotions/Promotions';
@@ -17,26 +15,6 @@ import CallbackScreen from './callback/Callback';
 const menuStyles = StyleSheet.create({
 
 });
-
-
-const MenuScreen = ({navigation}) => {
-    return (
-        <View style={{
-            justifyContent: 'flex-start',
-            width: '100%',
-            flex:1,
-        }}>
-            <View style={{flex:1390, backgroundColor: 'rgb(240,240,240)'}}>
-                <CityPicker navigation={navigation} />
-                <View style={{flex: 60}} />
-                <MenuButtons navigation={navigation} />
-                <View style={{flex: 39}} />
-                <RoundButtons navigation={navigation} />
-                <View style={{flex:370}} />
-            </ View>
-        </View>
-    );
-};
 
 
 const MenuStack = createStackNavigator();
@@ -53,5 +31,4 @@ const Menu = () => {
             </MenuStack.Navigator>
     );
 };
-
 export default Menu;
