@@ -1,4 +1,4 @@
-import {ADD_PRODUCT} from './types';
+import { ADD_PRODUCT, REMOVE_PRODUCT } from './types';
 
 export const addProduct = productIndex => (
     {
@@ -6,3 +6,11 @@ export const addProduct = productIndex => (
         payload: productIndex,
     }
 );
+
+export const removeProduct = productIndex => (
+    {
+        type: REMOVE_PRODUCT,
+        payload: productIndex,
+    }
+);
+
