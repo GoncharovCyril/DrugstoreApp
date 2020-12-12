@@ -32,10 +32,12 @@ const bottomStyles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    height: '55%',
+    // height: '55%',
+    flex: 55,
     justifyContent: "center",
   },
   text: {
+    flex: 45,
     justifyContent: 'flex-end',
   }
 });
@@ -48,8 +50,19 @@ const ProductIcon = ({count}) => {
   if (count<1) return null;
   const size = 18;
   return (
-    <View style={{borderRadius: size/2, backgroundColor: activeColor, width: size, height: size}}>
-      <Text style={{color:"white", textAlign: 'center', textAlignVertical: 'center'}}>{count}</Text>
+    <View style={{
+      flex: 1,
+      elevation: 1, 
+      zIndex: 1, 
+      position: 'absolute',
+    }}>
+      <View style={{flex: 1, justifyContent: 'flex-start', left: '110%', top: "-32%"}}>
+
+        <View style={{ borderRadius: size / 2, backgroundColor: "rgb(92,158,36)", width: size, height: size }}>
+          <Text style={{ color: "white", textAlign: 'center', textAlignVertical: 'center' }}>{count}</Text>
+        </View>
+
+      </View>
     </View>
   );
 }
@@ -132,18 +145,20 @@ function MedicineTab({ state, descriptors, navigation }) {
               style={bottomStyles.buttonContainer}
             >
               <View style={bottomStyles.button}>
-                {icons[route.name]}
+                <View style={{flex: 0.9}}>
+                  {icons[route.name]}
+                </View>
+
+                {
+                  route.name === 'Basket' ?
+                    <ProductIcon count={products.current.length} /> :
+                    undefined
+                }
               </ View>
               <Text style={{
                 color: isFocused ? activeColor : color,
               }}>
-                {labels[route.name]}</Text>
-                {
-                  route.name==='Basket' ? 
-                    <ProductIcon count={products.current.length} /> : 
-                    undefined
-                }
-              
+                {labels[route.name]}</Text>              
             </TouchableOpacity>
           );
         })}

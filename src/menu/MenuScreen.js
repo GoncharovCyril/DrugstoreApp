@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import { addProduct, removeProduct } from '../redux/ProductsActions';
 
-import {ADD_PRODUCT, REMOVE_PRODUCT} from '../redux/types';
+import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
 
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
@@ -44,9 +44,9 @@ const MenuScreen = ({ navigation }) => {
                             {
                                 products.current.map((product, index) => (
                                     <Button key={product} title={`Remove ${product}`}
-                                    onPress={() =>
-                                        dispatch({ type: REMOVE_PRODUCT, payload: index})
-                                      }
+                                        onPress={() =>
+                                            dispatch({ type: REMOVE_PRODUCT, payload: index })
+                                        }
                                     />
                                 ))
                             }
@@ -56,9 +56,9 @@ const MenuScreen = ({ navigation }) => {
                             {
                                 products.possible.map((product, index) => (
                                     <Button key={product} title={`Add ${product}`}
-                                    onPress={() =>
-                                        dispatch({ type: ADD_PRODUCT, payload: index})
-                                      }
+                                        onPress={() =>
+                                            dispatch({ type: ADD_PRODUCT, payload: index })
+                                        }
                                     />
                                 ))
                             }

@@ -26,7 +26,7 @@ const shadowOpt = {
     style:{}
 }
 
-const DrugView = ({navigation, id, description, dealer, price, availability}) => {
+const DrugView = ({navigation, index, description, dealer, price, availability}) => {
 
     const [viewWidth, setWidth] = React.useState(345);
 
@@ -129,7 +129,7 @@ const DrugView = ({navigation, id, description, dealer, price, availability}) =>
                                     }}>
                                         {price}
                                     </Text>
-                                    <BuyButton navigation={navigation} />
+                                    <BuyButton navigation={navigation} index={index}/>
                                 </View>
                             </View>
 
