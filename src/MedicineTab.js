@@ -4,6 +4,8 @@ import { StyleSheet, View, Text, TouchableOpacity, Keyboard } from 'react-native
 import { connect, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { getSize } from './redux/Methods';
+
 import HomeSolid from '../svg/home-solid';
 import ListUlSolid from '../svg/list-ul-solid';
 import ShoppingBasketSolid from '../svg/shopping-basket-solid';
@@ -151,7 +153,7 @@ function MedicineTab({ state, descriptors, navigation }) {
 
                 {
                   route.name === 'Basket' ?
-                    <ProductIcon count={products.current.length} /> :
+                    <ProductIcon count={getSize(products.current)} /> :
                     undefined
                 }
               </ View>

@@ -5,6 +5,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addProduct, removeProduct } from '../redux/ProductsActions';
+import { getSize } from '../redux/Methods';
 
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
 
@@ -38,11 +39,12 @@ const BuyButton = ({ navigation, index }) => {
 
     const dispatch = useDispatch();
 
-    const Button1 = ({ navigation, index }) => (
+
+    const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
             onPress={() => {
-                dispatch({ type: ADD_PRODUCT, payload: index });
+                dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
             <Text style={{
@@ -54,17 +56,17 @@ const BuyButton = ({ navigation, index }) => {
         </TouchableOpacity>
     );
 
-    const Button2 = ({ navigation, index }) => (
+    const Button2 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button2}
             onPress={() => {
-                dispatch({ type: ADD_PRODUCT, payload: index });
+                
             }}
         >
             <TouchableOpacity 
-                style={{ flex: 23, flexDirection: 'row' }}
+                style={{ flex: 30, flexDirection: 'row' }}
                 onPress={() => {
-                    dispatch({ type: REMOVE_PRODUCT, payload: index });
+                    dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
                 }}
             >
                 <View style={{ flex: 15 }} />
@@ -79,19 +81,19 @@ const BuyButton = ({ navigation, index }) => {
                     ‒
                 </Text>
             </TouchableOpacity>
-            <View style={{ flex: 54 }}>
+            <View style={{ flex: 40}}>
                 <Text style={{
                     color: "black",
                     alignSelf: "center",
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>Купить</Text>
+                }}>{products.current.get(index)}</Text>
             </View>
             <TouchableOpacity 
-                style={{ flex: 23, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
+                style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => {
-                    dispatch({ type: ADD_PRODUCT, payload: index });
+                    dispatch({ type: ADD_PRODUCT, payload: {id: index} });
                 }}
             >
                 <Text style={{
@@ -110,7 +112,7 @@ const BuyButton = ({ navigation, index }) => {
 
 
     return (
-        products.current.length<1? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        !products.current.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 

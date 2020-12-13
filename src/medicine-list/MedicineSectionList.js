@@ -62,7 +62,7 @@ const SectionHeader = ({title, navigation}) => (
 const MedicineList = ({navigation, data}) => {
 
     const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} id={item.id} description={item.description} dealer={item.dealer} price={item.price} availability={item.availability} />
+        <ListItem navigation={navigation} index={item.id} description={item.description} dealer={item.dealer} price={item.price} availability={item.availability} />
     );
 
     return (
