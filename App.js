@@ -1,19 +1,24 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider, useSelector, useDispatch } from 'react-redux';
 import { createStore } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
+import { AsyncStorage } from '@react-native-async-storage/async-storage';
+
 import productsReducer from './src/redux/ProductsReducer';
+import { LOAD_PRODUCTS } from './src/redux/types';
+
+import AppLoading from 'expo-app-loading';
 
 import MedicineTab from './src/MedicineTab';
 
 import Main from './src/main/Main';
-import mainHeader from './src/main/MainHeader';
+import MainHeader from "./src/main/MainHeader";
 
 import Drug from './src/drug/Drug';
 
@@ -43,7 +48,6 @@ const Stack = createStackNavigator();
 const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-import MainHeader from "./src/main/MainHeader";
 
 
 const options = {
@@ -73,20 +77,65 @@ const options = {
 
 const store = createStore(productsReducer);
 
+
+const MyAppLoading = ({setReady}) => {
+    const _cacheResourcesAsync = async () => {
+
+    };
+
+    const dispatch = useDispatch();
+
+    const getData = async () => {
+        try {
+            const value = await AsyncStorage.getItem('@Products')
+            if (value !== null) {
+                dispatch({ type: LOAD_PRODUCTS, payload: {data: Object.entries(value)} });
+                return Object.entries(value);
+            }
+            else return null;
+        } catch (e) {
+            return null;
+        }
+    };
+
+    const products = useSelector((state) => state.products);
+
+    return (
+        <AppLoading 
+            startAsync={getData}
+            onFinish={() => {
+                alert(true);
+                setReady(true);
+            }}
+            onError={console.warn}
+        />
+    );
+};
+
 const App = () => {
+
+    const [isReady, setReady] = React.useState(false);
+
+
+    
+
     return (
         <Provider store={store}>
-            <NavigationContainer>
-                <Tab.Navigator initialRouteName="Main" tabBarOptions={{ keyboardHidesTabBar: 'true' }} tabBar={props => <MedicineTab {...props} />} onNa>
-                    <Tab.Screen name="Main" component={Main} />
-                    <Tab.Screen name="Catalog" component={Catalog} />
-                    <Tab.Screen name="Basket" component={Basket} />
-                    <Tab.Screen name="ShopsList" component={ShopsList} />
-                    <Tab.Screen name="Menu" component={Menu} />
-                </Tab.Navigator>
-            </NavigationContainer>
+            {
+                !isReady ?
+                    <MyAppLoading setReady={setReady}/>
+                    : <NavigationContainer>
+                        <Tab.Navigator initialRouteName="Main" tabBarOptions={{ keyboardHidesTabBar: 'true' }} tabBar={props => <MedicineTab {...props} />} onNa>
+                            <Tab.Screen name="Main" component={Main} />
+                            <Tab.Screen name="Catalog" component={Catalog} />
+                            <Tab.Screen name="Basket" component={Basket} />
+                            <Tab.Screen name="ShopsList" component={ShopsList} />
+                            <Tab.Screen name="Menu" component={Menu} />
+                        </Tab.Navigator>
+                    </NavigationContainer>
+
+            }
         </Provider>
     );
 }
-
 export default App;
