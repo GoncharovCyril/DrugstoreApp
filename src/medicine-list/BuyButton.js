@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: "rgb(92,158,36)",
         borderRadius: 15,
-        flex: 1
+        height: "100%",
+        width: "100%"
     },
     button2: {
         alignItems: "center",
@@ -25,7 +26,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 15,
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: "100%",
+        width: "100%"
     }
 
 });

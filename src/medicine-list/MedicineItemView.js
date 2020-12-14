@@ -129,7 +129,9 @@ const DrugView = ({navigation, index, description, dealer, price, availability})
                                     }}>
                                         {price}
                                     </Text>
-                                    <BuyButton navigation={navigation} index={index}/>
+                                    <View style={{flex: 1}}>
+                                        <BuyButton navigation={navigation} index={index}/>
+                                    </View>
                                 </View>
                             </View>
 
