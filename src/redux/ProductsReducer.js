@@ -1,45 +1,25 @@
 import {combineReducers} from 'redux';
-import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS } from './types';
+import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS } from './types';
 
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const storeData = async (map) => {
     try {
-        const jsonValue = Object.fromEntries(map);
-        await AsyncStorage.setItem('@Products', jsonValue);
+        const jsonValue = JSON.stringify(Object.fromEntries(map));
+
+        await AsyncStorage.setItem('Products', jsonValue);
+
     } catch (e){
-        
+        alert(e);
     }
-};
-
-const getData = async () => {
-    // try { 
-    //     const jsonValue = await AsyncStorage.getItem('@Products');
-    //     // return jsonValue != null 
-    //     //     ? Object.entries(jsonValue)
-    //     //     : null;
-        
-    //     return null;
-    // } catch (e) {
-    //     return null;
-
-    // }
-    return null;
 };
 
 const INITIAL_STATE = {
     current: new Map(),
     possible: [
-        'Продукт 1',
-        "Продукт 2"
     ],
 };
-
-
-const getNull = async () => null;
-
-
 
 const productsReducer = (state = INITIAL_STATE, action) => {
     const {
@@ -57,11 +37,7 @@ const productsReducer = (state = INITIAL_STATE, action) => {
 
             storeData(current);
 
-            // alert(getNull()===null);
-
-            // for(let count of getData().values()){
-            //     alert(count);
-            // }
+            console.log(current);
             
             return {current, possible};
 
@@ -73,17 +49,32 @@ const productsReducer = (state = INITIAL_STATE, action) => {
                 if(current.get(id)==0){
                     current.delete(id);
                 }
+                storeData(current);
+                console.log(current);
             }
 
             return {current, possible};
 
         case LOAD_PRODUCTS:
+            const jsonValue = action.payload.data;
+        
+            for (const [key, value] of Object.entries(JSON.parse(jsonValue))){
+                current.set(key, value);
+            }
 
-            const data = action.payload.data;
-
-            current=new Map(data);
+            console.log(current);
 
             return {current, possible};
+
+        case CLEAR_ALL_PRODUCTS:
+
+            current.clear();
+
+
+            console.log(current);
+            storeData(current);         
+            
+            return { current, possible };
 
         default:
             return state

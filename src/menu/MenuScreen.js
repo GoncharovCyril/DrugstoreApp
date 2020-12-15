@@ -5,8 +5,10 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addProduct, removeProduct } from '../redux/ProductsActions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
+import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS } from '../redux/types';
+import { getSize } from '../redux/Methods';
 
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
@@ -24,6 +26,18 @@ const MenuScreen = ({ navigation }) => {
     const dispatch = useDispatch();
 
 
+    const getData = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('Products')
+            dispatch({ type: LOAD_PRODUCTS, payload: {data: jsonValue}})
+            return null;
+        } catch (e) {
+            return null;
+        }
+    };
+
+    // getData();
+    // dispatch({ type: LOAD_PRODUCTS, payload: {data: 'data'}});
 
     return (
         <View style={{
@@ -40,27 +54,30 @@ const MenuScreen = ({ navigation }) => {
                 <View style={{ flex: 370 }} >
                     <View style={{ marginTop: 10, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}>
-                            <Text>current: {products.current.length}</Text>
+                            <Text>current: {products.current.size}</Text>
+                            <Button title="dispatch" onPress={() =>
+                                            dispatch({ type: CLEAR_ALL_PRODUCTS, payload: null })
+                                        } />
                             {
-                                products.current.map((product, index) => (
-                                    <Button key={product} title={`Remove ${product}`}
-                                        onPress={() =>
-                                            dispatch({ type: REMOVE_PRODUCT, payload: index })
-                                        }
-                                    />
-                                ))
+                                // products.current.map((product, index) => (
+                                //     <Button key={product} title={`Remove ${product}`}
+                                //         onPress={() =>
+                                //             dispatch({ type: REMOVE_PRODUCT, payload: index })
+                                //         }
+                                //     />
+                                // ))
                             }
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Text>possible: {products.possible.length}</Text>
+                            <Text>possible: {getSize(products.current)}</Text>
                             {
-                                products.possible.map((product, index) => (
-                                    <Button key={product} title={`Add ${product}`}
-                                        onPress={() =>
-                                            dispatch({ type: ADD_PRODUCT, payload: index })
-                                        }
-                                    />
-                                ))
+                                // products.possible.map((product, index) => (
+                                //     <Button key={product} title={`Add ${product}`}
+                                //         onPress={() =>
+                                //             dispatch({ type: ADD_PRODUCT, payload: index })
+                                //         }
+                                //     />
+                                // ))
                             }
                         </View>
                     </View>

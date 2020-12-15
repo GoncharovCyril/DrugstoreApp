@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import productsReducer from './src/redux/ProductsReducer';
 import { LOAD_PRODUCTS } from './src/redux/types';
@@ -79,32 +79,24 @@ const store = createStore(productsReducer);
 
 
 const MyAppLoading = ({setReady}) => {
-    const _cacheResourcesAsync = async () => {
-
-    };
 
     const dispatch = useDispatch();
 
     const getData = async () => {
         try {
-            const value = await AsyncStorage.getItem('@Products')
-            if (value !== null) {
-                dispatch({ type: LOAD_PRODUCTS, payload: {data: Object.entries(value)} });
-                return Object.entries(value);
-            }
-            else return null;
+            const jsonValue = await AsyncStorage.getItem('Products')
+            dispatch({ type: LOAD_PRODUCTS, payload: {data: jsonValue}})
+            return null;
         } catch (e) {
             return null;
         }
     };
 
-    const products = useSelector((state) => state.products);
-
     return (
         <AppLoading 
             startAsync={getData}
             onFinish={() => {
-                alert(true);
+                console.log(true);
                 setReady(true);
             }}
             onError={console.warn}
@@ -115,9 +107,6 @@ const MyAppLoading = ({setReady}) => {
 const App = () => {
 
     const [isReady, setReady] = React.useState(false);
-
-
-    
 
     return (
         <Provider store={store}>
