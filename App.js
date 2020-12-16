@@ -10,7 +10,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import productsReducer from './src/redux/ProductsReducer';
+import productsReducer from './src/redux/AppReducer';
 import { LOAD_PRODUCTS } from './src/redux/types';
 
 import AppLoading from 'expo-app-loading';

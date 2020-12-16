@@ -20,8 +20,8 @@ const menuStyles = StyleSheet.create({
 
 
 const MenuScreen = ({ navigation }) => {
-    const products = useSelector((state) => {
-        return state.products;
+    const appStore = useSelector((state) => {
+        return state.appStore;
     });
     const dispatch = useDispatch();
 
@@ -54,7 +54,7 @@ const MenuScreen = ({ navigation }) => {
                 <View style={{ flex: 370 }} >
                     <View style={{ marginTop: 10, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}>
-                            <Text>current: {products.current.size}</Text>
+                            <Text>current: {appStore.products.size}</Text>
                             <Button title="dispatch" onPress={() =>
                                             dispatch({ type: CLEAR_ALL_PRODUCTS, payload: null })
                                         } />
@@ -69,7 +69,7 @@ const MenuScreen = ({ navigation }) => {
                             }
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Text>possible: {getSize(products.current)}</Text>
+                            <Text>possible: {getSize(appStore.products)}</Text>
                             {
                                 // products.possible.map((product, index) => (
                                 //     <Button key={product} title={`Add ${product}`}
@@ -88,8 +88,8 @@ const MenuScreen = ({ navigation }) => {
 };
 
 const mapStateToProps = (state) => {
-    const { products } = state;
-    return { products };
+    const { appStore } = state;
+    return { appStore };
 };
 
 const mapDispatchToProps = dispatch => (

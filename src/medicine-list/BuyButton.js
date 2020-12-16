@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
 
 const BuyButton = ({ navigation, index }) => {
 
-    const products = useSelector((state) => {
-        return state.products;
+    const appStore = useSelector((state) => {
+        return state.appStore;
     });
 
     const dispatch = useDispatch();
@@ -91,7 +91,7 @@ const BuyButton = ({ navigation, index }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{products.current.get(index)}</Text>
+                }}>{appStore.products.get(index)}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -115,14 +115,14 @@ const BuyButton = ({ navigation, index }) => {
 
 
     return (
-        !products.current.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        !appStore.products.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 
 
 const mapStateToProps = (state) => {
-    const { products } = state;
-    return { products };
+    const { appStore } = state;
+    return { appStore };
 };
 
 const mapDispatchToProps = dispatch => (

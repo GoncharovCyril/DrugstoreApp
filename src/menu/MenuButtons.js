@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
+import { SET_TOCKEN } from '../redux/types';
 
 const styles = StyleSheet.create({
     buttonsContainer: {
@@ -66,12 +68,18 @@ const MenuButtonConnect = (props) => {
 
 
 const MenuButtons = ({navigation}) => {
+
+    const appStore = useSelector(state => state.appStore);
+    const dispatch = useDispatch();
+
     return (
         <View style={styles.buttonsContainer}>
             <MenuButton
-                text="Личный кабинет"
+                // text="Личный кабинет"
+                text={appStore.account.tocken}
                 onPress={()=>{
-                    navigation.navigate("PersonalAreaScreen");
+                    dispatch({ type: SET_TOCKEN, payload: {tocken: "tocken"} });
+                    // navigation.navigate("PersonalAreaScreen");
                 }}
             />
             <View style={styles.menuSpace} />

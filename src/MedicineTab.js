@@ -72,7 +72,7 @@ const ProductIcon = ({count}) => {
 
 function MedicineTab({ state, descriptors, navigation }) {
 
-  const products = useSelector((state) => state.products);
+  const appStore = useSelector((state) => state.appStore);
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
@@ -153,7 +153,7 @@ function MedicineTab({ state, descriptors, navigation }) {
 
                 {
                   route.name === 'Basket' ?
-                    <ProductIcon count={getSize(products.current)} /> :
+                    <ProductIcon count={getSize(appStore.products)} /> :
                     undefined
                 }
               </ View>
