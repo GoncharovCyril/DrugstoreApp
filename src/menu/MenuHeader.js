@@ -45,6 +45,10 @@ const titles={
     PromotionsScreen: "Акции",
     ReviewScreen: "Оставьте отзыв",
     CallbackScreen: "Обратная связь",
+
+    PhoneNumberScreen: "Ввод номера телефона",
+    VerificationCodeScreen: "Ввод кода SMS",
+    AccountScreen: "Личный кабинет",
 };
 
 const menuHeader = {

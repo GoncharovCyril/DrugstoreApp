@@ -12,6 +12,12 @@ import PromotionsScreen from './promotions/Promotions';
 import ReviewScreen from './review/Review';
 import CallbackScreen from './callback/Callback';
 
+
+import PhoneNumberScreen from './personal-area/PhoneNumberScreen';
+import VerificationCodeScreen from './personal-area/VerificationCodeScreen';
+import AccountScreen from './personal-area/AccountScreen';
+
+
 const menuStyles = StyleSheet.create({
 
 });
@@ -28,6 +34,12 @@ const Menu = () => {
                 <MenuStack.Screen name="PromotionsScreen" component={PromotionsScreen} options={Header} />
                 <MenuStack.Screen name="ReviewScreen" component={ReviewScreen} options={Header} />
                 <MenuStack.Screen name="CallbackScreen" component={CallbackScreen} options={Header} />
+
+
+                <MenuStack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen} options={Header} />
+                <MenuStack.Screen name="VerificationCodeScreen" component={VerificationCodeScreen} options={Header} />
+                <MenuStack.Screen name="AccountScreen" component={AccountScreen} options={Header} />
+
             </MenuStack.Navigator>
     );
 };

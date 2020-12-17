@@ -15,6 +15,15 @@ const storeData = async (map) => {
     }
 };
 
+const storeTocken = async (value) => {
+    try {
+        await AsyncStorage.setItem('Tocken', value);
+
+    } catch (e){
+        alert(e);
+    }
+};
+
 const INITIAL_STATE = {
     products: new Map(),
     account: {
@@ -81,7 +90,12 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
             const tocken = action.payload.tocken;
             account.tocken = tocken;
+            storeTocken(tocken);
 
+            return { products, account };
+
+        case "CLEAR_STORE":
+            AsyncStorage.clear();
             return { products, account };
 
         default:

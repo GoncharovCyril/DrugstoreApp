@@ -11,7 +11,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import productsReducer from './src/redux/AppReducer';
-import { LOAD_PRODUCTS } from './src/redux/types';
+import { LOAD_PRODUCTS, SET_TOCKEN } from './src/redux/types';
 
 import AppLoading from 'expo-app-loading';
 
@@ -86,6 +86,10 @@ const MyAppLoading = ({setReady}) => {
         try {
             const jsonValue = await AsyncStorage.getItem('Products')
             dispatch({ type: LOAD_PRODUCTS, payload: {data: jsonValue}})
+            const tockenValue = await AsyncStorage.getItem('Tocken');
+            if (!tockenValue != null) {
+                dispatch({ type: SET_TOCKEN, payload: {tocken: tockenValue}});
+            }
             return null;
         } catch (e) {
             return null;

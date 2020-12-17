@@ -29,7 +29,7 @@ const MenuScreen = ({ navigation }) => {
     const getData = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('Products')
-            dispatch({ type: LOAD_PRODUCTS, payload: {data: jsonValue}})
+            dispatch({ type: "CLEAR_STORE", payload: {data: jsonValue}})
             return null;
         } catch (e) {
             return null;
@@ -55,7 +55,7 @@ const MenuScreen = ({ navigation }) => {
                     <View style={{ marginTop: 10, flexDirection: 'row' }}>
                         <View style={{ flex: 1 }}>
                             <Text>current: {appStore.products.size}</Text>
-                            <Button title="dispatch" onPress={() =>
+                            <Button title="clear store" onPress={() =>
                                             dispatch({ type: CLEAR_ALL_PRODUCTS, payload: null })
                                         } />
                             {

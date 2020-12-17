@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
 import { SET_TOCKEN } from '../redux/types';
+import { getUser, login, sendVerificationCode, test } from '../requests/AccountRequests';
 
 const styles = StyleSheet.create({
     buttonsContainer: {
@@ -75,10 +76,16 @@ const MenuButtons = ({navigation}) => {
     return (
         <View style={styles.buttonsContainer}>
             <MenuButton
-                // text="Личный кабинет"
-                text={appStore.account.tocken}
+                text="Личный кабинет"
+                // text={appStore.account.tocken}
                 onPress={()=>{
-                    dispatch({ type: SET_TOCKEN, payload: {tocken: "tocken"} });
+                    // dispatch({ type: SET_TOCKEN, payload: {tocken: "tocken"} });
+                    // navigation.navigate("OrdersScreen");
+                    // test();
+
+                    // sendVerificationCode("380713344850");
+                    // login("380713344850","1249")
+                    getUser(appStore.account.tocken, navigation);
                     // navigation.navigate("PersonalAreaScreen");
                 }}
             />
@@ -87,6 +94,13 @@ const MenuButtons = ({navigation}) => {
                 text="Заказы"
                 onPress={()=>{
                     navigation.navigate("OrdersScreen");
+                    // // test();
+
+                    // // sendVerificationCode("380713344850");
+                    // const tocken = "ms19xnq5fjRfExesDacgPCDqL3fhY2VDp3EpmulZ9gSKK7aRtaJcUPLxFigQPyz6q6YLN8mHMzP7qXXx6BdN9WUOYpxfzDBxTHSyIeMt1IaJPucJymw9uLO0aPpErvu0N66CVgIOWrHY8eo2RZVJ7KMJGtqfnLlSmN0Rwqgv0zYhrBn3GMcBtlgfIAkyuCvj3HEu6hoJVOcIZiSoO0pGuHQV5KZTRk06uwySSw0cJpjtXTkmmjYc10mClqywTZz"
+                    // // login("380713344850","1249")
+                    // getUser(tocken);
+                    
                 }}
             />
             <View style={styles.menuSpace} />
