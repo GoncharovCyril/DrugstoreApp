@@ -1,6 +1,6 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -21,15 +21,31 @@ const wait= (timeout) => {
 }
 
 const Footer = () => (
-<View style={{backgroundColor: 'red', height: 50}}>
+    <ActivityIndicator size="large" color="rgb(236,111,39)" />);
 
-</View>);
+const Header = () => (
+    <View style={{
+        flexDirection: 'row',
+        height: 25,
+        justifyContent: 'space-around',
+        marginTop: 5
+    }}>
+        <TouchableOpacity>
+            <Text>По популярности</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <Text>Фильтр</Text>
+        </TouchableOpacity>
+    </View>
+);
 
-const MedicineList = ({navigation, bata}) => {
+const MedicineList = ({route, navigation, bata}) => {
 
     const [refreshing, setRefreshing] = React.useState(false);
     const [data, setData] = React.useState(DATA)
     const [bottom, setBottom] = React.useState(undefined);
+    
+    const headVisible = route.params.headVisible===undefined ? true : route.params.headVisible;
 
     const [count, setCount] = React.useState(3);
 
@@ -51,6 +67,9 @@ const MedicineList = ({navigation, bata}) => {
                     <FlatList 
                         data={data}
                         ListFooterComponent={bottom}
+                        ListHeaderComponent={
+                            headVisible ? Header : undefined
+                        }
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                         refreshing={refreshing} 

@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
 
 const VerificationCodeScreen = ({navigation, route}) => {
     // const [phone, setPhone] = React.useState(route.params.phone)
-    const phone = "380713344850";
-    const [vcode, setVcode] = React.useState("6666");
+    const phone = route.params.phone;
+    const [vcode, setVcode] = React.useState("");
 
     const dispatch = useDispatch();
 
@@ -32,34 +32,40 @@ const VerificationCodeScreen = ({navigation, route}) => {
                     login(phone, vcode, navigation, dispatch)
                     .then(([status, json]) => {
                         console.log(status, '\t', json);
+                        console.log("PHONE=", phone);
 
                         switch (status) {
                             case 401:
-                                
+                                alert(status);
+                                alert(JSON.stringify(json));
                                 break;
-
                             case 202:
                                 dispatch({ type: SET_TOKEN, payload: { token: json.token } });
-
+                                alert(status);
+                                alert(JSON.stringify(json));
                                 getUser(json.token, navigation)
                                     .then(([status, json]) => {
                                         console.log(status, '\t', json);
                                         switch (status) {
                                             case 200:
                                                 console.log("Show acc");
+                                                alert(status,'\n',JSON.stringify(json));
                                                 navigation.navigate("AccountScreen", {
                                                     account: json
                                                 });
                                                 break;
                                             default:
-                                                alert(`${status}:\n${json}`);
+                                                alert(status);
+                                                alert(JSON.stringify(json));
+                                                break;
                                         }
                                     })
-
         //             getUser(json.token, navigation);
                                 break;
 
                             default:
+                                alert(status);
+                                alert(JSON.stringify(json));
                                 break;
                         }
 

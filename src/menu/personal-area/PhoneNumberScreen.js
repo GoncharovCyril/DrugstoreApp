@@ -21,7 +21,8 @@ const PersonalAreaScreen = ({navigation}) => {
             <Button 
                 title="Получить код"
                 onPress={() => {
-                    sendVerificationCode(phone, navigation).then(([status, json]) => {
+                    sendVerificationCode(phone, navigation)
+                    .then(([status, json]) => {
                         console.log(status, '\t', json);
                         switch (status) {
                             case 202:

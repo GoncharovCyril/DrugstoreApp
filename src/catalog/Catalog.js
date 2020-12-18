@@ -11,6 +11,8 @@ import CatalogItem from './CatalogItem';
 import CatalogData from './data/CatalogData';
 import SubData from './data/SubData';
 
+import MedicineListScreen from '../medicine-list/MedicineList';
+
 const catalogStyles = StyleSheet.create({
 
 });
@@ -63,6 +65,9 @@ const SubCatalog = ({navigation, route}) => {
     
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
+            navigation.navigate("MedicineListScreen", {
+                headVisible: true,
+            });
             // navigation.navigate(item.next);
             // alert(route.params);
         }} />
@@ -91,6 +96,7 @@ const Catalog = () => {
             <CatalogStack.Navigator initialRouteName="MainCatalog">
                 <CatalogStack.Screen name="MainCatalog" initialParams={{data: CatalogData}} component={MainCatalog} options={catalogHeader} />
                 <CatalogStack.Screen name="SubCatalog" component={SubCatalog} options={subcatalogHeader} />
+                <CatalogStack.Screen name="MedicineListScreen" component={MedicineListScreen} options={subcatalogHeader} />
             </CatalogStack.Navigator>
     );
 };

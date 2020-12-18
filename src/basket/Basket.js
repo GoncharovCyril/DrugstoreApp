@@ -1,11 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import {createStackNavigator} from '@react-navigation/stack';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
-import TestRefresh from '../TestRefresh';
-
-import MedicineList from '../medicine-list/MedicineList';
-import medicineData from '../medicine-list/testMedicineData';
-import sectionData from '../medicine-list/testMedicineSectionData';
+import BasketScreen from './BasketScreen';
+import BasketHeader from './BasketHeader';
 
 
 {/* <MedicineList navigation={navigation} data={sectionData}/> */}
@@ -13,11 +12,15 @@ import sectionData from '../medicine-list/testMedicineSectionData';
 {/* <MedicineList /> */}
 
 
-const Bucket = ({navigation}) => {
+const BasketStack = createStackNavigator();
+
+const Basket = ({navigation}) => {
+
     return (
-        <View style={{flex:1}}> 
-        </View>
+        <BasketStack.Navigator initialRouteName="BasketScreen">
+                <BasketStack.Screen name="BasketScreen" component={BasketScreen} options={BasketHeader} />
+            </BasketStack.Navigator>
     );
 };
 
-export default Bucket;
+export default Basket;
