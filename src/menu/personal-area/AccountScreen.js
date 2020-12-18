@@ -9,8 +9,6 @@ const styles = StyleSheet.create({
 
 const AccountScreen = ({navigation, route}) => {
     // const [phone, setPhone] = React.useState(route.params.phone)
-    const phone = "380713344850";
-    const [vcode, setVcode] = React.useState("6866");
 
     const account = route.params.account;
     console.log(account);

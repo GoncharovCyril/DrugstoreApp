@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS, SET_TOCKEN } from './types';
+import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS, SET_TOKEN } from './types';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -15,9 +15,9 @@ const storeData = async (map) => {
     }
 };
 
-const storeTocken = async (value) => {
+const storeToken = async (value) => {
     try {
-        await AsyncStorage.setItem('Tocken', value);
+        await AsyncStorage.setItem('Token', value);
 
     } catch (e){
         alert(e);
@@ -27,7 +27,7 @@ const storeTocken = async (value) => {
 const INITIAL_STATE = {
     products: new Map(),
     account: {
-        tocken: "test_start",
+        token: "token",
     },
 };
 
@@ -86,16 +86,18 @@ const appReducer = (state = INITIAL_STATE, action) => {
             
             return { products, account };
 
-        case SET_TOCKEN:
+        case SET_TOKEN:
 
-            const tocken = action.payload.tocken;
-            account.tocken = tocken;
-            storeTocken(tocken);
+            const token = action.payload.token;
+            account.token = token;
+            storeToken(token);
 
             return { products, account };
 
         case "CLEAR_STORE":
             AsyncStorage.clear();
+
+
             return { products, account };
 
         default:

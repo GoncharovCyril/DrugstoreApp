@@ -56,7 +56,8 @@ const MenuScreen = ({ navigation }) => {
                         <View style={{ flex: 1 }}>
                             <Text>current: {appStore.products.size}</Text>
                             <Button title="clear store" onPress={() =>
-                                            dispatch({ type: CLEAR_ALL_PRODUCTS, payload: null })
+                                            {
+                                                AsyncStorage.clear();}
                                         } />
                             {
                                 // products.current.map((product, index) => (

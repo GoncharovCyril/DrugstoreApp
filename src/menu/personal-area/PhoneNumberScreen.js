@@ -14,13 +14,25 @@ const PersonalAreaScreen = ({navigation}) => {
             <TextInput 
                 style={{borderWidth: 1, width: 200}} 
                 value={phone}
+                keyboardType='phone-pad'
                 onChangeText={text => setPhone(text)}
             />
             <View style={{height: 15}} />
             <Button 
                 title="Получить код"
                 onPress={() => {
-                    sendVerificationCode(phone, navigation);
+                    sendVerificationCode(phone, navigation).then(([status, json]) => {
+                        console.log(status, '\t', json);
+                        switch (status) {
+                            case 202:
+                                navigation.navigate('VerificationCodeScreen', {
+                                    "phone": phone
+                                });
+                                break;
+                            default:
+                                break;
+                        }
+                    });
                 }}
             />
         </View>

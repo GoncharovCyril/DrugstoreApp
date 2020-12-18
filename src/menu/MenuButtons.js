@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import { SET_TOCKEN } from '../redux/types';
+import { SET_TOKEN } from '../redux/types';
 import { getUser, login, sendVerificationCode, test } from '../requests/AccountRequests';
 
 const styles = StyleSheet.create({
@@ -77,15 +77,33 @@ const MenuButtons = ({navigation}) => {
         <View style={styles.buttonsContainer}>
             <MenuButton
                 text="Личный кабинет"
-                // text={appStore.account.tocken}
+                // text={appStore.account.token}
                 onPress={()=>{
-                    // dispatch({ type: SET_TOCKEN, payload: {tocken: "tocken"} });
+                    // dispatch({ type: SET_TOKEN, payload: {token: "token"} });
                     // navigation.navigate("OrdersScreen");
                     // test();
 
                     // sendVerificationCode("380713344850");
                     // login("380713344850","1249")
-                    getUser(appStore.account.tocken, navigation);
+                    getUser(appStore.account.token, navigation)
+                    .then(([status, json]) => {
+                        console.log(status, '\t', json);
+                        switch (status){
+                            case 401:
+                                console.log("INPUT nUMBERR");
+                                navigation.navigate("PhoneNumberScreen");
+                                break; 
+                
+                            case 200:
+                                console.log("Show acc");
+                                navigation.navigate("AccountScreen", {
+                                    account: json
+                                });
+                                break;
+                            default:
+                                alert(`${status}:\n${json}`);
+                        }
+                    })
                     // navigation.navigate("PersonalAreaScreen");
                 }}
             />
@@ -97,9 +115,9 @@ const MenuButtons = ({navigation}) => {
                     // // test();
 
                     // // sendVerificationCode("380713344850");
-                    // const tocken = "ms19xnq5fjRfExesDacgPCDqL3fhY2VDp3EpmulZ9gSKK7aRtaJcUPLxFigQPyz6q6YLN8mHMzP7qXXx6BdN9WUOYpxfzDBxTHSyIeMt1IaJPucJymw9uLO0aPpErvu0N66CVgIOWrHY8eo2RZVJ7KMJGtqfnLlSmN0Rwqgv0zYhrBn3GMcBtlgfIAkyuCvj3HEu6hoJVOcIZiSoO0pGuHQV5KZTRk06uwySSw0cJpjtXTkmmjYc10mClqywTZz"
+                    // const token = "ms19xnq5fjRfExesDacgPCDqL3fhY2VDp3EpmulZ9gSKK7aRtaJcUPLxFigQPyz6q6YLN8mHMzP7qXXx6BdN9WUOYpxfzDBxTHSyIeMt1IaJPucJymw9uLO0aPpErvu0N66CVgIOWrHY8eo2RZVJ7KMJGtqfnLlSmN0Rwqgv0zYhrBn3GMcBtlgfIAkyuCvj3HEu6hoJVOcIZiSoO0pGuHQV5KZTRk06uwySSw0cJpjtXTkmmjYc10mClqywTZz"
                     // // login("380713344850","1249")
-                    // getUser(tocken);
+                    // getUser(token);
                     
                 }}
             />
@@ -121,7 +139,7 @@ const MenuButtons = ({navigation}) => {
             <MenuButtonConnect
                 text="Обратная связь"
                 onPress={()=>{
-                    navigation.navigate("CallbackScreen");
+                    navigation.navigate("PhoneNumberScreen");
                 }}
             />
         </View>
