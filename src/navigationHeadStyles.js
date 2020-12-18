@@ -20,7 +20,12 @@ const styles = {
         height: menuHeight,
         backgroundColor: backgroundColor,
         marginTop: Constants.statusBarHeight,
-    }
+    },
+    basketHeader: {
+        height: menuHeight,
+        backgroundColor: backgroundColor,
+        marginTop: Constants.statusBarHeight,
+    },
 };
 
 export default styles;

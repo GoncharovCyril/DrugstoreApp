@@ -90,69 +90,13 @@ const Header = ({navigation, backButton}) => {
                     </View>
                 </View>
             </View>
-            <View style={headerStyles.middleContainer}>
-                <View style={headerStyles.searchContainer}>
-                    <View style={headerStyles.searchInput}>
-                        <Space width="2%" />
-                        <View
-                            style={{
-                                flex: 8,
-                            }}
-                        >
-                            <View style={{flex: 25}} />
-                            <View style={{flex: 50, justifyContent: "center", alignSelf: "center"}}>
-                                <SearchSolid color={color} />
-                            </ View>
-                            <View style={{flex: 25}} />
-                        </View>
-                        <Space width="2%" />
-                        <TextInput
-                            style={{
-                                alignSelf: "stretch",
-                                flex: 92,
-                                fontSize: 18
-                            }}
-                            placeholder='Поиск лекарства...'
-                        />
-                    </View>
-                    <Space width="2%" />
-                    <View>
-                        <TouchableOpacity
-                            onPress={() => {
-                                navigation.navigate('Drug');
-                            }}
-                            style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
-                            <BarcodeSolid color={color} />
-                        </ TouchableOpacity>
-                    </View>
-                </View>
-            </View>
-            <Space height="10%" />
-            <TouchableOpacity
-                onPress={() => {
-                    navigation.navigate('Drug');
-                }}
-                style={headerStyles.drugstorePickerContainer}>
-                <View style={headerStyles.drugstorePicker}>
-                    <Space width="3%" />
-                    <View style={{height: '45%', justifyContent: "center", alignSelf: "center"}}>
-                        <PlusSolid color="white" />
-                    </ View>
-                    <Space width="3%" />
-                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)", fontSize: 16}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
-                        <ShevronRightSolid color={color} />
-                    </ View>
-                    <Space width="3%" />
-                </View>
-            </TouchableOpacity>
         </View>
     );
 };
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.catalogHeader,
+    headerStyle: navigationHeadStyle.basketHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

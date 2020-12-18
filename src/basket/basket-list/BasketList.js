@@ -2,13 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
 import ListItem from './MedicineItemView';
-
-import DATA from "./testMedicineData";
-
 
 const medicineListStyles=StyleSheet.create({
 
@@ -39,15 +33,15 @@ const Header = () => (
     </View>
 );
 
-const MedicineList = ({route, navigation, data}) => {
+const MedicineList = ({navigation, data}) => {
 
-    const [refreshing, setRefreshing] = React.useState(false);
-    // const [data, setData] = React.useState(DATA)
-    const [bottom, setBottom] = React.useState(undefined);
+    // const [refreshing, setRefreshing] = React.useState(false);
+    //// const [data, setData] = React.useState(DATA)
+    // const [bottom, setBottom] = React.useState(undefined);
     
-    const headVisible = route.params.headVisible===undefined ? true : route.params.headVisible;
+    // const headVisible = route.params.headVisible===undefined ? true : route.params.headVisible;
 
-    const [count, setCount] = React.useState(3);
+    // const [count, setCount] = React.useState(3);
 
     const onRefresh = React.useCallback(() => {
             setRefreshing(true);
@@ -56,9 +50,19 @@ const MedicineList = ({route, navigation, data}) => {
             wait(2000).then(() => {setRefreshing(false); setBottom(undefined)});
     }, []);
 
-    const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} id={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
-    );
+    const renderItem = ({ item }) => {
+        console.log(item.id);
+        return (
+            <ListItem 
+                navigation={navigation} 
+                index={item.id} 
+                description={item.description} 
+                dealer={item.description} 
+                price={item.price} 
+                availability={item.availability} 
+            />
+        )
+    };
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
@@ -66,15 +70,15 @@ const MedicineList = ({route, navigation, data}) => {
                 <SafeAreaView style={{flex: 1}}>
                     <FlatList 
                         data={data}
-                        ListFooterComponent={bottom}
-                        ListHeaderComponent={
-                            headVisible ? Header : undefined
-                        }
+                        // ListFooterComponent={bottom}
+                        // ListHeaderComponent={
+                        //     headVisible ? Header : undefined
+                        // }
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
-                        refreshing={refreshing} 
-                        onEndReached={onRefresh}
-                        onEndReachedThreshold={1}
+                        // refreshing={refreshing} 
+                        // onEndReached={onRefresh}
+                        // onEndReachedThreshold={1}
                     />
                 </SafeAreaView>
             </ View>
