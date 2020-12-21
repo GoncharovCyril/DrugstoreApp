@@ -1,5 +1,6 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
 
 import ListItem from './MedicineItemView';
@@ -35,6 +36,9 @@ const Header = () => (
 
 const MedicineList = ({navigation, data}) => {
 
+
+    const appStore = useSelector(state => state.appStore);
+
     // const [refreshing, setRefreshing] = React.useState(false);
     //// const [data, setData] = React.useState(DATA)
     // const [bottom, setBottom] = React.useState(undefined);
@@ -51,9 +55,10 @@ const MedicineList = ({navigation, data}) => {
     }, []);
 
     const renderItem = ({ item }) => {
-        console.log(item.id);
+        console.log("ITEMID=",item.id);
         return (
-            <ListItem 
+            appStore.products.has(item.id) 
+            ? <ListItem 
                 navigation={navigation} 
                 index={item.id} 
                 description={item.description} 
@@ -61,6 +66,7 @@ const MedicineList = ({navigation, data}) => {
                 price={item.price} 
                 availability={item.availability} 
             />
+            : undefined
         )
     };
 
