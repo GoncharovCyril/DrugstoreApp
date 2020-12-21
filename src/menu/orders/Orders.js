@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
 });
 
 const Tab = createMaterialTopTabNavigator();
+const activeColor = "rgb(226,94,18)";
+const inactiveColor = "rgb(106,106,106)";
 
 const Orders = ({ navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
@@ -38,7 +40,7 @@ const Orders = ({ navigation }) => {
                         // alert(`${status}:\n${json}`);
                         break;
                 }
-                
+
             })
             .finally(() => {
                 setLoading(false);
@@ -49,7 +51,32 @@ const Orders = ({ navigation }) => {
         <View style={{ flex: 1, justifyContent: 'center' }}>
             {isLoading
                 ? <ActivityIndicator size="large" color="rgb(236,111,39)" />
-                : <Tab.Navigator initialRouteName="OrdersTabScreen">
+                : <Tab.Navigator initialRouteName="OrdersTabScreen" tabBarOptions={{
+                    activeTintColor: activeColor,
+                    inactiveTintColor: inactiveColor,
+                    indicatorStyle: {
+                        width: "25%",
+                        left: "12.5%",
+                        backgroundColor: activeColor,
+                        height: "10%",
+                        borderRadius: 2,
+                    },
+                    labelStyle: {
+                        textTransform: 'none',
+                        fontSize: 16,
+                        textAlignVertical: 'top',
+                        marginTop: 0
+                    },
+                    tabStyle: {
+                        flex: 1,
+                        alignItems: 'center',
+                        justifyContent: 'flex-start',
+                    },
+                    style: {
+                        height: 40,
+                        justifyContent: 'flex-start',
+                    }
+                }}>
                     <Tab.Screen initialParams={user} name="OrdersTabScreen" component={OrdersTabScreen} options={{ tabBarLabel: 'Заказы' }} />
                     <Tab.Screen initialParams={user} name="ProductsTabScreen" component={ProductsTabScreen} options={{ tabBarLabel: 'Товары' }} />
                 </Tab.Navigator>

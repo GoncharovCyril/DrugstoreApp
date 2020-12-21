@@ -71,7 +71,7 @@ const MedicineList = ({route, navigation}) => {
     }, []);
 
     const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} id={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
+        <ListItem navigation={navigation} index={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
     );
 
     return (

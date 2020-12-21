@@ -7,38 +7,61 @@ import { createMaterialTopTabNavigator} from '@react-navigation/material-top-tab
 import ShopsListHeader from './ShopsListHeader';
 import ShopsListTabBar from './ShopsTabBar';
 
+import ShopsListScreen from './shopslist-list/ShopsListScreen';
+import ShopsListMapScreen from './shopslist-map/ShopsListMapScreen';
+
 
 
 const ShopsStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
 
 
-
-
-const ShopsListScreen = ({navigation}) => {
-    return (
-        <View style={{flex:1, justifyContent: 'center'}}>
-           
-        </View>
-    );
-};
-const ShopsListScreen2 = ({navigation}) => {
-    return (
-        <View style={{flex:1, justifyContent: 'center'}}>
-           
-        </View>
-    );
-};
-
 // tabBar={props => <ShopsListTabBar {...props} />}
 {/* <Tab.Navigator initialRouteName="ShopsListScreen" tabBarOptions={{
     indicatorStyle: {width: "25%", left: "12.5%", backgroundColor: color, height: "24%"
     }}} > */}
-const color="rgb(226,94,18)";
+
+    // const ShopsListTabs = ({navigation}) => (
+    //     <Tab.Navigator initialRouteName="ShopsListScreen" tabBar={props => <ShopsListTabBar {...props} />} >
+    //         <Tab.Screen name="ShopsListScreen" component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
+    //         <Tab.Screen name="ShopsListScreen2" component={ShopsListScreen2} options={{ tabBarLabel: 'На карте' }} />
+    //     </Tab.Navigator>
+    // );
+
+const activeColor = "rgb(226,94,18)";
+const inactiveColor = "rgb(106,106,106)";
+
 const ShopsListTabs = ({navigation}) => (
-    <Tab.Navigator initialRouteName="ShopsListScreen" tabBar={props => <ShopsListTabBar {...props} />} >
+    <Tab.Navigator 
+        initialRouteName="ShopsListScreen" 
+        tabBarOptions={{
+            activeTintColor: activeColor,
+            inactiveTintColor: inactiveColor,
+            indicatorStyle: {
+                width: "25%", 
+                left: "12.5%", 
+                backgroundColor: activeColor, 
+                height: "10%",
+                borderRadius: 2,
+            },
+            labelStyle: {
+                textTransform: 'none',
+                fontSize: 16,
+                textAlignVertical: 'top',
+                marginTop: 0
+            },
+            tabStyle: {
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'flex-start',
+            },
+            style: {
+                height: 40,
+                justifyContent: 'flex-start',
+            }
+        }} >
         <Tab.Screen name="ShopsListScreen" component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
-        <Tab.Screen name="ShopsListScreen2" component={ShopsListScreen2} options={{ tabBarLabel: 'На карте' }} />
+        <Tab.Screen name="ShopsListMapScreen" component={ShopsListMapScreen} options={{ tabBarLabel: 'На карте' }} />
     </Tab.Navigator>
 );
 

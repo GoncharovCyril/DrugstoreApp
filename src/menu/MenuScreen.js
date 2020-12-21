@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addProduct, removeProduct } from '../redux/ProductsActions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS } from '../redux/types';
-import { getSize } from '../redux/Methods';
 
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
@@ -20,25 +17,6 @@ const menuStyles = StyleSheet.create({
 
 
 const MenuScreen = ({ navigation }) => {
-    const appStore = useSelector((state) => {
-        return state.appStore;
-    });
-    const dispatch = useDispatch();
-
-
-    const getData = async () => {
-        try {
-            const jsonValue = await AsyncStorage.getItem('Products')
-            dispatch({ type: "CLEAR_STORE", payload: {data: jsonValue}})
-            return null;
-        } catch (e) {
-            return null;
-        }
-    };
-
-    // getData();
-    // dispatch({ type: LOAD_PRODUCTS, payload: {data: 'data'}});
-
     return (
         <View style={{
             justifyContent: 'flex-start',
@@ -51,38 +29,7 @@ const MenuScreen = ({ navigation }) => {
                 <MenuButtons navigation={navigation} />
                 <View style={{ flex: 39 }} />
                 <RoundButtons navigation={navigation} />
-                <View style={{ flex: 370 }} >
-                    <View style={{ marginTop: 10, flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}>
-                            <Text>current: {appStore.products.size}</Text>
-                            <Button title="clear store" onPress={() =>
-                                            {
-                                                AsyncStorage.clear();}
-                                        } />
-                            {
-                                // products.current.map((product, index) => (
-                                //     <Button key={product} title={`Remove ${product}`}
-                                //         onPress={() =>
-                                //             dispatch({ type: REMOVE_PRODUCT, payload: index })
-                                //         }
-                                //     />
-                                // ))
-                            }
-                        </View>
-                        <View style={{ flex: 1 }}>
-                            <Text>possible: {getSize(appStore.products)}</Text>
-                            {
-                                // products.possible.map((product, index) => (
-                                //     <Button key={product} title={`Add ${product}`}
-                                //         onPress={() =>
-                                //             dispatch({ type: ADD_PRODUCT, payload: index })
-                                //         }
-                                //     />
-                                // ))
-                            }
-                        </View>
-                    </View>
-                </View>
+                <View style={{ flex: 370 }} />
             </ View>
         </View>
     )
