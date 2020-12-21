@@ -39,7 +39,7 @@ const medicineListStyles=StyleSheet.create({
 const SectionHeader = ({title, navigation}) => (
     <TouchableOpacity
         onPress={() => {
-            navigation.navigate('Drug');
+            navigation.navigate('MedicineItemScreen');
         }}
         style={medicineListStyles.virusPicker}
     >

@@ -1,15 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CLEAR_ALL_PRODUCTS } from '../redux/types';
-import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 
 import LittleLogo from '../LittleLogo';
 
 import TrashButton from "./TrashButton";
+import BackButton from '../BackButton';
 
 import navigationHeadStyle from "../navigationHeadStyles";
-
-import getSize from '../redux/Methods';
 
 
 const headerStyles = StyleSheet.create({
@@ -58,22 +57,24 @@ const headerStyles = StyleSheet.create({
 });
 
 
-
-const Space = (props) => {
-    return (
-        <View style={{width: props.width, height: props.height}} />
-    );
-};
-
 const color="rgba(236,111,39,1.0)";
 
-const Header = ({navigation, trashButton}) => {
+const ConfirmDelete = (dispatch) => {
+    // const dispatch = useDispatch();
+
+    
+}
+
+
+const Header = ({navigation, backButton, trashButton}) => {
     return (
         <View style={headerStyles.headContainer}>
             <View style={headerStyles.topContainer}>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
-                        <View style={{ flex: 20 }} />
+                        <View style={{ flex: 20 }}>
+                            {backButton}
+                        </View>
                         <View style={{ flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
                             <View style={{ height: 40, width: 40 }}>
                                 <LittleLogo />
@@ -107,15 +108,37 @@ const mainHeader = {
             : scene.route.name;
 
         const appStore = useSelector(state => state.appStore);
+        
         const dispatch = useDispatch();
 
         return (
             <View style={options.headerStyle} >
-                <Header navigation={navigation} trashButton={
-                    appStore.products.size>0 ? <TrashButton action={() => {
-                        
-                        dispatch({type: CLEAR_ALL_PRODUCTS, payload: {}})
-                        console.log("TRASHCLICK")
+                <Header 
+                navigation={navigation} 
+                backButton={
+                    previous ? <BackButton action={navigation.goBack} /> : undefined
+                }
+                trashButton={
+                    appStore.products.size > 0 ? <TrashButton action={() => {
+                        return Alert.alert(
+                            '',
+                            'Вы уверены, что хотите очистить корзину?',
+                            [
+                                {
+                                    text: 'НЕТ',
+                                    onPress: () => {},
+                                    style: 'cancel'
+                                },
+                                {
+                                    text: 'ДА',
+                                    onPress: () => {
+                                        console.log("cancel");
+                                        dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
+                                    }
+                                },
+                            ],
+                            { cancelable: true }
+                        );
                     }} /> : undefined
                 } />  
             </View>          

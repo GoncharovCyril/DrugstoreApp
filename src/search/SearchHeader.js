@@ -87,7 +87,7 @@ const Header = ({navigation, backButton}) => {
                             <Text style={{
                                 color: 'white',
                                 fontSize: 22,
-                            }}> Каталог</Text>
+                            }}> Поиск</Text>
                         </View>
                         <View style={{ flex: 20 }} />
                     </View>
@@ -122,7 +122,7 @@ const Header = ({navigation, backButton}) => {
                     <View>
                         <TouchableOpacity
                             onPress={() => {
-                                navigation.navigate('MedicineItemScreen');
+                                navigation.navigate('Drug');
                             }}
                             style={{flex: 70, justifyContent: "center", alignSelf: "center"}}>
                             <BarcodeSolid color={color} />
@@ -131,31 +131,14 @@ const Header = ({navigation, backButton}) => {
                 </View>
             </View>
             <Space height="10%" />
-            <TouchableOpacity
-                onPress={() => {
-                    navigation.navigate('Drug');
-                }}
-                style={headerStyles.drugstorePickerContainer}>
-                <View style={headerStyles.drugstorePicker}>
-                    <Space width="3%" />
-                    <View style={{height: '45%', justifyContent: "center", alignSelf: "center"}}>
-                        <PlusSolid color="white" />
-                    </ View>
-                    <Space width="3%" />
-                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)", fontSize: 16}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
-                        <ShevronRightSolid color={color} />
-                    </ View>
-                    <Space width="3%" />
-                </View>
-            </TouchableOpacity>
+            
         </View>
     );
 };
 
-const mainHeader = {
+const searchHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.catalogHeader,
+    headerStyle: navigationHeadStyle.searchHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined
@@ -174,4 +157,4 @@ const mainHeader = {
     },
 };
 
-export default mainHeader;
+export default searchHeader;

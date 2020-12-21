@@ -61,7 +61,7 @@ const DrugView = ({navigation, index, description, dealer, price, availability})
             }}>
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('Drug');
+                        navigation.navigate('MedicineItemScreen');
                     }}
                     style={{
 

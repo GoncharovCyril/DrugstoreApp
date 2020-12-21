@@ -1,12 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 
 import mainHeader from './MainHeader';
 
-import Drug from '../drug/Drug';
+import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 
-import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
 import Scroller from './Scroller';
 
 
@@ -42,7 +41,7 @@ const MainScreen = ({navigation, route}) => {
     return (
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
             <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
-            <MainStack.Screen name="Drug" component={Drug} options={mainHeader} />
+            <MainStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={mainHeader} />
         </MainStack.Navigator>
     )
 };

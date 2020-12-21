@@ -20,8 +20,6 @@ import MedicineTab from './src/MedicineTab';
 import Main from './src/main/Main';
 import MainHeader from "./src/main/MainHeader";
 
-import Drug from './src/drug/Drug';
-
 import Catalog from './src/catalog/Catalog';
 import catalogHeader from './src/catalog/CatalogHeader';
 

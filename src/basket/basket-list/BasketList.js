@@ -16,7 +16,28 @@ const wait= (timeout) => {
 }
 
 const Footer = () => (
-    <ActivityIndicator size="large" color="rgb(236,111,39)" />);
+    <View style={{justifyContent:'center', alignItems: 'center'}}>
+        <TouchableOpacity
+            style={{
+                height: 45,
+                width: "70%",
+                borderWidth: 2,
+                borderColor: "rgb(236,111,39)",
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: "rgb(236,111,39)"
+            }}
+
+            onPress={() => {
+                navigation.dispatch(jumpToCatalog);
+            }}
+
+        >
+            <Text style={{ fontSize: 18, color: 'white' }}>Перейти в каталог</Text>
+        </TouchableOpacity>
+    </View>
+)
 
 const Header = () => (
     <View style={{
@@ -76,7 +97,7 @@ const MedicineList = ({navigation, data}) => {
                 <SafeAreaView style={{flex: 1}}>
                     <FlatList 
                         data={data}
-                        // ListFooterComponent={bottom}
+                        // ListFooterComponent={Footer}
                         // ListHeaderComponent={
                         //     headVisible ? Header : undefined
                         // }

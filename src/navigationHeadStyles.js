@@ -26,6 +26,11 @@ const styles = {
         backgroundColor: backgroundColor,
         marginTop: Constants.statusBarHeight,
     },
+    searchHeader: {
+        height: (mainHeight+menuHeight)/2,
+        backgroundColor: backgroundColor,
+        marginTop: Constants.statusBarHeight,
+    }
 };
 
 export default styles;
