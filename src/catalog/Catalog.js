@@ -12,6 +12,7 @@ import CatalogData from './data/CatalogData';
 import SubData from './data/SubData';
 
 import MedicineListScreen from '../medicine-list/MedicineList';
+import DATA from '../medicine-list/testMedicineData';
 
 const catalogStyles = StyleSheet.create({
 
@@ -37,6 +38,7 @@ const MainCatalog = ({navigation, route}) => {
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
             navigation.navigate("SubCatalog", {
+                title: item.title,
                 id: item.id,
                 data: SubData[item.id]
             });
@@ -66,7 +68,9 @@ const SubCatalog = ({navigation, route}) => {
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
             navigation.navigate("MedicineListScreen", {
+                title: item.title,
                 headVisible: true,
+                data: DATA,
             });
             // navigation.navigate(item.next);
             // alert(route.params);

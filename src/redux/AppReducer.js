@@ -57,6 +57,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
             if(products.has(id)){
                 products.set(id, products.get(id)-1);
                 if(products.get(id)==0){
+                    console.log("delete")
                     products.delete(id);
                 }
                 storeData(products);

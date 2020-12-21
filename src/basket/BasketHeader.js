@@ -7,10 +7,8 @@ import BackButton from "../BackButton";
 
 import navigationHeadStyle from "../navigationHeadStyles";
 
-import PlusSolid from '../../svg/rounds/plus-solid-round';
-import BarcodeSolid from '../../svg/barcode-solid';
-import SearchSolid from '../../svg/search-solid';
-import ShevronRightSolid from '../../svg/chevron-right-solid';
+import TrashAltSolid from '../../svg/trash-alt-solid';
+
 
 
 const headerStyles = StyleSheet.create({
@@ -86,7 +84,13 @@ const Header = ({navigation, backButton}) => {
                                 fontSize: 22,
                             }}> Корзина</Text>
                         </View>
-                        <View style={{ flex: 20 }} />
+                        <View style={{flex:8}} />
+                        <View style={{ flex: 7, alignItems: 'center' }} >
+                            <TouchableOpacity style={{height: 25}}>
+                                <TrashAltSolid color='white' />
+                            </TouchableOpacity> 
+                        </ View>
+                        <View style={{flex:5}} />
                     </View>
                 </View>
             </View>

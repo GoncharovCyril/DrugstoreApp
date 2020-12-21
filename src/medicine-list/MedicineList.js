@@ -9,6 +9,9 @@ import ListItem from './MedicineItemView';
 
 import DATA from "./testMedicineData";
 
+import FilterSolid from '../../svg/filter-solid';
+import ChevronBottomSolid from '../../svg/chevron-bottom-solid'
+
 
 const medicineListStyles=StyleSheet.create({
 
@@ -30,22 +33,33 @@ const Header = () => (
         justifyContent: 'space-around',
         marginTop: 5
     }}>
-        <TouchableOpacity>
-            <Text>По популярности</Text>
+        <TouchableOpacity style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 15}}>По популярности  </Text>
+            <View style={{height: 12, alignSelf: 'center'}}>
+                <ChevronBottomSolid color="black" />
+            </View>
         </TouchableOpacity>
-        <TouchableOpacity>
-            <Text>Фильтр</Text>
+        <TouchableOpacity style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 15}}>Фильтр  </Text>
+            <View style={{height: 12, alignSelf: 'center'}}>
+                <FilterSolid color="black" />
+            </View>
         </TouchableOpacity>
     </View>
 );
 
-const MedicineList = ({route, navigation, data}) => {
+const MedicineList = ({route, navigation}) => {
 
     const [refreshing, setRefreshing] = React.useState(false);
     // const [data, setData] = React.useState(DATA)
     const [bottom, setBottom] = React.useState(undefined);
     
+
+    const listData = route.params.data;
+
+
     const headVisible = route.params.headVisible===undefined ? true : route.params.headVisible;
+    
 
     const [count, setCount] = React.useState(3);
 
@@ -61,23 +75,21 @@ const MedicineList = ({route, navigation, data}) => {
     );
 
     return (
-        <View style={{flex: 1, justifyContent: 'flex-start'}}>
-            <View style={{flex: 6}} >
-                <SafeAreaView style={{flex: 1}}>
-                    <FlatList 
-                        data={data}
-                        ListFooterComponent={bottom}
-                        ListHeaderComponent={
-                            headVisible ? Header : undefined
-                        }
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                        refreshing={refreshing} 
-                        onEndReached={onRefresh}
-                        onEndReachedThreshold={1}
-                    />
-                </SafeAreaView>
-            </ View>
+        <View style={{ flex: 1, justifyContent: 'flex-start' }}>
+            <SafeAreaView style={{ flex: 1 }}>
+                <FlatList
+                    data={listData}
+                    ListFooterComponent={bottom}
+                    ListHeaderComponent={
+                        headVisible ? Header : undefined
+                    }
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    refreshing={refreshing}
+                    onEndReached={onRefresh}
+                    onEndReachedThreshold={1}
+                />
+            </SafeAreaView>
         </View>
     );
 };

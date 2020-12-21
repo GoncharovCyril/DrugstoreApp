@@ -168,7 +168,8 @@ const subHeader = {
             <View style={options.headerStyle} >
                 <Header 
                     navigation={navigation} 
-                    title={subcatalogNames[scene.route.params.id]}
+                    // title={subcatalogNames[scene.route.params.id]}
+                    title={scene.route.params.title}
                     backButton={
                         previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  

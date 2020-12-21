@@ -20,7 +20,7 @@ import { View } from 'react-native';
 import Svg, { Path } from "react-native-svg"
 
 
-function ShevronLeftSolid(props) {
+function ChevronLeftSolid(props) {
     return (
         <View style={{ aspectRatio: 1 }}>
             <Svg
@@ -45,4 +45,4 @@ function ShevronLeftSolid(props) {
 }
 
 
-export default ShevronLeftSolid;
+export default ChevronLeftSolid;
