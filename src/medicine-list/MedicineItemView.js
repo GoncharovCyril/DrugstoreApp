@@ -17,7 +17,7 @@ const viewW = 345;
 const shadowOpt = {
     width: viewW,
     height: viewH,
-    color:"#ACCA92",
+    color:"#4db141",
     border:4,
     radius:15,
     opacity:0.4,
@@ -51,7 +51,7 @@ const DrugView = ({navigation, index, description, dealer, price, availability})
             <BoxShadow setting={{
                 width: viewWidth,
                 height: viewH,
-                color: "#ACCA92",
+                color: "#4db141",
                 border: 4,
                 radius: 15,
                 opacity: 0.4,

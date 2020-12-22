@@ -22,7 +22,7 @@ const buttonSize = 40;
 const shadowOpt = {
     width: buttonSize,
     height: buttonSize,
-    color: "#ACCA92",
+    color: "#4db141",
     border: 4,
     radius: buttonSize/2,
     opacity: 0.6,

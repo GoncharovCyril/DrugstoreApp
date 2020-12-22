@@ -7,11 +7,14 @@ import LittleLogo from '../LittleLogo';
 
 import TrashButton from "./TrashButton";
 import BackButton from '../BackButton';
+import TitleHead from '../header/TitleHead';
+import SearchHead from '../header/SearchHead';
+import ShopHead from '../header/ShopHead';
 
-import navigationHeadStyle from "../navigationHeadStyles";
+import { headerStyles } from "../navigationHeadStyles";
 
 
-const headerStyles = StyleSheet.create({
+const headStyles = StyleSheet.create({
     headContainer: {
         flex: 3,
         justifyContent: 'center',
@@ -29,7 +32,7 @@ const headerStyles = StyleSheet.create({
     middleContainer: {
         flex:2,
         flexDirection:'row',
-        backgroundColor:'rgba(96,165,38,1.0)',
+        backgroundColor:'#4db141',
     },
     searchContainer: {
         flexDirection:'row',
@@ -68,37 +71,15 @@ const ConfirmDelete = (dispatch) => {
 
 const Header = ({navigation, backButton, trashButton}) => {
     return (
-        <View style={headerStyles.headContainer}>
-            <View style={headerStyles.topContainer}>
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
-                        <View style={{ flex: 20 }}>
-                            {backButton}
-                        </View>
-                        <View style={{ flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                            <View style={{ height: 40, width: 40 }}>
-                                <LittleLogo />
-                            </View>
-                            <Text style={{
-                                color: 'white',
-                                fontSize: 22,
-                            }}> Корзина</Text>
-                        </View>
-                        <View style={{flex:8}} />
-                        <View style={{ flex: 7, alignItems: 'center' }} >
-                            {trashButton} 
-                        </ View>
-                        <View style={{flex:5}} />
-                    </View>
-                </View>
-            </View>
+        <View style={headStyles.headContainer}>
+            <TitleHead backButton={backButton} trashButton={trashButton} title='Каталог'/>
         </View>
     );
 };
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.basketHeader,
+    headerStyle: headerStyles.basketHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

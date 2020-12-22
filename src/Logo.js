@@ -3,7 +3,7 @@ import { View, Image } from 'react-native';
 
 const Logo = (props) => {
     return (
-        <View style={{}}>
+        <View style={{width: '90%'}}>
             <Image
                 style={{
                     width: "100%",

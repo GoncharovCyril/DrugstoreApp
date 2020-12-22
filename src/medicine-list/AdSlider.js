@@ -32,7 +32,7 @@ const AdSlider = ({ navigation }) => {
                 <SliderBox
                     images={images}
                     dotColor="rgb(226,94,18)"
-                    inactiveDotColor="rgb(92,158,36)"
+                    inactiveDotColor="#4db141"
                     resizeMode="stretch"
 
                     onCurrentImagePressed={ index => {

@@ -6,9 +6,9 @@ import LittleLogo from '../LittleLogo';
 import BackButton from "../BackButton";
 
 
-import navigationHeadStyle from "../navigationHeadStyles";
+import { headerStyles } from "../navigationHeadStyles";
 
-const headerStyles = StyleSheet.create({
+const headStyles = StyleSheet.create({
     header: {
         flex: 1,
         justifyContent: 'center',
@@ -49,7 +49,7 @@ const titles={
 
 const shopslistHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.menuHeader,
+    headerStyle: headerStyles.menuHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
 

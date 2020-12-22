@@ -3,24 +3,31 @@ import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } fr
 
 import Logo from '../Logo';
 
-import navigationHeadStyle from "../navigationHeadStyles";
+import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
 
 import BackButton from "../BackButton";
+import BigLogoHead from '../header/BigLogoHead';
+import SearchHead from '../header/SearchHead';
+import ShopHead from '../header/ShopHead';
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
+//orange
+const colorO="rgba(236,111,39,1.0)";
+//green
+const colorG='#4db141';
 
-
-const headerStyles = StyleSheet.create({
+const headStyles = StyleSheet.create({
     headContainer: {
-        flex: 3,
+        flex: 1,
         justifyContent: 'center',
     },
     topContainer: {
-        flex: 4, 
+        // flex: 4, 
+        height: smallHeight,
         flexDirection: 'row', 
         justifyContent: 'center', 
         alignItems: 'center'},
@@ -30,26 +37,30 @@ const headerStyles = StyleSheet.create({
         flex: 4,
     },
     middleContainer: {
-        flex:2,
+        // flex:2,
+        height: searchHeigt,
         flexDirection:'row',
-        backgroundColor:'rgba(96,165,38,1.0)',
+        backgroundColor: colorG,
     },
     searchContainer: {
         flexDirection:'row',
         justifyContent: 'center',
+        alignItems: 'center',
         //alignSelf: 'center',
-        flex: 9
+        flex: 1,
     },
     searchInput: {
         backgroundColor: 'rgba(240,240,240,1.0)',
         borderRadius: 20,
         flexDirection:'row',
-        flex: 0.94,
+        height: "80%",
+        flex: 0.90,
     },
     drugstorePickerContainer: {
         flexDirection: 'row',
         backgroundColor: 'rgba(255,255,255,1.0)',
-        flex: 3,
+        // flex: 3,
+        height: shopHeight,
     },
     drugstorePicker: {
         flexDirection: 'row',
@@ -60,85 +71,12 @@ const headerStyles = StyleSheet.create({
 });
 
 
-
-const Space = (props) => {
-    return (
-        <View style={{width: props.width, height: props.height}} />
-    );
-};
-
-const color="rgba(236,111,39,1.0)";
-
-
-
 const Header = ({navigation, backButton}) => {
     return (
-        <View style={headerStyles.headContainer}>
-            <View style={headerStyles.topContainer}>
-                <View style={{flex: 20}}>
-                    {backButton}
-                </View>
-                <View style={{flex: 60, justifyContent: 'center'}}>
-                    <Logo />
-                </View>
-                <View style={{flex: 20}} />
-            </View>
-            <View style={headerStyles.middleContainer}>
-                <View style={headerStyles.searchContainer}>
-                    <View style={headerStyles.searchInput}>
-                        <Space width="2%" />
-                        <View
-                            style={{
-                                flex:8,
-                            }}
-                        >
-                            <View style={{flex: 25}} />
-                            <View style={{flex: 50, justifyContent: "center", alignSelf: "center"}}>
-                                <SearchSolid color={color} />
-                            </ View>
-                            <View style={{flex: 25}} />
-                        </View>
-                        <Space width="2%" />
-                        <TextInput
-                            style={{
-                                alignSelf: "stretch",
-                                flex: 92,
-                                fontSize: 18
-                            }}
-                            placeholder='Поиск лекарства...'
-                        />
-                    </View>
-                    <Space width="2%" />
-                    <View>
-                        <TouchableOpacity
-                            onPress={() => {
-                                navigation.navigate('Drug');
-                            }}
-                            style={{flex: 80, justifyContent: "center", alignSelf: "center"}}>
-                            <BarcodeSolid color={color} />
-                        </ TouchableOpacity>
-                    </View>
-                </View>
-            </View>
-            <Space height="10%" />
-            <TouchableOpacity style={headerStyles.drugstorePickerContainer}
-                onPress={() => {
-                    navigation.navigate('Drug');
-                }}
-                >
-                <View style={headerStyles.drugstorePicker}>
-                    <Space width="3%" />
-                    <View style={{height: '45%', justifyContent: "center", alignSelf: "center"}}>
-                        <PlusSolid color="white" />
-                    </ View>
-                    <Space width="3%" />
-                    <Text style={{flex:8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)", fontSize: 16}}>Выберите аптеку, чтобы искать товары только в ней</Text>
-                    <View style={{height: '30%', justifyContent: "center", alignSelf: 'center',}}>
-                        <ShevronRightSolid color={color} />
-                    </ View>
-                    <Space width="3%" />
-                </View>
-            </TouchableOpacity>
+        <View style={headStyles.headContainer}>
+            <BigLogoHead backButton={backButton}/>
+            <SearchHead navigation={navigation} />
+            <ShopHead navigation={navigation} />
         </View>
     );
 };
@@ -146,7 +84,7 @@ const Header = ({navigation, backButton}) => {
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.mainHeader,
+    headerStyle: headerStyles.mainHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

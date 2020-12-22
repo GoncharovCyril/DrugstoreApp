@@ -8,7 +8,7 @@ import LittleLogo from '../LittleLogo';
 import BackButton from "../BackButton";
 
 
-import navigationHeadStyle from "../navigationHeadStyles";
+import {headerStyles} from "../navigationHeadStyles";
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
@@ -16,7 +16,7 @@ import SearchSolid from '../../svg/search-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 
-const headerStyles = StyleSheet.create({
+const headStyles = StyleSheet.create({
     headContainer: {
         flex: 3,
         justifyContent: 'center',
@@ -34,7 +34,7 @@ const headerStyles = StyleSheet.create({
     middleContainer: {
         flex:2,
         flexDirection:'row',
-        backgroundColor:'rgba(96,165,38,1.0)',
+        backgroundColor:'#4db141',
     },
     searchContainer: {
         flexDirection:'row',
@@ -73,8 +73,8 @@ const color="rgba(236,111,39,1.0)";
 
 const Header = ({navigation, backButton}) => {
     return (
-        <View style={headerStyles.headContainer}>
-            <View style={headerStyles.topContainer}>
+        <View style={headStyles.headContainer}>
+            <View style={headStyles.topContainer}>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
                         <View style={{ flex: 20 }}>
@@ -93,9 +93,9 @@ const Header = ({navigation, backButton}) => {
                     </View>
                 </View>
             </View>
-            <View style={headerStyles.middleContainer}>
-                <View style={headerStyles.searchContainer}>
-                    <View style={headerStyles.searchInput}>
+            <View style={headStyles.middleContainer}>
+                <View style={headStyles.searchContainer}>
+                    <View style={headStyles.searchInput}>
                         <Space width="2%" />
                         <View
                             style={{
@@ -138,7 +138,7 @@ const Header = ({navigation, backButton}) => {
 
 const searchHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.searchHeader,
+    headerStyle: headerStyles.searchHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     button1: {
         alignItems: "center",
         justifyContent: 'center',
-        backgroundColor: "rgb(92,158,36)",
+        backgroundColor: "#4db141",
         borderRadius: 15,
         height: "100%",
         width: "100%"
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     button2: {
         alignItems: "center",
         justifyContent: 'center',
-        borderColor: "rgb(92,158,36)",
+        borderColor: "#4db141",
         borderWidth: 2,
         backgroundColor: 'white',
         borderRadius: 15,
@@ -77,7 +77,7 @@ const BuyButton = ({ navigation, index }) => {
                     textAlign: 'center',
                     textAlignVertical: 'center',
                     fontSize: 32,
-                    color: "rgb(92,158,36)"
+                    color: "#4db141"
                     
                 }}>
                     ‒
@@ -103,7 +103,7 @@ const BuyButton = ({ navigation, index }) => {
                     textAlign: 'center',
                     textAlignVertical: 'center',
                     fontSize: 32,
-                    color: "rgb(92,158,36)"
+                    color: "#4db141"
                 }}>
                     +
                 </Text>

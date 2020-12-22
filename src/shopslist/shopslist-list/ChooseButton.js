@@ -4,10 +4,9 @@ import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { connect, useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addProduct, removeProduct } from '../redux/ProductsActions';
-import { getSize } from '../redux/Methods';
+import { addProduct, removeProduct } from '../../redux/ProductsActions';
 
-import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
+import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../redux/types';
 
 const styles = StyleSheet.create({
     button1: {
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 
-const BuyButton = ({ navigation, index }) => {
+const ChooseButton = ({ navigation, index }) => {
 
     const appStore = useSelector((state) => {
         return state.appStore;
@@ -47,7 +46,7 @@ const BuyButton = ({ navigation, index }) => {
         <TouchableOpacity
             style={styles.button1}
             onPress={() => {
-                dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+                // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
             <Text style={{
@@ -69,7 +68,7 @@ const BuyButton = ({ navigation, index }) => {
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
                 onPress={() => {
-                    dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
+                    // dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
                 }}
             >
                 <View style={{ flex: 15 }} />
@@ -96,7 +95,7 @@ const BuyButton = ({ navigation, index }) => {
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => {
-                    dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+                    // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
                 }}
             >
                 <Text style={{
@@ -120,16 +119,4 @@ const BuyButton = ({ navigation, index }) => {
 };
 
 
-const mapStateToProps = (state) => {
-    const { appStore } = state;
-    return { appStore };
-};
-
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        addProduct,
-        removeProduct,
-    }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyButton);
+export default ChooseButton;

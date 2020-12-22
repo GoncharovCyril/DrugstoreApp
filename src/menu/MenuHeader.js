@@ -5,10 +5,9 @@ import LittleLogo from '../LittleLogo';
 
 import BackButton from "../BackButton";
 
+import { headerStyles } from "../navigationHeadStyles";
 
-import navigationHeadStyle from "../navigationHeadStyles";
-
-const headerStyles = StyleSheet.create({
+const headStyles = StyleSheet.create({
     header: {
         flex: 1,
         justifyContent: 'center',
@@ -53,7 +52,7 @@ const titles={
 
 const menuHeader = {
     headerMode: "screen",
-    headerStyle: navigationHeadStyle.menuHeader,
+    headerStyle: headerStyles.menuHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
 

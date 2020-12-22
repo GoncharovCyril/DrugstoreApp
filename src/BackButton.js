@@ -8,7 +8,7 @@ const BackButton = ({action, color}) => {
         <TouchableOpacity style={{flex: 1, flexDirection: 'row', alignItems: 'center'}} onPress={action}>
             <View style={{flex: 20}} />
             <View style={{flex: 40}} >
-                <ShevronLeftSolid color="rgba(236,111,39,1.0)" />
+                <ShevronLeftSolid color="white" />
             </View>
             <View style={{flex: 40}} />
         </ TouchableOpacity>

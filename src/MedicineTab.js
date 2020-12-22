@@ -60,7 +60,7 @@ const ProductIcon = ({count}) => {
     }}>
       <View style={{flex: 1, justifyContent: 'flex-start', left: '110%', top: "-32%"}}>
 
-        <View style={{ borderRadius: size / 2, backgroundColor: "rgb(92,158,36)", width: size, height: size }}>
+        <View style={{ borderRadius: size / 2, backgroundColor: "#4db141", width: size, height: size }}>
           <Text style={{ color: "white", textAlign: 'center', textAlignVertical: 'center' }}>{count}</Text>
         </View>
 
