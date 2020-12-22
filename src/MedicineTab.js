@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Keyboard } from 'react-native';
 
-import { connect, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useSelector } from 'react-redux';
 
 import { getSize } from './redux/Methods';
 

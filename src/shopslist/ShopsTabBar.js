@@ -1,9 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
-import { TabView } from 'react-native-tab-view';
-
-import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { View, TouchableOpacity } from 'react-native';
 
 import Animated from 'react-native-reanimated';
 

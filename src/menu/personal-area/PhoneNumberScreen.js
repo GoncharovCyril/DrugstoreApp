@@ -1,5 +1,5 @@
-import React, {useRef, useEffect} from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Animated, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { sendVerificationCode } from '../../requests/AccountRequests';
 

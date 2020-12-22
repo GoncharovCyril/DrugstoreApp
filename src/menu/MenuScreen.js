@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 
 import { addProduct, removeProduct } from '../redux/ProductsActions';
 
-
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
 import RoundButtons from './RoundButtons';

@@ -2,12 +2,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import ListItem from './MedicineItemView';
 import Footer from './SectionListFooter';
-import AdSlider from './AdSlider';
+// import AdSlider from './AdSlider';
 
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';

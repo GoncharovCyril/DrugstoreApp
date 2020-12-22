@@ -1,16 +1,8 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
-import { SliderBox } from "react-native-image-slider-box";
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
-import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import PlusSolid from '../../svg/plus-solid copy';
-import VirusSolid from '../../svg/virus-solid';
-
 
 const footerStyles=StyleSheet.create({
     scrollContainer: {

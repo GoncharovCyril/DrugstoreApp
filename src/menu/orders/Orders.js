@@ -15,7 +15,12 @@ const styles = StyleSheet.create({
 });
 
 const Tab = createMaterialTopTabNavigator();
-const activeColor = "rgb(226,94,18)";
+//orange
+const colorO="rgb(236,111,39)";
+//green
+const colorG='#4db141';
+// const activeColor = "rgb(226,94,18)";
+const activeColor = colorG;
 const inactiveColor = "rgb(106,106,106)";
 
 const Orders = ({ navigation }) => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, Dimensions } from 'react-native';
-import { event } from 'react-native-reanimated';
+import { StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
 
 import { BoxShadow } from 'react-native-shadow';
 

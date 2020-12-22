@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import {createStackNavigator} from '@react-navigation/stack';
 import { useFocusEffect, TabActions } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ActivityIndicator } from 'react-native';

@@ -1,9 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CLEAR_ALL_PRODUCTS } from '../redux/types';
-import { StyleSheet, Text, View, Alert } from 'react-native';
-
-import LittleLogo from '../LittleLogo';
+import { StyleSheet, View, Alert } from 'react-native';
 
 import TrashButton from "./TrashButton";
 import BackButton from '../BackButton';

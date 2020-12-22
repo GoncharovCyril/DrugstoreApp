@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import { SET_TOKEN } from '../redux/types';
-import { getUser, login, sendVerificationCode, test } from '../requests/AccountRequests';
+import { getUser } from '../requests/AccountRequests';
 
 const styles = StyleSheet.create({
     buttonsContainer: {
@@ -139,7 +138,7 @@ const MenuButtons = ({navigation}) => {
             <MenuButtonConnect
                 text="Обратная связь"
                 onPress={()=>{
-                    navigation.navigate("PhoneNumberScreen");
+                    navigation.navigate("CallbackScreen");
                 }}
             />
         </View>

@@ -2,18 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import ListItem from './MedicineItemView';
-import Footer from './SectionListFooter';
-
-
-import ShevronRightSolid from '../../svg/chevron-right-solid';
-import CommentMedicalSolid from '../../svg/comment-medical-solid';
-import PlusSolid from '../../svg/plus-solid';
-import VirusSolid from '../../svg/virus-solid';
-
 const adSliderStyles=StyleSheet.create({
     adSlider: {
         height: 200,
@@ -37,7 +25,7 @@ const AdSlider = ({ navigation }) => {
 
                     onCurrentImagePressed={ index => {
                         // alert(index);
-                        navigation.navigate("Drug");
+                        navigation.navigate("MedicineItemScreen");
 
                     }}
                 />

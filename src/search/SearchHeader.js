@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 
-import Logo from '../Logo';
-
 import LittleLogo from '../LittleLogo';
 
 import BackButton from "../BackButton";
@@ -10,10 +8,8 @@ import BackButton from "../BackButton";
 
 import {headerStyles} from "../navigationHeadStyles";
 
-import PlusSolid from '../../svg/rounds/plus-solid-round';
 import BarcodeSolid from '../../svg/barcode-solid';
 import SearchSolid from '../../svg/search-solid';
-import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 
 const headStyles = StyleSheet.create({

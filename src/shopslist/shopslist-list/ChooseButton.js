@@ -1,12 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import { connect, useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { addProduct, removeProduct } from '../../redux/ProductsActions';
-
-import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../redux/types';
+import { useSelector, useDispatch } from 'react-redux';
 
 const styles = StyleSheet.create({
     button1: {

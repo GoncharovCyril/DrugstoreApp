@@ -1,7 +1,5 @@
-import React, {useRef, useEffect} from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Animated, Button } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
-import { sendVerificationCode } from '../../requests/AccountRequests';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import PhoneNumberScreen from './PhoneNumberScreen';

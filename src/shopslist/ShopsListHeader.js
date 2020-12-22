@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
-
-import LittleLogo from '../LittleLogo';
+import { StyleSheet, View } from 'react-native';
 
 import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';

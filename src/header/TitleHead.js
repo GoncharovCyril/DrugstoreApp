@@ -1,14 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { CLEAR_ALL_PRODUCTS } from '../redux/types';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import LittleLogo from '../LittleLogo';
-
-import TrashButton from "./TrashButton";
-import BackButton from '../BackButton';
-
-import { headerStyles } from "../navigationHeadStyles";
 
 
 const headStyles = StyleSheet.create({

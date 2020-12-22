@@ -1,7 +1,7 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 
 import ListItem from './MedicineItemView';
 

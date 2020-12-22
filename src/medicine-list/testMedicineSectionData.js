@@ -8,7 +8,7 @@ const DATA = [
     {
         title: "Лучшие предложения",
         data: listData.slice(3,5),
-    }];
-
+    }
+];
 
 export default DATA;

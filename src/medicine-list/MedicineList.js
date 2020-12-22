@@ -1,13 +1,8 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, RefreshControl, ActivityIndicator } from 'react-native';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 import ListItem from './MedicineItemView';
-
-import DATA from "./testMedicineData";
 
 import FilterSolid from '../../svg/filter-solid';
 import ChevronBottomSolid from '../../svg/chevron-bottom-solid'

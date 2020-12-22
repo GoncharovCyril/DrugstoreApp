@@ -7,7 +7,6 @@ import OdnoklassnikiBrandsRound from '../../svg/rounds/odnoklassniki-brands-roun
 import InstagramBrandsRound from '../../svg/rounds/instagram-brands-round';
 
 import { BoxShadow } from 'react-native-shadow';
-import { Link } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
 

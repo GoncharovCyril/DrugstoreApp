@@ -1,8 +1,8 @@
-import React, {useRef, useEffect} from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Animated, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
-import { getUser, login, sendVerificationCode } from '../../requests/AccountRequests';
+import { getUser, login } from '../../requests/AccountRequests';
 
 import { SET_TOKEN } from '../../redux/types';
 

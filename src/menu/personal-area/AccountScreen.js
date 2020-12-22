@@ -1,7 +1,5 @@
-import React, {useRef, useEffect} from 'react';
+import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Animated, Button } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
-import { getUser, login, sendVerificationCode } from '../../requests/AccountRequests';
 
 const styles = StyleSheet.create({
    

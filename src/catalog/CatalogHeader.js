@@ -1,22 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
 
-import Logo from '../Logo';
-
-import LittleLogo from '../LittleLogo';
-
 import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';
 import SearchHead from '../header/SearchHead';
 import ShopHead from '../header/ShopHead';
 
-import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
+import { headerStyles } from "../navigationHeadStyles";
 
-
-import PlusSolid from '../../svg/rounds/plus-solid-round';
-import BarcodeSolid from '../../svg/barcode-solid';
-import SearchSolid from '../../svg/search-solid';
-import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 
 //orange
