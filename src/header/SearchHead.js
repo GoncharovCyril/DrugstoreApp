@@ -32,7 +32,7 @@ const headStyles = StyleSheet.create({
         borderWidth: 2,
         flexDirection:'row',
         height: "80%",
-        flex: 0.90,
+        flex: 0.94,
     },
 });
 

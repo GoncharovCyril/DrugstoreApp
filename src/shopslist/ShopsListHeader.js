@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 import LittleLogo from '../LittleLogo';
 
 import BackButton from "../BackButton";
+import TitleHead from '../header/TitleHead';
 
 
 import { headerStyles } from "../navigationHeadStyles";
@@ -19,21 +20,7 @@ const headStyles = StyleSheet.create({
 const Header = ({navigation, backButton, title}) => {
     return (
         <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
-                <View style={{ flex: 20 }}>
-                    {backButton}
-                </View>
-                <View style={{flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                    <View style={{ height: 40, width: 40}}>
-                        <LittleLogo />
-                    </View>
-                        <Text style={{ 
-                            color: 'white', 
-                            fontSize: 22, 
-                            }}> {title}</Text>
-                </View>
-                <View style={{flex: 20}} />
-            </View>
+            <TitleHead navigation={navigation} backButton={backButton} title={title} />
         </View>
     );
 };

@@ -22,7 +22,7 @@ import Svg, { Path } from "react-native-svg"
 
 function ChevronLeftSolid(props) {
     return (
-        <View style={{ aspectRatio: 1 }}>
+        <View style={{ aspectRatio: 1, width: '100%', height: '100%' }}>
             <Svg
                 aria-hidden="true"
                 focusable="false"

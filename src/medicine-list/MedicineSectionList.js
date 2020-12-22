@@ -70,9 +70,9 @@ const MedicineList = ({navigation, data}) => {
             <View style={{flex: 6}} >
                 <SafeAreaView style={{flex: 1}}>
                     <SectionList 
-                        ListHeaderComponent={
-                            <AdSlider navigation={navigation} />
-                        }
+                        // ListHeaderComponent={
+                        //     <AdSlider navigation={navigation} />
+                        // }
 
                         sections={data}
                         renderItem={renderItem}

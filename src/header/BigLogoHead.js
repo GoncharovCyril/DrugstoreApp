@@ -27,47 +27,15 @@ const headStyles = StyleSheet.create({
         justifyContent: 'center',
         flex: 4,
     },
-    middleContainer: {
-        // flex:2,
-        height: searchHeigt,
-        flexDirection: 'row',
-        backgroundColor: colorG,
-    },
-    searchContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        //alignSelf: 'center',
-        flex: 1,
-    },
-    searchInput: {
-        backgroundColor: 'rgba(240,240,240,1.0)',
-        borderRadius: 20,
-        flexDirection: 'row',
-        height: "80%",
-        flex: 0.90,
-    },
-    drugstorePickerContainer: {
-        flexDirection: 'row',
-        backgroundColor: 'rgba(255,255,255,1.0)',
-        // flex: 3,
-        height: shopHeight,
-    },
-    drugstorePicker: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-        flex: 1,
-    },
 });
 
 const BigLogoHeader = ({ navigation, backButton }) => {
     return (
         <View style={headStyles.topContainer}>
-            <View style={{ flex: 5 }}>
+            <View style={{ flex: 3 }}>
                 {backButton}
             </View>
-            <View style={{ flex: 90, justifyContent: 'center', alignItems: 'center', height: '90%' }}>
+            <View style={{ flex: 94, justifyContent: 'center', alignItems: 'center', height: '86%' }}>
                 <View style={{
                     flex: 1,
                     borderRadius: 10,
@@ -79,7 +47,7 @@ const BigLogoHeader = ({ navigation, backButton }) => {
                     <Logo />
                 </View>
             </View>
-            <View style={{ flex: 5 }} />
+            <View style={{ flex: 3 }} />
         </View>
     );
 };

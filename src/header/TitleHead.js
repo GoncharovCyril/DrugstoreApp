@@ -26,34 +26,6 @@ const headStyles = StyleSheet.create({
         justifyContent: 'center',
         flex: 4,
     },
-    middleContainer: {
-        flex:2,
-        flexDirection:'row',
-        backgroundColor:'#4db141',
-    },
-    searchContainer: {
-        flexDirection:'row',
-        justifyContent: 'center',
-        //alignSelf: 'center',
-        flex: 9
-    },
-    searchInput: {
-        backgroundColor: 'rgba(240,240,240,1.0)',
-        borderRadius: 20,
-        flexDirection:'row',
-        flex: 0.94,
-    },
-    drugstorePickerContainer: {
-        flexDirection: 'row',
-        backgroundColor: 'rgba(255,255,255,1.0)',
-        flex: 3,
-    },
-    drugstorePicker: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignSelf: 'stretch',
-        flex: 1,
-    },
 });
 
 //orange
@@ -67,23 +39,25 @@ const TitleHead = ({navigation, backButton, trashButton, title}) => {
             <View style={headStyles.topContainer}>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
-                        <View style={{ flex: 20 }}>
+                        <View style={{ flex: 10, height: '60%' }}>
                             {backButton}
                         </View>
-                        <View style={{ flex: 60, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                            <View style={{ height: 40, width: 40 }}>
+                        <View style={{ flex: 80, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
+                            <View style={{ height: `75%`, flex: 2,  }}>
                                 <LittleLogo />
                             </View>
-                            <Text style={{
-                                color: 'white',
-                                fontSize: 22,
-                            }}>{title}</Text>
+                            <View style={{ flex: 8, alignItems: 'center' }}>
+                                <Text style={{
+                                    color: 'white',
+                                    fontSize: 22,
+                                    textAlign: 'center'
+                                }}>{title}</Text>
+                            </View>
+                            <View style={{flex: 2}} />
                         </View>
-                        <View style={{flex:8}} />
-                        <View style={{ flex: 7, alignItems: 'center' }} >
-                            {trashButton} 
-                        </ View>
-                        <View style={{flex:5}} />
+                        <View style={{ flex: 10 }}>
+                            {trashButton}
+                        </View>
                     </View>
                 </View>
             </View>
