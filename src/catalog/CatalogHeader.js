@@ -24,16 +24,6 @@ const headStyles = StyleSheet.create({
 
 
 
-const Space = (props) => {
-    return (
-        <View style={{width: props.width, height: props.height}} />
-    );
-};
-
-
-
-
-
 const Header = ({navigation, backButton}) => {
     return (
         <View style={headStyles.headContainer}>

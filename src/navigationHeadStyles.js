@@ -35,7 +35,7 @@ export const headerStyles = {
         marginTop: Constants.statusBarHeight,
     },
     searchHeader: {
-        height: (bigHeight+smallHeight)/2,
+        height: smallHeight+searchHeigt,
         backgroundColor: backgroundColor,
         marginTop: Constants.statusBarHeight,
     }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Dimensions, Text, Image } from 'react-native';
+import { add } from 'react-native-reanimated';
 
 import { BoxShadow } from 'react-native-shadow';
 
@@ -26,7 +27,7 @@ const shadowOpt = {
     style:{}
 }
 
-const MedicineStoreItem = ({navigation, index, title, addres, number}) => {
+const MedicineStoreItem = ({navigation, id, system_id, name, city, address, coordinates, photo, phone, working_time}) => {
 
     const [viewWidth, setWidth] = React.useState(windowW*0.94);
 
@@ -65,7 +66,27 @@ const MedicineStoreItem = ({navigation, index, title, addres, number}) => {
                         marginLeft: 2
                     }}>
                         <View>
-
+                            <Text>{id}</Text>
+                            <Text>{system_id}</Text>
+                            <Text>{name}</Text>
+                            <Text>{city}</Text>
+                            <Text>{address}</Text>
+                            <Text>{coordinates}</Text>
+                            <Text>{phone}</Text>
+                            <Text>{working_time}</Text>
+                            <Text>{photo}</Text>
+                        </View>
+                        <View>
+                            <Image
+                                style={{
+                                    height: 50,
+                                    width: 50,
+                                }}
+                                source={{
+                                    uri: 'http://195.133.145.14/storage/'+photo,
+                                }}
+                                resizeMode='contain'
+                            />
                         </View>
                    
                 </TouchableOpacity>

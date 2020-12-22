@@ -71,7 +71,18 @@ const MedicineList = ({route, navigation, data}) => {
     }, []);
 
     const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} index={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
+        <ListItem 
+            navigation={navigation} 
+            id={item.id} 
+            system_id={item.system_id}
+            name={item.name}
+            city={item.city}
+            address={item.address}
+            coordinates={item.coordinates}
+            photo={item.photo}
+            phone={item.phone}
+            working_time={item.working_time}
+        />
     );
 
     return (

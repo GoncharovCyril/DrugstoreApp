@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFocusEffect, TabActions } from '@react-navigation/native';
 
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 import BasketList from './basket-list/BasketList';
 
@@ -82,7 +82,6 @@ const BasketScreen = ({route, navigation}) => {
                 .then(resultData => {
                     setBusketData(resultData);
                 })
-                .then(()=> wait(500))
                 .finally(() => {
                     setLoading(false);
                     // console.log(busketData);
