@@ -11,33 +11,38 @@ export const searchHeigt = 40;
 export const shopHeight = 50;
 export const bigHeight = smallHeight+searchHeigt+shopHeight;
 export const backgroundColor = colorO;
+export const statusBarHeight = -5;
 
 
 export const headerStyles = {
     mainHeader: {
         height: bigHeight,
         backgroundColor: backgroundColor,
-        marginTop: Constants.statusBarHeight,
+        marginTop: statusBarHeight,
     },
     catalogHeader: {
         height: bigHeight,
         backgroundColor: backgroundColor,
-        marginTop: Constants.statusBarHeight,
+        marginTop: statusBarHeight,
     },
     menuHeader: {
         height: smallHeight,
         backgroundColor: backgroundColor,
-        marginTop: Constants.statusBarHeight,
+        marginTop: statusBarHeight,
     },
     basketHeader: {
         height: smallHeight,
         backgroundColor: backgroundColor,
-        marginTop: Constants.statusBarHeight,
+        marginTop: statusBarHeight,
     },
     searchHeader: {
         height: smallHeight+searchHeigt,
         backgroundColor: backgroundColor,
-        marginTop: Constants.statusBarHeight,
+        marginTop: statusBarHeight,
+    },
+    statusBarStyle: {
+        backgroundColor: colorO,
+        barStyle: 'light-content'
     }
 };
 

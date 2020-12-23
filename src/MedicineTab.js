@@ -12,11 +12,25 @@ import MapMarketAltSolid from '../svg/map-market-alt-solid';
 import BarsSolid from '../svg/bars-solid';
 
 
+// const activeColor = "rgba(226,94,18,1.0)";
+// const color = "rgba(106,106,106,1.0)";
+// const backColor = "rgba(255,255,255,1.0)";
+
+const colorO="rgb(236,111,39)";
+const colorOldGreen = '#4db141';
+const colorNewGreen = '#65cc59';
+const colorG=colorNewGreen;
+const activeColor = "rgba(226,94,18,1.0)";
+const color = "white";
+const backColor = colorG;
+
+const productIconSize = 18;
+
 const bottomStyles = StyleSheet.create({
   bottomContainer: {
     height: 50,
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,1.0)',
+    backgroundColor: backColor,
     flexDirection: 'row',
     alignItems: "flex-end",
 
@@ -26,7 +40,36 @@ const bottomStyles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 16,
   },
-  buttonContainer: {
+  activeButtonContainer: {
+    flex: 2,
+    height: "100%",
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: colorO,
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 20,
+    shadowRadius: 5,
+    elevation: 16,
+  },
+  activeProductIcon: {
+    borderRadius: productIconSize / 2,
+    // borderWidth: 1,
+    borderColor: colorG,
+    backgroundColor: colorG,
+    width: productIconSize,
+    height: productIconSize
+  },
+  unactiveProductIcon: {
+    borderRadius: productIconSize / 2,
+    // borderWidth: 1,
+    borderColor: colorO,
+    backgroundColor: colorO,
+    width: productIconSize,
+    height: productIconSize
+  },
+  unactiveButtonContainer: {
     flex: 2,
     height: "100%",
     justifyContent: 'flex-end',
@@ -43,13 +86,8 @@ const bottomStyles = StyleSheet.create({
   }
 });
 
-
-const activeColor = "rgba(226,94,18,1.0)";
-const color = "rgba(106,106,106,1.0)";
-
-const ProductIcon = ({count}) => {
+const ProductIcon = ({count, isFocused}) => {
   if (count<1) return null;
-  const size = 18;
   return (
     <View style={{
       flex: 1,
@@ -58,9 +96,13 @@ const ProductIcon = ({count}) => {
       position: 'absolute',
     }}>
       <View style={{flex: 1, justifyContent: 'flex-start', left: '110%', top: "-32%"}}>
-
-        <View style={{ borderRadius: size / 2, backgroundColor: "#4db141", width: size, height: size }}>
-          <Text style={{ color: "white", textAlign: 'center', textAlignVertical: 'center' }}>{count}</Text>
+        <View style={isFocused ? bottomStyles.activeProductIcon : bottomStyles.unactiveProductIcon}>
+          <Text style={{ 
+            // color: isFocused ? colorO : colorO, 
+            color: color,
+            textAlign: 'center', 
+            textAlignVertical: 'center' 
+            }}>{count}</Text>
         </View>
 
       </View>
@@ -121,11 +163,16 @@ function MedicineTab({ state, descriptors, navigation }) {
           };
 
           const icons = {
-            Main: (<HomeSolid color={isFocused ? activeColor : color} />),
-            Catalog: (<ListUlSolid color={isFocused ? activeColor : color} />),
-            Basket: (<ShoppingBasketSolid color={isFocused ? activeColor : color} />),
-            ShopsList: (<MapMarketAltSolid color={isFocused ? activeColor : color} />),
-            Menu: (<BarsSolid color={isFocused ? activeColor : color} />),
+            // Main: (<HomeSolid color={isFocused ? activeColor : color} />),
+            // Catalog: (<ListUlSolid color={isFocused ? activeColor : color} />),
+            // Basket: (<ShoppingBasketSolid color={isFocused ? activeColor : color} />),
+            // ShopsList: (<MapMarketAltSolid color={isFocused ? activeColor : color} />),
+            // Menu: (<BarsSolid color={isFocused ? activeColor : color} />),
+            Main: (<HomeSolid color={color} />),
+            Catalog: (<ListUlSolid color={color} />),
+            Basket: (<ShoppingBasketSolid color={color} />),
+            ShopsList: (<MapMarketAltSolid color={color} />),
+            Menu: (<BarsSolid color={color} />),
           };
           const labels = {
             Main: "Главная",
@@ -143,7 +190,7 @@ function MedicineTab({ state, descriptors, navigation }) {
               testID={options.tabBarTestID}
               onPress={onPress}
               onLongPress={onLongPress}
-              style={bottomStyles.buttonContainer}
+              style={isFocused ? bottomStyles.activeButtonContainer : bottomStyles.unactiveButtonContainer}
             >
               <View style={bottomStyles.button}>
                 <View style={{flex: 0.9}}>
@@ -152,12 +199,13 @@ function MedicineTab({ state, descriptors, navigation }) {
 
                 {
                   route.name === 'Basket' ?
-                    <ProductIcon count={getSize(appStore.products)} /> :
+                    <ProductIcon count={getSize(appStore.products)} isFocused={isFocused} /> :
                     undefined
                 }
               </ View>
               <Text style={{
-                color: isFocused ? activeColor : color,
+                // color: isFocused ? activeColor : color,
+                color: color,
               }}>
                 {labels[route.name]}</Text>              
             </TouchableOpacity>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 
 import Logo from '../Logo';
 
-import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
+import { headerStyles, smallHeight } from "../navigationHeadStyles";
 
 //orange
 const colorO = "rgba(236,111,39,1.0)";
@@ -32,6 +32,7 @@ const headStyles = StyleSheet.create({
 const BigLogoHeader = ({ navigation, backButton }) => {
     return (
         <View style={headStyles.topContainer}>
+            <StatusBar backgroundColor={headerStyles.statusBarStyle.backgroundColor} barStyle={headerStyles.statusBarStyle.barStyle } />
             <View style={{ flex: 3 }}>
                 {backButton}
             </View>

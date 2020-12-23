@@ -2,12 +2,18 @@ import * as React from "react"
 import { View } from 'react-native';
 import Svg, { Path } from "react-native-svg"
 
+//orange
+const colorO="rgb(236,111,39)";
+//green
+// const colorG='rgb(96,165,38)';
+const colorG='#4db141';
+
 function PlusSolid(props) {
   return (
       <View style={{
           aspectRatio: 1,
           borderRadius: 10000,
-          backgroundColor: 'rgb(226,94,18)',
+          backgroundColor: colorG,
           justifyContent: 'center',
           alignItems: 'center',
 
