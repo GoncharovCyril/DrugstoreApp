@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
+
+import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 
 import BackButton from "../BackButton";
 import BigLogoHead from '../header/BigLogoHead';
@@ -25,6 +27,16 @@ const headStyles = StyleSheet.create({
 const Header = ({navigation, backButton}) => {
     return (
         <View style={headStyles.headContainer}>
+            <LinearGradient
+                colors={[colorO, 'white']}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: smallHeight + searchHeigt,
+                }}
+            />
             <BigLogoHead backButton={backButton}/>
             <SearchHead navigation={navigation} />
             <ShopHead navigation={navigation} />

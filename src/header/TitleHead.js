@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { headerStyles } from "../navigationHeadStyles";
 
@@ -32,6 +33,7 @@ const TitleHead = ({navigation, backButton, trashButton, title}) => {
     return (
         <View style={headStyles.headContainer}>
             <StatusBar backgroundColor={headerStyles.statusBarStyle.backgroundColor} barStyle={headerStyles.statusBarStyle.barStyle } />
+            
             <View style={headStyles.topContainer}>
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>

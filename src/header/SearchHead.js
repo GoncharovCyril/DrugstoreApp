@@ -16,7 +16,7 @@ const headStyles = StyleSheet.create({
         // flex:2,
         height: searchHeigt,
         flexDirection:'row',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
     },
     searchContainer: {
         flexDirection:'row',
@@ -27,7 +27,7 @@ const headStyles = StyleSheet.create({
     },
     searchInput: {
         backgroundColor: 'rgba(240,240,240,1.0)',
-        borderRadius: 20,
+        borderRadius: 15,
         borderColor: colorG,
         borderWidth: 2,
         flexDirection:'row',

@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';
 import SearchHead from '../header/SearchHead';
 import ShopHead from '../header/ShopHead';
 
-import { headerStyles } from "../navigationHeadStyles";
+import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 
 
 
@@ -27,7 +28,17 @@ const headStyles = StyleSheet.create({
 const Header = ({navigation, backButton}) => {
     return (
         <View style={headStyles.headContainer}>
-            <TitleHead backButton={backButton} title='Каталог'/>
+            <LinearGradient
+                colors={[colorO, 'white']}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: smallHeight + searchHeigt,
+                }}
+            />
+            <TitleHead backButton={backButton} title='Каталог' />
             <SearchHead navigation={navigation} />
             <ShopHead navigation={navigation} />
         </View>

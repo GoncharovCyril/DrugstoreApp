@@ -7,7 +7,7 @@ const colorO="rgb(236,111,39)";
 const colorG='#4db141';
 
 export const smallHeight = 70;
-export const searchHeigt = 40;
+export const searchHeigt = 55;
 export const shopHeight = 50;
 export const bigHeight = smallHeight+searchHeigt+shopHeight;
 export const backgroundColor = colorO;
