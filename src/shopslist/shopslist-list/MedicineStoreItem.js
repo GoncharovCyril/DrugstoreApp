@@ -102,7 +102,7 @@ const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coo
                         </View>
                         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
                             <View style={{ height: "100%", width: '100%' }}>
-                                <ChooseButton />
+                                <ChooseButton system_id={system_id} address={address} />
                             </View>
 
                         </View>

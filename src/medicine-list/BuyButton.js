@@ -41,11 +41,16 @@ const BuyButton = ({ navigation, index }) => {
 
     const dispatch = useDispatch();
 
+    const [count, setCount] = React.useState(
+        !appStore.products.has(index) ? 0 : appStore.products.get(index)
+        );
+
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
             onPress={() => {
+                setCount(count+1);
                 dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
@@ -68,6 +73,7 @@ const BuyButton = ({ navigation, index }) => {
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
                 onPress={() => {
+                    setCount(count-1);
                     dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
                 }}
             >
@@ -90,11 +96,12 @@ const BuyButton = ({ navigation, index }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{appStore.products.get(index)}</Text>
+                }}>{count}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => {
+                    setCount(count+1);
                     dispatch({ type: ADD_PRODUCT, payload: {id: index} });
                 }}
             >
@@ -114,7 +121,7 @@ const BuyButton = ({ navigation, index }) => {
 
 
     return (
-        !appStore.products.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        count==0 ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 

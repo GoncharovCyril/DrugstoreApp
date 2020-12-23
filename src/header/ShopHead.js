@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
+
+import { SET_SHOP } from '../redux/types';
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
@@ -25,6 +27,12 @@ const headStyles = StyleSheet.create({
         alignSelf: 'stretch',
         flex: 1,
     },
+    drugstorePicked: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        flex: 1,
+    },
 });
 
 
@@ -35,7 +43,7 @@ const Space = (props) => {
     );
 };
 
-const ShopHead = ({ navigation}) => {
+const EmptyShop = ({ navigation }) => {
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
@@ -55,6 +63,59 @@ const ShopHead = ({ navigation}) => {
                 <Space width="3%" />
             </View>
         </TouchableOpacity>
+    )
+};
+
+const Shop = ({ navigation, shop }) => {
+
+    const dispatch = useDispatch();
+
+    return (
+        <TouchableOpacity style={headStyles.drugstorePickerContainer}
+            onPress={() => {
+                navigation.navigate('Drug');
+            }}
+        >
+            <View style={headStyles.drugstorePicked}>
+                <View style={{ flex: 10 }} />
+                <View>
+                    <Text style={{
+                        color: "rgb(106,106,106)",
+                        fontSize: 16,
+                        textAlign: 'center'
+                    }}>Выбрана аптека по адресу</Text>
+                    <Text style={{
+                        color: "rgb(106,106,106)",
+                        fontSize: 17,
+                        fontWeight: 'bold', 
+                        textAlign: 'center'}}>{shop.address}</Text>
+                </View>
+
+                <View style={{ flex: 10, alignItems: 'flex-end'}}>
+                    <TouchableOpacity style={{marginRight: "15%", marginTop: -5}} onPress={() => {
+                        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+                    }}>
+                        <Text style={{fontSize: 20, fontWeight: 'bold'}}>X</Text>
+                    </TouchableOpacity>
+                    
+                </View>
+            </View>
+        </TouchableOpacity>
+    )
+}
+
+const ShopHead = ({ navigation }) => {
+
+    const appStore = useSelector((state) => {
+        return state.appStore;
+    });
+
+    const [shop, setShop] = React.useState(appStore.shop)
+
+    console.log(Object.keys(shop));
+
+    return (
+        shop.id != null ? <Shop shop={shop} /> : <EmptyShop navigation={navigation} />
     );
 };
 

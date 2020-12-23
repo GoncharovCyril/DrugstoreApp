@@ -3,6 +3,8 @@ import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { SET_SHOP } from '../../redux/types';
+
 
 const colorG = '#4db141'
 
@@ -20,12 +22,10 @@ const styles = StyleSheet.create({
     button2: {
         alignItems: "center",
         justifyContent: 'center',
-        borderColor: "#4db141",
-        borderWidth: 2,
-        backgroundColor: 'white',
-        borderRadius: 15,
-        flex: 1,
-        flexDirection: 'row',
+        // borderWidth: 2,
+        borderColor: colorG,
+        backgroundColor: colorG,
+        borderBottomRightRadius: 15,
         height: "100%",
         width: "100%"
     },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 
-const ChooseButton = ({ navigation, index }) => {
+const ChooseButton = ({ navigation, system_id, address }) => {
 
     const appStore = useSelector((state) => {
         return state.appStore;
@@ -54,22 +54,23 @@ const ChooseButton = ({ navigation, index }) => {
     const dispatch = useDispatch();
 
 
-    const Button1 = ({ navigation}) => (
+    const Button1 = ({ navigation }) => (
         <TouchableOpacity
             style={styles.button1}
             onPress={() => {
-                // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+                dispatch({ type: SET_SHOP, payload: {id: system_id, address: address } });
+                console.log("choose");
             }}
         >
             <Text style={styles.button1Text}>Выбрать</Text>
         </TouchableOpacity>
     );
 
-    const Button2 = ({ navigation}) => (
+    const Button2 = ({ navigation }) => (
         <TouchableOpacity
             style={styles.button2}
             onPress={() => {
-                // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+                dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
             }}
         >
             <Text style={styles.button2Text}>Отменить</Text>
@@ -78,7 +79,8 @@ const ChooseButton = ({ navigation, index }) => {
 
 
     return (
-        !appStore.products.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        appStore.shop.id!==system_id ? <Button1 navigation={navigation} /> : <Button2 navigation={navigation} />
+        // <Button1 navigation={navigation} />
     );
 };
 
