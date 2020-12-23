@@ -51,6 +51,8 @@ const titles={
     PhoneNumberScreen: "Ввод номера\nтелефона",
     VerificationCodeScreen: "Ввод кода\nSMS",
     AccountScreen: "Личный кабинет",
+
+    ChooseCityScreen: "Выбор города",
 };
 
 const menuHeader = {

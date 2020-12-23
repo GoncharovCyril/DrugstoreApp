@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import MapMarketAltSolid from '../../svg/map-market-alt-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
@@ -14,9 +15,20 @@ const styles = StyleSheet.create({
     },
 });
 
-const CityPicker = () => {
+const CityPicker = ({navigation}) => {
+
+    const appStore = useSelector((state) => {
+        return state.appStore;
+    });
+
     return (
-        <TouchableOpacity style={styles.cityPicker}>
+        <TouchableOpacity 
+            style={styles.cityPicker}
+            onPress={() => {
+                navigation.navigate("ChooseCityScreen");
+            }}
+       
+        >
             <View style={{flex: 32}} />
             <View style={{
                 flex: 46,
@@ -26,7 +38,7 @@ const CityPicker = () => {
             <View style={{flex: 23}} />
 
             <View style={{flex: 670}}>
-                <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>Донецк</Text>
+                <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>{appStore.city.name}</Text>
             </View>
             <View style={{flex: 30}}>
                 <ShevronRightSolid color="rgba(236,111,39,1.0)" />

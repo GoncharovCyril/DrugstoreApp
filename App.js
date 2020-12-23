@@ -11,7 +11,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import productsReducer from './src/redux/AppReducer';
-import { LOAD_PRODUCTS, SET_TOKEN } from './src/redux/types';
+import { LOAD_PRODUCTS, SET_TOKEN, SET_CITY } from './src/redux/types';
 
 import AppLoading from 'expo-app-loading';
 
@@ -87,6 +87,10 @@ const MyAppLoading = ({setReady}) => {
             const tokenValue = await AsyncStorage.getItem('Token');
             if (!tokenValue != null) {
                 dispatch({ type: SET_TOKEN, payload: {token: tokenValue}});
+            }
+            const cityValue = await AsyncStorage.getItem('City');
+            if (!cityValue != null) {
+                dispatch({ type: SET_CITY, payload: {city_name: cityValue}});
             }
             return null;
         } catch (e) {

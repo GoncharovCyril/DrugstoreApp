@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS, SET_TOKEN, SET_SHOP } from './types';
+import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_PRODUCTS, CLEAR_ALL_PRODUCTS, SET_TOKEN, SET_SHOP, SET_CITY } from './types';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -24,6 +24,15 @@ const storeToken = async (value) => {
     }
 };
 
+const storeCity = async (value) => {
+    try {
+        await AsyncStorage.setItem('City', value);
+
+    } catch (e) {
+        alert(e);
+    }
+};
+
 const INITIAL_STATE = {
     products: new Map(),
     account: {
@@ -34,7 +43,7 @@ const INITIAL_STATE = {
         address: null,
     },
     city: {
-        name: null,
+        name: 'Донецк',
     },
 };
 
@@ -108,10 +117,18 @@ const appReducer = (state = INITIAL_STATE, action) => {
             const shop_id = action.payload.id;
             const shop_address = action.payload.address;
 
-            shop.id=shop_id;
-            shop.address=shop_address;
+            shop.id = shop_id;
+            shop.address = shop_address;
 
-            console.log(shop.address);
+            return { products, account, shop, city };
+
+
+        case SET_CITY:
+            const city_name = action.payload.city_name;
+
+            city.name = city_name;
+
+            storeCity(city_name);
 
 
             return { products, account, shop, city };
