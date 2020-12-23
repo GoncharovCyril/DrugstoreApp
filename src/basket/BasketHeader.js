@@ -2,13 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CLEAR_ALL_PRODUCTS } from '../redux/types';
 import { StyleSheet, View, Alert } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 import TrashButton from "./TrashButton";
 import BackButton from '../BackButton';
 import TitleHead from '../header/TitleHead';
 
-import { headerStyles } from "../navigationHeadStyles";
-
+import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 
 const headStyles = StyleSheet.create({
     headContainer: {
@@ -18,7 +19,10 @@ const headStyles = StyleSheet.create({
 });
 
 
-const color="rgba(236,111,39,1.0)";
+//orange
+const colorO="rgba(236,111,39,1.0)";
+//green
+const colorG='#4db141';
 
 const ConfirmDelete = (dispatch) => {
     // const dispatch = useDispatch();
@@ -30,6 +34,16 @@ const ConfirmDelete = (dispatch) => {
 const Header = ({navigation, backButton, trashButton}) => {
     return (
         <View style={headStyles.headContainer}>
+            <LinearGradient
+                colors={[colorO, 'white']}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: smallHeight,
+                }}
+            />
             <TitleHead backButton={backButton} trashButton={trashButton} title='Корзина'/>
         </View>
     );

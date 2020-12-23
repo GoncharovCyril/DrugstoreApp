@@ -3,12 +3,17 @@ import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+
+const colorG = '#4db141'
+
 const styles = StyleSheet.create({
     button1: {
         alignItems: "center",
         justifyContent: 'center',
-        backgroundColor: "#4db141",
-        borderRadius: 15,
+        // borderWidth: 2,
+        borderColor: colorG,
+        backgroundColor: colorG,
+        borderBottomRightRadius: 15,
         height: "100%",
         width: "100%"
     },
@@ -23,7 +28,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: "100%",
         width: "100%"
-    }
+    },
+    button1Text: {
+        color: 'white',
+        alignSelf: "center",
+        textAlignVertical: 'center',
+        fontSize: 17
+    },
+    button2Text: {
+        color: 'white',
+        alignSelf: "center",
+        textAlignVertical: 'center',
+        fontSize: 17
+    },
 
 });
 
@@ -44,12 +61,7 @@ const ChooseButton = ({ navigation, index }) => {
                 // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
-            <Text style={{
-                color: "white",
-                alignSelf: "center",
-                textAlignVertical: 'center',
-                fontSize: 15
-            }}>Купить</Text>
+            <Text style={styles.button1Text}>Выбрать</Text>
         </TouchableOpacity>
     );
 
@@ -57,53 +69,10 @@ const ChooseButton = ({ navigation, index }) => {
         <TouchableOpacity
             style={styles.button2}
             onPress={() => {
-                
+                // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
-            <TouchableOpacity 
-                style={{ flex: 30, flexDirection: 'row' }}
-                onPress={() => {
-                    // dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
-                }}
-            >
-                <View style={{ flex: 15 }} />
-                <Text style={{
-                    flex: 85,
-                    textAlign: 'center',
-                    textAlignVertical: 'center',
-                    fontSize: 32,
-                    color: "#4db141"
-                    
-                }}>
-                    ‒
-                </Text>
-            </TouchableOpacity>
-            <View style={{ flex: 40}}>
-                <Text style={{
-                    color: "black",
-                    alignSelf: "center",
-                    textAlignVertical: 'center',
-                    fontSize: 15,
-                    flex: 1
-                }}>{appStore.products.get(index)}</Text>
-            </View>
-            <TouchableOpacity 
-                style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={() => {
-                    // dispatch({ type: ADD_PRODUCT, payload: {id: index} });
-                }}
-            >
-                <Text style={{
-                    flex: 85,
-                    textAlign: 'center',
-                    textAlignVertical: 'center',
-                    fontSize: 32,
-                    color: "#4db141"
-                }}>
-                    +
-                </Text>
-                <View style={{ flex: 15 }} />
-            </TouchableOpacity>
+            <Text style={styles.button2Text}>Отменить</Text>
         </TouchableOpacity>
     );
 

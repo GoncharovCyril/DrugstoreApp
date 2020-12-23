@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-
-import { headerStyles } from "../navigationHeadStyles";
+import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 
 import subcatalogNames from "./SubCatalogDict";
 
@@ -11,6 +11,11 @@ import TitleHead from '../header/TitleHead';
 import SearchHead from '../header/SearchHead';
 import ShopHead from '../header/ShopHead';
 
+
+//orange
+const colorO="rgba(236,111,39,1.0)";
+//green
+const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     headContainer: {
@@ -22,6 +27,16 @@ const headStyles = StyleSheet.create({
 const Header = ({navigation, backButton, title}) => {
     return (
         <View style={headStyles.headContainer}>
+            <LinearGradient
+                colors={[colorO, 'white']}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: smallHeight + searchHeigt,
+                }}
+            />
             <TitleHead backButton={backButton} title={title}/>
             <SearchHead navigation={navigation} />
             <ShopHead navigation={navigation} />

@@ -1,10 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';
 
-import { headerStyles } from "../navigationHeadStyles";
+import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
+
+
+//orange
+const colorO="rgba(236,111,39,1.0)";
+//green
+const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     header: {
@@ -17,6 +25,16 @@ const headStyles = StyleSheet.create({
 const Header = ({navigation, backButton, title}) => {
     return (
         <View style={{ flex: 1 }}>
+            <LinearGradient
+                colors={[colorO, 'white']}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: smallHeight,
+                }}
+            />
             <TitleHead title={title} backButton={backButton} navigation={navigation} />
         </View>
     );

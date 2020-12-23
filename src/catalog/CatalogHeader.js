@@ -9,8 +9,6 @@ import ShopHead from '../header/ShopHead';
 
 import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 
-
-
 //orange
 const colorO="rgba(236,111,39,1.0)";
 //green
@@ -22,8 +20,6 @@ const headStyles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
-
-
 
 const Header = ({navigation, backButton}) => {
     return (
@@ -44,7 +40,6 @@ const Header = ({navigation, backButton}) => {
         </View>
     );
 };
-
 
 const mainHeader = {
     headerMode: "screen",
