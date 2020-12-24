@@ -11,7 +11,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import productsReducer from './src/redux/AppReducer';
-import { LOAD_PRODUCTS, SET_TOKEN, SET_CITY } from './src/redux/types';
+import { LOAD_FROM_STORE, SET_TOKEN, SET_CITY, SET_SHOP } from './src/redux/types';
 
 import AppLoading from 'expo-app-loading';
 
@@ -82,17 +82,23 @@ const MyAppLoading = ({setReady}) => {
 
     const getData = async () => {
         try {
-            const jsonValue = await AsyncStorage.getItem('Products')
-            dispatch({ type: LOAD_PRODUCTS, payload: {data: jsonValue}})
+
+            // AsyncStorage.clear();
+
+            const productsValue = await AsyncStorage.getItem('Products')
             const tokenValue = await AsyncStorage.getItem('Token');
-            if (!tokenValue != null) {
-                dispatch({ type: SET_TOKEN, payload: {token: tokenValue}});
-            }
             const cityValue = await AsyncStorage.getItem('City');
-            if (!cityValue != null) {
-                dispatch({ type: SET_CITY, payload: {city_name: cityValue}});
-            }
-            return null;
+            const shopValue = await AsyncStorage.getItem('Shop');
+
+            const payload_data = {
+                products: productsValue,
+                token: tokenValue,
+                city: cityValue,
+                shop: shopValue
+            };
+                        
+            return dispatch({ type: LOAD_FROM_STORE, payload: payload_data});
+    
         } catch (e) {
             return null;
         }
@@ -102,7 +108,6 @@ const MyAppLoading = ({setReady}) => {
         <AppLoading 
             startAsync={getData}
             onFinish={() => {
-                console.log(true);
                 setReady(true);
             }}
             onError={console.warn}

@@ -11,7 +11,7 @@ export const searchHeigt = 55;
 export const shopHeight = 50;
 export const bigHeight = smallHeight+searchHeigt+shopHeight;
 export const backgroundColor = colorO;
-export const statusBarHeight = -5;
+export const statusBarHeight = 0;
 
 
 export const headerStyles = {
