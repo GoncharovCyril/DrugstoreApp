@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Header from './MenuHeader';
 
 import MenuScreen from './MenuScreen';
-import ChooseCityScreen from './city/ChooseCityScreen';
+import ChooseCityScreen from '../city/ChooseCityScreen';
 import PersonalAreaScreen from './personal-area/PersonalArea';
 import OrdersScreen from './orders/Orders';
 import PromotionsScreen from './promotions/Promotions';

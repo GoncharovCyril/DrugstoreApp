@@ -31,7 +31,7 @@ const bottomStyles = StyleSheet.create({
     height: 54,
     justifyContent: 'center',
     backgroundColor: backColor,
-    borderTopColor: colorO,
+    borderTopColor: colorG,
     borderTopWidth: 2,
     flexDirection: 'row',
     alignItems: "flex-end",
@@ -51,16 +51,16 @@ const bottomStyles = StyleSheet.create({
   activeProductIcon: {
     borderRadius: productIconSize / 2,
     borderWidth: 1,
-    borderColor: colorG,
-    backgroundColor: 'white',
+    borderColor: 'white',
+    backgroundColor: colorO,
     width: productIconSize,
     height: productIconSize
   },
   unactiveProductIcon: {
     borderRadius: productIconSize / 2,
     borderWidth: 1,
-    borderColor: colorO,
-    backgroundColor: 'white',
+    borderColor: 'white',
+    backgroundColor: colorO,
     width: productIconSize,
     height: productIconSize
   },
@@ -93,8 +93,8 @@ const ProductIcon = ({count, isFocused}) => {
       <View style={{flex: 1, justifyContent: 'flex-start', left: '110%', top: "-32%"}}>
         <View style={isFocused ? bottomStyles.activeProductIcon : bottomStyles.unactiveProductIcon}>
           <Text style={{ 
-            color: isFocused ? colorO : colorO, 
-            // color: color,
+            // color: isFocused ? colorO : colorO, 
+            color: 'white',
             textAlign: 'center', 
             textAlignVertical: 'center' 
             }}>{count}</Text>

@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
-import {SET_CITY} from '../../redux/types';
+import {SET_CITY} from '../redux/types';
 
 import { CityListData } from './CityListData';
 
