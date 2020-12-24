@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
-import { useFocusEffect, TabActions } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 import { getPharmacies } from '../../requests/ShopsRequests'; 
+
+
 
 import MedicineStoreList from './MedicineStoreList';
 
@@ -11,6 +13,7 @@ const ShopsListScreen = ({navigation}) => {
     const [isLoading, setLoading] = React.useState(true);
     const [shopsData, setShopsData] = React.useState([]);
     const appStore = useSelector(state => state.appStore);
+    
 
     const getShopsByCity = (json) => {
         const choosenCity = appStore.city.name;

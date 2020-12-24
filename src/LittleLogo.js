@@ -8,7 +8,7 @@ const Logo = (props) => {
                 width: "100%",
                 height: "100%"
             }}
-            source={require('../img/little-logo.png')}
+            source={require('../assets/logo_1024.png')}
             resizeMode="contain"
         />
     );

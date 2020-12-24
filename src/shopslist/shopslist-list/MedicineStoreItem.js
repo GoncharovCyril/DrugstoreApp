@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Dimensions, Text, Image } from 'react-native';
-
+import { TabActions } from '@react-navigation/native';
 import { BoxShadow } from 'react-native-shadow';
 
 import ChooseButton from './ChooseButton';
@@ -36,6 +36,17 @@ const shadowOpt = {
 const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coordinates, photo, phone, working_time }) => {
 
     const [viewWidth, setWidth] = React.useState(windowW * 0.94);
+    const jumpToMaps = TabActions.jumpTo('ShopsListMapScreen', {
+        id: id,
+        system_id: system_id,
+        name: name,
+        city: city,
+        address: address,
+        coordinates: coordinates,
+        photo,
+        phone: phone,
+        working_time: working_time,
+    });
 
     return (
         <View
@@ -60,7 +71,7 @@ const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coo
             }}>
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('MedicineItemScreen');
+                        navigation.dispatch(jumpToMaps);
                     }}
                     style={{
 
