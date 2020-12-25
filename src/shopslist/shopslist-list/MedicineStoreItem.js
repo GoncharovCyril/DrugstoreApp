@@ -37,7 +37,8 @@ const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coo
 
     const [viewWidth, setWidth] = React.useState(windowW * 0.94);
     const jumpToMaps = TabActions.jumpTo('ShopsListMapScreen', {
-        selectedShop: {
+        selectedShop: 
+        {
             id: id,
             system_id: system_id,
             name: name,

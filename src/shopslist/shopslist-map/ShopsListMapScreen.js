@@ -13,18 +13,34 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         : selectedShop.coordinates.split(', ').map(item => parseFloat(item));
 
     const shopsData = route.params.hasOwnProperty('data') ? route.params.data : [];
+    // const shopsData = [];
 
 
+    // console.log(Object.keys(route.params));
+    // setSelectedShop(
+    //         route.params.hasOwnProperty('selectedShop') ?
+    //         route.params.selectedShop : undefined
+    //     );
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         return () => {setSelectedShop(undefined)}
+    //     }, [])
+    // );
 
-    useFocusEffect(
-        React.useCallback(() => {
-            route.params.hasOwnProperty('selectedShop');
-            setSelectedShop(
-                route.params.hasOwnProperty('selectedShop') ?
-                route.params.selectedShop : undefined
-            );
-        }, [])
-    );
+    React.useEffect(() => {
+        navigation.addListener( 'focus', () => {
+            // alert('focus');
+            console.log(route.params['selectedShop']);
+            setSelectedShop(route.params['selectedShop']);
+        });
+        navigation.addListener( 'blur', () => {
+            // alert('blur');
+            route.params['selectedShop'] = undefined;
+        });
+
+        // console.log(route.params['selectedShop']);
+        // setSelectedShop(route.params['selectedShop']);
+    })
 
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
