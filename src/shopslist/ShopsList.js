@@ -41,8 +41,6 @@ const inactiveColor = "rgb(106,106,106)";
 
 const ShopsListTabs = ({route, navigation }) => {
 
-    console.log(route.params.cityShops)
-
     return (
         <Tab.Navigator
             initialRouteName="ShopsListScreen"
@@ -92,7 +90,6 @@ const ShopsList = ({ navigation }) => {
         if (choosenCity == 'Все города') return json;
 
         json.map(object => {
-            console.log(object);
             if (object.city == choosenCity) {
                 filteredData.push(object);
             }
@@ -107,15 +104,10 @@ const ShopsList = ({ navigation }) => {
             setLoading(true);
             getPharmacies()
                 .then(([status, json]) => {
-                    console.log(status, '\t', json);
                     switch (status) {
                         case 200:
                             setShopsData(getShopsByCity(json));
                             setAllshopsData(json);
-
-                            console.log("START")
-                            // console.log(shopsData);
-                            // console.log(allshopsData);
                             break;
                         default:
                             alert(`${status}:\n${json}`);

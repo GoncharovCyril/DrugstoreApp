@@ -85,7 +85,6 @@ const mainHeader = {
                                 {
                                     text: 'ДА',
                                     onPress: () => {
-                                        console.log("cancel");
                                         dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
                                     }
                                 },

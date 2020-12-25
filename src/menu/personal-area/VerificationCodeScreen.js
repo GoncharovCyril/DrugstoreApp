@@ -31,9 +31,6 @@ const VerificationCodeScreen = ({navigation, route}) => {
                 onPress={() => {
                     login(phone, vcode, navigation, dispatch)
                     .then(([status, json]) => {
-                        console.log(status, '\t', json);
-                        console.log("PHONE=", phone);
-
                         switch (status) {
                             case 401:
                                 alert(status);
@@ -45,10 +42,8 @@ const VerificationCodeScreen = ({navigation, route}) => {
                                 alert(JSON.stringify(json));
                                 getUser(json.token, navigation)
                                     .then(([status, json]) => {
-                                        console.log(status, '\t', json);
                                         switch (status) {
                                             case 200:
-                                                console.log("Show acc");
                                                 alert(status,'\n',JSON.stringify(json));
                                                 navigation.navigate("AccountScreen", {
                                                     account: json

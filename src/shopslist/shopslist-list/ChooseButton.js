@@ -59,7 +59,6 @@ const ChooseButton = ({ navigation, system_id, address }) => {
             style={styles.button1}
             onPress={() => {
                 dispatch({ type: SET_SHOP, payload: {id: system_id, address: address } });
-                console.log("choose");
             }}
         >
             <Text style={styles.button1Text}>Выбрать</Text>

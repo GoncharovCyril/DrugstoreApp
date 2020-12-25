@@ -4,13 +4,6 @@ const postData = async () => {
     return await fetch(url);
 }
 
-export const test = () => {
-    fetch('https://reactnative.dev/movies.json')
-        .then((response) => response.json())
-        .then((json) => console.log(json))
-        .catch((error) => console.error(error));
-}
-
 export const sendVerificationCode = async (phone, navigation) => {
     const url = `http://195.133.145.14/api/send_verification_code`;
     const data = {
@@ -30,7 +23,6 @@ export const sendVerificationCode = async (phone, navigation) => {
 
         return [status, json];
         // .then((status) => {
-        //     console.log(status);
         //     switch(status){
         //         case 202:
         //             navigation.navigate('VerificationCodeScreen', {
@@ -54,7 +46,6 @@ export const login = async (phone, verification_code, navigation, dispatch) => {
         "phone": phone,
         "verification_code": verification_code
     };
-    // console.log(data);
     try {
         let response = await fetch(url, {
             method: 'POST',
@@ -69,7 +60,6 @@ export const login = async (phone, verification_code, navigation, dispatch) => {
         return [status, json];
         // .then((response) => response.json())
         //     .then((json) => {
-        //         console.log(json)
         //         if (json.Message !== "Invalid verification code") {
         //             dispatch({ type: "SET_TOKEN", payload: { token: json.token } });
         //             getUser(json.token, navigation);
@@ -81,7 +71,6 @@ export const login = async (phone, verification_code, navigation, dispatch) => {
         //         // }
 
         //         // const res = JSON.parse(json);
-        //         // console.log(res.token)
         //     })
         //     .catch((error) => console.error(error));;
 
@@ -94,7 +83,6 @@ export const login = async (phone, verification_code, navigation, dispatch) => {
 export const getUser = async (token, navigation) => {
     const url = `http://195.133.145.14/api/user`;
     const auth = 'Bearer ' + token;
-    console.log(auth)
     try {
         let response = await fetch(url, {
             method: 'GET',

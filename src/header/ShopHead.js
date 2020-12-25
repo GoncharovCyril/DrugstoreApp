@@ -112,8 +112,6 @@ const ShopHead = ({ navigation }) => {
 
     const [shop, setShop] = React.useState(appStore.shop)
 
-    console.log(Object.keys(shop));
-
     return (
         shop.id != null ? <Shop shop={shop} /> : <EmptyShop navigation={navigation} />
     );

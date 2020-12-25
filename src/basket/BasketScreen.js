@@ -16,11 +16,8 @@ import EmptyBasket from './EmptyBasket';
 
 const loadData = async (appStore) => {
     let resultData = [];
-    console.log("MAP=",appStore.products);
     for (let item of DATA) {
-        // console.log(appStore.products.has(item.id));
         if (appStore.products.has(item.id)){
-            console.log('push=',item.id)
             resultData.push(item);
         }
         // busketData.push(appStore.products.get(item.id));
@@ -69,9 +66,7 @@ const BasketScreen = ({route, navigation}) => {
     //     })
     //     .finally(() => {
     //         setLoading(false);
-    //         // console.log(busketData);
     //     })
-    //     // console.log(busketData);
     // },[]);
 
     useFocusEffect(
@@ -84,7 +79,6 @@ const BasketScreen = ({route, navigation}) => {
                 })
                 .finally(() => {
                     setLoading(false);
-                    // console.log(busketData);
                 })
         }, [])
     );

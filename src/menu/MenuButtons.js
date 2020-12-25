@@ -86,15 +86,12 @@ const MenuButtons = ({navigation}) => {
                     // login("380713344850","1249")
                     getUser(appStore.account.token, navigation)
                     .then(([status, json]) => {
-                        console.log(status, '\t', json);
                         switch (status){
                             case 401:
-                                console.log("INPUT nUMBERR");
                                 navigation.navigate("PhoneNumberScreen");
                                 break; 
                 
                             case 200:
-                                console.log("Show acc");
                                 navigation.navigate("AccountScreen", {
                                     account: json
                                 });

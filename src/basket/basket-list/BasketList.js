@@ -76,7 +76,6 @@ const MedicineList = ({navigation, data}) => {
     }, []);
 
     const renderItem = ({ item }) => {
-        console.log("ITEMID=",item.id);
         return (
             appStore.products.has(item.id) 
             ? <ListItem 

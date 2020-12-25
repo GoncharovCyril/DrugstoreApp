@@ -9,7 +9,6 @@ const AccountScreen = ({navigation, route}) => {
     // const [phone, setPhone] = React.useState(route.params.phone)
 
     const account = route.params.account;
-    console.log(account);
 
     return (
         <View style={{justifyContent: 'center', alignItems: 'stretch'}}>
