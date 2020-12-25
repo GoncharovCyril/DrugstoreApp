@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
-import { event } from 'react-native-reanimated';
+import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, Animated, TouchableOpacity } from 'react-native';
 
 import { BoxShadow } from 'react-native-shadow';
 
@@ -145,6 +144,8 @@ const DrugView = ({navigation, index, description, dealer, price, availability})
         </View>
     );
 };
+
+
 
 
 export default DrugView;
