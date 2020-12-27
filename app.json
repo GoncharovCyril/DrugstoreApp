@@ -21,7 +21,12 @@
     },
     "android": {
       "icon": "./assets/logo_1024.png",
-      "package": "apteka.apk"
+      "package": "apteka.apk",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAWZkmKOiTXgBPYpIkJH6o0jB1Ycox8lKc"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

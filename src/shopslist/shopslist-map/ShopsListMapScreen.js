@@ -45,7 +45,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ flex: 4 }}>
-                <MapView
+                {<MapView
                     style={{ flex: 1 }}
                     region={{
                         latitude: regLatit,
@@ -56,23 +56,23 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     showsUserLocation={true}
                 >
                     {
-                        shopsData.map(item => {
-                            const [latit, longit] = item.coordinates.split(', ');
-                            return (
-                                <Marker
-                                    key={item.system_id}
-                                    coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
-                                    title={item.name}
-                                    image={require('../../../img/plus-marker.png')}
-                                    onPress={() => {
-                                        setSelectedShop(item);
+                        // shopsData.map(item => {
+                        //     const [latit, longit] = item.coordinates.split(', ');
+                        //     return (
+                        //         <Marker
+                        //             key={item.system_id}
+                        //             coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
+                        //             title={item.name}
+                        //             image={require('../../../img/plus-marker.png')}
+                        //             onPress={() => {
+                        //                 setSelectedShop(item);
 
-                                    }}
-                                />
-                            )
-                        })
+                        //             }}
+                        //         />
+                        //     )
+                        // })
                     }
-                </ MapView>
+                </ MapView>}
             </View>
             {
                 selectedShop != undefined ?
