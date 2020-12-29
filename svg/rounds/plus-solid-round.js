@@ -13,7 +13,7 @@ function PlusSolid(props) {
       <View style={{
           aspectRatio: 1,
           borderRadius: 10000,
-          backgroundColor: colorG,
+          backgroundColor: props.colorBack == undefined ? colorG : props.colorBack,
           justifyContent: 'center',
           alignItems: 'center',
 

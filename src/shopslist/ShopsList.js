@@ -70,14 +70,18 @@ const ShopsListTabs = ({route, navigation }) => {
                     justifyContent: 'flex-start',
                 }
             }} >
-            <Tab.Screen name="ShopsListScreen" initialParams={{ data: route.params.cityShops }} component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
-            <Tab.Screen name="ShopsListMapScreen" initialParams={{ data: route.params.allShops }} component={ShopsListMapScreen} options={{ tabBarLabel: 'На карте' }} />
+            <Tab.Screen name="ShopsListScreen" 
+            // initialParams={{ data: route.params.cityShops }} 
+            component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
+            <Tab.Screen name="ShopsListMapScreen" 
+            // initialParams={{ data: route.params.allShops }} 
+            component={ShopsListMapScreen} options={{ tabBarLabel: 'На карте' }} />
         </Tab.Navigator>
     )
 }
 
 const ShopsList = ({ navigation }) => {
-    const [isLoading, setLoading] = React.useState(true);
+    const [isLoading, setLoading] = React.useState(false);
     const [shopsData, setShopsData] = React.useState([]);
     const [allshopsData, setAllshopsData] = React.useState([]);
     const appStore = useSelector(state => state.appStore);
@@ -98,27 +102,45 @@ const ShopsList = ({ navigation }) => {
         return filteredData;
     };
 
-    useFocusEffect(
-        React.useCallback(() => {
-            setShopsData([]);
-            setLoading(true);
-            getPharmacies()
-                .then(([status, json]) => {
-                    switch (status) {
-                        case 200:
-                            setShopsData(getShopsByCity(json));
-                            setAllshopsData(json);
-                            break;
-                        default:
-                            alert(`${status}:\n${json}`);
-                            break;
-                    }
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
-        }, [])
-    );
+    // useFocusEffect(
+    //     React.useCallback(() => {
+            
+    //     }, [])
+    // );
+
+
+    // React.useEffect(() => {
+    //     navigation.addListener('focus', () => {
+    //         // alert('focus');
+    //         setShopsData([]);
+    //         setAllshopsData([]);
+    //         setLoading(true);
+    //         getPharmacies()
+    //             .then(([status, json]) => {
+    //                 switch (status) {
+    //                     case 200:
+    //                         alert(200);
+    //                         setShopsData(getShopsByCity(json));
+    //                         setAllshopsData(json);
+    //                         break;
+    //                     default:
+    //                         alert(`${status}:\n${json}`);
+    //                         break;
+    //                 }
+    //             })
+    //             .finally(() => {
+    //                 setLoading(false);
+    //             })
+    //     });
+    //     navigation.addListener('blur', () => {
+    //         // alert('blur');
+    //         // route.params['selectedShop'] = undefined;
+    //     });
+
+    //     // console.log(route.params['selectedShop']);
+    //     // setSelectedShop(route.params['selectedShop']);
+    // })
+
 
     return (
             isLoading ? <View style={{flex: 1, justifyContent: 'center'}}>
@@ -128,10 +150,10 @@ const ShopsList = ({ navigation }) => {
                 : <ShopsStack.Navigator initialRouteName="ShopsListTabs">
                     <ShopsStack.Screen
                         name="ShopsListTabs"
-                        initialParams={{
-                            cityShops: shopsData,
-                            allShops: allshopsData,
-                        }}
+                        // initialParams={{
+                        //     cityShops: shopsData,
+                        //     allShops: allshopsData,
+                        // }}
                         component={ShopsListTabs} options={ShopsListHeader} />
                 </ShopsStack.Navigator>
     )
