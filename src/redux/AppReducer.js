@@ -1,5 +1,14 @@
 import { combineReducers } from 'redux';
-import { ADD_PRODUCT, REMOVE_PRODUCT, LOAD_FROM_STORE, CLEAR_ALL_PRODUCTS, SET_TOKEN, SET_SHOP, SET_CITY } from './types';
+import { 
+    ADD_PRODUCT, 
+    REMOVE_PRODUCT, 
+    LOAD_FROM_STORE, 
+    CLEAR_ALL_PRODUCTS, 
+    SET_TOKEN, 
+    SET_SHOP, 
+    SET_CITY,
+    REMOVE_ALL_THIS_PRODUCT
+} from './types';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -109,6 +118,15 @@ const appReducer = (state = INITIAL_STATE, action) => {
                 if (products.get(id) == 0) {
                     products.delete(id);
                 }
+                storeData(products);
+            }
+
+            return { products, account, shop, city };
+
+        case REMOVE_ALL_THIS_PRODUCT:
+            id = action.payload.id;
+            if (products.has(id)) {
+                products.delete(id);
                 storeData(products);
             }
 

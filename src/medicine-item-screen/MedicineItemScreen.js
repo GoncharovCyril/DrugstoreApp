@@ -24,7 +24,9 @@ const SwipeableRow = ({item, index, action}) => {
 };
 
 export const MedicineItemScreen = () => {
+
   
+
   return (
     <FlatList
       data={DATA}

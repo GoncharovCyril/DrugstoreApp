@@ -1,9 +1,12 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 
+import {REMOVE_ALL_THIS_PRODUCT} from '../../redux/types';
+
 import ListItem from './MedicineItemView';
+import MedicineSwipeableRow from './MedicineSwipeableRow';
 
 const medicineListStyles=StyleSheet.create({
 
@@ -59,6 +62,7 @@ const MedicineList = ({navigation, data}) => {
 
 
     const appStore = useSelector(state => state.appStore);
+    const dispatch = useDispatch();
 
     // const [refreshing, setRefreshing] = React.useState(false);
     //// const [data, setData] = React.useState(DATA)
@@ -75,17 +79,27 @@ const MedicineList = ({navigation, data}) => {
             wait(2000).then(() => {setRefreshing(false); setBottom(undefined)});
     }, []);
 
-    const renderItem = ({ item }) => {
+    const SwipeableRow = ({ item, swipeAction }) => {
         return (
             appStore.products.has(item.id) 
-            ? <ListItem 
-                navigation={navigation} 
-                index={item.id} 
-                description={item.description} 
-                dealer={item.description} 
-                price={item.price} 
-                availability={item.availability} 
-            />
+            ?
+                <View>
+                    <MedicineSwipeableRow action={() => {
+                        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
+                        // console.log('dis')
+                    }}>
+                        <ListItem
+                            navigation={navigation}
+                            index={item.id}
+                            description={item.description}
+                            dealer={item.description}
+                            price={item.price}
+                            availability={item.availability}
+                        />
+                    </MedicineSwipeableRow>
+                </View>
+
+            
             : undefined
         )
     };
@@ -100,7 +114,13 @@ const MedicineList = ({navigation, data}) => {
                         // ListHeaderComponent={
                         //     headVisible ? Header : undefined
                         // }
-                        renderItem={renderItem}
+                        renderItem={({ item, index }) => (
+                            <SwipeableRow 
+                                item={item} 
+                                index={index} 
+                                swipeAction={() => { console.log('del') }} 
+                            />
+                          )}
                         keyExtractor={item => item.id}
                         // refreshing={refreshing} 
                         // onEndReached={onRefresh}
