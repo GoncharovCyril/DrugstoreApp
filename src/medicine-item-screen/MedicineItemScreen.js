@@ -15,25 +15,25 @@ const Row = ({item}) => (
     </RectButton>
 );
 
-const SwipeableRow = ({item, index}) => {
+const SwipeableRow = ({item, index, action}) => {
     return (
-    <AppleStyleSwipeableRow>
+    <AppleStyleSwipeableRow action={action}>
         <Row item={item} />
     </AppleStyleSwipeableRow>
     )
 };
 
-export default class MedicineItemScreen extends React.Component {
-    render (){
-        return (
-        <FlatList
-            data={DATA}
-            renderItem={({ item, index }) => (
-                <SwipeableRow item={item} index={index} />
-            )}
-            keyExtractor={(item, index) => `message ${index}`}
-        />
-    )}
+export const MedicineItemScreen = () => {
+  
+  return (
+    <FlatList
+      data={DATA}
+      renderItem={({ item, index }) => (
+        <SwipeableRow item={item} index={index} action={() => { console.log('del') }} />
+      )}
+      keyExtractor={(item, index) => `message ${index}`}
+    />
+  )
 };
 
 
@@ -122,4 +122,4 @@ const styles = StyleSheet.create({
     },
   ];
 
-// export default MedicineItemScreen;
+export default MedicineItemScreen;
