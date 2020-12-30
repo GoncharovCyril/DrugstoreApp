@@ -4,6 +4,7 @@ import { Animated, StyleSheet, Text, View, I18nManager } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
+import TrashAltSolid from '../../../svg/trash-alt-solid';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // const AnimatedIcon = Animated.createAnimatedComponent(Icon);
@@ -12,11 +13,11 @@ export default class MedicineSwipeableRow extends Component {
   
   renderRightActions = (progress, dragX) => {
       // console.log(progress);
-    const scale = dragX.interpolate({
-      inputRange: [-80, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
+    // const scale = dragX.interpolate({
+    //   inputRange: [-80, 0],
+    //   outputRange: [1, 0],
+    //   extrapolate: 'clamp',
+    // });
     return (
       <RectButton style={styles.rightAction} onPress={this.close}>
         {/* {<AnimatedIcon
@@ -25,7 +26,10 @@ export default class MedicineSwipeableRow extends Component {
           color="#fff"
           style={[styles.actionIcon, { transform: [{ scale }] }]}
         />} */}
-        {/* <Text>delete</Text> */}
+        <View style={{height: 20, width: 20, marginRight: '15%'}}>
+          <TrashAltSolid color='red' />
+        </View>
+
       </RectButton>
     );
   };
@@ -61,10 +65,10 @@ const styles = StyleSheet.create({
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#dd2c00',
     flex: 1,
     justifyContent: 'flex-end',
+    alignSelf: 'center',
     width: 100,
-    height: '20%'
+    height: '100%'
   },
 });

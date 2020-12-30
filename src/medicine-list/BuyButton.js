@@ -50,7 +50,7 @@ const BuyButton = ({ navigation, index }) => {
         <TouchableOpacity
             style={styles.button1}
             onPress={() => {
-                setCount(count+1);
+                // setCount(count+1);
                 dispatch({ type: ADD_PRODUCT, payload: {id: index} });
             }}
         >
@@ -73,7 +73,7 @@ const BuyButton = ({ navigation, index }) => {
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
                 onPress={() => {
-                    setCount(count-1);
+                    // setCount(count-1);
                     dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
                 }}
             >
@@ -96,12 +96,12 @@ const BuyButton = ({ navigation, index }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{count}</Text>
+                }}>{appStore.products.get(index)}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => {
-                    setCount(count+1);
+                    // setCount(count+1);
                     dispatch({ type: ADD_PRODUCT, payload: {id: index} });
                 }}
             >
@@ -121,7 +121,7 @@ const BuyButton = ({ navigation, index }) => {
 
 
     return (
-        count==0 ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        !appStore.products.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 

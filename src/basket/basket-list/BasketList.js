@@ -79,27 +79,27 @@ const MedicineList = ({navigation, data}) => {
             wait(2000).then(() => {setRefreshing(false); setBottom(undefined)});
     }, []);
 
-    const SwipeableRow = ({ item, swipeAction }) => {
+    const SwipeableRow = ({ item }) => {
         return (
             appStore.products.has(item.id) 
             ?
                 <View>
-                    <MedicineSwipeableRow action={() => {
-                        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
-                        // console.log('dis')
-                    }}>
-                        <ListItem
-                            navigation={navigation}
-                            index={item.id}
-                            description={item.description}
-                            dealer={item.description}
-                            price={item.price}
-                            availability={item.availability}
-                        />
-                    </MedicineSwipeableRow>
-                </View>
-
-            
+                    {
+                        <MedicineSwipeableRow action={() => {
+                            dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
+                            // console.log('dis')
+                        }}>
+                            <ListItem
+                                navigation={navigation}
+                                index={item.id}
+                                description={item.description}
+                                dealer={item.description}
+                                price={item.price}
+                                availability={item.availability}
+                            />
+                        </MedicineSwipeableRow>
+                    }
+                </View>      
             : undefined
         )
     };
@@ -114,13 +114,7 @@ const MedicineList = ({navigation, data}) => {
                         // ListHeaderComponent={
                         //     headVisible ? Header : undefined
                         // }
-                        renderItem={({ item, index }) => (
-                            <SwipeableRow 
-                                item={item} 
-                                index={index} 
-                                swipeAction={() => { console.log('del') }} 
-                            />
-                          )}
+                        renderItem={SwipeableRow}
                         keyExtractor={item => item.id}
                         // refreshing={refreshing} 
                         // onEndReached={onRefresh}
