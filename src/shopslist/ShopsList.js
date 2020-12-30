@@ -137,7 +137,6 @@ const ShopsList = ({ navigation }) => {
     //         // route.params['selectedShop'] = undefined;
     //     });
 
-    //     // console.log(route.params['selectedShop']);
     //     // setSelectedShop(route.params['selectedShop']);
     // })
 

@@ -87,7 +87,6 @@ const MedicineList = ({navigation, data}) => {
                     {
                         <MedicineSwipeableRow action={() => {
                             dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
-                            // console.log('dis')
                         }}>
                             <ListItem
                                 navigation={navigation}

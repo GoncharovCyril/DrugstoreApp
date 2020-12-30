@@ -32,7 +32,7 @@ const Orders = ({ navigation }) => {
 
 
     React.useEffect(() => {
-        getUser(appStore.account.token, navigation)
+        getUser(appStore.account.token)
             .then(([status, json]) => {
                 switch (status) {
                     case 200:

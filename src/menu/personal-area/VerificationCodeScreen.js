@@ -29,7 +29,7 @@ const VerificationCodeScreen = ({navigation, route}) => {
             <Button 
                 title="Получить код"
                 onPress={() => {
-                    login(phone, vcode, navigation, dispatch)
+                    login(phone, vcode)
                     .then(([status, json]) => {
                         switch (status) {
                             case 401:
@@ -40,7 +40,7 @@ const VerificationCodeScreen = ({navigation, route}) => {
                                 dispatch({ type: SET_TOKEN, payload: { token: json.token } });
                                 alert(status);
                                 alert(JSON.stringify(json));
-                                getUser(json.token, navigation)
+                                getUser(json.token)
                                     .then(([status, json]) => {
                                         switch (status) {
                                             case 200:

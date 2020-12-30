@@ -84,7 +84,7 @@ const MenuButtons = ({navigation}) => {
 
                     // sendVerificationCode("380713344850");
                     // login("380713344850","1249")
-                    getUser(appStore.account.token, navigation)
+                    getUser(appStore.account.token)
                     .then(([status, json]) => {
                         switch (status){
                             case 401:

@@ -31,7 +31,7 @@ export const MedicineItemScreen = () => {
     <FlatList
       data={DATA}
       renderItem={({ item, index }) => (
-        <SwipeableRow item={item} index={index} action={() => { console.log('del') }} />
+        <SwipeableRow item={item} index={index} action={() => { }} />
       )}
       keyExtractor={(item, index) => `message ${index}`}
     />

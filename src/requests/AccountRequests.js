@@ -1,15 +1,8 @@
-const postData = async () => {
-    const url = "http://example.com/movies.json";
-
-    return await fetch(url);
-}
-
-export const sendVerificationCode = async (phone, navigation) => {
+export const sendVerificationCode = async (phone) => {
     const url = `http://195.133.145.14/api/send_verification_code`;
     const data = {
         "phone": phone
     }
-
     try {
         let response = await fetch(url, {
             method: 'POST',
@@ -39,8 +32,7 @@ export const sendVerificationCode = async (phone, navigation) => {
         alert(error);
     }
 }
-
-export const login = async (phone, verification_code, navigation, dispatch) => {
+export const login = async (phone, verification_code) => {
     const url = `http://195.133.145.14/api/login`;
     const data = {
         "phone": phone,
@@ -80,7 +72,7 @@ export const login = async (phone, verification_code, navigation, dispatch) => {
 }
 
 
-export const getUser = async (token, navigation) => {
+export const getUser = async (token) => {
     const url = `http://195.133.145.14/api/user`;
     const auth = 'Bearer ' + token;
     try {
@@ -97,5 +89,4 @@ export const getUser = async (token, navigation) => {
     } catch (error) {
         alert(error)
     }
-
 }

@@ -26,7 +26,6 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     // const shopsData = [];
 
 
-    // console.log(Object.keys(route.params));
     // setSelectedShop(
     //         route.params.hasOwnProperty('selectedShop') ?
     //         route.params.selectedShop : undefined
@@ -64,7 +63,6 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     // React.useEffect(() => {
     //     navigation.addListener('focus', () => {
     //         // alert('focus');
-    //         // console.log(route.params['selectedShop']);
     //         // setSelectedShop(route.params['selectedShop']);
     //     });
     //     navigation.addListener('blur', () => {
@@ -72,7 +70,6 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     //         // route.params['selectedShop'] = undefined;
     //     });
 
-    //     // console.log(route.params['selectedShop']);
     //     // setSelectedShop(route.params['selectedShop']);
     // })
 

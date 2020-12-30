@@ -12,7 +12,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default class MedicineSwipeableRow extends Component {
   
   renderRightActions = (progress, dragX) => {
-      // console.log(progress);
     // const scale = dragX.interpolate({
     //   inputRange: [-80, 0],
     //   outputRange: [1, 0],
