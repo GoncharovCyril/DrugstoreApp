@@ -1,10 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import { connect, useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { addProduct, removeProduct } from '../redux/ProductsActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
 
@@ -33,11 +30,10 @@ const styles = StyleSheet.create({
 });
 
 
+
 const BuyButton = ({ navigation, index }) => {
 
-    const appStore = useSelector((state) => {
-        return state.appStore;
-    });
+    const productsCounter = useSelector(state => state.appStore.products.get(index));
 
     const dispatch = useDispatch();
 
@@ -64,7 +60,7 @@ const BuyButton = ({ navigation, index }) => {
     );
 
     const Button2 = ({ navigation}) => (
-        <TouchableOpacity
+        <View
             style={styles.button2}
             onPress={() => {
                 
@@ -93,7 +89,7 @@ const BuyButton = ({ navigation, index }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{appStore.products.get(index)}</Text>
+                }}>{productsCounter}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -110,12 +106,12 @@ const BuyButton = ({ navigation, index }) => {
                 </Text>
                 <View style={{ flex: 15 }} />
             </TouchableOpacity>
-        </TouchableOpacity>
+        </View>
     );
 
 
     return (
-        !appStore.products.has(index) ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        productsCounter == undefined ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 

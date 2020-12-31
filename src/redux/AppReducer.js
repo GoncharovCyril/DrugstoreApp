@@ -10,46 +10,12 @@ import {
     REMOVE_ALL_THIS_PRODUCT
 } from './types';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-const storeData = async (map) => {
-    try {
-        const jsonValue = JSON.stringify(Object.fromEntries(map));
-
-        await AsyncStorage.setItem('Products', jsonValue);
-
-    } catch (e) {
-        alert("STORE_DATA\n"+e);
-    }
-};
-
-const storeToken = async (value) => {
-    try {
-        await AsyncStorage.setItem('Token', value);
-
-    } catch (e) {
-        alert("STORE_TOKEN\n"+e);
-    }
-};
-
-const storeCity = async (value) => {
-    try {
-        await AsyncStorage.setItem('City', value);
-
-    } catch (e) {
-        alert("STORE_CITY\n"+e);
-    }
-};
-
-const storeShop = async (value) => {
-    try {
-        await AsyncStorage.setItem('Shop', value);
-
-    } catch (e) {
-        alert("STORE_SHOP\n"+e);
-    }
-};
+import {
+    storeData,
+    storeCity,
+    storeShop,
+    storeToken,
+} from './AsincStorageFucntions'
 
 
 const INITIAL_STATE = {
@@ -88,8 +54,6 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
             shop.address = JSON.parse(action.payload.shop).address;
             
-            // const jsonValue = action.payload.data;
-
             break;
 
         case ADD_PRODUCT:

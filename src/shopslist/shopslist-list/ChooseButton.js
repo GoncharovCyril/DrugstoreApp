@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
 
 const ChooseButton = ({ navigation, system_id, address }) => {
 
-    const appStore = useSelector((state) => {
-        return state.appStore;
+    const shop = useSelector((state) => {
+        return state.appStore.shop;
     });
 
     const dispatch = useDispatch();
@@ -81,7 +81,7 @@ const ChooseButton = ({ navigation, system_id, address }) => {
 
 
     return (
-        appStore.shop.id!==system_id ? <Button1 /> : <Button2 />
+        shop.id!==system_id ? <Button1 /> : <Button2 />
     );
 };
 

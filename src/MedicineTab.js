@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Keyboard } from 'react-native';
 
 import { useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { getSize } from './redux/Methods';
 
@@ -96,7 +97,8 @@ const ProductIcon = ({count, isFocused}) => {
             // color: isFocused ? colorO : colorO, 
             color: 'white',
             textAlign: 'center', 
-            textAlignVertical: 'center' 
+            textAlignVertical: 'center' ,
+            fontSize: 12,
             }}>{count}</Text>
         </View>
 
@@ -108,7 +110,14 @@ const ProductIcon = ({count, isFocused}) => {
 
 function MedicineTab({ state, descriptors, navigation }) {
 
-  const appStore = useSelector((state) => state.appStore);
+  const selectNumOfProducts = createSelector(
+    state => state.appStore.products,
+    products => {
+      // console.log(products.size);
+      return getSize(products);
+    }
+  );
+  const productsCounter = useSelector(selectNumOfProducts);
 
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
@@ -194,7 +203,12 @@ function MedicineTab({ state, descriptors, navigation }) {
 
                 {
                   route.name === 'Basket' ?
-                    <ProductIcon count={getSize(appStore.products)} isFocused={isFocused} /> :
+                    <ProductIcon 
+                    count={
+                      // getSize(appStore.products)
+                      productsCounter
+                    } 
+                    isFocused={isFocused} /> :
                     undefined
                 }
               </ View>
