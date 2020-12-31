@@ -69,8 +69,22 @@ const BasketScreen = ({route, navigation}) => {
     //     })
     // },[]);
 
-    useFocusEffect(
-        React.useCallback(()=> {
+    // useFocusEffect(
+    //     React.useCallback(()=> {
+    //         setLoading(true);
+    //         setBusketData([]);
+    //         loadData(appStore)
+    //             .then(resultData => {
+    //                 setBusketData(resultData);
+    //             })
+    //             .finally(() => {
+    //                 setLoading(false);
+    //             })
+    //     }, [])
+    // );
+
+    React.useEffect(() => {
+        navigation.addListener('focus', () => {
             setLoading(true);
             setBusketData([]);
             loadData(appStore)
@@ -80,8 +94,8 @@ const BasketScreen = ({route, navigation}) => {
                 .finally(() => {
                     setLoading(false);
                 })
-        }, [])
-    );
+        });
+    })
 
     return (
         <View style={{flex:1, justifyContent: 'center'}}>

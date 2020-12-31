@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
@@ -70,7 +70,6 @@ const MenuButtonConnect = (props) => {
 const MenuButtons = ({navigation}) => {
 
     const appStore = useSelector(state => state.appStore);
-    const dispatch = useDispatch();
 
     return (
         <View style={styles.buttonsContainer}>
@@ -78,7 +77,6 @@ const MenuButtons = ({navigation}) => {
                 text="Личный кабинет"
                 // text={appStore.account.token}
                 onPress={()=>{
-                    // dispatch({ type: SET_TOKEN, payload: {token: "token"} });
                     // navigation.navigate("OrdersScreen");
                     // test();
 

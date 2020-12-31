@@ -73,101 +73,83 @@ const appReducer = (state = INITIAL_STATE, action) => {
         shop,
         city
     } = state;
-    let id, count;
     switch (action.type) {
 
         case LOAD_FROM_STORE:
 
-            const productsJson = action.payload.products;
-
-            const tokenJson = action.payload.token;
-
-            const cityJson = action.payload.city;
-
-            const shopJson = action.payload.shop;
-
-            for (const [key, value] of Object.entries(JSON.parse(productsJson))) {
+            for (const [key, value] of Object.entries(JSON.parse(action.payload.products))) {
                 products.set(key, value);
             }
-            account.token = tokenJson;
+            account.token = action.payload.token;
 
-            city.name = cityJson != null ? cityJson : 'Макеевка';
+            city.name = action.payload.city != null ? action.payload.city : 'Макеевка';
 
-            shop.id = JSON.parse(shopJson).id;
+            shop.id = JSON.parse(action.payload.shop).id;
 
-            shop.address = JSON.parse(shopJson).address;
+            shop.address = JSON.parse(action.payload.shop).address;
             
             // const jsonValue = action.payload.data;
 
-            return { products, account, shop, city };
+            break;
 
         case ADD_PRODUCT:
 
-            id = action.payload.id;
-            count = products.get(id);
-            count = count === undefined ? 0 : count;
-            products.set(id, count + 1);
+            products.set(
+                action.payload.id, 
+                products.get(action.payload.id) === undefined ? 1 : products.get(action.payload.id)+1
+                );
             storeData(products);
-            return { products, account, shop, city };
+            break;
 
         case REMOVE_PRODUCT:
 
-            id = action.payload.id;
-            if (products.has(id)) {
-                products.set(id, products.get(id) - 1);
-                if (products.get(id) == 0) {
-                    products.delete(id);
+            if (products.has(action.payload.id)) {
+                products.set(action.payload.id, products.get(action.payload.id) - 1);
+                if (products.get(action.payload.id) == 0) {
+                    products.delete(action.payload.id);
                 }
                 storeData(products);
             }
 
-            return { products, account, shop, city };
+            break;
 
         case REMOVE_ALL_THIS_PRODUCT:
-            id = action.payload.id;
-            if (products.has(id)) {
-                products.delete(id);
+            if (products.has(action.payload.id)) {
+                products.delete(action.payload.id);
                 storeData(products);
             }
 
-            return { products, account, shop, city };
-
+            break;
         
-
         case CLEAR_ALL_PRODUCTS:
 
             products.clear();
             storeData(products);
-
-            return { products, account, shop, city };
+            break;
 
         case SET_TOKEN:
-
-            const token = action.payload.token;
-            account.token = token;
-            if(token != null){
-                storeToken(token);
-            }
-            return { products, account, shop, city };
+            account.token = action.payload.token;
+            // if(action.payload.token != null){
+                storeToken(action.payload.token);
+            // }
+            break;
 
         case SET_SHOP:
-            const shop_id = action.payload.id;
-            const shop_address = action.payload.address;
-            shop.id = shop_id;
-            shop.address = shop_address;
+            shop.id = action.payload.id;
+            shop.address = action.payload.address;
             storeShop(JSON.stringify(shop));
-            return { products, account, shop, city };
-
+            break;
 
         case SET_CITY:
-            const city_name = action.payload.city_name;
-            city.name = city_name;
-            storeCity(city_name);
-            return { products, account, shop, city };
+            city.name = action.payload.city_name;
+            storeCity(action.payload.city_name);
+            break;
 
         default:
             return state
     }
+
+    return { products, account, shop, city };
 };
 
 export default combineReducers({ appStore: appReducer });

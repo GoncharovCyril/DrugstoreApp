@@ -50,22 +50,6 @@ export const login = async (phone, verification_code) => {
         let json = await response.json();
 
         return [status, json];
-        // .then((response) => response.json())
-        //     .then((json) => {
-        //         if (json.Message !== "Invalid verification code") {
-        //             dispatch({ type: "SET_TOKEN", payload: { token: json.token } });
-        //             getUser(json.token, navigation);
-        //         }
-        //         // else {
-        //         //     const t = "UmAgUTXjv4KizJCTiK5yvIxE3wBa3ZYTIjBsG7RstrDGnL8BJaejCtpMargt2zYD0FO3RIfLJmEaQfEYCiqXC75P6KGaMT93Q60UCLdC87onbbNrxHOEtX7mwQTUC179LoE5RdQ3etDfkhKsRj4X5HfWZoiLu38hjre4VqHnCj8adqVZuAnQhOSFPpg43r6orAZV44MBGmsKMu5kIBpXZwt2DJwUCAuCh1WlexumBHoOfEfWF7KbKZB8csy06Qr";
-        //         //     dispatch({ type: "SET_TOKEN", payload: {token: t} });
-        //         //     getUser(t, navigation);
-        //         // }
-
-        //         // const res = JSON.parse(json);
-        //     })
-        //     .catch((error) => console.error(error));;
-
     } catch (error) {
         alert(error);
     }

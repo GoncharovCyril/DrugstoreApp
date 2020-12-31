@@ -70,6 +70,10 @@ const Shop = ({ navigation, shop }) => {
 
     const dispatch = useDispatch();
 
+    const setNoShop = React.useCallback(()=> {
+        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+    }, [dispatch])
+
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
@@ -92,9 +96,7 @@ const Shop = ({ navigation, shop }) => {
                 </View>
 
                 <View style={{ flex: 10, alignItems: 'flex-end'}}>
-                    <TouchableOpacity style={{marginRight: "15%", marginTop: -5}} onPress={() => {
-                        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
-                    }}>
+                    <TouchableOpacity style={{marginRight: "15%", marginTop: -5}} onPress={setNoShop}>
                         <Text style={{fontSize: 20, fontWeight: 'bold'}}>X</Text>
                     </TouchableOpacity>
                     

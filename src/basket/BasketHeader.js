@@ -24,13 +24,6 @@ const colorO="rgba(236,111,39,1.0)";
 //green
 const colorG='#4db141';
 
-const ConfirmDelete = (dispatch) => {
-    // const dispatch = useDispatch();
-
-    
-}
-
-
 const Header = ({navigation, backButton, trashButton}) => {
     return (
         <View style={headStyles.headContainer}>
@@ -64,6 +57,10 @@ const mainHeader = {
         
         const dispatch = useDispatch();
 
+        const removeAllProduct = React.useCallback(()=>{
+            dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
+        }, [dispatch])
+
         return (
             <View style={options.headerStyle} >
                 <Header 
@@ -84,9 +81,7 @@ const mainHeader = {
                                 },
                                 {
                                     text: 'ДА',
-                                    onPress: () => {
-                                        dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
-                                    }
+                                    onPress: removeAllProduct
                                 },
                             ],
                             { cancelable: true }

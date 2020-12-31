@@ -1,10 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { addProduct, removeProduct } from '../redux/ProductsActions';
+import { StyleSheet, View } from 'react-native';
 
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
@@ -34,15 +29,4 @@ const MenuScreen = ({ navigation }) => {
     )
 };
 
-const mapStateToProps = (state) => {
-    const { appStore } = state;
-    return { appStore };
-};
-
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        addProduct,
-        removeProduct,
-    }, dispatch)
-);
-export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen);
+export default MenuScreen;

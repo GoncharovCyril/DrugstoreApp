@@ -53,24 +53,27 @@ const ChooseButton = ({ navigation, system_id, address }) => {
 
     const dispatch = useDispatch();
 
+    const setShop = React.useCallback(()=> {
+        dispatch({ type: SET_SHOP, payload: {id: system_id, address: address } });
+    }, [dispatch]);
+    const setNoShop = React.useCallback(()=>{
+        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+    }, [dispatch]);
 
-    const Button1 = ({ navigation }) => (
+
+    const Button1 = () => (
         <TouchableOpacity
             style={styles.button1}
-            onPress={() => {
-                dispatch({ type: SET_SHOP, payload: {id: system_id, address: address } });
-            }}
+            onPress={setShop}
         >
             <Text style={styles.button1Text}>Выбрать</Text>
         </TouchableOpacity>
     );
 
-    const Button2 = ({ navigation }) => (
+    const Button2 = () => (
         <TouchableOpacity
             style={styles.button2}
-            onPress={() => {
-                dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
-            }}
+            onPress={setNoShop}
         >
             <Text style={styles.button2Text}>Отменить</Text>
         </TouchableOpacity>
@@ -78,8 +81,7 @@ const ChooseButton = ({ navigation, system_id, address }) => {
 
 
     return (
-        appStore.shop.id!==system_id ? <Button1 navigation={navigation} /> : <Button2 navigation={navigation} />
-        // <Button1 navigation={navigation} />
+        appStore.shop.id!==system_id ? <Button1 /> : <Button2 />
     );
 };
 

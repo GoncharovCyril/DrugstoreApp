@@ -41,13 +41,19 @@ const BuyButton = ({ navigation, index }) => {
 
     const dispatch = useDispatch();
 
+    const addProduct = React.useCallback(() => {
+        dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+    }, [dispatch]);
+
+    const removeProduct = React.useCallback(()=>{
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
+    }, [dispatch]);
+
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
-            onPress={() => {
-                dispatch({ type: ADD_PRODUCT, payload: {id: index} });
-            }}
+            onPress={addProduct}
         >
             <Text style={{
                 color: "white",
@@ -67,9 +73,7 @@ const BuyButton = ({ navigation, index }) => {
         >
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
-                onPress={() => {
-                    dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
-                }}
+                onPress={removeProduct}
             >
                 <View style={{ flex: 15 }} />
                 <Text style={{
@@ -94,9 +98,7 @@ const BuyButton = ({ navigation, index }) => {
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={() => {
-                    dispatch({ type: ADD_PRODUCT, payload: {id: index} });
-                }}
+                onPress={addProduct}
             >
                 <Text style={{
                     flex: 85,
@@ -118,17 +120,4 @@ const BuyButton = ({ navigation, index }) => {
     );
 };
 
-
-const mapStateToProps = (state) => {
-    const { appStore } = state;
-    return { appStore };
-};
-
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        addProduct,
-        removeProduct,
-    }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyButton);
+export default BuyButton;

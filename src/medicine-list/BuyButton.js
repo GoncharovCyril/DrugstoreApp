@@ -41,18 +41,18 @@ const BuyButton = ({ navigation, index }) => {
 
     const dispatch = useDispatch();
 
-    const [count, setCount] = React.useState(
-        !appStore.products.has(index) ? 0 : appStore.products.get(index)
-        );
+    const addProduct = React.useCallback(() => {
+        dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+    }, [dispatch]);
 
+    const removeProduct = React.useCallback(()=>{
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
+    }, [dispatch]);
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
-            onPress={() => {
-                // setCount(count+1);
-                dispatch({ type: ADD_PRODUCT, payload: {id: index} });
-            }}
+            onPress={addProduct}
         >
             <Text style={{
                 color: "white",
@@ -72,10 +72,7 @@ const BuyButton = ({ navigation, index }) => {
         >
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
-                onPress={() => {
-                    // setCount(count-1);
-                    dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
-                }}
+                onPress={removeProduct}
             >
                 <View style={{ flex: 15 }} />
                 <Text style={{
@@ -100,10 +97,7 @@ const BuyButton = ({ navigation, index }) => {
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={() => {
-                    // setCount(count+1);
-                    dispatch({ type: ADD_PRODUCT, payload: {id: index} });
-                }}
+                onPress={addProduct}
             >
                 <Text style={{
                     flex: 85,
@@ -126,16 +120,4 @@ const BuyButton = ({ navigation, index }) => {
 };
 
 
-const mapStateToProps = (state) => {
-    const { appStore } = state;
-    return { appStore };
-};
-
-const mapDispatchToProps = dispatch => (
-    bindActionCreators({
-        addProduct,
-        removeProduct,
-    }, dispatch)
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyButton);
+export default BuyButton;
