@@ -111,10 +111,11 @@ const ProductIcon = ({count, isFocused}) => {
 function MedicineTab({ state, descriptors, navigation }) {
 
   const selectNumOfProducts = createSelector(
-    state => state.appStore.products,
+    state => getSize(state.appStore.products),
     products => {
       // console.log(products.size);
-      return getSize(products);
+      // return getSize(products);
+      return products
     }
   );
   const productsCounter = useSelector(selectNumOfProducts);

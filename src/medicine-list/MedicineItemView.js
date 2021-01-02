@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, FlatList, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { event } from 'react-native-reanimated';
 
 import { BoxShadow } from 'react-native-shadow';
@@ -28,8 +28,8 @@ const shadowOpt = {
 
 const DrugView = ({navigation, index, description, dealer, price, availability}) => {
 
-    const [viewWidth, setWidth] = React.useState(345);
-
+    const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
+    
     return (
         <View 
         style={{
@@ -38,14 +38,6 @@ const DrugView = ({navigation, index, description, dealer, price, availability})
             justifyContent: "center",
             alignItems: "center",
         }}
-
-        onLayout={(event) => {
-            const {x, y, width, height} = event.nativeEvent.layout;
-            
-            setWidth(width*0.94);
-            //360
-        }}
-
         
         >
             <BoxShadow setting={{

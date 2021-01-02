@@ -10,7 +10,8 @@ import {
     Animated,
     TouchableOpacity,
     TouchableWithoutFeedback,
-    TouchableHighlight
+    TouchableHighlight,
+    Dimensions
 } from 'react-native';
 
 import { BoxShadow } from 'react-native-shadow';
@@ -25,21 +26,9 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const shadowOpt = {
-    width: viewW,
-    height: viewH,
-    color: "#4db141",
-    border: 4,
-    radius: 15,
-    opacity: 0.4,
-    x: 0,
-    y: 0,
-    style: {}
-}
-
 const DrugView = ({ navigation, index, description, dealer, price, availability }) => {
 
-    const [viewWidth, setWidth] = React.useState(345);
+    const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
 
     return (
         <View
@@ -49,15 +38,6 @@ const DrugView = ({ navigation, index, description, dealer, price, availability 
                 justifyContent: "center",
                 alignItems: "center",
             }}
-
-            onLayout={(event) => {
-                const { x, y, width, height } = event.nativeEvent.layout;
-
-                setWidth(width * 0.94);
-                //360
-            }}
-
-
         >
             <BoxShadow setting={{
                 width: viewWidth,

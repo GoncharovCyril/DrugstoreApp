@@ -12,38 +12,40 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
+const SwipeableRow = ({ item, index, separators }) => {
+    const product = useSelector(state => state.appStore.products.get(item.id));
+    const dispatch = useDispatch();
+
+    const removeAllProduct = React.useCallback(()=>{
+        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
+    }, [dispatch]);
+
+    return (
+        <View>
+            {
+                product != undefined 
+                ?
+                    <View>
+                        {
+                            <MedicineSwipeableRow action={removeAllProduct}>
+                                <ListItem
+                                    index={item.id}
+                                    description={item.description}
+                                    dealer={item.description}
+                                    price={item.price}
+                                    availability={item.availability}
+                                />
+                            </MedicineSwipeableRow>
+                        }
+                    </View>      
+                : undefined
+            }
+        </View>   
+    )
+};
 
 const MedicineList = ({navigation, data}) => {
 
-
-    const appStore = useSelector(state => state.appStore);
-    const dispatch = useDispatch();
-    
-
-    const SwipeableRow = ({ item }) => {
-        
-        return (
-            appStore.products.has(item.id) 
-            ?
-                <View>
-                    {
-                        <MedicineSwipeableRow action={() => {
-                            dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
-                        }}>
-                            <ListItem
-                                navigation={navigation}
-                                index={item.id}
-                                description={item.description}
-                                dealer={item.description}
-                                price={item.price}
-                                availability={item.availability}
-                            />
-                        </MedicineSwipeableRow>
-                    }
-                </View>      
-            : undefined
-        )
-    };
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
@@ -55,7 +57,9 @@ const MedicineList = ({navigation, data}) => {
                         // ListHeaderComponent={
                         //     headVisible ? Header : undefined
                         // }
-                        renderItem={SwipeableRow}
+                        renderItem={({item, index, separators}) => (
+                            <SwipeableRow item={item} index={index} separators={separators} />
+                        )}
                         keyExtractor={item => item.id}
                         // refreshing={refreshing} 
                         // onEndReached={onRefresh}

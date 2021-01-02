@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFocusEffect, TabActions } from '@react-navigation/native';
 
-import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Dimensions } from 'react-native';
 
 import BasketList from './basket-list/BasketList';
 
@@ -14,20 +14,15 @@ import EmptyBasket from './EmptyBasket';
 
 {/* <MedicineList /> */}
 
-const loadData = async (appStore) => {
+const loadData = async (products) => {
     let resultData = [];
     for (let item of DATA) {
-        if (appStore.products.has(item.id)){
+        if (products.has(item.id)){
             resultData.push(item);
         }
         // busketData.push(appStore.products.get(item.id));
     }
     return resultData;
-}
-const wait= (timeout) => {
-    return new Promise(resolve => {
-        setTimeout(resolve, timeout);
-    });
 }
 
 const Footer = ({navigation}) => {
@@ -53,49 +48,24 @@ const Footer = ({navigation}) => {
 }
 
 const BasketScreen = ({route, navigation}) => {
-    const appStore = useSelector(state => state.appStore);
+    const products = useSelector(state => state.appStore.products);
+    const productsCounter = useSelector(state => state.appStore.products.size);
     const [isLoading, setLoading] = React.useState(true);
     const [busketData, setBusketData] = React.useState([]);
 
-    // React.useEffect(()=>{
-    //     setLoading(true);
-    //     setBusketData([]);
-    //     loadData(appStore)
-    //     .then(resultData => {
-    //         setBusketData(resultData);
-    //     })
-    //     .finally(() => {
-    //         setLoading(false);
-    //     })
-    // },[]);
-
-    // useFocusEffect(
-    //     React.useCallback(()=> {
-    //         setLoading(true);
-    //         setBusketData([]);
-    //         loadData(appStore)
-    //             .then(resultData => {
-    //                 setBusketData(resultData);
-    //             })
-    //             .finally(() => {
-    //                 setLoading(false);
-    //             })
-    //     }, [])
-    // );
-
-    React.useEffect(() => {
-        navigation.addListener('focus', () => {
+    useFocusEffect(
+        React.useCallback(()=>{
             setLoading(true);
             setBusketData([]);
-            loadData(appStore)
+            loadData(products)
                 .then(resultData => {
                     setBusketData(resultData);
                 })
                 .finally(() => {
                     setLoading(false);
                 })
-        });
-    })
+        },[])
+    );
 
     return (
         <View style={{flex:1, justifyContent: 'center'}}>
@@ -104,7 +74,7 @@ const BasketScreen = ({route, navigation}) => {
                     <ActivityIndicator size="large" color="rgb(236,111,39)" />
                     <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем товары</Text>
                 </View>
-                : appStore.products.size > 0
+                : productsCounter > 0
                     ? <View style={{ flex: 1}}>
                         <View style={{flex: 700}}>
                             <BasketList navigation={navigation} data={busketData} />

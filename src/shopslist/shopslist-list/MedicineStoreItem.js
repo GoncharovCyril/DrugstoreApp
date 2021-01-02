@@ -21,17 +21,6 @@ const colorO = "rgba(236,111,39,1.0)";
 const colorG = '#4db141';
 const colorB = '#4e6a79';
 
-const shadowOpt = {
-    width: viewW,
-    height: viewH,
-    color: "#4db141",
-    border: 4,
-    radius: 15,
-    opacity: 0.4,
-    x: 0,
-    y: 0,
-    style: {}
-}
 
 const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coordinates, photo, phone, working_time }) => {
 

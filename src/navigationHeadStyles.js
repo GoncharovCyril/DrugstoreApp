@@ -35,6 +35,11 @@ export const headerStyles = {
         backgroundColor: backgroundColor,
         marginTop: statusBarHeight,
     },
+    basketSelectedShopHeader: {
+        height: smallHeight+shopHeight,
+        backgroundColor: backgroundColor,
+        marginTop: statusBarHeight,
+    },
     searchHeader: {
         height: smallHeight+searchHeigt,
         backgroundColor: backgroundColor,

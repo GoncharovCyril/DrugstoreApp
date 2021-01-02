@@ -17,9 +17,7 @@ const styles = StyleSheet.create({
 
 const CityPicker = ({navigation}) => {
 
-    const appStore = useSelector((state) => {
-        return state.appStore;
-    });
+    const cityName = useSelector(state => state.appStore.city.name);
 
     return (
         <TouchableOpacity 
@@ -38,7 +36,7 @@ const CityPicker = ({navigation}) => {
             <View style={{flex: 23}} />
 
             <View style={{flex: 670}}>
-                <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>{appStore.city.name}</Text>
+                <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>{cityName}</Text>
             </View>
             <View style={{flex: 30}}>
                 <ShevronRightSolid color="rgba(236,111,39,1.0)" />

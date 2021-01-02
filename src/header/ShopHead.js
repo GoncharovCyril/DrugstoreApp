@@ -108,14 +108,10 @@ const Shop = ({ navigation, shop }) => {
 
 const ShopHead = ({ navigation }) => {
 
-    const appStore = useSelector((state) => {
-        return state.appStore;
-    });
-
-    const [shop, setShop] = React.useState(appStore.shop)
+    const selectedShop = useSelector(state => state.appStore.shop);
 
     return (
-        shop.id != null ? <Shop shop={shop} /> : <EmptyShop navigation={navigation} />
+        selectedShop.id != null ? <Shop shop={selectedShop} /> : <EmptyShop navigation={navigation} />
     );
 };
 

@@ -69,20 +69,20 @@ const MenuButtonConnect = (props) => {
 
 const MenuButtons = ({navigation}) => {
 
-    const appStore = useSelector(state => state.appStore);
+    const storeToken = useSelector(state => state.appStore.account.token);
 
     return (
         <View style={styles.buttonsContainer}>
             <MenuButton
                 text="Личный кабинет"
-                // text={appStore.account.token}
+                // text={storeToken}
                 onPress={()=>{
                     // navigation.navigate("OrdersScreen");
                     // test();
 
                     // sendVerificationCode("380713344850");
                     // login("380713344850","1249")
-                    getUser(appStore.account.token)
+                    getUser(storeToken)
                     .then(([status, json]) => {
                         switch (status){
                             case 401:

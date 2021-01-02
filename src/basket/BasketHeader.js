@@ -53,8 +53,8 @@ const mainHeader = {
             ? options.title
             : scene.route.name;
 
-        const appStore = useSelector(state => state.appStore);
-        
+        const productsCounter = useSelector(state => state.appStore.products.size);
+
         const dispatch = useDispatch();
 
         const removeAllProduct = React.useCallback(()=>{
@@ -69,7 +69,7 @@ const mainHeader = {
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 }
                 trashButton={
-                    appStore.products.size > 0 ? <TrashButton action={() => {
+                    productsCounter > 0 ? <TrashButton action={() => {
                         return Alert.alert(
                             '',
                             'Вы уверены, что хотите очистить корзину?',
@@ -87,7 +87,8 @@ const mainHeader = {
                             { cancelable: true }
                         );
                     }} /> : undefined
-                } />  
+                } />
+
             </View>          
         );
     },

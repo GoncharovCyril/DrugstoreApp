@@ -36,9 +36,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     //     }, [])
     // );
 
-
-    React.useEffect(() => {
-        navigation.addListener('focus', () => {
+    useFocusEffect(
+        React.useCallback(()=> {
             setShopsData([]);
             setLoading(true);
             getPharmacies()
@@ -56,22 +55,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                 .finally(() => {
                     setLoading(false);
                 })
-        });
-    })
-
-
-    // React.useEffect(() => {
-    //     navigation.addListener('focus', () => {
-    //         // alert('focus');
-    //         // setSelectedShop(route.params['selectedShop']);
-    //     });
-    //     navigation.addListener('blur', () => {
-    //         // alert('blur');
-    //         // route.params['selectedShop'] = undefined;
-    //     });
-
-    //     // setSelectedShop(route.params['selectedShop']);
-    // })
+        },[])
+    );
 
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>

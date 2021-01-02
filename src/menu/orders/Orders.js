@@ -28,11 +28,11 @@ const Orders = ({ navigation }) => {
     const [user, setUser] = React.useState({
         state: "Не авторизован",
     });
-    const appStore = useSelector(state => state.appStore);
+    const storeToken = useSelector(state => state.appStore.account.token);
 
 
     React.useEffect(() => {
-        getUser(appStore.account.token)
+        getUser(storeToken)
             .then(([status, json]) => {
                 switch (status) {
                     case 200:

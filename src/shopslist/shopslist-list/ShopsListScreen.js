@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import MedicineStoreList from './MedicineStoreList';
 import { getPharmacies } from '../../requests/ShopsRequests';
 
 const ShopsListScreen = ({route, navigation}) => {
-    const appStore = useSelector(state => state.appStore);
+    const city = useSelector(state => state.appStore.city);
     const [isLoading, setLoading] = React.useState(true);
     // const shopsData = route.params.data;
     const [shopsData, setShopsData] = React.useState(
@@ -14,23 +15,14 @@ const ShopsListScreen = ({route, navigation}) => {
         );
 
     const getShopsByCity = (json) => {
-        const choosenCity = appStore.city.name;
-        const filteredData = [];
 
-        if (choosenCity == 'Все города') return json;
+        if (city.name == 'Все города') return json;
 
-        json.map(object => {
-            if (object.city == choosenCity) {
-                filteredData.push(object);
-            }
-
-        })
-        return filteredData;
+        return json.filter(object => object.city === city.name);
     };
 
-
-    React.useEffect(() => {
-        navigation.addListener('focus', () => {
+    useFocusEffect(
+        React.useCallback(()=> {
             setShopsData([]);
             setLoading(true);
             getPharmacies()
@@ -47,8 +39,8 @@ const ShopsListScreen = ({route, navigation}) => {
                 .finally(() => {
                     setLoading(false);
                 })
-        });
-    })
+        },[])
+    );
 
 
     return (
