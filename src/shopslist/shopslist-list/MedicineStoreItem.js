@@ -22,7 +22,18 @@ const colorG = '#4db141';
 const colorB = '#4e6a79';
 
 
-const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coordinates, photo, phone, working_time }) => {
+const MedicineStoreItem = ({ 
+    navigation, 
+    id, 
+    system_id, 
+    name, city, 
+    address, 
+    coordinates, 
+    photo, 
+    phone, 
+    working_time,
+    storedShopId 
+}) => {
 
     const [viewWidth, setWidth] = React.useState(windowW * 0.94);
     const jumpToMaps = TabActions.jumpTo('ShopsListMapScreen', {
@@ -107,7 +118,7 @@ const MedicineStoreItem = ({ navigation, id, system_id, name, city, address, coo
                         </View>
                         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
                             <View style={{ height: "100%", width: '100%' }}>
-                                <ChooseButton system_id={system_id} address={address} />
+                                <ChooseButton system_id={system_id} address={address} storedShopId={storedShopId} />
                             </View>
 
                         </View>

@@ -1,6 +1,7 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, View, SafeAreaView, FlatList } from 'react-native';
+import { useSelector } from 'react-redux';
 
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
@@ -21,6 +22,10 @@ const medicineListStyles=StyleSheet.create({
 const MedicineList = ({route, navigation, data}) => {
    
 
+    const storedShopId = useSelector(state => {
+        return state.appStore.shop.id
+    });
+
     const listData = data;
 
     
@@ -36,6 +41,7 @@ const MedicineList = ({route, navigation, data}) => {
             photo={item.photo}
             phone={item.phone}
             working_time={item.working_time}
+            storedShopId={storedShopId}
         />
     );
 
