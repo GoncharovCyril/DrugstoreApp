@@ -2,6 +2,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 
+import {useSelector} from 'react-redux';
+import { createSelector } from 'reselect';
+
 import ListItem from './MedicineItemView';
 
 import FilterSolid from '../../svg/filter-solid';
@@ -48,6 +51,22 @@ const MedicineList = ({route, navigation}) => {
     const [refreshing, setRefreshing] = React.useState(false);
     // const [data, setData] = React.useState(DATA)
     const [bottom, setBottom] = React.useState(undefined);
+
+    const productSelector = createSelector(
+        state => {
+            return state.appStore.products.entries()
+        },
+        mapArray => {
+            return new Map(mapArray)
+        }
+    )
+
+    // const productsCounter = useSelector(state => {
+    //     console.log('ping', index)
+    //     return state.appStore.products;
+    // });
+
+    const products = useSelector(productSelector);
     
 
     const listData = route.params.data;
@@ -66,7 +85,7 @@ const MedicineList = ({route, navigation}) => {
     }, []);
 
     const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} index={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
+        <ListItem products={products} navigation={navigation} index={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
     );
 
     return (

@@ -1,6 +1,7 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from 'reselect';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 
 import {REMOVE_ALL_THIS_PRODUCT} from '../../redux/types';
@@ -12,8 +13,8 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
-const SwipeableRow = ({ item, index, separators }) => {
-    const product = useSelector(state => state.appStore.products.get(item.id));
+const SwipeableRow = ({ item, index, separators, products }) => {
+    // const product = useSelector(state => state.appStore.products.get(item.id));
     const dispatch = useDispatch();
 
     const removeAllProduct = React.useCallback(()=>{
@@ -23,7 +24,7 @@ const SwipeableRow = ({ item, index, separators }) => {
     return (
         <View>
             {
-                product != undefined 
+                products.get(item.id) != undefined 
                 ?
                     <View>
                         {
@@ -34,6 +35,7 @@ const SwipeableRow = ({ item, index, separators }) => {
                                     dealer={item.description}
                                     price={item.price}
                                     availability={item.availability}
+                                    products={products}
                                 />
                             </MedicineSwipeableRow>
                         }
@@ -45,6 +47,21 @@ const SwipeableRow = ({ item, index, separators }) => {
 };
 
 const MedicineList = ({navigation, data}) => {
+
+    const productSelector = createSelector(
+        state => {
+            console.log('ping');
+            return state.appStore.products.entries()
+        },
+        mapArray => new Map(mapArray)
+    )
+
+    // const productsCounter = useSelector(state => {
+    //     console.log('ping', index)
+    //     return state.appStore.products;
+    // });
+
+    const products = useSelector(productSelector);
 
 
     return (
@@ -58,7 +75,12 @@ const MedicineList = ({navigation, data}) => {
                         //     headVisible ? Header : undefined
                         // }
                         renderItem={({item, index, separators}) => (
-                            <SwipeableRow item={item} index={index} separators={separators} />
+                            <SwipeableRow 
+                                item={item} 
+                                index={index} 
+                                separators={separators} 
+                                products={products}
+                            />
                         )}
                         keyExtractor={item => item.id}
                         // refreshing={refreshing} 

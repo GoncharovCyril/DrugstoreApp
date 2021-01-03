@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
 });
 
 
-const BuyButton = ({ navigation, index }) => {
+const BuyButton = ({ navigation, index, products }) => {
 
-    const  productsCounter = useSelector(state => state.appStore.products.get(index));
+    // const  productsCounter = useSelector(state => state.appStore.products.get(index));
 
     const dispatch = useDispatch();
 
@@ -92,7 +92,7 @@ const BuyButton = ({ navigation, index }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{productsCounter}</Text>
+                }}>{products.get(index)}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -114,7 +114,7 @@ const BuyButton = ({ navigation, index }) => {
 
 
     return (
-        productsCounter == undefined ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        products.get(index) == undefined ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
     );
 };
 

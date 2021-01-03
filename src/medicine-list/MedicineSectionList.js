@@ -1,6 +1,9 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
+
+import {useSelector} from 'react-redux';
+import { createSelector } from 'reselect';
 
 
 import ListItem from './MedicineItemView';
@@ -59,8 +62,22 @@ const SectionHeader = ({title, navigation}) => (
 
 const MedicineList = ({navigation, data}) => {
 
+    const productSelector = createSelector(
+        state => {
+            return state.appStore.products.entries()
+        },
+        mapArray => new Map(mapArray)
+    )
+
+    // const productsCounter = useSelector(state => {
+    //     console.log('ping', index)
+    //     return state.appStore.products;
+    // });
+
+    const products = useSelector(productSelector);
+
     const renderItem = ({ item }) => (
-        <ListItem navigation={navigation} index={item.id} description={item.description} dealer={item.dealer} price={item.price} availability={item.availability} />
+        <ListItem products={products} navigation={navigation} index={item.id} description={item.description} dealer={item.dealer} price={item.price} availability={item.availability} />
     );
 
     return (
