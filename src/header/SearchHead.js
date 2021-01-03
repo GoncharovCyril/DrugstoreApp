@@ -69,6 +69,9 @@ const SearchHead = ({navigation}) => {
                                 fontSize: 18
                             }}
                             placeholder='Поиск лекарства...'
+                            onFocus={()=>{
+                                navigation.navigate('SearchScreen');
+                            }}
                         />
                     </View>
                     {/* {<View>

@@ -14,6 +14,9 @@ import SubData from './data/SubData';
 import MedicineListScreen from '../medicine-list/MedicineList';
 import DATA from '../medicine-list/testMedicineData';
 
+import SearchScreen from '../search/SearchScreen';
+import SearchHeader from '../search/SearchHeader';
+
 const catalogStyles = StyleSheet.create({
 
 });
@@ -101,6 +104,7 @@ const Catalog = () => {
                 <CatalogStack.Screen name="MainCatalog" initialParams={{data: CatalogData}} component={MainCatalog} options={catalogHeader} />
                 <CatalogStack.Screen name="SubCatalog" component={SubCatalog} options={subcatalogHeader} />
                 <CatalogStack.Screen name="MedicineListScreen" component={MedicineListScreen} options={subcatalogHeader} />
+                <CatalogStack.Screen name="SearchScreen" component={SearchScreen} options={SearchHeader} />
             </CatalogStack.Navigator>
     );
 };
