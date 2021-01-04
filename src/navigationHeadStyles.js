@@ -40,8 +40,13 @@ export const headerStyles = {
         backgroundColor: backgroundColor,
         marginTop: statusBarHeight,
     },
-    searchHeader: {
+    searchInputHeader: {
         height: smallHeight+searchHeigt,
+        backgroundColor: backgroundColor,
+        marginTop: statusBarHeight,
+    },
+    searchResultHeader: {
+        height: smallHeight+searchHeigt+shopHeight,
         backgroundColor: backgroundColor,
         marginTop: statusBarHeight,
     },

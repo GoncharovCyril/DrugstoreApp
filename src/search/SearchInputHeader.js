@@ -45,7 +45,7 @@ const Header = ({navigation, backButton}) => {
 
 const searchHeader = {
     headerMode: "screen",
-    headerStyle: headerStyles.searchHeader,
+    headerStyle: headerStyles.searchInputHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

@@ -7,7 +7,7 @@ import mainHeader from './MainHeader';
 import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 
 import SearchScreen from '../search/SearchScreen';
-import SearchHeader from '../search/SearchHeader';
+import SearchHeader from '../search/SearchInputHeader';
 
 import Scroller from './Scroller';
 import { searchHeigt } from '../navigationHeadStyles';
@@ -46,7 +46,7 @@ const MainScreen = ({navigation, route}) => {
         <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
             <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
             <MainStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={mainHeader} />
-            <MainStack.Screen name="SearchScreen" component={SearchScreen} options={SearchHeader} />
+            <MainStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
         </MainStack.Navigator>
     )
 };

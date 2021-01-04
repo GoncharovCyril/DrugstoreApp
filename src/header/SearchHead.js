@@ -45,6 +45,9 @@ const Space = (props) => {
 };
 
 const SearchHead = ({navigation}) => {
+
+    const [searchValue, setSearchvalue] = React.useState('');
+
     return (
         <View style={headStyles.middleContainer}>
                 <View style={headStyles.searchContainer}>
@@ -69,8 +72,17 @@ const SearchHead = ({navigation}) => {
                                 fontSize: 18
                             }}
                             placeholder='Поиск лекарства...'
-                            onFocus={()=>{
+                            // onFocus={()=>{
+                            //     navigation.navigate('SearchScreen');
+                            // }}
+                            onTouchStart={()=>{
                                 navigation.navigate('SearchScreen');
+                            }}
+                            onChangeText={text => setSearchvalue(text)}
+                            onSubmitEditing={()=>{
+                                navigation.navigate('SearchResult', {
+                                    searchValue: searchValue
+                                });
                             }}
                         />
                     </View>
