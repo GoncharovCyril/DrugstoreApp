@@ -46,7 +46,7 @@ const MedicineList = ({route, navigation, data}) => {
     );
 
     return (
-        <View style={{ flex: 1, justifyContent: 'flex-start' }}>
+        <View style={{ flex: 1, justifyContent: 'flex-start', width: '100%'}}>
             <SafeAreaView style={{ flex: 1 }}>
                 <FlatList
                     data={listData}

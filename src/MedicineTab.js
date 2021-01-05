@@ -29,7 +29,8 @@ const productIconSize = 18;
 
 const bottomStyles = StyleSheet.create({
   bottomContainer: {
-    height: 54,
+    // height: 54,
+    height: '7.5%',
     justifyContent: 'center',
     backgroundColor: backColor,
     borderTopColor: colorG,
