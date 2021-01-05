@@ -4,7 +4,8 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import { useFocusEffect } from '@react-navigation/native';
 import { getPharmacies } from '../../requests/ShopsRequests';
-import PlusSolid from '../../../svg/rounds/plus-solid-round';
+// import PlusSolid from '../../../svg/rounds/plus-solid-round';
+import BottomSheet from 'reanimated-bottom-sheet';
 
 
 
@@ -21,6 +22,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
 
     // const [shopsData, setShopsdata] = React.useState(route.params['data']);
     const [shopsData, setShopsData] = React.useState([]);
+    const sheetRef = React.useRef(null);
+
 
     // const shopsData = route.params.hasOwnProperty('data') ? route.params.data : [];
     // const shopsData = [];
@@ -58,6 +61,18 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         },[])
     );
 
+
+    const renderBottom = () => (
+        <View style={{
+            backgroundColor: 'white',
+            padding: 16,
+            height: '100%',
+        }}>
+            <Text>Swipe</Text>
+
+        </View>
+    )
+
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             {
@@ -65,11 +80,13 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     <ActivityIndicator size="large" color="rgb(236,111,39)" />
                     <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем список аптек</Text>
                 </View>
-                    : <View style={{ flex: 4 }}>
+                    : 
+                    <View style={{flex: 1, width: '100%', justifyContent: 'flex-start'}}>
+                        <View style={{ flex: 4 }}>
                         {<MapView
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
-                            region={{
+                            initialRegion={{
                                 latitude: 47.993331,
                                 longitude: 37.853775,
                                 latitudeDelta: 0.0922,
@@ -86,12 +103,13 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                             coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
                                             title={item.name}
                                             // icon={require('../../../assets/plus-marker.png')}
-                                            // onPress={() => {
-                                            //     setSelectedShop(item);
+                                            onPress={() => {
+                                                setSelectedShop(item);
+                                                sheetRef.current.snapTo(1)
 
-                                            // }}
+                                            }}
                                         >
-                                            <View style={{ width: 22, height: 22, justifyContent: "center", alignSelf: "center" }}>
+                                            <View style={{ width: 23, height: 23, justifyContent: "center", alignSelf: "center" }}>
                                                 {/* {<PlusSolid color="white" colorBack="rgb(236,111,39)"/>} */}
                                                 <Image
                                                     style={{
@@ -99,7 +117,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                                         height: "100%"
                                                     }}
                                                     source={require('../../../assets/plus-marker.png')}
-                                                    resizeMode="contain" 
+                                                    resizeMode="stretch" 
                                                 />
                                             </ View>
                                         </Marker>
@@ -116,13 +134,18 @@ const ShopsListMapScreen = ({ route, navigation }) => {
 
                                 // }}
                             />} */}
-                        </ MapView>}
-                    </View>
-                // selectedShop != undefined ?
-                //     <View style={{ flex: 6 }}>
+                            </ MapView>}
+                            
 
-                //     </View>
-                //     : undefined
+                        </View>
+                        <BottomSheet
+                                    ref={sheetRef}
+                                    snapPoints={["0%",'30%']}
+                                    borderRadius={10}
+                                    renderContent={renderBottom} 
+                                />
+                    </View>
+                    
             }
 
 

@@ -10,6 +10,8 @@ const Logo = (props) => {
             }}
             source={require('../assets/logo_1024.png')}
             resizeMode="contain"
+            resizeMethod='scale'
+            fadeDuration={0}
         />
     );
 };
