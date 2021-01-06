@@ -50,7 +50,6 @@ const MedicineList = ({navigation, data}) => {
 
     const productSelector = createSelector(
         state => {
-            console.log('ping');
             return state.appStore.products.entries()
         },
         mapArray => new Map(mapArray)
@@ -62,7 +61,6 @@ const MedicineList = ({navigation, data}) => {
     // });
 
     const products = useSelector(productSelector);
-
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
@@ -82,7 +80,7 @@ const MedicineList = ({navigation, data}) => {
                                 products={products}
                             />
                         )}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => item.id.toString()}
                         // refreshing={refreshing} 
                         // onEndReached={onRefresh}
                         // onEndReachedThreshold={1}

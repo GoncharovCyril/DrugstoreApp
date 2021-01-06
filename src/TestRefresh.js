@@ -114,7 +114,7 @@ const List = () => {
                 ListHeaderComponent={<View style={{height: 8}} />}
                 data={DATA}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id.toString()}
                 refreshing={refreshing} 
                 onRefresh={onRefresh}
             />

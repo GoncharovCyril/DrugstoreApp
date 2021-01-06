@@ -197,6 +197,7 @@ function MedicineTab({ state, descriptors, navigation }) {
               onPress={onPress}
               onLongPress={onLongPress}
               style={isFocused ? bottomStyles.activeButtonContainer : bottomStyles.unactiveButtonContainer}
+              key={route.name}
             >
               <View style={bottomStyles.button}>
                 <View style={{flex: 0.8}}>

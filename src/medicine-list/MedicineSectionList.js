@@ -76,7 +76,7 @@ const MedicineList = ({navigation, data}) => {
 
     const products = useSelector(productSelector);
 
-    const renderItem = ({ item }) => (
+    const renderItem = ({ item, key }) => (
         <ListItem products={products} navigation={navigation} index={item.id} description={item.description} dealer={item.dealer} price={item.price} availability={item.availability} />
     );
 
@@ -91,7 +91,7 @@ const MedicineList = ({navigation, data}) => {
 
                         sections={data}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => item.id.toString()}
                         renderSectionHeader={({section: {title}}) => (
                             <SectionHeader title={title} navigation={navigation} />
                         )}

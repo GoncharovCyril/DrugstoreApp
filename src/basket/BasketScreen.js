@@ -50,6 +50,7 @@ const Footer = ({navigation}) => {
 const BasketScreen = ({route, navigation}) => {
     const products = useSelector(state => state.appStore.products);
     const productsCounter = useSelector(state => state.appStore.products.size);
+    const selectedShop = useSelector(state => state.appStore.shop.id);
     const [isLoading, setLoading] = React.useState(true);
     const [busketData, setBusketData] = React.useState([]);
 
@@ -80,7 +81,11 @@ const BasketScreen = ({route, navigation}) => {
                             <BasketList navigation={navigation} data={busketData} />
                         </View>
                         <View style={{flex: 85, alignItems: 'center'}}>
-                            <Footer navigation={navigation}/>
+                            {
+                                selectedShop == null ?
+                                <Footer navigation={navigation}/>
+                                : undefined
+                            }
                         </View>
                         <View style={{flex: 10}} />
                         

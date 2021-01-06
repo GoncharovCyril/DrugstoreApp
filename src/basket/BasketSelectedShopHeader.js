@@ -8,8 +8,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import TrashButton from "./TrashButton";
 import BackButton from '../BackButton';
 import TitleHead from '../header/TitleHead';
+import ShopHead from '../header/ShopHead';
 
-import { headerStyles, smallHeight, shopHeigt } from "../navigationHeadStyles";
+import { headerStyles, smallHeight, shopHeigt, shopHeight } from "../navigationHeadStyles";
 
 const headStyles = StyleSheet.create({
     headContainer: {
@@ -38,13 +39,15 @@ const Header = ({navigation, backButton, trashButton}) => {
                 }}
             />
             <TitleHead backButton={backButton} trashButton={trashButton} title='Корзина'/>
+            <ShopHead navigation={navigation} />
+
         </View>
     );
 };
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: headerStyles.basketHeader,
+    headerStyle: headerStyles.basketSelectedShopHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         const title = options.headerTitle !== undefined

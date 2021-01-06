@@ -2,12 +2,18 @@ import React from 'react';
 import { View, Text, ActivityIndicator, Image } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
+import { useSelector } from 'react-redux';
+
 import { useFocusEffect } from '@react-navigation/native';
 import { getPharmacies } from '../../requests/ShopsRequests';
 // import PlusSolid from '../../../svg/rounds/plus-solid-round';
 import BottomSheet from 'reanimated-bottom-sheet';
 
-
+//orange
+const colorO = "rgba(236,111,39,1.0)";
+//green
+const colorG = '#4db141';
+const colorB = '#4e6a79';
 
 const ShopsListMapScreen = ({ route, navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
@@ -23,6 +29,11 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     // const [shopsData, setShopsdata] = React.useState(route.params['data']);
     const [shopsData, setShopsData] = React.useState([]);
     const sheetRef = React.useRef(null);
+
+    const storedShopId = useSelector(state => {
+        return state.appStore.shop.id
+    });
+
 
 
     // const shopsData = route.params.hasOwnProperty('data') ? route.params.data : [];
@@ -65,10 +76,31 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     const renderBottom = () => (
         <View style={{
             backgroundColor: 'white',
-            padding: 16,
+            padding: '1%',
             height: '100%',
         }}>
-            <Text>Swipe</Text>
+            <View style={{flex: 3, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{backgroundColor: colorG, height: '50%', width: '10%', borderRadius: 15}} />
+
+            </View>
+            {
+                selectedShop == undefined ?
+                    undefined :
+                    <View style={{flex: 97, flexDirection: 'row'}}>
+                        <View style={{ flex: 85, marginLeft: "5%", marginTop: '0%' }}>
+                            <Text style={{ fontSize: 14, color: colorB }}>{selectedShop['city']}</Text>
+                            <Text style={{ fontSize: 18, color: colorG }}>{selectedShop['name']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['address']}</Text>
+                            <View style={{ height: 10, color: colorB }} />
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['phone']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['working_time']}</Text>
+                        </View>
+                        <View style={{ flex: 15 }}>
+
+                        </View>
+                    </View>
+            }
+            
 
         </View>
     )
@@ -83,7 +115,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     : 
                     <View style={{flex: 1, width: '100%', justifyContent: 'flex-start'}}>
                         <View style={{ flex: 4 }}>
-                        {<MapView
+                        <MapView
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
                             initialRegion={{
@@ -102,54 +134,40 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                             key={item.system_id}
                                             coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
                                             title={item.name}
-                                            // icon={require('../../../assets/plus-marker.png')}
+                                            // icon={require('./plus-marker.png')}
                                             onPress={() => {
                                                 setSelectedShop(item);
                                                 sheetRef.current.snapTo(1)
 
                                             }}
                                         >
-                                            <View style={{ width: 23, height: 23, justifyContent: "center", alignSelf: "center" }}>
-                                                {/* {<PlusSolid color="white" colorBack="rgb(236,111,39)"/>} */}
-                                                <Image
-                                                    style={{
-                                                        width: "100%",
-                                                        height: "100%"
-                                                    }}
-                                                    source={require('../../../assets/plus-marker.png')}
-                                                    resizeMode="stretch" 
-                                                />
-                                            </ View>
+                                            {
+                                                <View style={{ width: 23, height: 23, justifyContent: "center", alignSelf: "center" }}>
+                                                    {/* {<PlusSolid color="white" colorBack="rgb(236,111,39)"/>} */}
+                                                    <Image
+                                                        style={{
+                                                            width: "100%",
+                                                            height: "100%"
+                                                        }}
+                                                        source={require('../../../assets/plus-marker.png')}
+                                                        resizeMode="stretch"
+                                                    />
+                                                </ View>
+                                            }
                                         </Marker>
                                     )
                                 })
                             }
-                            {/* {<Marker
-                                key={666}
-                                coordinate={{ latitude: 47.996714, longitude: 37.804700 }}
-                                title='Аптека № 5'
-                                image={require('../../../img/plus-marker.png')}
-                                // onPress={() => {
-                                //     // setSelectedShop(item);
-
-                                // }}
-                            />} */}
-                            </ MapView>}
-                            
-
+                            </ MapView>
                         </View>
                         <BottomSheet
                                     ref={sheetRef}
                                     snapPoints={["0%",'30%']}
-                                    borderRadius={10}
+                                    borderRadius={15}
                                     renderContent={renderBottom} 
                                 />
-                    </View>
-                    
+                    </View>     
             }
-
-
-
         </View>
     )
 };

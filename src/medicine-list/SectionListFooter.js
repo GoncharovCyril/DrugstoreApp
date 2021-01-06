@@ -28,7 +28,7 @@ const footerStyles=StyleSheet.create({
     },
 });
 
-const Footer = ({navigation}) => (
+const Footer = ({navigation, key}) => (
     <View>
         <View style={{height: 12}} />
         <TouchableOpacity

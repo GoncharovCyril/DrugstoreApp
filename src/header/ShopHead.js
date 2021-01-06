@@ -92,7 +92,7 @@ const Shop = ({ navigation, shop }) => {
                         color: "rgb(106,106,106)",
                         fontSize: 17,
                         fontWeight: 'bold', 
-                        textAlign: 'center'}}>{shop.address}</Text>
+                        textAlign: 'center'}}>{shop}</Text>
                 </View>
 
                 <View style={{ flex: 10, alignItems: 'flex-end'}}>
@@ -108,10 +108,11 @@ const Shop = ({ navigation, shop }) => {
 
 const ShopHead = ({ navigation }) => {
 
-    const selectedShop = useSelector(state => state.appStore.shop);
+    const selectedShop = useSelector(state => state.appStore.shop.id);
+    const selectedShopAddress = useSelector(state => state.appStore.shop.address);
 
     return (
-        selectedShop.id != null ? <Shop shop={selectedShop} /> : <EmptyShop navigation={navigation} />
+        selectedShop != null ? <Shop shop={selectedShopAddress} /> : <EmptyShop navigation={navigation} />
     );
 };
 

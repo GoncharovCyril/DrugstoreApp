@@ -98,7 +98,7 @@ const MedicineList = ({route, navigation}) => {
                         headVisible ? Header : undefined
                     }
                     renderItem={renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                     refreshing={refreshing}
                     onEndReached={onRefresh}
                     onEndReachedThreshold={1}

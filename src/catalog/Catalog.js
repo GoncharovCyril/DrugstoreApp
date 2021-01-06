@@ -56,7 +56,7 @@ const MainCatalog = ({navigation, route}) => {
                         ListHeaderComponent={<View style={{height: 8}} />}
                         data={route.params.data}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => item.id.toString()}
                         refreshing={refreshing} 
                         onRefresh={onRefresh}
                     />
@@ -88,7 +88,7 @@ const SubCatalog = ({navigation, route}) => {
                         ListHeaderComponent={<View style={{height: 8}} />}
                         data={route.params.data}
                         renderItem={renderItem}
-                        keyExtractor={item => item.id}
+                        keyExtractor={item => item.id.toString()}
                     />
                 </SafeAreaView>
             </ View>
