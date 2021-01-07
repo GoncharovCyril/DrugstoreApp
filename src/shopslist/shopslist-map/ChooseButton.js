@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         // borderWidth: 2,
         borderColor: colorG,
         backgroundColor: colorG,
-        borderBottomRightRadius: 15,
+        borderRadius: 15,
         height: "100%",
         width: "100%"
     },
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         // borderWidth: 2,
         borderColor: colorG,
         backgroundColor: colorG,
-        borderBottomRightRadius: 15,
+        borderRadius: 15,
         height: "100%",
         width: "100%"
     },
@@ -45,18 +45,10 @@ const styles = StyleSheet.create({
 });
 
 
-const ChooseButton = ({ navigation, system_id, address, storedShopId }) => {
+const ChooseButton = ({ system_id, address, storedShopId, shopItem }) => {
 
     // const shopId = useSelector(state => state.appStore.shop.id);
 
-    const dispatch = useDispatch();
-
-    const setShop = React.useCallback(()=> {
-        dispatch({ type: SET_SHOP, payload: {id: system_id, address: address } });
-    }, [dispatch]);
-    const setNoShop = React.useCallback(()=>{
-        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
-    }, [dispatch]);
 
 
     const Button1 = () => (
@@ -79,7 +71,7 @@ const ChooseButton = ({ navigation, system_id, address, storedShopId }) => {
 
 
     return (
-        storedShopId !== system_id ? <Button1 /> : <Button2 />
+        storedShopId !== shopItem['system_id'] ? <Button1 /> : <Button2 />
     );
 };
 

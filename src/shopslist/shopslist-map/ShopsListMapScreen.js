@@ -1,8 +1,16 @@
 import React from 'react';
-import { View, Text, ActivityIndicator, Image } from 'react-native';
+import { 
+    View, 
+    Text, 
+    ActivityIndicator, 
+    Image, 
+    TouchableOpacity, 
+    TouchableWithoutFeedback, 
+    Button, 
+    StyleSheet } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { SET_SHOP } from '../../redux/types';
 
 import { useFocusEffect } from '@react-navigation/native';
 import { getPharmacies } from '../../requests/ShopsRequests';
@@ -15,12 +23,50 @@ const colorO = "rgba(236,111,39,1.0)";
 const colorG = '#4db141';
 const colorB = '#4e6a79';
 
+const styles = StyleSheet.create({
+    buttonSetStoredShop: {
+        alignItems: "center",
+        justifyContent: 'center',
+        // borderWidth: 2,
+        borderColor: colorG,
+        backgroundColor: colorG,
+        borderRadius: 15,
+        height: "100%",
+        width: "100%"
+    },
+    buttonSetNoStoredShop: {
+        alignItems: "center",
+        justifyContent: 'center',
+        // borderWidth: 2,
+        borderColor: colorG,
+        backgroundColor: colorG,
+        borderRadius: 15,
+        height: "100%",
+        width: "100%"
+    },
+    buttonSetStoredShopText: {
+        color: 'white',
+        alignSelf: "center",
+        textAlignVertical: 'center',
+        fontSize: 17
+    },
+    buttonSetStoredShopNoText: {
+        color: 'white',
+        alignSelf: "center",
+        textAlignVertical: 'center',
+        fontSize: 17
+    },
+
+});
+
 const ShopsListMapScreen = ({ route, navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
     const [selectedShop, setSelectedShop] = React.useState(
         // route.params.hasOwnProperty('selectedShop') ? route.params['selectedShop'] : undefined
         undefined
     );
+
+    const [snapPoints, setSnappoints] = React.useState(["0%",'20%']);
 
     const [regLatit, regLongit] = selectedShop == undefined
         ? [47.993331, 37.853775]
@@ -34,6 +80,10 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         return state.appStore.shop.id
     });
 
+
+    
+
+    
 
 
     // const shopsData = route.params.hasOwnProperty('data') ? route.params.data : [];
@@ -72,6 +122,34 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         },[])
     );
 
+    const dispatch = useDispatch();
+
+    const setStoredShop = React.useCallback(()=> {
+        dispatch({ type: SET_SHOP, payload: {id: selectedShop['system_id'], address: selectedShop['address'] } });
+        
+    }, [dispatch, selectedShop]);
+    const setNoStoredShop = React.useCallback(()=>{
+        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+        
+    }, [dispatch]);
+
+    const ButtonSetStoredShop = () => (
+        <TouchableOpacity
+            style={styles.buttonSetStoredShop}
+            onPress={setStoredShop}
+        >
+            <Text style={styles.buttonSetStoredShopText}>Выбрать</Text>
+        </TouchableOpacity>
+    );
+
+    const ButtonSetNoStoredShop = () => (
+        <TouchableOpacity
+            style={styles.buttonSetNoStoredShop}
+            onPress={setNoStoredShop}
+        >
+            <Text style={styles.buttonSetStoredShopNoText}>Отменить</Text>
+        </TouchableOpacity>
+    );
 
     const renderBottom = () => (
         <View style={{
@@ -87,16 +165,29 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                 selectedShop == undefined ?
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
-                        <View style={{ flex: 85, marginLeft: "5%", marginTop: '0%' }}>
-                            <Text style={{ fontSize: 14, color: colorB }}>{selectedShop['city']}</Text>
-                            <Text style={{ fontSize: 18, color: colorG }}>{selectedShop['name']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['address']}</Text>
+                        <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>
+                            <Text style={{ fontSize: 14, color: colorB }}>-{selectedShop['city']}</Text>
+                            <Text style={{ fontSize: 14, color: colorB }}>-{selectedShop['system_id']}</Text>
+                            <Text style={{ fontSize: 18, color: colorG }}>-{selectedShop['name']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['address']}</Text>
                             <View style={{ height: 10, color: colorB }} />
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['phone']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['working_time']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['phone']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['working_time']}</Text>
                         </View>
-                        <View style={{ flex: 15 }}>
-
+                        <View style={{ flex: 30, justifyContent: 'flex-start' }}>
+                            <View style={{height: '25%', justifyContent: 'center'}}>
+                                {
+                                    storedShopId !== selectedShop['system_id'] ? <ButtonSetStoredShop /> : <ButtonSetNoStoredShop />
+                                }
+                            </View>
+                            
+                            {
+                                // selectedShop.photo != null ?
+                                // <TouchableWithoutFeedback>
+                                //     <Text>Фото</Text>
+                                // </ TouchableWithoutFeedback>
+                                // : undefined
+                            }
                         </View>
                     </View>
             }
@@ -137,8 +228,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                             // icon={require('./plus-marker.png')}
                                             onPress={() => {
                                                 setSelectedShop(item);
-                                                sheetRef.current.snapTo(1)
-
+                                                // setSnappoints(item['photo'] == undefined ? ['0%', '20%'] : ['0%', '20%'])
+                                                sheetRef.current.snapTo(1);                                                
                                             }}
                                         >
                                             {
@@ -161,11 +252,13 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                             </ MapView>
                         </View>
                         <BottomSheet
-                                    ref={sheetRef}
-                                    snapPoints={["0%",'30%']}
-                                    borderRadius={15}
-                                    renderContent={renderBottom} 
-                                />
+                            ref={sheetRef}
+                            snapPoints={snapPoints}
+                            borderRadius={15}
+                            initialSnap={0}
+                            renderContent={renderBottom}
+                            enabledContentTapInteraction={false}
+                        />
                     </View>     
             }
         </View>
