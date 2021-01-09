@@ -17,51 +17,54 @@ const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     headContainer: {
-        flex: 3,
+        // flex: 3,
         justifyContent: 'center',
+        height: smallHeight+searchHeigt,
     },
 });
 
 
 
-const Header = ({navigation, backButton}) => {
+const Header = ({route, navigation, searchValue, setSearchvalue}) => {
     return (
-        <View style={headStyles.headContainer}>
-            <LinearGradient
-                colors={[colorO, 'white']}
-                style={{
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    height: smallHeight+searchHeigt,
-                }}
-            />
-            <TitleHead backButton={backButton} title='Поиск'/>
-            <SearchHead navigation={navigation} />
-        </View>
+            <View style={headStyles.headContainer}>
+                <LinearGradient
+                    colors={[colorO, 'white']}
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        height: smallHeight + searchHeigt,
+                    }}
+                />
+                <TitleHead 
+                    backButton={(<BackButton action={navigation.goBack} />)} 
+                    title='Поиск' 
+                />
+                <SearchHead navigation={navigation} searchValue={searchValue} setSearchvalue={setSearchvalue} />
+            </View>
+        
     );
 };
 
-const searchHeader = {
-    headerMode: "screen",
-    headerStyle: headerStyles.searchInputHeader,
-    header: ({ scene, previous, navigation }) => {
-        const { options } = scene.descriptor;
-        const title = options.headerTitle !== undefined
-            ? options.headerTitle
-            : options.title !== undefined
-            ? options.title
-            : scene.route.name;
+// const searchHeader = {
+//     headerMode: "screen",
+//     headerStyle: headerStyles.searchInputHeader,
+//     header: ({ scene, previous, navigation }) => {
+//         const { options } = scene.descriptor;
+//         const title = options.headerTitle !== undefined
+//             ? options.headerTitle
+//             : options.title !== undefined
+//             ? options.title
+//             : scene.route.name;
 
-        return (
-            <View style={options.headerStyle} >
-                <Header navigation={navigation} backButton={
-                    previous ? <BackButton action={navigation.goBack} /> : undefined
-                } />  
-            </View>          
-        );
-    },
-};
+//         return (
+                   
+//         );
+//     },
+// };
 
-export default searchHeader;
+
+
+export default Header;

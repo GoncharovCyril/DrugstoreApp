@@ -44,9 +44,9 @@ const Space = (props) => {
     );
 };
 
-const SearchHead = ({navigation}) => {
+const SearchHead = ({navigation, searchValue, setSearchvalue}) => {
 
-    const [searchValue, setSearchvalue] = React.useState('');
+    // const [searchValue, setSearchvalue] = React.useState('');
 
     return (
         <View style={headStyles.middleContainer}>

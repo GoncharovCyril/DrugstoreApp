@@ -65,8 +65,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         // route.params.hasOwnProperty('selectedShop') ? route.params['selectedShop'] : undefined
         undefined
     );
-
     const [snapPoints, setSnappoints] = React.useState(["0%",'20%']);
+    const [initialSnap, setInitialsnap] = React.useState(0);
 
     const [regLatit, regLongit] = selectedShop == undefined
         ? [47.993331, 37.853775]
@@ -103,6 +103,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     useFocusEffect(
         React.useCallback(()=> {
             setShopsData([]);
+            // setInitialsnap(route['params'] == undefined ? 0 : route.params['selectedShop'] == undefined ? 0 : 1);
             setLoading(true);
             getPharmacies()
                 .then(([status, json]) => {
@@ -166,13 +167,12 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
                         <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>
-                            <Text style={{ fontSize: 14, color: colorB }}>-{selectedShop['city']}</Text>
-                            <Text style={{ fontSize: 14, color: colorB }}>-{selectedShop['system_id']}</Text>
-                            <Text style={{ fontSize: 18, color: colorG }}>-{selectedShop['name']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['address']}</Text>
+                            <Text style={{ fontSize: 14, color: colorB }}>{selectedShop['city']}</Text>
+                            <Text style={{ fontSize: 18, color: colorG }}>{selectedShop['name']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['address']}</Text>
                             <View style={{ height: 10, color: colorB }} />
-                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['phone']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>-{selectedShop['working_time']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['phone']}</Text>
+                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['working_time']}</Text>
                         </View>
                         <View style={{ flex: 30, justifyContent: 'flex-start' }}>
                             <View style={{height: '25%', justifyContent: 'center'}}>
@@ -255,7 +255,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                             ref={sheetRef}
                             snapPoints={snapPoints}
                             borderRadius={15}
-                            initialSnap={0}
+                            initialSnap={initialSnap}
                             renderContent={renderBottom}
                             enabledContentTapInteraction={false}
                         />
