@@ -6,6 +6,7 @@ import {
     CLEAR_ALL_PRODUCTS, 
     SET_TOKEN, 
     SET_SHOP, 
+    SET_SELECTED_SHOP,
     SET_CITY,
     REMOVE_ALL_THIS_PRODUCT
 } from './types';
@@ -22,10 +23,23 @@ const INITIAL_STATE = {
     products: new Map(),
     account: {
         token: null,
+        phone: null,
+        verification_code: null,
     },
     shop: {
         id: null,
         address: null,
+    },
+    selectedShop: {
+        id: null,
+        system_id: null,
+        name: null,
+        city: null,
+        address: null,
+        coordinates: null,
+        photo: null,
+        phone: null,
+        working_time: null,
     },
     city: {
         name: 'Донецк',
@@ -37,6 +51,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
         products,
         account,
         shop,
+        selectedShop,
         city
     } = state;
     switch (action.type) {
@@ -104,6 +119,20 @@ const appReducer = (state = INITIAL_STATE, action) => {
             storeShop(JSON.stringify(shop));
             break;
 
+
+        case SET_SELECTED_SHOP:
+            selectedShop.id = action.payload.id;
+            selectedShop.system_id = action.payload.system_id;
+            selectedShop.name = action.payload.name;
+            selectedShop.city = action.payload.city;
+            selectedShop.address = action.payload.address;
+            selectedShop.coordinates = action.payload.coordinates;
+            selectedShop.photo = action.payload.photo;
+            selectedShop.phone = action.payload.phone;
+            selectedShop.working_time = action.payload.working_time;
+
+            break;
+
         case SET_CITY:
             city.name = action.payload.city_name;
             storeCity(action.payload.city_name);
@@ -113,7 +142,13 @@ const appReducer = (state = INITIAL_STATE, action) => {
             return state
     }
 
-    return { products, account, shop, city };
+    return { 
+        products, 
+        account, 
+        shop, 
+        selectedShop, 
+        city 
+    };
 };
 
 export default combineReducers({ appStore: appReducer });

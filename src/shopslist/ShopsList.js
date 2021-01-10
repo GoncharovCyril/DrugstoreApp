@@ -71,11 +71,12 @@ const ShopsListTabs = ({route, navigation }) => {
                 }
             }} >
             <Tab.Screen name="ShopsListScreen" 
-            // initialParams={{ data: route.params.cityShops }} 
-            component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
+                // initialParams={{ data: route.params.cityShops }} 
+                component={ShopsListScreen} options={{ tabBarLabel: 'Списком' }} />
             <Tab.Screen name="ShopsListMapScreen" 
-            // initialParams={{ data: route.params.allShops }} 
-            component={ShopsListMapScreen} options={{ tabBarLabel: 'На карте' }} />
+                // initialParams={{selectedShop: null 
+                //     }} 
+                component={ShopsListMapScreen} options={{ tabBarLabel: 'На карте' }} />
         </Tab.Navigator>
     )
 }

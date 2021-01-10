@@ -5,12 +5,10 @@ import {
     ActivityIndicator, 
     Image, 
     TouchableOpacity, 
-    TouchableWithoutFeedback, 
-    Button, 
     StyleSheet } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useSelector, useDispatch } from 'react-redux';
-import { SET_SHOP } from '../../redux/types';
+import { SET_SHOP, SET_SELECTED_SHOP } from '../../redux/types';
 
 import { useFocusEffect } from '@react-navigation/native';
 import { getPharmacies } from '../../requests/ShopsRequests';
@@ -61,10 +59,10 @@ const styles = StyleSheet.create({
 
 const ShopsListMapScreen = ({ route, navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
-    const [selectedShop, setSelectedShop] = React.useState(
-        // route.params.hasOwnProperty('selectedShop') ? route.params['selectedShop'] : undefined
-        undefined
-    );
+    // const [selectedShop, setSelectedShop] = React.useState(
+    //     // route.params.hasOwnProperty('selectedShop') ? route.params['selectedShop'] : undefined
+    //     undefined
+    // );
     const [snapPoints, setSnappoints] = React.useState(["0%",'20%']);
     const [initialSnap, setInitialsnap] = React.useState(0);
 
@@ -79,26 +77,10 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     const storedShopId = useSelector(state => {
         return state.appStore.shop.id
     });
-
-
-    
-
-    
-
-
-    // const shopsData = route.params.hasOwnProperty('data') ? route.params.data : [];
-    // const shopsData = [];
-
-
-    // setSelectedShop(
-    //         route.params.hasOwnProperty('selectedShop') ?
-    //         route.params.selectedShop : undefined
-    //     );
-    // useFocusEffect(
-    //     React.useCallback(() => {
-    //         return () => {setSelectedShop(undefined)}
-    //     }, [])
-    // );
+    const selectedShopId = useSelector(state => {
+        return state.appStore.selectedShop.id
+    });
+    const selectedShop = useSelector(state => state.appStore.selectedShop);
 
     useFocusEffect(
         React.useCallback(()=> {
@@ -133,6 +115,9 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
         
     }, [dispatch]);
+    const setNoSelectedShop = React.useCallback(() => {
+
+    }, [dispatch]);
 
     const ButtonSetStoredShop = () => (
         <TouchableOpacity
@@ -163,7 +148,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
 
             </View>
             {
-                selectedShop == undefined ?
+                selectedShopId == null ?
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
                         <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Dimensions, Text, Image } from 'react-native';
 import { TabActions } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import {SET_SELECTED_SHOP} from '../../redux/types';
 import { BoxShadow } from 'react-native-shadow';
 
 import ChooseButton from './ChooseButton';
@@ -50,6 +52,27 @@ const MedicineStoreItem = ({
         }   
     });
 
+    const dispatch = useDispatch();
+
+    const setSelectedShop = React.useCallback(()=> {
+        dispatch({ type: SET_SELECTED_SHOP, payload: {
+            id: id,
+            system_id: system_id,
+            name: name,
+            city: city,
+            address: address,
+            coordinates: coordinates,
+            photo: photo,
+            phone: phone,
+            working_time: working_time,
+        } });
+        navigation.dispatch(jumpToMaps);
+    }, [dispatch]);
+
+    
+
+
+
     return (
         <View
             style={{
@@ -72,9 +95,7 @@ const MedicineStoreItem = ({
                 style: {}
             }}>
                 <TouchableOpacity
-                    onPress={() => {
-                        navigation.dispatch(jumpToMaps);
-                    }}
+                    onPress={setSelectedShop}
                     style={{
                         flex: 1,
                         backgroundColor: "white",
