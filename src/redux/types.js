@@ -11,3 +11,5 @@ export const SET_SHOP = 'SET_SHOP';
 export const SET_SELECTED_SHOP = 'SET_SELECTED_SHOP'
 
 export const SET_CITY = 'SET_CITY';
+
+export const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';

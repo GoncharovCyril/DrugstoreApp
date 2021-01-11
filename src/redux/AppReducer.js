@@ -8,7 +8,8 @@ import {
     SET_SHOP, 
     SET_SELECTED_SHOP,
     SET_CITY,
-    REMOVE_ALL_THIS_PRODUCT
+    REMOVE_ALL_THIS_PRODUCT,
+    SET_SEARCH_VALUE
 } from './types';
 
 import {
@@ -44,6 +45,9 @@ const INITIAL_STATE = {
     city: {
         name: 'Донецк',
     },
+    search: {
+        value: '',
+    }
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -52,7 +56,8 @@ const appReducer = (state = INITIAL_STATE, action) => {
         account,
         shop,
         selectedShop,
-        city
+        city,
+        search
     } = state;
     switch (action.type) {
 
@@ -138,6 +143,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
             storeCity(action.payload.city_name);
             break;
 
+
+        case SET_SEARCH_VALUE:
+            search.value = action.payload.value;
+            break;
+
         default:
             return state
     }
@@ -147,7 +157,8 @@ const appReducer = (state = INITIAL_STATE, action) => {
         account, 
         shop, 
         selectedShop, 
-        city 
+        city,
+        search
     };
 };
 

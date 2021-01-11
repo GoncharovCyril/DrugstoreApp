@@ -1,7 +1,8 @@
 export const searchMedicine = async(name) => {
     const url = 'http://195.133.145.14/api/drugs';
     const data = {
-        "name": name
+        "name": name,
+        "limit": 25
     }
     try {
         let response = await fetch(url, {
@@ -12,9 +13,10 @@ export const searchMedicine = async(name) => {
             }
         });
         let status = response.status;
-        let json = await response.json();
+        // let json = await response.json();
+        let text = await response.text();
 
-        return [status, json];
+        return [status, text];
 
     } catch (error) {
         alert(error)

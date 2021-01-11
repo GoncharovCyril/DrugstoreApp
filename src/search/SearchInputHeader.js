@@ -42,29 +42,33 @@ const Header = ({route, navigation, searchValue, setSearchvalue}) => {
                     backButton={(<BackButton action={navigation.goBack} />)} 
                     title='Поиск' 
                 />
-                <SearchHead navigation={navigation} searchValue={searchValue} setSearchvalue={setSearchvalue} />
+                <SearchHead navigation={navigation} />
             </View>
         
     );
 };
 
-// const searchHeader = {
-//     headerMode: "screen",
-//     headerStyle: headerStyles.searchInputHeader,
-//     header: ({ scene, previous, navigation }) => {
-//         const { options } = scene.descriptor;
-//         const title = options.headerTitle !== undefined
-//             ? options.headerTitle
-//             : options.title !== undefined
-//             ? options.title
-//             : scene.route.name;
+const searchHeader = {
+    headerMode: "screen",
+    headerStyle: headerStyles.searchInputHeader,
+    header: ({ scene, previous, navigation }) => {
+        const { options } = scene.descriptor;
+        const title = options.headerTitle !== undefined
+            ? options.headerTitle
+            : options.title !== undefined
+            ? options.title
+            : scene.route.name;
 
-//         return (
-                   
-//         );
-//     },
-// };
+        return (
+            <View style={options.headerStyle} >
+                <Header navigation={navigation} backButton={
+                    previous ? <BackButton action={navigation.goBack} /> : undefined
+                } />  
+            </View>     
+        );
+    },
+};
 
 
 
-export default Header;
+export default searchHeader;

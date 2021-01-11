@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableOpacity } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { SET_SEARCH_VALUE } from '../redux/types';
 
 import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
 
@@ -44,9 +46,21 @@ const Space = (props) => {
     );
 };
 
-const SearchHead = ({navigation, searchValue, setSearchvalue}) => {
+const SearchHead = ({navigation}) => {
 
     // const [searchValue, setSearchvalue] = React.useState('');
+
+    const dispatch = useDispatch();
+    
+    const setSearchValue = React.useCallback((text)=> {
+        dispatch({
+            type: SET_SEARCH_VALUE,
+            payload: {
+                value: text
+            }
+        });
+
+    }, [dispatch])
 
     return (
         <View style={headStyles.middleContainer}>
@@ -78,7 +92,7 @@ const SearchHead = ({navigation, searchValue, setSearchvalue}) => {
                             onTouchStart={()=>{
                                 navigation.navigate('SearchScreen');
                             }}
-                            onChangeText={text => setSearchvalue(text)}
+                            onChangeText={text => setSearchValue(text)}
                             onSubmitEditing={()=>{
                                 navigation.navigate('SearchResult', {
                                     searchValue: searchValue
