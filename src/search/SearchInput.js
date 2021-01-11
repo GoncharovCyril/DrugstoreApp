@@ -6,7 +6,7 @@ import { createSelector } from 'reselect';
 import {searchMedicine} from '../requests/ProductsRequests';
 
 
-import SearchInputHeader from './SearchInputHeader';
+import SearchInputHeader from './search-input-header/SearchInputHeader';
 
 import SearchShortResultList from './SearchShortResultList';
 
@@ -18,10 +18,8 @@ const SearchInput = ({route, navigation}) => {
     // const [searchValue, setSearchvalue] = React.useState('');
     const [resultData, setResult] = React.useState([]);
 
-    const searchValueSelector = createSelector(
-        state => state.appStore.search.value,
-        value => {
-            console.log('ping')
+    const searchAction = (text) => {
+        console.log('ping')
             if (value.length > 0){
                 searchMedicine(value).then(([status, text]) => {
                     console.log(JSON.parse(text).length);
@@ -39,17 +37,26 @@ const SearchInput = ({route, navigation}) => {
             else {
                 // setResult([]);
             }
-        }
-    )
-    const searchValue = useSelector(searchValueSelector);
+        setResult(text);
+    }
 
     return (
         <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', borderWidth: 1}}>
-                {/* <Text>{JSON.stringify(JSON.parse(resultData))}</Text> */}
-                <SearchShortResultList
-                    navigation={navigation}
-                    data={resultData} 
-                />
+            <SearchInputHeader navigation={navigation} setDataAction={setResult} />
+                {
+                    // <Text>{resultData}</Text>
+                    }
+                {
+                resultData == null ?
+                    //здесь потом вставится список истории
+                    undefined
+                    :
+
+                    <SearchShortResultList
+                        navigation={navigation}
+                        data={resultData}
+                    />
+                }
         </View>
     );
 };
