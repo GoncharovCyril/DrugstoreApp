@@ -8,7 +8,7 @@ import { getSize } from './redux/Methods';
 
 import HomeSolid from '../svg/home-solid';
 import ListUlSolid from '../svg/list-ul-solid';
-import ShoppingBasketSolid from '../svg/shopping-basket-solid';
+import ShoppingBasketSolid from '../svg/shopping-basket-solid2';
 import MapMarketAltSolid from '../svg/map-market-alt-solid';
 import BarsSolid from '../svg/bars-solid';
 
@@ -92,7 +92,7 @@ const ProductIcon = ({count, isFocused}) => {
       zIndex: 1, 
       position: 'absolute',
     }}>
-      <View style={{flex: 1, justifyContent: 'flex-start', left: '110%', top: "-32%"}}>
+      <View style={{flex: 1, justifyContent: 'flex-start', left: '150%', top: "-50%"}}>
         <View style={isFocused ? bottomStyles.activeProductIcon : bottomStyles.unactiveProductIcon}>
           <Text style={{ 
             // color: isFocused ? colorO : colorO, 
