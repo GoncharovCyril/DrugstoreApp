@@ -77,33 +77,13 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     const storedShopId = useSelector(state => {
         return state.appStore.shop.id
     });
-    const selectedShopId = useSelector(state => {
-        return state.appStore.selectedShop.id
-    });
-    const selectedShop = useSelector(state => state.appStore.selectedShop);
+    // const selectedShopId = useSelector(state => {
+    //     return state.appStore.selectedShop.id
+    // });
+    const storedSelectedShop = useSelector(state => state.appStore.selectedShop);
+    const [selectedShop, setSelectedShop] = React.useState({})
 
-    useFocusEffect(
-        React.useCallback(()=> {
-            setShopsData([]);
-            // setInitialsnap(route['params'] == undefined ? 0 : route.params['selectedShop'] == undefined ? 0 : 1);
-            setLoading(true);
-            getPharmacies()
-                .then(([status, json]) => {
-                    switch (status) {
-                        case 200:
-                            // alert(200);
-                            setShopsData(json);
-                            break;
-                        default:
-                            alert(`${status}:\n${json}`);
-                            break;
-                    }
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
-        },[])
-    );
+    
 
     const dispatch = useDispatch();
 
@@ -116,7 +96,18 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         
     }, [dispatch]);
     const setNoSelectedShop = React.useCallback(() => {
-
+        // console.log('blur2')
+        dispatch({ type: SET_SELECTED_SHOP, payload: {
+            id: null,
+            system_id: null,
+            name: null,
+            city: null,
+            address: null,
+            coordinates: null,
+            photo: null,
+            phone: null,
+            working_time: null,
+        } });
     }, [dispatch]);
 
     const ButtonSetStoredShop = () => (
@@ -148,7 +139,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
 
             </View>
             {
-                selectedShopId == null ?
+                selectedShop.id == null ?
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
                         <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>
@@ -181,6 +172,36 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         </View>
     )
 
+
+    useFocusEffect(
+        React.useCallback(()=> {
+            setShopsData([]);
+            // setInitialsnap(route['params'] == undefined ? 0 : route.params['selectedShop'] == undefined ? 0 : 1);
+            setLoading(true);
+            setSelectedShop(storedSelectedShop);
+            // console.log(selectedShop);
+            setInitialsnap(storedSelectedShop.id != null ? 1 : 0);
+            console.log(storedSelectedShop.id);
+            getPharmacies()
+                .then(([status, json]) => {
+                    switch (status) {
+                        case 200:
+                            // alert(200);
+                            setShopsData(json);
+                            break;
+                        default:
+                            alert(`${status}:\n${json}`);
+                            break;
+                    }
+                })
+                .finally(() => {
+                    setLoading(false);
+                })
+            
+            return () => setNoSelectedShop();
+        },[])
+    );
+
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             {
@@ -195,8 +216,10 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
                             initialRegion={{
-                                latitude: 47.993331,
-                                longitude: 37.853775,
+                                latitude: selectedShop.coordinates == null 
+                                    ? 47.993331 : parseFloat(selectedShop.coordinates.split(', ')[0]),
+                                longitude: selectedShop.coordinates == null 
+                                    ? 37.853775 : parseFloat(selectedShop.coordinates.split(', ')[1]),
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421
                             }}
@@ -241,6 +264,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                             snapPoints={snapPoints}
                             borderRadius={15}
                             initialSnap={initialSnap}
+                            enabledBottomInitialAnimation={true}
                             renderContent={renderBottom}
                             enabledContentTapInteraction={false}
                         />
