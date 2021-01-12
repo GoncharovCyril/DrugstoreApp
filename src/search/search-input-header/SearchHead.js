@@ -109,6 +109,7 @@ const SearchHead = ({navigation, setDataAction}) => {
                                 flex: 92,
                                 fontSize: 18
                             }}
+                            autoFocus={true}
                             placeholder='Поиск лекарства...'
                             // onFocus={()=>{
                             //     navigation.navigate('SearchScreen');
