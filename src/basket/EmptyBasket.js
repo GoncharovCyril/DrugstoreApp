@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { TabActions } from '@react-navigation/native';
 
+import {colorOrange} from '../Colors';
+
 const bRadius = 25;
 
 const EmptyBasket = ({route, navigation}) => {
@@ -19,11 +21,11 @@ const EmptyBasket = ({route, navigation}) => {
                 flex: 85, 
                 width: "70%", 
                 borderWidth: 2,
-                borderColor: "rgb(236,111,39)", 
+                borderColor: colorOrange, 
                 borderRadius: bRadius,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: "rgb(236,111,39)"
+                backgroundColor: colorOrange
                 }}
 
             onPress={() => {
@@ -39,7 +41,7 @@ const EmptyBasket = ({route, navigation}) => {
                 flex: 85, 
                 width: "70%", 
                 borderWidth: 2, 
-                borderColor: "rgb(236,111,39)", 
+                borderColor: colorOrange, 
                 borderRadius: bRadius,
                 justifyContent: 'center',
                 alignItems: 'center'
@@ -48,7 +50,7 @@ const EmptyBasket = ({route, navigation}) => {
                 navigation.navigate('SearchScreen')
             }}
             >
-                <Text style={{fontSize: 18, color: "rgb(236,111,39)"}}>Найти лекарство</Text>
+                <Text style={{fontSize: 18, color: colorOrange}}>Найти лекарство</Text>
             </TouchableOpacity>
             <View style={{flex: 10}} />
         </View>

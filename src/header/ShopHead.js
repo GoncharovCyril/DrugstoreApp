@@ -3,21 +3,19 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
+import { colorOrange, colorDarkGrey, colorLightYellow } from '../Colors';
+
 
 import { SET_SHOP } from '../redux/types';
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
-//orange
-const colorO = "rgba(236,111,39,1.0)";
-//green
-const colorG = '#4db141';
 
 const headStyles = StyleSheet.create({
     drugstorePickerContainer: {
         flexDirection: 'row',
-        backgroundColor: '#fdfde8',
+        backgroundColor: colorLightYellow,
         // flex: 3,
         height: shopHeight,
     },
@@ -56,9 +54,9 @@ const EmptyShop = ({ navigation }) => {
                     <PlusSolid color="white" />
                 </ View>
                 <Space width="3%" />
-                <Text style={{ flex: 8, alignSelf: 'center', justifyContent: 'center', color: "rgb(106,106,106)", fontSize: 16 }}>Выберите аптеку, чтобы искать товары только в ней</Text>
+                <Text style={{ flex: 8, alignSelf: 'center', justifyContent: 'center', color: colorDarkGrey, fontSize: 16 }}>Выберите аптеку, чтобы искать товары только в ней</Text>
                 <View style={{ height: '30%', justifyContent: "center", alignSelf: 'center', }}>
-                    <ShevronRightSolid color={colorO} />
+                    <ShevronRightSolid color={colorOrange} />
                 </ View>
                 <Space width="3%" />
             </View>
@@ -84,12 +82,12 @@ const Shop = ({ navigation, shop }) => {
                 <View style={{ flex: 10 }} />
                 <View>
                     <Text style={{
-                        color: "rgb(106,106,106)",
+                        color: colorDarkGrey,
                         fontSize: 16,
                         textAlign: 'center'
                     }}>Выбрана аптека по адресу</Text>
                     <Text style={{
-                        color: "rgb(106,106,106)",
+                        color: colorDarkGrey,
                         fontSize: 17,
                         fontWeight: 'bold', 
                         textAlign: 'center'}}>{shop}</Text>

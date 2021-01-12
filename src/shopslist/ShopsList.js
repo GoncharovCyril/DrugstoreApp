@@ -6,6 +6,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { useFocusEffect } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
+import { colorGreen, colorDarkGrey } from '../Colors';
+
 import { getPharmacies } from '../requests/ShopsRequests';
 
 import ShopsListHeader from './ShopsListHeader';
@@ -31,13 +33,9 @@ const Tab = createMaterialTopTabNavigator();
 //     </Tab.Navigator>
 // );
 
-//orange
-const colorO = "rgb(236,111,39)";
-//green
-const colorG = '#4db141';
-// const activeColor = "rgb(226,94,18)";
-const activeColor = colorG;
-const inactiveColor = "rgb(106,106,106)";
+
+const activeColor = colorGreen;
+const inactiveColor = colorDarkGrey;
 
 const ShopsListTabs = ({route, navigation }) => {
 

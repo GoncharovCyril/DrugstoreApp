@@ -12,19 +12,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default class MedicineSwipeableRow extends Component {
   
   renderRightActions = (progress, dragX) => {
-    // const scale = dragX.interpolate({
-    //   inputRange: [-80, 0],
-    //   outputRange: [1, 0],
-    //   extrapolate: 'clamp',
-    // });
     return (
       <RectButton style={styles.rightAction} onPress={this.close}>
-        {/* {<AnimatedIcon
-          name="delete-forever"
-          size={30}
-          color="#fff"
-          style={[styles.actionIcon, { transform: [{ scale }] }]}
-        />} */}
         <View style={{height: 20, width: 20, marginRight: '15%'}}>
           <TrashAltSolid color='red' />
         </View>

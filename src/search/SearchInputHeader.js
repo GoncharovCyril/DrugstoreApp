@@ -8,12 +8,8 @@ import TitleHead from '../header/TitleHead';
 import SearchHead from '../header/SearchHead';
 
 import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
+import { colorOrange } from '../Colors';
 
-
-//orange
-const colorO="rgba(236,111,39,1.0)";
-//green
-const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     headContainer: {
@@ -29,7 +25,7 @@ const Header = ({route, navigation, searchValue, setSearchvalue}) => {
     return (
             <View style={headStyles.headContainer}>
                 <LinearGradient
-                    colors={[colorO, 'white']}
+                    colors={[colorOrange, 'white']}
                     style={{
                         position: 'absolute',
                         left: 0,

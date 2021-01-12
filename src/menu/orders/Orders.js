@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { getUser } from '../../requests/AccountRequests';
+import { colorGreen, colorDarkGrey, colorOrange } from '../../Colors';
+
 
 import OrdersTabScreen from "./OrdersTabScreen";
 import ProductsTabScreen from "./ProductsTabScreen";
@@ -15,13 +17,8 @@ const styles = StyleSheet.create({
 });
 
 const Tab = createMaterialTopTabNavigator();
-//orange
-const colorO="rgb(236,111,39)";
-//green
-const colorG='#4db141';
-// const activeColor = "rgb(226,94,18)";
-const activeColor = colorG;
-const inactiveColor = "rgb(106,106,106)";
+const activeColor = colorGreen;
+const inactiveColor = colorDarkGrey;
 
 const Orders = ({ navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
@@ -54,7 +51,7 @@ const Orders = ({ navigation }) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             {isLoading
-                ? <ActivityIndicator size="large" color="rgb(236,111,39)" />
+                ? <ActivityIndicator size="large" color={colorOrange} />
                 : <Tab.Navigator initialRouteName="OrdersTabScreen" tabBarOptions={{
                     activeTintColor: activeColor,
                     inactiveTintColor: inactiveColor,

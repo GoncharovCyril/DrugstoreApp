@@ -18,30 +18,8 @@ const SearchInput = ({route, navigation}) => {
     // const [searchValue, setSearchvalue] = React.useState('');
     const [resultData, setResult] = React.useState([]);
 
-    const searchAction = (text) => {
-        console.log('ping')
-            if (value.length > 0){
-                searchMedicine(value).then(([status, text]) => {
-                    console.log(JSON.parse(text).length);
-                    switch (status) {
-                        case 200:
-                            // setResult(json);
-                            setResult(JSON.parse(text));
-                            break;
-                        default:
-    
-                            break;
-                    }
-                })
-            }
-            else {
-                // setResult([]);
-            }
-        setResult(text);
-    }
-
     return (
-        <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start', borderWidth: 1}}>
+        <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start'}}>
             <SearchInputHeader navigation={navigation} setDataAction={setResult} />
                 {
                     // <Text>{resultData}</Text>

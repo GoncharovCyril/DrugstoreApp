@@ -4,11 +4,7 @@ import { StyleSheet, View, StatusBar } from 'react-native';
 import Logo from '../Logo';
 
 import { headerStyles, smallHeight } from "../navigationHeadStyles";
-
-//orange
-const colorO = "rgba(236,111,39,1.0)";
-//green
-const colorG = '#4db141';
+import { colorOrange } from '../Colors';
 
 const headStyles = StyleSheet.create({
     headContainer: {

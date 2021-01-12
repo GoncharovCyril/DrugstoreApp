@@ -7,12 +7,8 @@ import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';
 
 import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
+import { colorOrange } from '../Colors';
 
-
-//orange
-const colorO="rgba(236,111,39,1.0)";
-//green
-const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     header: {
@@ -26,7 +22,7 @@ const Header = ({navigation, backButton, title}) => {
     return (
         <View style={{ flex: 1 }}>
             <LinearGradient
-                colors={[colorO, 'white']}
+                colors={[colorOrange, 'white']}
                 style={{
                     position: 'absolute',
                     left: 0,

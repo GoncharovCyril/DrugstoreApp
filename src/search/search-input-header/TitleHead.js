@@ -24,10 +24,6 @@ const headStyles = StyleSheet.create({
     },
 });
 
-//orange
-const colorO="rgba(236,111,39,1.0)";
-//green
-const colorG='#4db141';
 
 const TitleHead = ({navigation, backButton, trashButton, title}) => {
     return (

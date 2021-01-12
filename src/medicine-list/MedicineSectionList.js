@@ -2,6 +2,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 
+import { colorDarkGrey, colorOrange, colorLightGrey } from '../Colors';
+
 import {useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -16,7 +18,7 @@ import ShevronRightSolid from '../../svg/chevron-right-solid';
 const medicineListStyles=StyleSheet.create({
     scrollContainer: {
         flex: 6,
-        backgroundColor: 'rgba(240,240,240,1.0)'
+        backgroundColor: colorLightGrey
     },
     adSlider: {
         height: 180,
@@ -32,7 +34,7 @@ const medicineListStyles=StyleSheet.create({
         flex:8,
         alignSelf: 'center',
         justifyContent: 'center',
-        color:"rgb(106,106,106)",
+        color: colorDarkGrey,
         fontSize: 16
     },
 });
@@ -53,7 +55,7 @@ const SectionHeader = ({title, navigation}) => (
             fontSize: 22 
             }}>{title}</Text>
         <View style={{ height: '40%', justifyContent: "center", alignSelf: 'center'}}>
-            <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+            <ShevronRightSolid color={colorOrange} />
         </ View>
         <View style={{ flex: 3 }} />
     </TouchableOpacity>

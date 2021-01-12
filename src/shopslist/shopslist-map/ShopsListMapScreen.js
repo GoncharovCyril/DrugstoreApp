@@ -11,23 +11,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { SET_SHOP, SET_SELECTED_SHOP } from '../../redux/types';
 
 import { useFocusEffect } from '@react-navigation/native';
+
+import { colorGreen, colorDarkGrey, colorOrange } from '../../Colors';
+
 import { getPharmacies } from '../../requests/ShopsRequests';
 // import PlusSolid from '../../../svg/rounds/plus-solid-round';
 import BottomSheet from 'reanimated-bottom-sheet';
 
-//orange
-const colorO = "rgba(236,111,39,1.0)";
-//green
-const colorG = '#4db141';
-const colorB = '#4e6a79';
+
 
 const styles = StyleSheet.create({
     buttonSetStoredShop: {
         alignItems: "center",
         justifyContent: 'center',
         // borderWidth: 2,
-        borderColor: colorG,
-        backgroundColor: colorG,
+        borderColor: colorGreen,
+        backgroundColor: colorGreen,
         borderRadius: 15,
         height: "100%",
         width: "100%"
@@ -36,8 +35,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center',
         // borderWidth: 2,
-        borderColor: colorG,
-        backgroundColor: colorG,
+        borderColor: colorGreen,
+        backgroundColor: colorGreen,
         borderRadius: 15,
         height: "100%",
         width: "100%"
@@ -135,7 +134,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
             height: '100%',
         }}>
             <View style={{flex: 3, justifyContent: 'center', alignItems: 'center'}}>
-                <View style={{backgroundColor: colorG, height: '50%', width: '10%', borderRadius: 15}} />
+                <View style={{backgroundColor: colorGreen, height: '50%', width: '10%', borderRadius: 15}} />
 
             </View>
             {
@@ -143,12 +142,12 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
                         <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>
-                            <Text style={{ fontSize: 14, color: colorB }}>{selectedShop['city']}</Text>
-                            <Text style={{ fontSize: 18, color: colorG }}>{selectedShop['name']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['address']}</Text>
-                            <View style={{ height: 10, color: colorB }} />
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['phone']}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{selectedShop['working_time']}</Text>
+                            <Text style={{ fontSize: 14, color: colorDarkGrey }}>{selectedShop['city']}</Text>
+                            <Text style={{ fontSize: 18, color: colorGreen }}>{selectedShop['name']}</Text>
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['address']}</Text>
+                            <View style={{ height: 10, color: colorDarkGrey }} />
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['phone']}</Text>
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['working_time']}</Text>
                         </View>
                         <View style={{ flex: 30, justifyContent: 'flex-start' }}>
                             <View style={{height: '25%', justifyContent: 'center'}}>
@@ -206,7 +205,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         <View style={{ flex: 1, justifyContent: 'center' }}>
             {
                 isLoading ? <View style={{ flex: 1, justifyContent: 'center' }}>
-                    <ActivityIndicator size="large" color="rgb(236,111,39)" />
+                    <ActivityIndicator size="large" color={colorOrange} />
                     <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем список аптек</Text>
                 </View>
                     : 
@@ -242,7 +241,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                         >
                                             {
                                                 <View style={{ width: 23, height: 23, justifyContent: "center", alignSelf: "center" }}>
-                                                    {/* {<PlusSolid color="white" colorBack="rgb(236,111,39)"/>} */}
+                                                    {/* {<PlusSolid color="white" colorDarkGreyack=colorOrange/>} */}
                                                     <Image
                                                         style={{
                                                             width: "100%",

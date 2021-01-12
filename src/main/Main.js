@@ -16,7 +16,6 @@ import { searchHeigt } from '../navigationHeadStyles';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor: 'rgba(96,165,38,1.0)',
         //alignItems: 'stretch',
         justifyContent: 'flex-start',
         width: '100%',
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
 const Main = ({ navigation }) => {
     return (
         <View style={{flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center'}}>
         <View style={styles.container}>

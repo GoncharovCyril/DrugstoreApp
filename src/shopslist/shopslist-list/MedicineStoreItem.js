@@ -5,8 +5,12 @@ import { useDispatch } from 'react-redux';
 import {SET_SELECTED_SHOP} from '../../redux/types';
 import { BoxShadow } from 'react-native-shadow';
 
+import { colorGreen, colorDarkGrey } from '../../Colors';
+
 import ChooseButton from './ChooseButton';
 import LittleLogo from '../../LittleLogo';
+
+
 
 
 const styles = StyleSheet.create({
@@ -15,13 +19,6 @@ const styles = StyleSheet.create({
 
 const viewH = 130;
 const viewW = 345;
-
-//orange
-const colorO = "rgba(236,111,39,1.0)";
-//green
-const colorG = '#4db141';
-const colorB = '#4e6a79';
-
 
 const MedicineStoreItem = ({ 
     navigation, 
@@ -86,7 +83,7 @@ const MedicineStoreItem = ({
             <BoxShadow setting={{
                 width: viewWidth,
                 height: viewH,
-                color: colorG,
+                color: colorGreen,
                 border: 4,
                 radius: 15,
                 opacity: 0.4,
@@ -106,16 +103,16 @@ const MedicineStoreItem = ({
                         marginLeft: 0,
                         
                         // borderWidth: 1,
-                        // borderColor: colorG
+                        // borderColor: colorGreen
                     }}>
                     <View style={{ flex: 2 }}>
                         <View style={{ flex: 1, marginLeft: "5%", marginTop: '3%' }}>
-                            <Text style={{ fontSize: 14, color: colorB }}>{city}</Text>
-                            <Text style={{ fontSize: 18, color: colorG }}>{name}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{address}</Text>
-                            <View style={{ height: 10, color: colorB }} />
-                            <Text style={{ fontSize: 16, color: colorB }}>{phone}</Text>
-                            <Text style={{ fontSize: 16, color: colorB }}>{working_time}</Text>
+                            <Text style={{ fontSize: 14, color: colorDarkGrey }}>{city}</Text>
+                            <Text style={{ fontSize: 18, color: colorGreen }}>{name}</Text>
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{address}</Text>
+                            <View style={{ height: 10, color: colorDarkGrey }} />
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{phone}</Text>
+                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{working_time}</Text>
                         </View>
 
                     </View>
@@ -134,7 +131,7 @@ const MedicineStoreItem = ({
                                         }}
                                         resizeMode='cover'
                                     />
-                                    : <View style={{ borderLeftWidth: 0, borderLeftColor: colorG }}>
+                                    : <View style={{ borderLeftWidth: 0, borderLeftColor: colorGreen }}>
                                         <LittleLogo />
                                     </View>
                             }

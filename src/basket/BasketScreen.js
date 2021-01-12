@@ -4,6 +4,8 @@ import { useFocusEffect, TabActions } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Dimensions } from 'react-native';
 
+import { colorOrange } from '../Colors';
+
 import BasketList from './basket-list/BasketList';
 
 import DATA from '../medicine-list/testMedicineData';
@@ -31,11 +33,11 @@ const Footer = ({navigation}) => {
         style={{
             flex: 1,
             width: "94%",
-            borderColor: "rgb(236,111,39)",
+            borderColor: colorOrange,
             borderRadius: 25,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: "rgb(236,111,39)"
+            backgroundColor: colorOrange
         }}
 
         onPress={() => {
@@ -72,7 +74,7 @@ const BasketScreen = ({route, navigation}) => {
         <View style={{flex:1, justifyContent: 'center'}}>
             {isLoading
                 ? <View>
-                    <ActivityIndicator size="large" color="rgb(236,111,39)" />
+                    <ActivityIndicator size="large" color={colorOrange} />
                     <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем товары</Text>
                 </View>
                 : productsCounter > 0

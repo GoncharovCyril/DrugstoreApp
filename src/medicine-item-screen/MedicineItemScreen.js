@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput, Image, Button, I18nManager } from 'r
 
 import { FlatList, RectButton } from 'react-native-gesture-handler';
 
+import {colorLightGrey, colorDarkGrey} from '../Colors';
+
 import AppleStyleSwipeableRow from './AppleStyleSwipeableRow';
 import MedicineItemView from '../basket/basket-list/MedicineItemView';
 
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
     },
     separator: {
-      backgroundColor: 'rgb(200, 199, 204)',
+      backgroundColor: colorLightGrey,
       height: StyleSheet.hairlineWidth,
     },
     fromText: {
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'transparent',
     },
     messageText: {
-      color: '#999',
+      color: colorDarkGrey,
       backgroundColor: 'transparent',
     },
     dateText: {
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       right: 20,
       top: 10,
-      color: '#999',
+      color: colorDarkGrey,
       fontWeight: 'bold',
     },
   });

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import {colorLightGrey} from '../Colors'
+
 import CityPicker from './CityPicker';
 import MenuButtons from './MenuButtons';
 import RoundButtons from './RoundButtons';
@@ -17,7 +19,7 @@ const MenuScreen = ({ navigation }) => {
             width: '100%',
             flex: 1,
         }}>
-            <View style={{ flex: 1390, backgroundColor: 'rgb(240,240,240)' }}>
+            <View style={{ flex: 1390, backgroundColor: colorLightGrey }}>
                 <CityPicker navigation={navigation} />
                 <View style={{ flex: 60 }} />
                 <MenuButtons navigation={navigation} />

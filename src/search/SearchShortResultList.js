@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, SafeAreaView, FlatList, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
+
+import {colorOrange} from '../Colors';
 
 const styles = StyleSheet.create({
     container: {
@@ -7,19 +9,29 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     item: {
-        height: 24,
+        // flex: 5,
+        height: 25,
         justifyContent: 'center',
         alignItems: 'flex-start',
     },
     title: {
-        fontSize: 16,
+        fontSize: 15,
     },
 });
 
 const Item = ({ title, key }) => (
-    <View style={styles.item} >
-        <Text style={styles.title}>{title}</Text>
-    </View>
+    <TouchableHighlight 
+        style={styles.item}
+        underlayColor={colorOrange}
+        onPress={()=>{}
+    }
+
+    >
+        <View style={{flex: 1}}>
+         <Text style={styles.title}>{title}</Text>
+
+        </View>
+    </TouchableHighlight>
 );
 
 const ResultList = ({navigation, data}) => {
@@ -36,7 +48,7 @@ const ResultList = ({navigation, data}) => {
                 data={data}
                 renderItem={renderItem}
                 keyExtractor={item => item.id.toString()}
-
+                contentContainerStyle={{ height: '100%' }}
             />
         </SafeAreaView>
     )

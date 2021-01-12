@@ -6,14 +6,12 @@ import { SET_SEARCH_VALUE } from '../../redux/types';
 import {searchMedicine} from '../../requests/ProductsRequests';
 
 import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../../navigationHeadStyles";
+import { colorOrange, colorGreen, colorLightGrey } from '../../Colors';
+
 
 import BarcodeSolid from '../../../svg/barcode-solid';
 import SearchSolid from '../../../svg/search-solid';
 
-//orange
-const colorO="rgba(236,111,39,1.0)";
-//green
-const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     middleContainer: {
@@ -30,9 +28,9 @@ const headStyles = StyleSheet.create({
         flex: 1,
     },
     searchInput: {
-        backgroundColor: 'rgba(240,240,240,1.0)',
+        backgroundColor: colorLightGrey,
         borderRadius: 15,
-        borderColor: colorG,
+        borderColor: colorGreen,
         borderWidth: 2,
         flexDirection:'row',
         height: "80%",
@@ -100,7 +98,7 @@ const SearchHead = ({navigation, setDataAction}) => {
                         >
                             <View style={{flex: 25}} />
                             <View style={{flex: 50, justifyContent: "center", alignSelf: "center"}}>
-                                <SearchSolid color={colorO} />
+                                <SearchSolid color={colorOrange} />
                             </ View>
                             <View style={{flex: 25}} />
                         </View>

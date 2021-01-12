@@ -8,6 +8,8 @@ import InstagramBrandsRound from '../../svg/rounds/instagram-brands-round';
 
 import { BoxShadow } from 'react-native-shadow';
 
+import {colorGreen, colorOrange} from '../Colors';
+
 const styles = StyleSheet.create({
 
     roundButtonsContainer: {
@@ -21,7 +23,7 @@ const buttonSize = 40;
 const shadowOpt = {
     width: buttonSize,
     height: buttonSize,
-    color: "#4db141",
+    color: colorGreen,
     border: 4,
     radius: buttonSize/2,
     opacity: 0.6,
@@ -56,26 +58,26 @@ const RoundButtons = ({ navigation }) => {
             <View style={{ width: 10 }} />
             <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openVk}>
-                    <VkBrandsRound color="white" roundColor="rgb(226,94,18)"/>
+                    <VkBrandsRound color="white" roundColor={colorOrange}/>
                 </ TouchableOpacity>
             </BoxShadow>
 
             <View style={{ width: 10 }} />
             <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openTelegram}>
-                    <TelegramPlaneBrandsRound color="white" roundColor="rgb(226,94,18)"/>
+                    <TelegramPlaneBrandsRound color="white" roundColor={colorOrange}/>
                 </ TouchableOpacity>
             </BoxShadow>
             <View style={{ width: 10 }} />
             <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openOk}>
-                    <OdnoklassnikiBrandsRound color="white" roundColor="rgb(226,94,18)"/>
+                    <OdnoklassnikiBrandsRound color="white" roundColor={colorOrange}/>
                 </ TouchableOpacity>
             </BoxShadow>
             <View style={{ width: 10 }} />
             <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openInstagram}>
-                    <InstagramBrandsRound color="white" roundColor="rgb(226,94,18)"/>
+                    <InstagramBrandsRound color="white" roundColor={colorOrange}/>
                 </ TouchableOpacity>
             </BoxShadow>
             <View style={{ width: 10 }} />

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+import {colorOrange} from '../Colors'
+
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 const itemStyles = StyleSheet.create({
@@ -27,7 +29,7 @@ const CatalogItem = ({title, action}) => (
                 <Text style={{ fontSize: 16 }}>{title}</Text>
             </View>
             <View style={{flex: 30}}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />
         </TouchableOpacity>

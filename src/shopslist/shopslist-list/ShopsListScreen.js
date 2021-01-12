@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ActivityIndicator, Text } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { colorOrange } from '../../Colors';
 import MedicineStoreList from './MedicineStoreList';
 import { getPharmacies } from '../../requests/ShopsRequests';
 
@@ -47,7 +48,7 @@ const ShopsListScreen = ({route, navigation}) => {
         <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
                 {
                     isLoading ? <View style={{ flex: 1, justifyContent: 'center' }}>
-                        <ActivityIndicator size="large" color="rgb(236,111,39)" />
+                        <ActivityIndicator size="large" color={colorOrange} />
                         <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем список аптек</Text>
                     </View>
                         : <MedicineStoreList data={shopsData} navigation={navigation} />

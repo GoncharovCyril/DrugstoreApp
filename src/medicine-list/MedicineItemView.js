@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Dimensions } f
 import { event } from 'react-native-reanimated';
 
 import { BoxShadow } from 'react-native-shadow';
+import { colorGreen, colorDarkGrey } from '../Colors';
 
 import BuyButton from './BuyButton';
 
@@ -13,18 +14,6 @@ const styles = StyleSheet.create({
 
 const viewH = 180;
 const viewW = 345;
-
-const shadowOpt = {
-    width: viewW,
-    height: viewH,
-    color:"#4db141",
-    border:4,
-    radius:15,
-    opacity:0.4,
-    x:0,
-    y:0,
-    style:{}
-}
 
 const DrugView = ({navigation, index, description, dealer, price, availability, products}) => {
 
@@ -43,7 +32,7 @@ const DrugView = ({navigation, index, description, dealer, price, availability, 
             <BoxShadow setting={{
                 width: viewWidth,
                 height: viewH,
-                color: "#4db141",
+                color: colorGreen,
                 border: 4,
                 radius: 15,
                 opacity: 0.4,
@@ -92,7 +81,7 @@ const DrugView = ({navigation, index, description, dealer, price, availability, 
                                 <View style={{ flex: 0.5 }} />
                                 <Text style={{
                                     flex: 4.5,
-                                    color: "rgb(106,106,106)",
+                                    color: colorDarkGrey,
                                     textAlign: 'center',
                                     fontSize: 11
                                 }}>
@@ -107,7 +96,7 @@ const DrugView = ({navigation, index, description, dealer, price, availability, 
                                         <Text style={{ fontSize: 12.5 }}>{description}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
-                                        <Text style={{ color: "rgb(106,106,106)", fontSize: 12 }}>{dealer}</Text>
+                                        <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{dealer}</Text>
                                     </View>
                                 </View>
 

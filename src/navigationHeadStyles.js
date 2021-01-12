@@ -1,16 +1,12 @@
 import Constants from 'expo-constants';
+import {colorOrange} from './Colors';
 
-//orange
-const colorO="rgb(236,111,39)";
-//green
-// const colorG='rgb(96,165,38)';
-const colorG='#4db141';
 
 export const smallHeight = 70;
 export const searchHeigt = 55;
 export const shopHeight = 50;
 export const bigHeight = smallHeight+searchHeigt+shopHeight;
-export const backgroundColor = colorO;
+export const backgroundColor = colorOrange;
 export const statusBarHeight = 0;
 
 
@@ -51,7 +47,7 @@ export const headerStyles = {
         marginTop: statusBarHeight,
     },
     statusBarStyle: {
-        backgroundColor: colorO,
+        backgroundColor: colorOrange,
         barStyle: 'light-content'
     }
 };

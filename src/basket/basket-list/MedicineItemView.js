@@ -3,18 +3,14 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput,
     Image,
-    Button,
-    SafeAreaView,
-    Animated,
-    TouchableOpacity,
     TouchableWithoutFeedback,
-    TouchableHighlight,
     Dimensions
 } from 'react-native';
 
 import { BoxShadow } from 'react-native-shadow';
+
+import { colorGreen, colorDarkGrey } from '../../Colors';
 
 import BuyButton from './BuyButton';
 
@@ -42,7 +38,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
             <BoxShadow setting={{
                 width: viewWidth,
                 height: viewH,
-                color: "#4db141",
+                color: colorGreen,
                 border: 4,
                 radius: 15,
                 opacity: 0.4,
@@ -91,7 +87,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                 <View style={{ flex: 0.5 }} />
                                 <Text style={{
                                     flex: 4.5,
-                                    color: "rgb(106,106,106)",
+                                    color: {colorDarkGrey},
                                     textAlign: 'center',
                                     fontSize: 11
                                 }}>
@@ -106,7 +102,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                         <Text style={{ fontSize: 12.5 }}>{description}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
-                                        <Text style={{ color: "rgb(106,106,106)", fontSize: 12 }}>{dealer}</Text>
+                                        <Text style={{ color: {colorDarkGrey}, fontSize: 12 }}>{dealer}</Text>
                                     </View>
                                 </View>
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
 
+import {colorGreen, colorOrange} from '../Colors';
+
 const adSliderStyles=StyleSheet.create({
     adSlider: {
         height: 200,
@@ -19,8 +21,8 @@ const AdSlider = ({ navigation }) => {
             <View style={{flex: 19, backgroundColor: "white",}}>
                 <SliderBox
                     images={images}
-                    dotColor="rgb(226,94,18)"
-                    inactiveDotColor="#4db141"
+                    dotColor={colorOrange}
+                    inactiveDotColor={colorGreen}
                     resizeMode="stretch"
 
                     onCurrentImagePressed={ index => {

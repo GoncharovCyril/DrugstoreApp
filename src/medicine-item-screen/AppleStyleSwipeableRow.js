@@ -18,12 +18,6 @@ export default class AppleStyleSwipeableRow extends Component {
     });
     return (
       <RectButton style={styles.rightAction} onPress={this.close}>
-        {/* {<AnimatedIcon
-          name="delete-forever"
-          size={30}
-          color="#fff"
-          style={[styles.actionIcon, { transform: [{ scale }] }]}
-        />} */}
         <Text>delete</Text>
       </RectButton>
     );
@@ -60,7 +54,7 @@ const styles = StyleSheet.create({
   rightAction: {
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#dd2c00',
+    backgroundColor: 'red',
     flex: 1,
     justifyContent: 'flex-end',
     width: 100,

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import { connect, useSelector, useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 
-import { addProduct, removeProduct } from '../../redux/ProductsActions';
+import {colorGreen} from '../../Colors'
 
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../redux/types';
 
@@ -12,7 +11,7 @@ const styles = StyleSheet.create({
     button1: {
         alignItems: "center",
         justifyContent: 'center',
-        backgroundColor: "#4db141",
+        backgroundColor: colorGreen,
         borderRadius: 15,
         height: "100%",
         width: "100%"
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
     button2: {
         alignItems: "center",
         justifyContent: 'center',
-        borderColor: "#4db141",
+        borderColor: colorGreen,
         borderWidth: 2,
         backgroundColor: 'white',
         borderRadius: 15,
@@ -79,7 +78,7 @@ const BuyButton = ({ navigation, index, products }) => {
                     textAlign: 'center',
                     textAlignVertical: 'center',
                     fontSize: 32,
-                    color: "#4db141"
+                    color: colorGreen
                     
                 }}>
                     ‒
@@ -103,7 +102,7 @@ const BuyButton = ({ navigation, index, products }) => {
                     textAlign: 'center',
                     textAlignVertical: 'center',
                     fontSize: 32,
-                    color: "#4db141"
+                    color: colorGreen
                 }}>
                     +
                 </Text>

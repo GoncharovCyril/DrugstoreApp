@@ -1,13 +1,14 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
+import { colorDarkGrey, colorOrange, colorLightGrey } from '../Colors';
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
 const footerStyles=StyleSheet.create({
     scrollContainer: {
         flex: 6,
-        backgroundColor: 'rgba(240,240,240,1.0)'
+        backgroundColor: colorLightGrey
     },
     adSlider: {
         height: 180,
@@ -23,7 +24,7 @@ const footerStyles=StyleSheet.create({
         flex:8,
         alignSelf: 'center',
         justifyContent: 'center',
-        color:"rgb(106,106,106)",
+        color:colorDarkGrey,
         fontSize: 16
     },
 });
@@ -51,7 +52,7 @@ const Footer = ({navigation, key}) => (
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>Лучшие лекарства</Text>
             <View style={{ height: '30%', justifyContent: "center", alignSelf: 'center', }}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{ flex: 0.2 }} />
         </TouchableOpacity>
@@ -78,7 +79,7 @@ const Footer = ({navigation, key}) => (
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>COVID-2019</Text>
             <View style={{ height: '30%', justifyContent: "center", alignSelf: 'center', }}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{ flex: 0.2 }} />
         </TouchableOpacity>
@@ -105,7 +106,7 @@ const Footer = ({navigation, key}) => (
             <View style={{ flex: 0.2 }} />
             <Text style={footerStyles.bottomMenuText}>Обратная связь</Text>
             <View style={{ height: '30%', justifyContent: "center", alignSelf: 'center', }}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{ flex: 0.2 }} />
         </TouchableOpacity>

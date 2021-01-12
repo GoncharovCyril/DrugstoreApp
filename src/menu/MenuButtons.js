@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 
+import {colorOrange} from '../Colors';
+
 
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 import CommentMedicalSolid from '../../svg/comment-medical-solid';
@@ -36,7 +38,7 @@ const MenuButton = (props) => {
                 <Text style={{fontSize: 16}}>{props.text}</Text>
             </ View>
             <View style={{flex: 30}}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />
         </ TouchableOpacity>
@@ -51,14 +53,14 @@ const MenuButtonConnect = (props) => {
         >
             <View style={{flex: 26}} />
             <View style={{flex: 48}} >
-                <CommentMedicalSolid color="rgba(236,111,39,1.0)" />
+                <CommentMedicalSolid color={colorOrange} />
             </View>
             <View style={{flex: 17}} />
             <View style={{flex: 682}}>
                 <Text style={{fontSize: 16}}>{props.text}</Text>
             </ View>
             <View style={{flex: 30}}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />
         </ TouchableOpacity>

@@ -5,6 +5,8 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Activ
 import {useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 
+import {colorOrange} from '../Colors';
+
 import ListItem from './MedicineItemView';
 
 import FilterSolid from '../../svg/filter-solid';
@@ -22,7 +24,7 @@ const wait= (timeout) => {
 }
 
 const Footer = () => (
-    <ActivityIndicator size="large" color="rgb(236,111,39)" />);
+    <ActivityIndicator size="large" color={colorOrange} />);
 
 const Header = () => (
     <View style={{

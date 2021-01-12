@@ -4,17 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
+import { colorOrange } from '../Colors';
+
 
 import BackButton from "../BackButton";
 import BigLogoHead from '../header/BigLogoHead';
 import SearchHead from '../header/SearchHead';
 import ShopHead from '../header/ShopHead';
-
-
-//orange
-const colorO="rgba(236,111,39,1.0)";
-//green
-const colorG='#4db141';
 
 const headStyles = StyleSheet.create({
     headContainer: {
@@ -28,7 +24,7 @@ const Header = ({navigation, backButton}) => {
     return (
         <View style={headStyles.headContainer}>
             <LinearGradient
-                colors={[colorO, 'white']}
+                colors={[colorOrange, 'white']}
                 style={{
                     position: 'absolute',
                     left: 0,

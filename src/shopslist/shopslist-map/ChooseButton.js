@@ -1,20 +1,15 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { SET_SHOP } from '../../redux/types';
-
-
-const colorG = '#4db141'
+import {colorGreen} from '../../Colors';
 
 const styles = StyleSheet.create({
     button1: {
         alignItems: "center",
         justifyContent: 'center',
         // borderWidth: 2,
-        borderColor: colorG,
-        backgroundColor: colorG,
+        borderColor: colorGreen,
+        backgroundColor: colorGreen,
         borderRadius: 15,
         height: "100%",
         width: "100%"
@@ -23,8 +18,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: 'center',
         // borderWidth: 2,
-        borderColor: colorG,
-        backgroundColor: colorG,
+        borderColor: colorGreen,
+        backgroundColor: colorGreen,
         borderRadius: 15,
         height: "100%",
         width: "100%"

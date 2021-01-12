@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 
+import { colorDarkGrey, colorOrange } from '../Colors';
+
 import MapMarketAltSolid from '../../svg/map-market-alt-solid';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
 
@@ -31,15 +33,15 @@ const CityPicker = ({navigation}) => {
             <View style={{
                 flex: 46,
                 }}>
-                <MapMarketAltSolid color="rgba(236,111,39,1.0)" />
+                <MapMarketAltSolid color={colorOrange} />
             </ View>
             <View style={{flex: 23}} />
 
             <View style={{flex: 670}}>
-                <Text style={{color: 'rgb(106,106,106)', fontSize: 16}}>{cityName}</Text>
+                <Text style={{color: colorDarkGrey, fontSize: 16}}>{cityName}</Text>
             </View>
             <View style={{flex: 30}}>
-                <ShevronRightSolid color="rgba(236,111,39,1.0)" />
+                <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />
         </TouchableOpacity>
