@@ -8,7 +8,6 @@ import {colorOrange} from '../Colors';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderWidth: 1
     },
     item: {
         // flex: 5,
@@ -35,8 +34,7 @@ const Item = ({ title, navigation }) => {
         <TouchableHighlight
             style={styles.item}
             underlayColor={colorOrange}
-            onPress={() => { }
-            }
+            onPress={touchAction}
 
         >
             <View style={{ flex: 1 }}>

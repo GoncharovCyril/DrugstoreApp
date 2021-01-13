@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SearchInput from './SearchInput';
 import SearchResult from './SearchResult';
 
-import SearchResultHeader from './SearchResultHeader';
+import SearchResultHeader from './search-result-header/SearchResultHeader';
 
 
 const SearchStack = createStackNavigator();

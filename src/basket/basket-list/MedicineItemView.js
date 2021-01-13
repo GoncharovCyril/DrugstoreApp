@@ -87,7 +87,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                 <View style={{ flex: 0.5 }} />
                                 <Text style={{
                                     flex: 4.5,
-                                    color: {colorDarkGrey},
+                                    color: colorDarkGrey,
                                     textAlign: 'center',
                                     fontSize: 11
                                 }}>
@@ -102,7 +102,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                         <Text style={{ fontSize: 12.5 }}>{description}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
-                                        <Text style={{ color: {colorDarkGrey}, fontSize: 12 }}>{dealer}</Text>
+                                        <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{dealer}</Text>
                                     </View>
                                 </View>
 

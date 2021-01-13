@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, TouchableWithoutFeedback } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { SET_SEARCH_VALUE } from '../redux/types';
+import { SET_SEARCH_VALUE } from '../../redux/types';
 
-import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../navigationHeadStyles";
-import { colorOrange, colorGreen, colorLightGrey } from '../Colors';
+import { headerStyles, smallHeight, searchHeigt, shopHeight } from "../../navigationHeadStyles";
+import { colorOrange, colorGreen, colorLightGrey } from '../../Colors';
 
-import BarcodeSolid from '../../svg/barcode-solid';
-import SearchSolid from '../../svg/search-solid';
+import BarcodeSolid from '../../../svg/barcode-solid';
+import SearchSolid from '../../../svg/search-solid';
 
 
 const headStyles = StyleSheet.create({
@@ -15,9 +15,9 @@ const headStyles = StyleSheet.create({
         // flex:2,
         height: searchHeigt,
         flexDirection:'row',
-        // backgroundColor: 'white',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        // backgroundColor: 'white',
     },
     searchContainer: {
         flexDirection:'row',
@@ -58,8 +58,9 @@ const SearchHead = ({navigation}) => {
                 value: ''
             }
         });
-        navigation.navigate('SearchScreen');
+        navigation.navigate('SearchInput');
     }, [dispatch])
+    const inputRef = React.useRef(null);
 
     return (
         <View style={headStyles.middleContainer}>
@@ -87,32 +88,22 @@ const SearchHead = ({navigation}) => {
                                 flex: 92,
                                 fontSize: 18
                             }}
-                            value=''
                             placeholder='Поиск лекарства...'
-                            editable={false}
-                            // onFocus={()=>{
-                            //     navigation.navigate('SearchScreen');
-                            // }}
-                            onTouchStart={()=>{
-                                navigation.navigate('SearchScreen');
+                            ref={inputRef}
+                            onFocus={()=>{
+                                inputRef.current.blur();
                             }}
-                            onChangeText={text => setSearchValue(text)}
-                            onSubmitEditing={()=>{
-                                navigation.navigate('SearchResult', {
-                                    searchValue: searchValue
-                                });
+                            onTouchStart={()=>{
+                                // inputRef.current.blur();
+                                alert('touch')
+
+                            }}
+                            editable={false}
+                            onBlur={()=>{
+                                navigation.navigate('SearchInput');
                             }}
                         />
                     </View>
-                    {/* {<View>
-                        <TouchableOpacity
-                            onPress={() => {
-                                navigation.navigate('Drug');
-                            }}
-                            style={{flex: 80, justifyContent: "center", alignSelf: "center"}}>
-                            <BarcodeSolid color='white' />
-                        </ TouchableOpacity>
-                    </View>} */}
                 </TouchableWithoutFeedback>
             </View>
     );

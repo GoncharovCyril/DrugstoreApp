@@ -3,13 +3,13 @@ import { StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-import BackButton from "../BackButton";
-import TitleHead from '../header/TitleHead';
-import SearchHead from '../header/SearchHead';
-import ShopHead from '../header/ShopHead';
+import BackButton from "../../BackButton";
+import TitleHead from '../../header/TitleHead';
+import SearchHead from './SearchHead';
+import ShopHead from '../../header/ShopHead';
 
-import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
-import { colorOrange } from '../Colors';
+import { headerStyles, smallHeight, searchHeigt } from "../../navigationHeadStyles";
+import { colorOrange } from '../../Colors';
 
 const headStyles = StyleSheet.create({
     headContainer: {
