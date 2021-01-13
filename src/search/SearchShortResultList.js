@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { SET_SEARCH_VALUE } from '../redux/types';
+import { SET_SEARCH_VALUE, ADD_SEARCH_VALUE_TO_HISTORY } from '../redux/types';
 
 import {colorOrange} from '../Colors';
 
@@ -26,6 +26,12 @@ const Item = ({ title, navigation }) => {
 
     const touchAction = React.useCallback(()=>{
         dispatch({ type: SET_SEARCH_VALUE, payload: {value: title} });
+        dispatch({
+            type: ADD_SEARCH_VALUE_TO_HISTORY,
+            payload: {
+                value: title
+            }
+        });
         navigation.navigate('SearchResult');
     }, [dispatch]);
 
@@ -38,7 +44,7 @@ const Item = ({ title, navigation }) => {
 
         >
             <View style={{ flex: 1 }}>
-                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.title} numberOfLines={1}>{title.trim()}</Text>
 
             </View>
         </TouchableHighlight>
@@ -51,6 +57,9 @@ const ResultList = ({navigation, data}) => {
     const renderItem = ({item}) => (
         <Item title={item.name} navigation={navigation}/>
     );
+
+    console.log('data')
+    console.log(data);
 
 
     return (

@@ -180,7 +180,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
             setSelectedShop(storedSelectedShop);
             // console.log(selectedShop);
             setInitialsnap(storedSelectedShop.id != null ? 1 : 0);
-            console.log(storedSelectedShop.id);
+            // console.log(storedSelectedShop.id);
             getPharmacies()
                 .then(([status, json]) => {
                     switch (status) {

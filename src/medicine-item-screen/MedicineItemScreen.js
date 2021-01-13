@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, I18nManager } from 'react-native';
+import {useSelector} from 'react-redux';
 
 import { FlatList, RectButton } from 'react-native-gesture-handler';
 
@@ -26,17 +27,22 @@ const SwipeableRow = ({item, index, action}) => {
 };
 
 export const MedicineItemScreen = () => {
-
+  const search = useSelector(state => state.appStore.search.history);
   
 
   return (
-    <FlatList
-      data={DATA}
-      renderItem={({ item, index }) => (
-        <SwipeableRow item={item} index={index} action={() => { }} />
-      )}
-      keyExtractor={(item, index) => `message ${index}`}
-    />
+    // <FlatList
+    //   data={DATA}
+    //   renderItem={({ item, index }) => (
+    //     <SwipeableRow item={item} index={index} action={() => { }} />
+    //   )}
+    //   keyExtractor={(item, index) => `message ${index}`}
+    // />
+    <View style={{flex: 1}}>
+      <Text>{JSON.stringify(search)}</Text>
+      <Text>{JSON.stringify(search.length)}</Text>
+    </View>
+    
   )
 };
 

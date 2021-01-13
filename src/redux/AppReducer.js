@@ -9,7 +9,9 @@ import {
     SET_SELECTED_SHOP,
     SET_CITY,
     REMOVE_ALL_THIS_PRODUCT,
-    SET_SEARCH_VALUE
+    SET_SEARCH_VALUE,
+    ADD_SEARCH_VALUE_TO_HISTORY,
+    CLEAR_SEARCH_HISTORY
 } from './types';
 
 import {
@@ -17,6 +19,7 @@ import {
     storeCity,
     storeShop,
     storeToken,
+    storeHistory
 } from './AsincStorageFucntions'
 
 
@@ -47,6 +50,7 @@ const INITIAL_STATE = {
     },
     search: {
         value: '',
+        history: [],
     }
 };
 
@@ -68,12 +72,21 @@ const appReducer = (state = INITIAL_STATE, action) => {
             }
             account.token = action.payload.token;
 
-            city.name = action.payload.city != null ? action.payload.city : 'Макеевка';
+            city.name = action.payload.city != null ? action.payload.city : 'Донецк';
 
             shop.id = JSON.parse(action.payload.shop).id;
 
             shop.address = JSON.parse(action.payload.shop).address;
-            
+
+            console.log(action.payload.history);
+
+            // search.history.clear();
+            for (let value of JSON.parse(action.payload.history) )
+            {
+                search.history.unshift(value);
+            }
+            console.log(search.history);
+
             break;
 
         case ADD_PRODUCT:
@@ -146,6 +159,21 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
         case SET_SEARCH_VALUE:
             search.value = action.payload.value;
+            break;
+
+        case ADD_SEARCH_VALUE_TO_HISTORY:
+            if(!search.history.includes(action.payload.value)){
+                if(search.history.length == 5){
+                    search.history.pop(4);
+                }
+                search.history.unshift(action.payload.value);
+                storeHistory(search.history);
+            }
+            break;
+
+        case CLEAR_SEARCH_HISTORY:
+            search.history.splice(0, search.history.length);
+            storeHistory(search.history);
             break;
 
         default:

@@ -38,3 +38,11 @@ export const storeShop = async (value) => {
         alert("STORE_SHOP\n"+e);
     }
 };
+
+export const storeHistory = async (value) => {
+    try {
+        await AsyncStorage.setItem('History', JSON.stringify(value));
+    } catch (e) {
+        alert("STORE_HISTORY\n"+e);
+    }
+};

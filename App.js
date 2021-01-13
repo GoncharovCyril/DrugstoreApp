@@ -89,12 +89,14 @@ const MyAppLoading = ({setReady}) => {
             const tokenValue = await AsyncStorage.getItem('Token');
             const cityValue = await AsyncStorage.getItem('City');
             const shopValue = await AsyncStorage.getItem('Shop');
+            const searchhistoryValue = await AsyncStorage.getItem('History');
 
             const payload_data = {
                 products: productsValue,
                 token: tokenValue,
                 city: cityValue,
-                shop: shopValue
+                shop: shopValue,
+                history: searchhistoryValue,
             };
                         
             return dispatch({ type: LOAD_FROM_STORE, payload: payload_data});
