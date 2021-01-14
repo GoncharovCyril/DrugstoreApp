@@ -35,10 +35,7 @@ const TitleHead = ({navigation, backButton, trashButton, title}) => {
                         <View style={{ flex: 10, height: '60%' }}>
                             {backButton}
                         </View>
-                        <View style={{ flex: 80, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
-                            <View style={{ height: `75%`, flex: 2,  }}>
-                                <LittleLogo />
-                            </View>
+                        <View style={{ flex: 90, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
                             <View style={{ flex: 8, alignItems: 'center' }}>
                                 <Text 
                                 numberOfLines={1}
@@ -48,10 +45,6 @@ const TitleHead = ({navigation, backButton, trashButton, title}) => {
                                     textAlign: 'center'
                                 }}>{title}</Text>
                             </View>
-                            <View style={{flex: 2}} />
-                        </View>
-                        <View style={{ flex: 10 }}>
-                            {trashButton}
                         </View>
                     </View>
                 </View>

@@ -22,3 +22,20 @@ export const searchMedicine = async(name) => {
         alert(error)
     }
 }
+
+export const getMedicineItem = async(id) => {
+    const url = 'http://195.133.145.14/api/drugs/'+id.toString();
+    try {
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            }
+        });
+        let status = response.status;
+        let json = await response.json();
+        return [status, json];
+    } catch (error) {
+        alert(error)
+    }
+}

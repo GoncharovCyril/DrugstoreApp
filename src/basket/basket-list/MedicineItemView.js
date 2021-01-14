@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({ navigation, index, description, dealer, price, availability, products }) => {
+const DrugView = ({ navigation, id, name, dealer, price, availability, products }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
 
@@ -48,7 +48,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
             }}>
                 <TouchableWithoutFeedback
                     onPress={() => {
-                        navigation.navigate('MedicineItemScreen');
+                        navigation.navigate('MedicineItemScreen', {id: id, name: name});
                     }}
                     style={{ flex: 1 }}
                 >
@@ -99,7 +99,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                 <View style={{ flex: 160 }}>
                                     <View style={{ flex: 6., flexDirection: 'row' }}>
                                         <View style={{ width: 2 }} />
-                                        <Text style={{ fontSize: 12.5 }}>{description}</Text>
+                                        <Text style={{ fontSize: 12.5 }}>{name}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
                                         <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{dealer}</Text>
@@ -119,7 +119,7 @@ const DrugView = ({ navigation, index, description, dealer, price, availability,
                                             {price}
                                         </Text>
                                         <View style={{ flex: 1 }}>
-                                            <BuyButton navigation={navigation} index={index} products={products}/>
+                                            <BuyButton navigation={navigation} id={id} products={products}/>
                                         </View>
                                     </View>
                                 </View>

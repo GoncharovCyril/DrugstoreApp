@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 
 
-const BuyButton = ({ navigation, index, products }) => {
+const BuyButton = ({ navigation, id, products }) => {
 
     // const productSelector = createSelector(
     //     state => {
@@ -47,18 +47,18 @@ const BuyButton = ({ navigation, index, products }) => {
 
     // const productsCounter = useSelector(productSelector);
         // // const productsCounter = useSelector(state => {
-    // //     console.log('ping', index)
+    // //     console.log('ping', id)
     // //     return state.appStore.products;
     // // });
 
     const dispatch = useDispatch();
 
     const addProduct = React.useCallback(() => {
-        dispatch({ type: ADD_PRODUCT, payload: {id: index} });
+        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
     }, [dispatch]);
 
     const removeProduct = React.useCallback(()=>{
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: index} });
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
     }, [dispatch]);
 
     const Button1 = ({ navigation}) => (
@@ -105,7 +105,7 @@ const BuyButton = ({ navigation, index, products }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{products.get(index)}</Text>
+                }}>{products.get(id)}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -127,7 +127,7 @@ const BuyButton = ({ navigation, index, products }) => {
 
 
     return (
-        products.get(index) == undefined ? <Button1 navigation={navigation} index={index} /> : <Button2 navigation={navigation} index={index} />
+        products.get(id) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
     );
 };
 

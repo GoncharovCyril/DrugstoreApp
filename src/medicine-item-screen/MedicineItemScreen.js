@@ -1,135 +1,66 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, Button, I18nManager } from 'react-native';
-import {useSelector} from 'react-redux';
+import { StyleSheet, Text, View, TextInput, Image, Button, ActivityIndicator} from 'react-native';
+import { useSelector } from 'react-redux';
+import {useFocusEffect} from '@react-navigation/native'; 
 
-import { FlatList, RectButton } from 'react-native-gesture-handler';
+import {colorOrange} from '../Colors';
 
-import {colorLightGrey, colorDarkGrey} from '../Colors';
-
-import AppleStyleSwipeableRow from './AppleStyleSwipeableRow';
-import MedicineItemView from '../basket/basket-list/MedicineItemView';
+import {getMedicineItem} from '../requests/ProductsRequests';
 
 
-const Row = ({item}) => (
-    <RectButton style={styles.RectButton} onPress={() => alert(item.from)}>
-        <View style={{width: '90%', height: 150, alignSelf: 'center', borderWidth: 1, backgroundColor: 'white'}}>
-            <Text>{item.from}</Text>
-        </View>
-    </RectButton>
-);
+export const MedicineItemScreen = ({route, navigation}) => {
+  
+    const [id, setId] = React.useState(undefined);
+    const [name, setName] = React.useState(undefined);
+    const [isLoading, setLoading] = React.useState(true);
+    const [medicineData, setMedicineData] = React.useState([])
+  
+  
+    useFocusEffect(React.useCallback(()=> {
+      // if(route['params'] != undefined){
+      //   console.log('yes1')
+      //   setId(route.params['id'])
+      //   setName(route.params['name'])
+  
+      // }
 
-const SwipeableRow = ({item, index, action}) => {
+      getMedicineItem(route.params['id'])
+            .then(([status, json]) => {
+                switch (status) {
+                    case 200:
+                        setMedicineData(json)
+                        break;
+                    default:
+                        // alert(`${status}:\n${json}`);
+                        break;
+                }
+
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+      
+
+      
+    },[id, name]))
+  
     return (
-    <AppleStyleSwipeableRow action={action}>
-        <Row item={item} />
-    </AppleStyleSwipeableRow>
+      <View style={{ flex: 1, justifyContent: 'flex-start' }}>
+        {
+          isLoading ?
+          <View style={{justifyContent: 'center', alignItems: 'center'}}> 
+            <ActivityIndicator size="large" color={colorOrange} />
+          </View>
+          : 
+          <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
+            <Text>{JSON.stringify(medicineData)}</Text>
+          </View>
+        }
+        
+      </View>
+  
     )
-};
+  };
 
-export const MedicineItemScreen = () => {
-  const search = useSelector(state => state.appStore.search.history);
-  
-
-  return (
-    // <FlatList
-    //   data={DATA}
-    //   renderItem={({ item, index }) => (
-    //     <SwipeableRow item={item} index={index} action={() => { }} />
-    //   )}
-    //   keyExtractor={(item, index) => `message ${index}`}
-    // />
-    <View style={{flex: 1}}>
-      <Text>{JSON.stringify(search)}</Text>
-      <Text>{JSON.stringify(search.length)}</Text>
-    </View>
-    
-  )
-};
-
-
-
-const styles = StyleSheet.create({
-    rectButton: {
-      flex: 1,
-      height: 80,
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      flexDirection: 'column',
-      backgroundColor: 'white',
-    },
-    separator: {
-      backgroundColor: colorLightGrey,
-      height: StyleSheet.hairlineWidth,
-    },
-    fromText: {
-      fontWeight: 'bold',
-      backgroundColor: 'transparent',
-    },
-    messageText: {
-      color: colorDarkGrey,
-      backgroundColor: 'transparent',
-    },
-    dateText: {
-      backgroundColor: 'transparent',
-      position: 'absolute',
-      right: 20,
-      top: 10,
-      color: colorDarkGrey,
-      fontWeight: 'bold',
-    },
-  });
-  
-  const DATA = [
-    {
-      from: "D'Artagnan",
-      when: '3:11 PM',
-      message:
-        'Unus pro omnibus, omnes pro uno. Nunc scelerisque, massa non lacinia porta, quam odio dapibus enim, nec tincidunt dolor leo non neque',
-    },
-    {
-      from: 'Aramis',
-      when: '11:46 AM',
-      message:
-        'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus hendrerit ligula dignissim maximus aliquet. Integer tincidunt, tortor at finibus molestie, ex tellus laoreet libero, lobortis consectetur nisl diam viverra justo.',
-    },
-    {
-      from: 'Athos',
-      when: '6:06 AM',
-      message:
-        'Sed non arcu ullamcorper, eleifend velit eu, tristique metus. Duis id sapien eu orci varius malesuada et ac ipsum. Ut a magna vel urna tristique sagittis et dapibus augue. Vivamus non mauris a turpis auctor sagittis vitae vel ex. Curabitur accumsan quis mauris quis venenatis.',
-    },
-    {
-      from: 'Porthos',
-      when: 'Yesterday',
-      message:
-        'Vivamus id condimentum lorem. Duis semper euismod luctus. Morbi maximus urna ut mi tempus fermentum. Nam eget dui sed ligula rutrum venenatis.',
-    },
-    {
-      from: 'Domestos',
-      when: '2 days ago',
-      message:
-        'Aliquam imperdiet dolor eget aliquet feugiat. Fusce tincidunt mi diam. Pellentesque cursus semper sem. Aliquam ut ullamcorper massa, sed tincidunt eros.',
-    },
-    {
-      from: 'Cardinal Richelieu',
-      when: '2 days ago',
-      message:
-        'Pellentesque id quam ac tortor pellentesque tempor tristique ut nunc. Pellentesque posuere ut massa eget imperdiet. Ut at nisi magna. Ut volutpat tellus ut est viverra, eu egestas ex tincidunt. Cras tellus tellus, fringilla eget massa in, ultricies maximus eros.',
-    },
-    {
-      from: "D'Artagnan",
-      when: 'Week ago',
-      message:
-        'Aliquam non aliquet mi. Proin feugiat nisl maximus arcu imperdiet euismod nec at purus. Vestibulum sed dui eget mauris consequat dignissim.',
-    },
-    {
-      from: 'Cardinal Richelieu',
-      when: '2 weeks ago',
-      message:
-        'Vestibulum ac nisi non augue viverra ullamcorper quis vitae mi. Donec vitae risus aliquam, posuere urna fermentum, fermentum risus. ',
-    },
-  ];
 
 export default MedicineItemScreen;

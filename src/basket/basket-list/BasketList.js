@@ -13,7 +13,7 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
-const SwipeableRow = ({ item, index, separators, products }) => {
+const SwipeableRow = ({ item, id, separators, products }) => {
     // const product = useSelector(state => state.appStore.products.get(item.id));
     const dispatch = useDispatch();
 
@@ -30,9 +30,9 @@ const SwipeableRow = ({ item, index, separators, products }) => {
                         {
                             <MedicineSwipeableRow action={removeAllProduct}>
                                 <ListItem
-                                    index={item.id}
-                                    description={item.description}
-                                    dealer={item.description}
+                                    id={item.id}
+                                    name={item.name}
+                                    dealer={item.dealer}
                                     price={item.price}
                                     availability={item.availability}
                                     products={products}
@@ -56,7 +56,7 @@ const MedicineList = ({navigation, data}) => {
     )
 
     // const productsCounter = useSelector(state => {
-    //     console.log('ping', index)
+    //     console.log('ping', id)
     //     return state.appStore.products;
     // });
 
@@ -72,10 +72,10 @@ const MedicineList = ({navigation, data}) => {
                         // ListHeaderComponent={
                         //     headVisible ? Header : undefined
                         // }
-                        renderItem={({item, index, separators}) => (
+                        renderItem={({item, id, separators}) => (
                             <SwipeableRow 
                                 item={item} 
-                                index={index} 
+                                id={id} 
                                 separators={separators} 
                                 products={products}
                             />

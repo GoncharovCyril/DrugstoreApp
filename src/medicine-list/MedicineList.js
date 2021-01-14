@@ -64,7 +64,7 @@ const MedicineList = ({route, navigation}) => {
     )
 
     // const productsCounter = useSelector(state => {
-    //     console.log('ping', index)
+    //     console.log('ping', id)
     //     return state.appStore.products;
     // });
 
@@ -87,7 +87,7 @@ const MedicineList = ({route, navigation}) => {
     }, []);
 
     const renderItem = ({ item }) => (
-        <ListItem products={products} navigation={navigation} index={item.id} description={item.description} dealer={item.description} price={item.price} availability={item.availability} />
+        <ListItem products={products} navigation={navigation} id={item.id} name={item.name} dealer={item.name} price={item.price} availability={item.availability} />
     );
 
     return (
