@@ -78,14 +78,10 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
             shop.address = JSON.parse(action.payload.shop).address;
 
-            console.log(action.payload.history);
-
-            // search.history.clear();
             for (let value of JSON.parse(action.payload.history) )
             {
-                search.history.unshift(value);
+                search.history.push(value);
             }
-            console.log(search.history);
 
             break;
 

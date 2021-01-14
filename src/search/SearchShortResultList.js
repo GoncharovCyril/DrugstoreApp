@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, FlatList, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, SafeAreaView, FlatList, StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { SET_SEARCH_VALUE, ADD_SEARCH_VALUE_TO_HISTORY } from '../redux/types';
 
@@ -8,12 +8,17 @@ import {colorOrange} from '../Colors';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: '5%',
+        marginLeft: '4%',
+        marginRight: '3%',
+        
     },
     item: {
         // flex: 5,
-        height: 25,
+        height: 26,
         justifyContent: 'center',
         alignItems: 'flex-start',
+        
     },
     title: {
         fontSize: 15,
@@ -37,9 +42,9 @@ const Item = ({ title, navigation }) => {
 
 
     return (
-        <TouchableHighlight
+        <TouchableOpacity
             style={styles.item}
-            underlayColor={colorOrange}
+            // underlayColor={colorOrange}
             onPress={touchAction}
 
         >
@@ -47,7 +52,7 @@ const Item = ({ title, navigation }) => {
                 <Text style={styles.title} numberOfLines={1}>{title.trim()}</Text>
 
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     )
 }
 
@@ -57,10 +62,6 @@ const ResultList = ({navigation, data}) => {
     const renderItem = ({item}) => (
         <Item title={item.name} navigation={navigation}/>
     );
-
-    console.log('data')
-    console.log(data);
-
 
     return (
         <SafeAreaView style={styles.container}>

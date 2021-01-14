@@ -49,12 +49,30 @@ const Space = (props) => {
     );
 };
 
+// if (textValue.length > 0) {
+    //     searchMedicine(textValue).then(([status, text]) => {
+    //         // console.log(JSON.parse(text).length);
+    //         switch (status) {
+    //             case 200:
+    //                 // setResult(json);
+    //                 setDataAction(JSON.parse(text));
+    //                 break;
+    //             default:
+    //                 setDataAction(null);
+    //                 break;
+    //         }
+    //     })
+    // } else {
+    //     setDataAction(null);            
+    // }
+
 const SearchHead = ({ navigation, setDataAction }) => {
 
     // const [searchValue, setSearchvalue] = React.useState('');
 
     const dispatch = useDispatch();
 
+    const [timer, setTimer] = React.useState(undefined);
 
     const searchValue = useSelector(state => state.appStore.search.value);
 
@@ -77,30 +95,51 @@ const SearchHead = ({ navigation, setDataAction }) => {
     }, [dispatch])
 
 
+    const search = (textValue) => {
+        searchMedicine(textValue).then(([status, text]) => {
+            // console.log(JSON.parse(text).length);
+            switch (status) {
+                case 200:
+                    // setResult(json);
+                    setDataAction(JSON.parse(text));
+                    break;
+                default:
+                    setDataAction(null);
+                    break;
+            }
+        }).finally(()=>{setTimer(undefined)})
+    };
 
+    let tId = undefined;
+    
 
-    const setSearchValue = React.useCallback((textValue) => {
-        // setDataAction(textValue);
-        if (textValue.length > 0) {
-            searchMedicine(textValue).then(([status, text]) => {
-                // console.log(JSON.parse(text).length);
-                switch (status) {
-                    case 200:
-                        // setResult(json);
-                        setDataAction(JSON.parse(text));
-                        break;
-                    default:
-                        setDataAction(null);
-                        break;
-                }
-            })
+    const setSearchValue = React.useCallback((textValue) => {       
+        setDataAction([]);
+        if(timer == undefined){
+            if (textValue.length > 0){
+                setTimer(setTimeout(()=>{
+                    search(textValue);
+                }, 500));
+            } else {
+                setDataAction(null);
+            }
         } else {
-            setDataAction(null);            
+            clearTimeout(timer)
+            if (textValue.length > 0){
+                setTimer(
+                    setTimeout(()=>{
+                        search(textValue);
+                        // setTimer(undefined);
+                    }, 500)
+                )
+            } else {
+                setDataAction(null);
+            }
         }
 
 
 
-    }, [])
+    }, [timer])
 
     const tRef = React.createRef(null);
 

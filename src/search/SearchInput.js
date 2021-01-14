@@ -23,9 +23,7 @@ const SearchInput = ({route, navigation}) => {
 
     useFocusEffect(
         React.useCallback(()=> {
-            console.log(search.history)
             if(search.value.length == 0) {
-  
                 setResult(null);
                 if(search.history.length > 0){
                     setHistoryShowed(true)
