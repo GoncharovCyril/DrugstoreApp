@@ -11,7 +11,7 @@ import PersonalAreaScreen from './personal-area/PersonalArea';
 import OrdersScreen from './orders/Orders';
 import PromotionsScreen from './promotions/Promotions';
 import ReviewScreen from './review/Review';
-import CallbackScreen from './callback/Callback';
+import CallbackScreen from '../callback/Callback';
 
 
 import PhoneNumberScreen from './personal-area/PhoneNumberScreen';

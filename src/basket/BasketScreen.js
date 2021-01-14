@@ -66,7 +66,6 @@ const BasketScreen = ({route, navigation}) => {
                 })
                 .finally(() => {
                     setLoading(false);
-                    console.log(busketData)
                 })
         },[])
     );

@@ -46,6 +46,11 @@ export const headerStyles = {
         backgroundColor: backgroundColor,
         marginTop: statusBarHeight,
     },
+    medicineItemSubHeader: {
+        height: smallHeight,
+        backgroundColor: backgroundColor,
+        marginTop: statusBarHeight,
+    },
     searchResultHeader: {
         height: smallHeight+searchHeigt+shopHeight,
         backgroundColor: backgroundColor,

@@ -105,7 +105,6 @@ function MedicineTab({ state, descriptors, navigation }) {
   const selectNumOfProducts = createSelector(
     state => getSize(state.appStore.products),
     products => {
-      // console.log(products.size);
       // return getSize(products);
       return products
     }

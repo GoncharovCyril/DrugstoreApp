@@ -6,6 +6,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {colorOrange} from '../Colors';
 
 import {getMedicineItem} from '../requests/ProductsRequests';
+import MedicineInfo from './medicine-info/MedicineInfo';
 
 
 export const MedicineItemScreen = ({route, navigation}) => {
@@ -18,7 +19,6 @@ export const MedicineItemScreen = ({route, navigation}) => {
   
     useFocusEffect(React.useCallback(()=> {
       // if(route['params'] != undefined){
-      //   console.log('yes1')
       //   setId(route.params['id'])
       //   setName(route.params['name'])
   
@@ -52,9 +52,7 @@ export const MedicineItemScreen = ({route, navigation}) => {
             <ActivityIndicator size="large" color={colorOrange} />
           </View>
           : 
-          <View style={{justifyContent: 'center', alignItems: 'flex-start'}}>
-            <Text>{JSON.stringify(medicineData)}</Text>
-          </View>
+            <MedicineInfo navigation={navigation} data={medicineData[0]} />
         }
         
       </View>

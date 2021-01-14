@@ -35,14 +35,13 @@ const Header = ({navigation, backButton, title}) => {
                 }}
             />
             <TitleHead backButton={backButton} title={title}/>
-            <ShopHead navigation={navigation} />
         </View>
     );
 };
 
 const medicineHeader = {
     headerMode: "screen",
-    headerStyle: headerStyles.medicineItemHeader,
+    headerStyle: headerStyles.medicineItemSubHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
         // const title = options.headerTitle !== undefined
@@ -57,6 +56,7 @@ const medicineHeader = {
             ? 'Medicine'
             : scene.route.params['name']
 
+        // console.log(scene.route['params'])
 
         return (
             <View style={options.headerStyle} >
