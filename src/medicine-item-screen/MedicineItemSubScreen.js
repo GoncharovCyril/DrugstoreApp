@@ -12,10 +12,10 @@ export const MedicineItemScreen = ({ route, navigation }) => {
     useFocusEffect(React.useCallback(() => {
         if (route['params'] !== undefined) {
             setText(route.params['data']
-                .replace(/\\n/g, '\n')
-                .replace(/\\r/g, '\r')
-                .replace(/\\v/g, '\v')
-                .replace(/\\t/g, '\t')
+                // .replace(/\\n/g, '\n')
+                // .replace(/\\r/g, '\r')
+                // .replace(/\\v/g, '\v')
+                // .replace(/\\t/g, '\t')
             )
 
             // console.log(text)

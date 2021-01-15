@@ -6,6 +6,7 @@ import { BoxShadow } from 'react-native-shadow';
 import { colorGreen, colorDarkGrey } from '../Colors';
 
 import BuyButton from './BuyButton';
+import Poster from './Poster';
 
 
 const styles = StyleSheet.create({
@@ -69,14 +70,7 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products})
                                     width: "100%",
                                     flex: 5,
                                 }}>
-                                    <Image
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                        }}
-                                        source={require('../../img/drug4.png')}
-                                        resizeMode="contain"
-                                    />
+                                    <Poster drug_id={id} />
                                 </View>
                                 <View style={{ flex: 0.5 }} />
                                 <Text style={{

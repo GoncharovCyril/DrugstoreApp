@@ -33,12 +33,13 @@ export const MedicineInfo = ({route, navigation, data}) => {
     <View style={styles.container}>
       <SafeAreaView style={styles.safeAreaView}>
         <ScrollView style={styles.scrollView}>
-          <Poster uri={data['poster']} />
+          <Poster drug_id={data['id']} />
           <Title name_rus={data['name_rus']} name_eng={data['name_eng']}/>
 
           <MainProperty propertyName='Производитель' propertyValue={data['manufacturer']} />
           <MainProperty propertyName='Страна' propertyValue={data['country']} />
           <MainProperty propertyName='Форма выпуска' propertyValue={data['packaging']} />
+          <MainProperty propertyName='Фасовка' propertyValue={data['amount']} />
           <MainProperty propertyName='Срок хранения' propertyValue={data['best_before']} />
 
           <View style={{height: 4}} />
@@ -60,10 +61,11 @@ export const MedicineInfo = ({route, navigation, data}) => {
           <AdditionalProperty propertyName='Предостережение' propertyValue={data['cautions']} navigation={navigation} />
           <AdditionalProperty propertyName='Меры предосторожности' propertyValue={data['precautions']} navigation={navigation} />
           <AdditionalProperty propertyName='При нарушении функции почек' propertyValue={data['in_impaired_renal_function']} navigation={navigation} />
+          <AdditionalProperty propertyName='Особые случаи' propertyValue={data['special_cases']} navigation={navigation} />
           <AdditionalProperty propertyName='Условия хранения' propertyValue={data['storage_conditions']} navigation={navigation} />
         </ScrollView>
       </SafeAreaView>
-      <Footer navigation={navigation} id={data['id']} amount={data['amount']} />
+      <Footer navigation={navigation} id={data['id']} price={data['price']} />
     </View>
   )
 };

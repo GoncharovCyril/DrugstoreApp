@@ -5,12 +5,14 @@ import BuyButton from './BuyButton';
 
 
 
-const Footer = ({navigation, id, amount}) => {
+const Footer = ({navigation, id, price}) => {
     return (
         <View style={{ 
             flex: 1, 
             backgroundColor: colorLightGrey, 
-            flexDirection: 'row'
+            flexDirection: 'row',
+            borderTopColor: colorDarkGrey,
+            borderTopWidth: 0
             }}
         >
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -19,7 +21,7 @@ const Footer = ({navigation, id, amount}) => {
                         fontSize: 20,
                         color: colorGreen
                     }}
-                >{amount}</Text>
+                >{price}</Text>
             </View>
             <View style={{
                 flex: 1,

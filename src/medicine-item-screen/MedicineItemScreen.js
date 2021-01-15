@@ -45,7 +45,7 @@ export const MedicineItemScreen = ({route, navigation}) => {
     },[id, name]))
   
     return (
-      <View style={{ flex: 1, justifyContent: 'flex-start' }}>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
         {
           isLoading ?
           <View style={{justifyContent: 'center', alignItems: 'center'}}> 
