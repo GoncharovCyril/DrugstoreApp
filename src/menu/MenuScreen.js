@@ -12,7 +12,7 @@ const menuStyles = StyleSheet.create({
 });
 
 
-const MenuScreen = ({ navigation }) => {
+const MenuScreen = ({route, navigation }) => {
     return (
         <View style={{
             justifyContent: 'flex-start',
@@ -22,7 +22,7 @@ const MenuScreen = ({ navigation }) => {
             <View style={{ flex: 1390, backgroundColor: colorLightGrey }}>
                 <CityPicker navigation={navigation} />
                 <View style={{ flex: 60 }} />
-                <MenuButtons navigation={navigation} />
+                <MenuButtons route={route} navigation={navigation} />
                 <View style={{ flex: 39 }} />
                 <RoundButtons navigation={navigation} />
                 <View style={{ flex: 370 }} />

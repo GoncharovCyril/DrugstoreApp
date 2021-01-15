@@ -11,7 +11,8 @@ import {
     REMOVE_ALL_THIS_PRODUCT,
     SET_SEARCH_VALUE,
     ADD_SEARCH_VALUE_TO_HISTORY,
-    CLEAR_SEARCH_HISTORY
+    CLEAR_SEARCH_HISTORY,
+    SET_PHONE
 } from './types';
 
 import {
@@ -124,6 +125,12 @@ const appReducer = (state = INITIAL_STATE, action) => {
             account.token = action.payload.token;
             // if(action.payload.token != null){
                 storeToken(action.payload.token);
+            // }
+            break;
+
+        case SET_PHONE:
+            account.phone = action.payload.phone;
+            // if(action.payload.token != null){
             // }
             break;
 

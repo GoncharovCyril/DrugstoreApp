@@ -38,12 +38,10 @@ const Menu = () => {
                 <MenuStack.Screen name="ReviewScreen" component={ReviewScreen} options={Header} />
                 <MenuStack.Screen name="CallbackScreen" component={CallbackScreen} options={Header} />
 
-
-
-                <MenuStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={Header} />
-                <MenuStack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen} options={Header} />
+                <MenuStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}} />
+                {/* <MenuStack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen} options={Header} />
                 <MenuStack.Screen name="VerificationCodeScreen" component={VerificationCodeScreen} options={Header} />
-                <MenuStack.Screen name="AccountScreen" component={AccountScreen} options={Header} />
+                <MenuStack.Screen name="AccountScreen" component={AccountScreen} options={Header} /> */}
 
             </MenuStack.Navigator>
     );

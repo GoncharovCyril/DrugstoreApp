@@ -59,6 +59,7 @@ export const login = async (phone, verification_code) => {
 export const getUser = async (token) => {
     const url = `http://195.133.145.14/api/user`;
     const auth = 'Bearer ' + token;
+    console.log(auth)
     try {
         let response = await fetch(url, {
             method: 'GET',

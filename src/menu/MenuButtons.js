@@ -69,7 +69,7 @@ const MenuButtonConnect = (props) => {
 
 
 
-const MenuButtons = ({navigation}) => {
+const MenuButtons = ({route, navigation}) => {
 
     const storeToken = useSelector(state => state.appStore.account.token);
 
@@ -85,23 +85,24 @@ const MenuButtons = ({navigation}) => {
                     // sendVerificationCode("380713344850");
                     // login("380713344850","1249")
                     
-                    getUser(storeToken)
-                    .then(([status, json]) => {
-                        switch (status){
-                            case 401:
-                                navigation.navigate("PhoneNumberScreen");
-                                break; 
+                    // getUser(storeToken)
+                    // .then(([status, json]) => {
+                    //     switch (status){
+                    //         case 401:
+                    //             navigation.navigate("PhoneNumberScreen");
+                    //             break; 
                 
-                            case 200:
-                                navigation.navigate("AccountScreen", {
-                                    account: json
-                                });
-                                break;
-                            default:
-                                alert(`${status}:\n${json}`);
-                        }
-                    })
-                    // navigation.navigate("PersonalAreaScreen");
+                    //         case 200:
+                    //             navigation.navigate("AccountScreen", {
+                    //                 account: json
+                    //             });
+                    //             break;
+                    //         default:
+                    //             alert(`${status}:\n${json}`);
+                    //     }
+                    // })
+                    console.log()
+                    navigation.navigate("PersonalAreaScreen", {baseRouteName: route.name});
                 }}
             />
             <View style={styles.menuSpace} />
