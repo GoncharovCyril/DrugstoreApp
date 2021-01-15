@@ -13,7 +13,7 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
-const SwipeableRow = ({ item, id, separators, products }) => {
+const SwipeableRow = ({ item, id, separators, products, navigation }) => {
     // const product = useSelector(state => state.appStore.products.get(item.id));
     const dispatch = useDispatch();
 
@@ -30,6 +30,7 @@ const SwipeableRow = ({ item, id, separators, products }) => {
                         {
                             <MedicineSwipeableRow action={removeAllProduct}>
                                 <ListItem
+                                    navigation={navigation}
                                     id={item.id}
                                     name={item.name}
                                     dealer={item.dealer}
@@ -77,6 +78,7 @@ const MedicineList = ({navigation, data}) => {
                                 id={id} 
                                 separators={separators} 
                                 products={products}
+                                navigation={navigation}
                             />
                         )}
                         keyExtractor={item => item.id.toString()}

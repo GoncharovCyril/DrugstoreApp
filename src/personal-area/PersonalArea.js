@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PhoneNumberScreen from './PhoneNumberScreen';
 import VerificationCodeScreen from './VerificationCodeScreen';
 import AccountScreen from './AccountScreen';
+import LoadingScreen from './LoadingScreen';
 
 const styles = StyleSheet.create({
    
@@ -18,6 +19,7 @@ const PersonalAreaScreen = ({route, navigation}) => {
                 <PersonalAreaStack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen}/>
                 <PersonalAreaStack.Screen name="VerificationCodeScreen" component={VerificationCodeScreen}/>
                 <PersonalAreaStack.Screen name="AccountScreen" component={AccountScreen}/>
+                <PersonalAreaStack.Screen name="LoadingScreen" component={LoadingScreen}/>
 
             </PersonalAreaStack.Navigator>
     );

@@ -17,6 +17,11 @@ import DATA from '../medicine-list/testMedicineData';
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
+import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
+import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
+import MedicineItemSubHeader from '../medicine-item-screen/MedicineItemSubHeader';
+
 const catalogStyles = StyleSheet.create({
 
 });
@@ -105,6 +110,10 @@ const Catalog = () => {
                 <CatalogStack.Screen name="SubCatalog" component={SubCatalog} options={subcatalogHeader} />
                 <CatalogStack.Screen name="MedicineListScreen" component={MedicineListScreen} options={subcatalogHeader} />
                 <CatalogStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
+
+                <CatalogStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
+                <CatalogStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
+                
             </CatalogStack.Navigator>
     );
 };

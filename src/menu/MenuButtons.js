@@ -84,6 +84,7 @@ const MenuButtons = ({navigation}) => {
 
                     // sendVerificationCode("380713344850");
                     // login("380713344850","1249")
+                    
                     getUser(storeToken)
                     .then(([status, json]) => {
                         switch (status){

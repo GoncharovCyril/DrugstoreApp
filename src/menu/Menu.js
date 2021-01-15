@@ -7,16 +7,16 @@ import Header from './MenuHeader';
 
 import MenuScreen from './MenuScreen';
 import ChooseCityScreen from '../city/ChooseCityScreen';
-import PersonalAreaScreen from './personal-area/PersonalArea';
 import OrdersScreen from './orders/Orders';
 import PromotionsScreen from './promotions/Promotions';
 import ReviewScreen from './review/Review';
 import CallbackScreen from '../callback/Callback';
 
+import PersonalAreaScreen from '../personal-area/PersonalArea';
+import PhoneNumberScreen from '../personal-area/PhoneNumberScreen';
+import VerificationCodeScreen from '../personal-area/VerificationCodeScreen';
+import AccountScreen from '../personal-area/AccountScreen';
 
-import PhoneNumberScreen from './personal-area/PhoneNumberScreen';
-import VerificationCodeScreen from './personal-area/VerificationCodeScreen';
-import AccountScreen from './personal-area/AccountScreen';
 
 
 const menuStyles = StyleSheet.create({
@@ -39,8 +39,8 @@ const Menu = () => {
                 <MenuStack.Screen name="CallbackScreen" component={CallbackScreen} options={Header} />
 
 
-                <MenuStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={Header} />
 
+                <MenuStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={Header} />
                 <MenuStack.Screen name="PhoneNumberScreen" component={PhoneNumberScreen} options={Header} />
                 <MenuStack.Screen name="VerificationCodeScreen" component={VerificationCodeScreen} options={Header} />
                 <MenuStack.Screen name="AccountScreen" component={AccountScreen} options={Header} />

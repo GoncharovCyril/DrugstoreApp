@@ -41,11 +41,11 @@ const TitleHead = ({navigation, backButton, trashButton, title}) => {
                             </View>
                             <View style={{ flex: 8, alignItems: 'center' }}>
                                 <Text 
-                                numberOfLines={1}
+                                numberOfLines={2}
                                 style={{
                                     color: 'white',
-                                    fontSize: 22,
-                                    textAlign: 'center'
+                                    fontSize: 20,
+                                    textAlign: 'center',
                                 }}>{title}</Text>
                             </View>
                             <View style={{flex: 2}} />

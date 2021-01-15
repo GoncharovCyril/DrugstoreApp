@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { sendVerificationCode } from '../../requests/AccountRequests';
+import { sendVerificationCode } from '../requests/AccountRequests';
 
 const styles = StyleSheet.create({
    
