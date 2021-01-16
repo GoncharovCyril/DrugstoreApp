@@ -6,6 +6,9 @@ import SearchResult from './SearchResult';
 
 import SearchResultHeader from './search-result-header/SearchResultHeader';
 
+import FilterScreen from '../medicine-list/filter/FilterScreen';
+import FilterHeader from '../medicine-list/filter/FilterHeader';
+
 import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
 import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
@@ -19,6 +22,7 @@ const Search = ({navigation}) => {
         <SearchStack.Navigator initialRouteName="SearchInput" >
             <SearchStack.Screen name="SearchInput" component={SearchInput} options={{headerShown: false}} />
             <SearchStack.Screen name="SearchResult" component={SearchResult} options={SearchResultHeader} />
+            <SearchStack.Screen name="FilterScreen" component={FilterScreen} options={FilterHeader} />
 
             <SearchStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
             <SearchStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />

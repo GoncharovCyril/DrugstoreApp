@@ -35,14 +35,33 @@ const Footer = () => (<ActivityIndicator size="large" color={colorOrange} />);
 //     return state.appStore.products;
 // });
 
+
+const initFilters={
+    manufacturer: [],
+    country: [],
+    release_form: []
+}
+
 const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
+    
 
     const [refreshing, setRefreshing] = React.useState(false);
     const [shownData, setShownData] = React.useState([])
     const [bottom, setBottom] = React.useState(undefined);
     const [modalVisible, setModalVisible] = React.useState(false);
-    const [selectedSorter, setSelectedSorter] = React.useState(3)
+    const [selectedSorter, setSelectedSorter] = React.useState(3);
+    const [possibleFilters, setPossibleFilters] = React.useState({
+        manufacturer: [],
+        country: [],
+        release_form: []
+    });
+    const [activeFilters, setActiveFilters] = React.useState({
+        manufacturer: [],
+        country: [],
+        release_form: []
+    });
+
 
     let dataCopy = sourceData;
 
@@ -95,6 +114,14 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         setRefreshing(false);
         setLoading(true)
 
+        initPossibleFilters();
+        if (route['params'] != undefined) {
+            console.log('params')
+            console.log(route.params['activeFilters'])
+        }
+        
+        // !!! СЮДА ВСТАВИТЬ ФИЛЬТРАЦИЮ ДАННЫХ
+
         dataCopy.sort(Sorters.find((element, index, array)=> {
             return element.id  == selectedSorter;
         }).compareFunction);
@@ -103,7 +130,7 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         setLoading(false);
 
 
-    }, []))
+    }, [activeFilters, possibleFilters]))
 
     const sortData = (sortId, sortFunction) => {
         setRefreshing(false);
@@ -115,6 +142,17 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         setLoading(false);
     }
 
+    const initPossibleFilters = () => {
+        sourceData.forEach((item, index, array) => {
+
+            for (let key of Object.keys(possibleFilters)){
+                if(possibleFilters[key].indexOf(item[key]) == -1){
+                    possibleFilters[key].push(item[key]);
+                }
+            }
+
+        })
+    }
 
     const Header = () => (
         <View style={{
@@ -133,7 +171,14 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
                     <ChevronBottomSolid color={colorDarkGrey} />
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { }}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => {
+                navigation.navigate('FilterScreen', {
+                    baseRouteName: route.name,
+                    activeFilters: activeFilters,
+                    possibleFilters: possibleFilters,
+                    initFilters: initFilters,
+                })
+            }}>
                 <Text style={{ fontSize: 15, color: colorDarkGrey }}>Фильтр  </Text>
                 <View style={{ height: 12, alignSelf: 'center' }}>
                     <FilterSolid color={colorDarkGrey} />

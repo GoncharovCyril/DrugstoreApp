@@ -55,7 +55,7 @@ const SearchResultScreen = ({route, navigation}) => {
                 <ActivityIndicator size='large' color={colorOrange} />
                 :
                 resultData.length > 0 ? 
-                <MedicineList navigation={navigation} setLoading={setLoading} sourceData={resultData} />
+                <MedicineList route={route} navigation={navigation} setLoading={setLoading} sourceData={resultData} />
                 : <Text
                 style={{
                     fontSize: 20,
