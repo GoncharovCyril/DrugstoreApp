@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-import BackButton from "../BackButton";
-import TitleHead from '../header/TitleHead';
+import BackButton from "../../BackButton";
+import TitleHead from '../../header/TitleHead';
 
-import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
-import { colorOrange } from '../Colors';
+import { headerStyles, smallHeight, searchHeigt } from "../../navigationHeadStyles";
+import { colorOrange } from '../../Colors';
 
 
 const headStyles = StyleSheet.create({
@@ -36,16 +36,20 @@ const Header = ({navigation, backButton, title}) => {
     );
 };
 
+
 const menuHeader = {
     headerMode: "screen",
     headerStyle: headerStyles.menuHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
 
+
         return (
             <View style={options.headerStyle} >
-                <Header title={"Ввод кода\nSMS"} navigation={navigation} backButton={
-                    previous ? <BackButton action={navigation.goBack} /> : undefined
+                <Header title={"Личный кабинет"} navigation={navigation} backButton={
+                    previous ? <BackButton action={()=>{
+                        navigation.navigate(scene.route.params['baseRouteName'])
+                    }} /> : undefined
                 } />  
             </View>
             

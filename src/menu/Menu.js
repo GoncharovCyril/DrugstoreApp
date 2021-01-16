@@ -13,9 +13,9 @@ import ReviewScreen from './review/Review';
 import CallbackScreen from '../callback/Callback';
 
 import PersonalAreaScreen from '../personal-area/PersonalArea';
-import PhoneNumberScreen from '../personal-area/PhoneNumberScreen';
-import VerificationCodeScreen from '../personal-area/VerificationCodeScreen';
-import AccountScreen from '../personal-area/AccountScreen';
+import PhoneNumberScreen from '../personal-area/phone-number/PhoneNumberScreen';
+import VerificationCodeScreen from '../personal-area/verification-code/VerificationCodeScreen';
+import AccountScreen from '../personal-area/account/AccountScreen';
 
 
 

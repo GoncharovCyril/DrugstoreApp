@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, ActivityIndicator, Button } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import AccountInfo from './AccountInfo';
+import AccountInfo from './account-info/AccountInfo';
 
-import {getUser} from '../requests/AccountRequests'; 
+import {getUser} from '../../requests/AccountRequests'; 
 
-import { colorOrange } from '../Colors';
+import { colorOrange } from '../../Colors';
 import { useSelector } from 'react-redux';
 
 const styles = StyleSheet.create({
@@ -31,22 +31,20 @@ const AccountScreen = ({ navigation, route }) => {
                             break;
 
                         case 200:
-                            console.log(json);
-                            console.log('succes')
                             setAccountData(json);
+                            setLoading(false);
                             break;
                         default:
                             alert(`${status}:\n${json}`);
                     }
                 })
                 .finally(()=>{
-                    setLoading(false);
                 })
         }, [storedToken])
     );
 
     return (
-        <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+        <View style={{ justifyContent: 'center', alignItems: 'stretch', flex: 1, width: '100%' }}>
             {
                 isLoading ?
                     <ActivityIndicator color={colorOrange} size='large' />

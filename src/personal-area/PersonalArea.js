@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {useFocusEffect} from '@react-navigation/native';
 
-import PhoneNumberScreen from './PhoneNumberScreen';
-import PhoneNumberHeader from './PhoneNumberHeader';
+import PhoneNumberScreen from './phone-number/PhoneNumberScreen';
+import PhoneNumberHeader from './phone-number/PhoneNumberHeader';
 
-import VerificationCodeScreen from './VerificationCodeScreen';
-import VerificationCodeHeader from './VerificationCodeHeader';
+import VerificationCodeScreen from './verification-code/VerificationCodeScreen';
+import VerificationCodeHeader from './verification-code/VerificationCodeHeader';
 
-import AccountScreen from './AccountScreen';
-import AccountHeader from './AccountHeader';
+import AccountScreen from './account/AccountScreen';
+import AccountHeader from './account/AccountHeader';
 
 import LoadingScreen from './LoadingScreen';
 

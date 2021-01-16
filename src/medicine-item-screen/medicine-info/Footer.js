@@ -9,7 +9,7 @@ const Footer = ({navigation, id, price}) => {
     return (
         <View style={{ 
             flex: 1, 
-            backgroundColor: colorDarkGrey, 
+            backgroundColor: colorLightGrey, 
             flexDirection: 'row',
             borderTopColor: colorDarkGrey,
             borderTopWidth: 0

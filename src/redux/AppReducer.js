@@ -27,9 +27,9 @@ import {
 const INITIAL_STATE = {
     products: new Map(),
     account: {
-        token: null,
-        phone: null,
-        verification_code: null,
+        token: '',
+        phone: '',
+        verification_code: '',
     },
     shop: {
         id: null,
