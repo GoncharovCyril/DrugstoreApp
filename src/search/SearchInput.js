@@ -32,7 +32,7 @@ const SearchInput = ({route, navigation}) => {
             } else {
 
                 // обновление листа шорт резалт
-                searchMedicine(search.value).then(([status, text]) => {
+                searchMedicine(search.value, 10).then(([status, text]) => {
                     // console.log(JSON.parse(text).length);
                     switch (status) {
                         case 200:

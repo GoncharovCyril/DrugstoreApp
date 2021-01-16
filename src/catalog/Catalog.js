@@ -11,8 +11,9 @@ import CatalogItem from './CatalogItem';
 import CatalogData from './data/CatalogData';
 import SubData from './data/SubData';
 
-import MedicineListScreen from '../medicine-list/MedicineList';
-import DATA from '../medicine-list/testMedicineData';
+import CatalogResultScreen from './CatalogResultsScreen';
+
+import DATA from '../medicine-list/test-data/testMedicineData';
 
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
@@ -75,7 +76,7 @@ const SubCatalog = ({navigation, route}) => {
     
     const renderItem = ({ item }) => (
         <CatalogItem title={item.title} action={() =>{
-            navigation.navigate("MedicineListScreen", {
+            navigation.navigate("CatalogResultScreen", {
                 title: item.title,
                 headVisible: true,
                 data: DATA,
@@ -108,7 +109,7 @@ const Catalog = () => {
             <CatalogStack.Navigator initialRouteName="MainCatalog">
                 <CatalogStack.Screen name="MainCatalog" initialParams={{data: CatalogData}} component={MainCatalog} options={catalogHeader} />
                 <CatalogStack.Screen name="SubCatalog" component={SubCatalog} options={subcatalogHeader} />
-                <CatalogStack.Screen name="MedicineListScreen" component={MedicineListScreen} options={subcatalogHeader} />
+                <CatalogStack.Screen name="CatalogResultScreen" component={CatalogResultScreen} options={subcatalogHeader} />
                 <CatalogStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
 
                 <CatalogStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />

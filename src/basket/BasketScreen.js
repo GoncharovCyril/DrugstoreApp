@@ -8,7 +8,7 @@ import { colorOrange } from '../Colors';
 
 import BasketList from './basket-list/BasketList';
 
-import DATA from '../medicine-list/testMedicineData';
+import DATA from '../medicine-list/test-data/testMedicineData';
 import EmptyBasket from './EmptyBasket';
 
 

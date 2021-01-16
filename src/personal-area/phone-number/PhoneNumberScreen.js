@@ -108,6 +108,7 @@ const PhoneNumberScreen = ({route, navigation}) => {
                 keyboardType='phone-pad'
                 onChangeText={text => setPhone(text)}
                 maxLength={12}
+                placeholder="Введите номер телефона"
             />
             <View style={styles.butonsContainer}>
                 <View style={styles.cancelButton}>

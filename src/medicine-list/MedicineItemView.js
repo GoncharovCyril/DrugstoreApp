@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({navigation, id, name, dealer, price, availability, products}) => {
+const DrugView = ({navigation, id, name, dealer, price, availability, products, dispatch}) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
     
@@ -55,14 +55,15 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products})
                         height: viewH,
                         width: viewWidth,
                     }}>
-                        <View style={{ flex: 10 }} />
                         <View style={{
+                            marginTop: '3%',
+                            marginBottom: '3%',
                             flex: 84,
                             flexDirection: "row",
                         }}>
-                            <View style={{ flex: 5 }} />
                             <View style={{
                                 flex: 22,
+                                marginLeft: '3%',
                                 alignItems: "center",
                                 justifyContent: "space-around",
                             }}>
@@ -82,40 +83,46 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products})
                                     {availability}
                                 </Text>
                             </ View>
-                            <View style={{ flex: 2 }} />
-                            <View style={{ flex: 67 }}>
+                            <View style={{ 
+                                flex: 67,
+                                marginRight: '3%',
+                                marginLeft: '2%',
+                             }}>
                                 <View style={{ flex: 160 }}>
                                     <View style={{ flex: 6., flexDirection: 'row' }}>
-                                        <View style={{ width: 2 }} />
-                                        <Text style={{ fontSize: 12.5 }}>{name}</Text>
+                                        <Text style={{ 
+                                            fontSize: 14,
+                                            marginTop: '2%'
+                                        }}
+                                        numberOfLines={2}
+                                        >{name}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
-                                        <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{dealer}</Text>
+                                        <Text 
+                                            numberOfLines={1} 
+                                            style={{ color: colorDarkGrey, fontSize: 12 }}
+                                            >{dealer}</Text>
                                     </View>
                                 </View>
 
 
                                 <View style={{ flexDirection: "row", flex: 63 + 73 }}>
-                                    <View style={{ flex: 7 }} />
+                                    <View style={{ flex: 5 }} />
                                     <View style={{ flex: 5, flexDirection: 'column' }}>
                                         <Text style={{
                                             alignSelf: "flex-end",
                                             flex: 1,
                                             textAlignVertical: 'center',
                                             fontWeight: 'bold',
-                                        }}>
-                                            {price}
-                                        </Text>
+                                        }}>от {price} руб.</Text>
                                         <View style={{ flex: 1 }}>
-                                            <BuyButton products={products} navigation={navigation} id={id} />
+                                            <BuyButton products={products} navigation={navigation} id={id} dispatch={dispatch} />
                                         </View>
                                     </View>
                                 </View>
 
                             </View>
-                            <View style={{ flex: 4 }} />
                         </View>
-                        <View style={{ flex: 6 }} />
                     </View>
 
                 </TouchableWithoutFeedback>

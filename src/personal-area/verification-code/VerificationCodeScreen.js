@@ -172,6 +172,7 @@ const VerificationCodeScreen = ({ navigation, route }) => {
                 keyboardType='number-pad'                
                 onChangeText={text => setVcode(text)}
                 maxLength={4}
+                placeholder="Введите код подтверждения"
             />
                 <View style={styles.acceptButton}>
                     <AcceptButton title="Подтвердить" onPress={authorize} />

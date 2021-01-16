@@ -4,6 +4,8 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 import {searchMedicine} from '../requests/ProductsRequests';
+import MedicineList from '../medicine-list/list/MedicineList';
+import { colorOrange } from '../Colors';
 
 const SearchResultScreen = ({route, navigation}) => {
 
@@ -13,42 +15,54 @@ const SearchResultScreen = ({route, navigation}) => {
 
     const [isLoading, setLoading] = React.useState(true);
     const [resultData, setResultdata] = React.useState([]);
+    const [message, setMessage] = React.useState('')
 
-    // useFocusEffect(
-    //     React.useCallback(()=>{
-    //         setResultdata([]);
-    //         setLoading(true);
-    //         searchMedicine(searchValue)
-    //             .then(([status, json]) => {
-    //                 switch (status) {
-    //                     case 200:
-    //                         setResultdata(json);
-    //                         break;
-    //                     default:
-    //                         break;
-    //                 }
-    //             })
-    //             .finally(() => {
-    //                 setLoading(false);
-    //             })
-    //     }, [])
-    // );
+    useFocusEffect(
+        React.useCallback(()=>{
+            setLoading(true);
+            setResultdata([]);
+            if(searchValue.length > 0){
+                // setLoading(true);
+                searchMedicine(searchValue, "")
+                    .then(([status, text]) => {
+                        switch (status) {
+                            case 200:
+                                setResultdata(JSON.parse(text));
+                                setMessage(resultData.length == 0 ? 'Ничего не найдено' : '')
+                                break;
+                            default:
+                                alert(status);
+                                alert(text);
+                                break;
+                        }
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    })
+            } else {
+                setMessage('Введен пустой запрос')
+            }
+            
+            return () => {setLoading(true);}
+        }, [])
+    );
 
 
     return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'stretch'}}>
             {
-                resultData.map(item => (
-                    <View>
-                        <Text>{item.id}</Text>
-                        <Text>{item.name}</Text>
-                        <Text>{item.country}</Text>
-                        <Text>{item.release_form}</Text>
-                        <Text>{item.manufacturer}</Text>
-                    </View>
-                ))
+                isLoading ?
+                <ActivityIndicator size='large' color={colorOrange} />
+                :
+                resultData.length > 0 ? 
+                <MedicineList navigation={navigation} setLoading={setLoading} sourceData={resultData} />
+                : <Text
+                style={{
+                    fontSize: 20,
+                    textAlign: 'center'
+                }}
+                >{message}</Text>
             }
-            <Text>{searchValue}</Text>
         </View>
     );
 };

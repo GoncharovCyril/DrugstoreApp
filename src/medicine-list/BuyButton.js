@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 
 
-const BuyButton = ({ navigation, id, products }) => {
+const BuyButton = ({ navigation, id, products, dispatch}) => {
 
     // const productSelector = createSelector(
     //     state => {
@@ -51,7 +51,7 @@ const BuyButton = ({ navigation, id, products }) => {
     // //     return state.appStore.products;
     // // });
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const addProduct = React.useCallback(() => {
         dispatch({ type: ADD_PRODUCT, payload: {id: id} });

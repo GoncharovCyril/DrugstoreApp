@@ -96,7 +96,7 @@ const SearchHead = ({ navigation, setDataAction }) => {
 
 
     const search = (textValue) => {
-        searchMedicine(textValue).then(([status, text]) => {
+        searchMedicine(textValue, 10).then(([status, text]) => {
             // console.log(JSON.parse(text).length);
             switch (status) {
                 case 200:

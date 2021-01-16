@@ -1,8 +1,8 @@
-export const searchMedicine = async(name) => {
+export const searchMedicine = async(name, limit) => {
     const url = 'http://195.133.145.14/api/drugs';
     const data = {
         "name": name,
-        "limit": 15
+        "limit": limit
     }
     try {
         let response = await fetch(url, {
