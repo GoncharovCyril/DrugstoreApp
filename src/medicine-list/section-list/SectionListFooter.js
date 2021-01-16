@@ -1,9 +1,9 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
-import { colorDarkGrey, colorOrange, colorLightGrey } from '../Colors';
+import { colorDarkGrey, colorOrange, colorLightGrey } from '../../Colors';
 
-import ShevronRightSolid from '../../svg/chevron-right-solid';
+import ShevronRightSolid from '../../../svg/chevron-right-solid';
 
 const footerStyles=StyleSheet.create({
     scrollContainer: {
@@ -44,7 +44,7 @@ const Footer = ({navigation, key}) => (
         >
             <View style={{ flex: 0.3 }} />
             <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
-                <Image source={require("../../img/plus-solid.png")} style={{
+                <Image source={require("../../../img/plus-solid.png")} style={{
                     width: "100%",
                     height: "100%",
                 }} resizeMode="contain" />
@@ -71,7 +71,7 @@ const Footer = ({navigation, key}) => (
         >
             <View style={{ flex: 0.3 }} />
             <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
-                <Image source={require("../../img/virus-solid.png")} style={{
+                <Image source={require("../../../img/virus-solid.png")} style={{
                     width: "100%",
                     height: "100%",
                 }} resizeMode="contain" />
@@ -98,7 +98,7 @@ const Footer = ({navigation, key}) => (
         >
             <View style={{ flex: 0.3 }} />
             <View style={{ justifyContent: "center", alignSelf: "center", flex: 0.7 }}>
-                <Image source={require("../../img/comment-medical-solid.png")} style={{
+                <Image source={require("../../../img/comment-medical-solid.png")} style={{
                     width: "100%",
                     height: "100%",
                 }} resizeMode="contain" />

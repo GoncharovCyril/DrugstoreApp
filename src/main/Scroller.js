@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 
 import { colorLightGrey } from '../Colors';
 
-import MedicineSectionList from "../medicine-list/MedicineSectionList";
-import sectionData from "../medicine-list/testMedicineSectionData";
+import MedicineSectionList from "../medicine-list/section-list/MedicineSectionList";
+import sectionData from "../medicine-list/test-data/testMedicineSectionData";
 
 
 

@@ -2,18 +2,18 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } from 'react-native';
 
-import { colorDarkGrey, colorOrange, colorLightGrey } from '../Colors';
+import { colorDarkGrey, colorOrange, colorLightGrey } from '../../Colors';
 
 import {useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 
 
-import ListItem from './MedicineItemView';
+import ListItem from '../MedicineItemView';
 import Footer from './SectionListFooter';
 // import AdSlider from './AdSlider';
 
 
-import ShevronRightSolid from '../../svg/chevron-right-solid';
+import ShevronRightSolid from '../../../svg/chevron-right-solid';
 
 const medicineListStyles=StyleSheet.create({
     scrollContainer: {

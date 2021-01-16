@@ -5,12 +5,12 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Activ
 import {useSelector} from 'react-redux';
 import { createSelector } from 'reselect';
 
-import {colorOrange} from '../Colors';
+import {colorOrange} from '../../Colors';
 
-import ListItem from './MedicineItemView';
+import ListItem from '../MedicineItemView';
 
-import FilterSolid from '../../svg/filter-solid';
-import ChevronBottomSolid from '../../svg/chevron-bottom-solid'
+import FilterSolid from '../../../svg/filter-solid';
+import ChevronBottomSolid from '../../../svg/chevron-bottom-solid'
 
 
 const medicineListStyles=StyleSheet.create({
