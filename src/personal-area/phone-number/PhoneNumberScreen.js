@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         marginRight: '5%'
     },
-    butonsContainer: {
+    buttonsContainer: {
         height: labelHeight,
         flexDirection: 'row'
     },
@@ -110,7 +110,7 @@ const PhoneNumberScreen = ({route, navigation}) => {
                 maxLength={12}
                 placeholder="Введите номер телефона"
             />
-            <View style={styles.butonsContainer}>
+            <View style={styles.buttonsContainer}>
                 <View style={styles.cancelButton}>
                     <CancelButton title="Отмена" onPress={()=>{
                         navigation.navigate(route.params['baseRouteName'])
