@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({navigation, id, name, dealer, price, availability, products, dispatch}) => {
+const DrugView = ({navigation, id, name, dealer, price, availability, products, dispatch, addProduct, removeProduct}) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
     
@@ -116,7 +116,14 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                             fontWeight: 'bold',
                                         }}>от {price} руб.</Text>
                                         <View style={{ flex: 1 }}>
-                                            <BuyButton products={products} navigation={navigation} id={id} dispatch={dispatch} />
+                                            <BuyButton 
+                                            products={products} 
+                                            navigation={navigation} 
+                                            id={id} 
+                                            dispatch={dispatch} 
+                                            addProduct={addProduct}
+                                            removeProduct={removeProduct}
+                                            />
                                         </View>
                                     </View>
                                 </View>

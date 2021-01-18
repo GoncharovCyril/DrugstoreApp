@@ -4,6 +4,9 @@ import { useFocusEffect } from '@react-navigation/native'
 
 import AcceptButton from '../../personal-area/AcceptButton';
 import CancelButton from '../../personal-area/CancelButton';
+import { colorDarkGrey, colorGreen, colorOrange } from '../../Colors';
+import ChevronBottomSolid from '../../../svg/chevron-bottom-solid';
+import ChevronUpSolid from '../../../svg/chevron-up-solid';
 
 
 const FilterScreen = ({ navigation, route }) => {
@@ -13,6 +16,7 @@ const FilterScreen = ({ navigation, route }) => {
     const [sectionsData, setSectionsData] = React.useState([])
     const [shownData, setShownData] = React.useState([]);
     const [chosenFilters, setChosenFilters] = React.useState([]);
+    const [selectStates, setSelectStates] = React.useState([]);
 
 
     const renderItem = ({ item, index, section }) => {
@@ -20,22 +24,28 @@ const FilterScreen = ({ navigation, route }) => {
 
         return (
             chosenFilters.find((element) => element['title'] == section.title).data.indexOf(item) == -1
-                ? <TouchableOpacity onPress={() => {
-                    const tArr = chosenFilters.slice();
-                    tArr.find((element) => element.title == section.title).data.push(item)// = [item]
-                    setChosenFilters(tArr);
-                    // console.log(getChosenFilters());
-                }}>
-                    <Text>{`Choose ${item.trim()}`}</Text>
+                ? <TouchableOpacity
+                    style={styles.chooseContainer} 
+                    onPress={() => {
+                        const tArr = chosenFilters.slice();
+                        tArr.find((element) => element.title == section.title).data.push(item)// = [item]
+                        setChosenFilters(tArr);
+                        // console.log(getChosenFilters());
+                    }}>
+                    <View style={styles.chooseBox} />
+                    <Text style={styles.chooseText}>{item.trim()}</Text>
                 </TouchableOpacity>
-                : <TouchableOpacity onPress={() => {
-                    const tArr = chosenFilters.slice();
-                    const itemId = tArr.find((element) => element.title == section.title).data.indexOf(item);
-                    tArr.find((element) => element.title == section.title).data.splice(itemId, 1)// = [item]
-                    setChosenFilters(tArr);
-                    // console.log(getChosenFilters());
-                }}>
-                    <Text>{`Delete ${item.trim()}`}</Text>
+                : <TouchableOpacity
+                    style={styles.chooseContainer}
+                    onPress={() => {
+                        const tArr = chosenFilters.slice();
+                        const itemId = tArr.find((element) => element.title == section.title).data.indexOf(item);
+                        tArr.find((element) => element.title == section.title).data.splice(itemId, 1)// = [item]
+                        setChosenFilters(tArr);
+                        // console.log(getChosenFilters());
+                    }}>
+                    <View style={styles.unchooseBox} />
+                    <Text style={styles.chooseText}>{item.trim()}</Text>
                 </TouchableOpacity>
             // <Text>{item.trim()}</Text>
 
@@ -44,26 +54,65 @@ const FilterScreen = ({ navigation, route }) => {
 
     const renderSectionHeader = ({ section: { title } }) => {
         return (
-            <TouchableOpacity onPress={() => {
-                const tArr = shownData.slice();
-                const possibleData = route.params.possibleFilters[title];
+            <View>
+                <TouchableOpacity
+                    style={styles.sectionHeaderContainer}
+                    onPress={() => {
+                        const tArr = shownData.slice();
+                        const possibleData = route.params.possibleFilters[title];
 
-                // console.log(possibleData);
-                // setShownData(tArr);
+                        // console.log(possibleData);
+                        // setShownData(tArr);
 
-                const sectionData = tArr.find((element) => element.title == title).data;
+                        const sectionData = tArr.find((element) => element.title == title).data;
 
-                tArr.find((element) => element.title == title).data =
-                    sectionData.length > 0 ?
-                        []
-                        :
-                        possibleData.slice(0, 5);
-                // sectionData = possibleData
-                // .find((element)=>element.title == title).data == [] ? 
-                setShownData(tArr);
-            }}>
-                <Text style={{ fontSize: 20 }}>{titles[title]}</Text>
-            </TouchableOpacity>
+                        tArr.find((element) => element.title == title).data =
+                            sectionData.length > 0 ?
+                                []
+                                :
+                                possibleData.slice(0, 5);
+                        // sectionData = possibleData
+                        // .find((element)=>element.title == title).data == [] ? 
+                        setShownData(tArr);
+                    }}>
+                    <Text numberOfLines={1} style={styles.sectionHeaderText}>{titles[title]}</Text>
+                    <View style={styles.headerShevronContainer}>
+                        {
+                            shownData.find((element) => element.title == title).data.length > 0 ?
+                                <ChevronUpSolid color={colorDarkGrey} />
+                                : <ChevronBottomSolid color={colorDarkGrey} />
+                        }
+                    </View>
+                </TouchableOpacity>
+                {
+                    shownData.find((element) => element.title == title).data.length > 0 ?
+                        <TouchableOpacity 
+                            style={styles.selectAllContainer}
+                            onPress={()=>{
+                                const tArr = chosenFilters.slice();
+                                const sArr = selectStates.slice();
+
+
+                                if (sArr.find((element) => element.title == title).state){
+                                    tArr.find((element) => element.title == title).data.splice(0, tArr.find((element) => element.title == title).data.length)
+                                } else {
+                                    tArr.find((element) => element.title == title).data = route.params.possibleFilters[title].slice();
+                                }
+                                sArr.find((element) => element.title == title).state = !sArr.find((element) => element.title == title).state; 
+
+                                // console.log(route.params.possibleFilters[title]);
+                                // tArr.find((element) => element.title == title).data = [];
+                                // tArr.find((element) => element.title == title).data.splice(0, tArr.find((element) => element.title == title).data.length)
+                                // tArr.find((element) => element.title == title).data = route.params.possibleFilters[title].slice();
+                                setChosenFilters(tArr);
+                            }}
+                        >
+                            <Text style={styles.selectAllText}>{selectStates.find((element) => element.title == title).state ? 'Снять все' : 'Выделить все'}</Text>
+                        </TouchableOpacity>
+                    : <View />
+                }
+                
+            </View>
         )
     };
 
@@ -71,7 +120,9 @@ const FilterScreen = ({ navigation, route }) => {
         return (
             (shownData.find((element) => element.title == title).data.length > 0
                 && route.params.possibleFilters[title].length > 5) ?
-                <TouchableOpacity onPress={() => {
+                <TouchableOpacity 
+                style={styles.footerContainer}
+                onPress={() => {
                     const tArr = shownData.slice();
                     const possibleData = route.params.possibleFilters[title];
 
@@ -90,11 +141,18 @@ const FilterScreen = ({ navigation, route }) => {
                     setShownData(tArr);
 
                 }}>
-                    <Text>{
+                    <Text style={styles.footerText}>{
                         shownData.find((element) => element.title == title).data.length > 5 ?
                             "Показать 5"
                             : "Показать все"
                     }</Text>
+                    <View style={styles.footerShevronContainer}>
+                        {
+                            shownData.find((element) => element.title == title).data.length > 5 ?
+                                <ChevronUpSolid color={colorGreen} />
+                                : <ChevronBottomSolid color={colorGreen} />
+                        }
+                    </View>
                 </TouchableOpacity>
                 : undefined
         )
@@ -114,6 +172,7 @@ const FilterScreen = ({ navigation, route }) => {
             const tempArr = [];
             const tempArr2 = [];
             const tempArr3 = [];
+            const tempArr4 = [];
 
             Object.entries(route.params['possibleFilters']).map(([key, value]) => {
                 tempArr.push({
@@ -123,6 +182,10 @@ const FilterScreen = ({ navigation, route }) => {
                 tempArr2.push({
                     title: key,
                     data: []
+                })
+                tempArr4.push({
+                    title: key,
+                    state: false
                 })
 
             })
@@ -136,6 +199,7 @@ const FilterScreen = ({ navigation, route }) => {
             setShownData(tempArr2);
             // setChosenFilters(route.params['activeFilters']['manufacturer']);
             setChosenFilters(tempArr3);
+            setSelectStates(tempArr4);
             // console.log(getChosenFilters())
             // console.log(route.params['activeFilters'])
 
@@ -218,6 +282,73 @@ const styles = StyleSheet.create({
         marginBottom: '2%',
         marginLeft: '2%',
         marginRight: '3%',
+    },
+    sectionHeaderContainer: {
+        marginLeft: '2%',
+        marginTop: '3%',
+        flexDirection: 'row'
+    },
+    sectionHeaderText: {
+        color: colorDarkGrey,
+        fontSize: 20,
+        fontWeight: 'bold',
+        flex: 95
+    },
+    headerShevronContainer: {
+        flex: 5,
+        marginRight: '2%',
+    },
+    selectAllContainer: {
+        marginLeft: '2%',
+        marginTop: '1%',
+        marginBottom: '2%'
+    },
+    selectAllText: {
+        color: colorGreen,
+        fontSize: 16
+    },
+    chooseContainer: {
+        flexDirection: 'row',
+        marginLeft: '2%',
+        marginTop: '2%',
+        alignItems: 'center',
+        width: '100%'
+    },
+    chooseBox: {
+        height: 20,
+        width: 20,
+        borderWidth: 3,
+        borderColor: colorOrange,
+    },
+    chooseText: {
+        marginLeft: '2%',
+        fontSize: 16,
+        color: colorDarkGrey,
+    },
+    unchooseBox: {
+        height: 20,
+        width: 20,
+        borderWidth: 3,
+        borderColor: colorOrange,
+        backgroundColor: colorGreen
+    },
+    footerContainer: {
+        marginLeft: '2%',
+        marginTop: '2%',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    footerText: {
+        fontSize: 16,
+        color: colorGreen
+
+    },
+    footerShevronContainer: {
+        height: 15,
+        width: 15,
+        marginLeft: '1%',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
     },
 })
 

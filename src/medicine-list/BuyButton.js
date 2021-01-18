@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
 
 
-const BuyButton = ({ navigation, id, products, dispatch}) => {
+const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProduct}) => {
 
     // const productSelector = createSelector(
     //     state => {
@@ -53,13 +53,13 @@ const BuyButton = ({ navigation, id, products, dispatch}) => {
 
     // const dispatch = useDispatch();
 
-    const addProduct = React.useCallback(() => {
-        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
-    }, [dispatch]);
+    // const addProduct = React.useCallback(() => {
+    //     dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+    // }, [dispatch]);
 
-    const removeProduct = React.useCallback(()=>{
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
-    }, [dispatch]);
+    // const removeProduct = React.useCallback(()=>{
+    //     dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+    // }, [dispatch]);
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
@@ -84,7 +84,7 @@ const BuyButton = ({ navigation, id, products, dispatch}) => {
         >
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
-                onPress={removeProduct}
+                onPress={() => {removeProduct(id)}}
             >
                 <View style={{ flex: 15 }} />
                 <Text style={{
@@ -109,7 +109,7 @@ const BuyButton = ({ navigation, id, products, dispatch}) => {
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={addProduct}
+                onPress={() => {addProduct(id)}}
             >
                 <Text style={{
                     flex: 85,

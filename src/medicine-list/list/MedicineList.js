@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Activ
 
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
+import {ADD_PRODUCT, REMOVE_PRODUCT} from '../../redux/types';
 
 import { colorOrange, colorDarkGrey } from '../../Colors';
 
@@ -94,6 +95,13 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
 
     const dispatch = useDispatch();
+    const addProduct = (id) => {
+        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+    };
+
+    const removeProduct = (id)=>{
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+    };
 
 
     const renderItem = ({ item }) => (
@@ -106,6 +114,9 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
             price={item.min_price}
             availability={'item.availability'}
             dispatch={dispatch}
+
+            addProduct={addProduct}
+            removeProduct={removeProduct}
         />
     );
 
@@ -169,10 +180,9 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         }).compareFunction);
 
         setShownData(dataCopy.slice(0, 10));
+        console.log('shown_data',shownData.slice());
         setLoading(false);
-
-
-    }, [activeFilters, possibleFilters]))
+    }, []))
 
     const sortData = (sortId, sortFunction) => {
         setRefreshing(false);
@@ -275,6 +285,7 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
                         data={shownData}
                         ListFooterComponent={bottom}
                         ListHeaderComponent={Header}
+                        ListEmptyComponent={()=><View style={{flex: 1, backgroundColor: 'red'}}></View>}
                         renderItem={renderItem}
                         keyExtractor={item => item.id.toString()}
                         refreshing={refreshing}

@@ -4,7 +4,8 @@ import { StyleSheet, Text, View, SafeAreaView, SectionList, TouchableOpacity } f
 
 import { colorDarkGrey, colorOrange, colorLightGrey } from '../../Colors';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {ADD_PRODUCT, REMOVE_PRODUCT} from '../../redux/types';
 import { createSelector } from 'reselect';
 
 
@@ -76,11 +77,32 @@ const MedicineList = ({navigation, data}) => {
     //     return state.appStore.products;
     // });
 
+    const dispatch = useDispatch();
+    const addProduct = (id) => {
+        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+    };
+
+    const removeProduct = (id)=>{
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+    };
+
     const products = useSelector(productSelector);
 
     const renderItem = ({ item }) => (
-        <ListItem products={products} navigation={navigation} id={item.id} name={item.name} dealer={item.dealer} price={item.price} availability={item.availability} />
+        <ListItem 
+        products={products} 
+        navigation={navigation} 
+        id={item.id} 
+        name={item.name}
+        dealer={item.dealer} 
+        price={item.price} 
+        availability={item.availability} 
+        addProduct={addProduct}
+        removeProduct={removeProduct}
+        />
     );
+
+
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
