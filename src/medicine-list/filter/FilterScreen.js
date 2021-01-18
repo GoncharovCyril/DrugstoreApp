@@ -24,7 +24,7 @@ const FilterScreen = ({ navigation, route }) => {
                     const tArr = chosenFilters.slice();
                     tArr.find((element) => element.title == section.title).data.push(item)// = [item]
                     setChosenFilters(tArr);
-                    console.log(getChosenFilters());
+                    // console.log(getChosenFilters());
                 }}>
                     <Text>{`Choose ${item.trim()}`}</Text>
                 </TouchableOpacity>
@@ -33,7 +33,7 @@ const FilterScreen = ({ navigation, route }) => {
                     const itemId = tArr.find((element) => element.title == section.title).data.indexOf(item);
                     tArr.find((element) => element.title == section.title).data.splice(itemId, 1)// = [item]
                     setChosenFilters(tArr);
-                    console.log(getChosenFilters());
+                    // console.log(getChosenFilters());
                 }}>
                     <Text>{`Delete ${item.trim()}`}</Text>
                 </TouchableOpacity>
@@ -103,7 +103,7 @@ const FilterScreen = ({ navigation, route }) => {
 
     useFocusEffect(
         React.useCallback(() => {
-            console.log('asd');
+            // console.log('asd');
 
             // console.log(route.params['possibleFilters'])
             // route.params['possibleFilters'].forEach(element => {
@@ -136,8 +136,8 @@ const FilterScreen = ({ navigation, route }) => {
             setShownData(tempArr2);
             // setChosenFilters(route.params['activeFilters']['manufacturer']);
             setChosenFilters(tempArr3);
-            console.log(getChosenFilters())
-            console.log(route.params['activeFilters'])
+            // console.log(getChosenFilters())
+            // console.log(route.params['activeFilters'])
 
         }, [])
     );
