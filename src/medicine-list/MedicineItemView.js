@@ -127,7 +127,6 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                         </View>
                                     </View>
                                 </View>
-
                             </View>
                         </View>
                     </View>
