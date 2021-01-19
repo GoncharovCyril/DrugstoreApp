@@ -150,8 +150,11 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         if (route['params'] != undefined) {
             // console.log('params')
             // console.log(route.params['activeFilters'])
-            filters = route.params['activeFilters'];
-            setActiveFilters(route.params['activeFilters']);
+            if (route.params['activeFilters'] != undefined) {
+                filters = route.params['activeFilters'];
+                setActiveFilters(route.params['activeFilters']);
+            }
+            
         }
 
         // console.log('before filter',nonshownData.length);
@@ -184,32 +187,32 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
 
         // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
-        console.log('before sort', sourceData.length)
-        console.log(filters)
-        console.log('after sort ', sourceData
-            .filter((item) => {
+        // console.log('before sort', sourceData.length)
+        // console.log(filters)
+        // console.log('after sort ', sourceData
+        //     .filter((item) => {
 
-                for (let [filterKey, filterValue] of Object.entries(filters)) {
-                    // console.log(filterKey,':\t',filterValue)
-                    if (filterValue.length > 0) {
-                        // console.log(filterValue, item[filterKey])
-                        // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
-                        if (filterValue.indexOf(item[filterKey]) == -1) {
-                            return false;
-                        }
-                        // return filterValue.indexOf(item[filterKey]) != -1
-                    }
-                    // else {
-                    //     // console.log(filterKey, '-filter is empty')
-                    //     return true;
-                    // }
-                }
-                return true;
-            })
-            .sort(Sorters.find((element, index, array) => {
-                return element.id == selectedSorter;
-            }).compareFunction).length)
-        // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
+        //         for (let [filterKey, filterValue] of Object.entries(filters)) {
+        //             // console.log(filterKey,':\t',filterValue)
+        //             if (filterValue.length > 0) {
+        //                 // console.log(filterValue, item[filterKey])
+        //                 // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
+        //                 if (filterValue.indexOf(item[filterKey]) == -1) {
+        //                     return false;
+        //                 }
+        //                 // return filterValue.indexOf(item[filterKey]) != -1
+        //             }
+        //             // else {
+        //             //     // console.log(filterKey, '-filter is empty')
+        //             //     return true;
+        //             // }
+        //         }
+        //         return true;
+        //     })
+        //     .sort(Sorters.find((element, index, array) => {
+        //         return element.id == selectedSorter;
+        //     }).compareFunction).length)
+        // // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
 
 
         setNonshownData(

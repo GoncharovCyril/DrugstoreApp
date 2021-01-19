@@ -21,7 +21,7 @@ const Title = ({ name_rus, name_eng }) => {
                 >{name_rus.trim()}</Text>
             {/* </View> */}
             {
-                name_eng != '' ?
+                (name_eng !== '' && name_eng !== null) ?
                     // <View style={{ height: 30 }}>
                         <Text
                             style={{

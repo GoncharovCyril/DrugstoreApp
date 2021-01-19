@@ -8,7 +8,7 @@ import ShevronRightSolid from '../../../svg/chevron-right-solid';
 
 const AdditionalProperty = ({ propertyName, propertyValue, navigation }) => {
     return (
-        propertyValue != '' ?
+        (propertyValue !== '' && propertyValue !== null) ?
             <View>
                 <TouchableOpacity
                     style={{

@@ -18,6 +18,9 @@ import DATA from '../medicine-list/test-data/testMedicineData';
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import FilterScreen from '../medicine-list/filter/FilterScreen';
+import FilterHeader from '../medicine-list/filter/FilterHeader';
+
 import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
 import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
@@ -80,6 +83,7 @@ const SubCatalog = ({navigation, route}) => {
                 title: item.title,
                 headVisible: true,
                 data: DATA,
+                request: item.title
             });
             // navigation.navigate(item.next);
             // alert(route.params);
@@ -114,6 +118,8 @@ const Catalog = () => {
 
                 <CatalogStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
                 <CatalogStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
+                <CatalogStack.Screen name="FilterScreen" component={FilterScreen} options={FilterHeader} />
+                
                 
             </CatalogStack.Navigator>
     );

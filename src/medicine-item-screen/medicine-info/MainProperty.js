@@ -6,7 +6,7 @@ import { colorDarkGrey } from '../../Colors';
 
 const MainProperty = ({ propertyName, propertyValue }) => {
     return (
-        propertyValue != '' ?
+        (propertyValue !== '' && propertyValue !== null ) ?
         <View style={{ height: 50, backgroundColor: 'white'}}>
             <Text
                 style={{
