@@ -140,10 +140,17 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
         setNonshownData(sourceData.slice());
 
+        let filters={
+            manufacturer: [],
+            country: [],
+            release_form: []
+        };
+
         initPossibleFilters();
         if (route['params'] != undefined) {
-            console.log('params')
-            console.log(route.params['activeFilters'])
+            // console.log('params')
+            // console.log(route.params['activeFilters'])
+            filters = route.params['activeFilters'];
             setActiveFilters(route.params['activeFilters']);
         }
 
@@ -176,40 +183,40 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         // }).slice();
 
 
-        let tt = sourceData.slice()
-        console.log('before filter', tt.length)
-        tt = tt.filter((item) => {
+        // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
+        console.log('before sort', sourceData.length)
+        console.log(filters)
+        console.log('after sort ', sourceData
+            .filter((item) => {
 
-            for (let [filterKey, filterValue] of Object.entries(activeFilters)){
-                // console.log(filterKey,':\t',filterValue)
-                if (filterValue.length>0){
-                    // console.log(filterValue, item[filterKey])
-                    // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
-                    if (filterValue.indexOf(item[filterKey]) == -1){
-                        return false;
+                for (let [filterKey, filterValue] of Object.entries(filters)) {
+                    // console.log(filterKey,':\t',filterValue)
+                    if (filterValue.length > 0) {
+                        // console.log(filterValue, item[filterKey])
+                        // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
+                        if (filterValue.indexOf(item[filterKey]) == -1) {
+                            return false;
+                        }
+                        // return filterValue.indexOf(item[filterKey]) != -1
                     }
-                    // return filterValue.indexOf(item[filterKey]) != -1
+                    // else {
+                    //     // console.log(filterKey, '-filter is empty')
+                    //     return true;
+                    // }
                 }
-                // else {
-                //     // console.log(filterKey, '-filter is empty')
-                //     return true;
-                // }
-            }
-            return true;
-        })
-        .sort(Sorters.find((element, index, array)=> {
-            return element.id  == selectedSorter;
-        }).compareFunction).slice()
-        console.log('after filter', tt.length)
-
-
+                return true;
+            })
+            .sort(Sorters.find((element, index, array) => {
+                return element.id == selectedSorter;
+            }).compareFunction).length)
+        // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
 
 
         setNonshownData(
             sourceData
             .filter((item) => {
 
-            for (let [filterKey, filterValue] of Object.entries(activeFilters)){
+            for (let [filterKey, filterValue] of Object.entries(filters)){
                 // console.log(filterKey,':\t',filterValue)
                 if (filterValue.length>0){
                     // console.log(filterValue, item[filterKey])
@@ -234,7 +241,7 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         setShownData(sourceData
             .filter((item) => {
 
-            for (let [filterKey, filterValue] of Object.entries(activeFilters)){
+            for (let [filterKey, filterValue] of Object.entries(filters)){
                 // console.log(filterKey,':\t',filterValue)
                 if (filterValue.length>0){
                     // console.log(filterValue, item[filterKey])
@@ -336,8 +343,7 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
 
     return (
-        shownData.length > 0 ?
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Modal
                     animationType='slide'
                     transparent={true}
@@ -388,7 +394,6 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
                     />
                 </SafeAreaView>
             </View>
-            : <View style={{flex: 1, backgroundColor: 'red'}}/>
     );
 };
 

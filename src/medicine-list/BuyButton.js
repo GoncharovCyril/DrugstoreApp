@@ -43,6 +43,8 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
     //         return new Map(mapArray)}
     // )
 
+    const [count, setCount] = React.useState(products.get(id));
+
 
 
     // const productsCounter = useSelector(productSelector);
@@ -64,7 +66,10 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
-            onPress={addProduct}
+            onPress={()=>{
+                addProduct(id)
+                setCount(1)
+            }}
         >
             <Text style={{
                 color: "white",
@@ -84,7 +89,10 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
         >
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
-                onPress={() => {removeProduct(id)}}
+                onPress={() => {
+                    removeProduct(id);
+                    setCount(count-1)
+                }}
             >
                 <View style={{ flex: 15 }} />
                 <Text style={{
@@ -105,11 +113,14 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{products.get(id)}</Text>
+                }}>{count}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={() => {addProduct(id)}}
+                onPress={() => {
+                    addProduct(id);
+                    setCount(count+1)
+                }}
             >
                 <Text style={{
                     flex: 85,
@@ -127,7 +138,7 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
 
 
     return (
-        products.get(id) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
+        count == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
     );
 };
 
