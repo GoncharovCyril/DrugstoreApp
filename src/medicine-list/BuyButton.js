@@ -45,6 +45,7 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
 
     const [count, setCount] = React.useState(products.get(id));
 
+    console.log(id);
 
 
     // const productsCounter = useSelector(productSelector);

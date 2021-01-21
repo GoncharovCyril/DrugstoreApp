@@ -24,14 +24,24 @@ const loadData = async (products, token) => {
 
     let isAuth = false;
 
+    console.log('load: ', token)
 
     await getCart(token).then(([status, text])=>{
         switch (status) {
             case 200:
-                resultData = JSON.parse(text).cart;
-                isAuth=true;
+                console.log(text);
+                try{
+                    resultData = JSON.parse(text).cart;
+                    isAuth=true;
+                }
+                catch(error){
+                    resultData=[];
+                    isAuth=false;
+                }
                 break;
             case 401:
+                console.log('unauth')
+                isAuth=false;
                 break;
             default:
                 break;
@@ -101,6 +111,8 @@ const BasketScreen = ({route, navigation}) => {
 
     useFocusEffect(
         React.useCallback(()=>{
+
+            console.log(storedToken);
             setLoading(true);
             setBusketData([]);
             loadData(products, storedToken)
@@ -124,7 +136,12 @@ const BasketScreen = ({route, navigation}) => {
                 : productsCounter > 0
                     ? <View style={{ flex: 1}}>
                         <View style={{flex: 700}}>
-                            <BasketList navigation={navigation} data={busketData} />
+                            <BasketList 
+                                navigation={navigation} 
+                                data={busketData}
+                                token={storedToken}
+                                products={products}
+                            />
                         </View>
                         <View style={{flex: 85, alignItems: 'center'}}>
                             {

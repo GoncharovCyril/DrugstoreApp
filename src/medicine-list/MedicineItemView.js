@@ -16,9 +16,11 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({navigation, id, name, dealer, price, availability, products, dispatch, addProduct, removeProduct}) => {
+const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, count, availability, products, dispatch, addProduct, removeProduct}) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
+
+    console.log('dv', products)
     
     return (
         <View 
@@ -80,7 +82,7 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                     textAlign: 'center',
                                     fontSize: 11
                                 }}>
-                                    {availability}
+                                    {count > 0 ? 'В наличии':'Отсутствует'}
                                 </Text>
                             </ View>
                             <View style={{ 
@@ -96,13 +98,13 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                             color: 'black',
                                         }}
                                         numberOfLines={2}
-                                        >{name}</Text>
+                                        >{name_rus}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
                                         <Text 
                                             numberOfLines={1} 
                                             style={{ color: colorDarkGrey, fontSize: 12 }}
-                                            >{dealer}</Text>
+                                            >{manufacturer}</Text>
                                     </View>
                                 </View>
 
@@ -116,7 +118,7 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                             textAlignVertical: 'center',
                                             fontWeight: 'bold',
                                             color: 'black'
-                                        }}>от {price} руб.</Text>
+                                        }}>{(price != undefined && price != null && price != '') ? `${price} руб.` : `от ${min_price} руб.`}</Text>
                                         <View style={{ flex: 1 }}>
                                             <BuyButton 
                                             products={products} 

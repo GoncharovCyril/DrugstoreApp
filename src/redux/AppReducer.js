@@ -72,6 +72,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
                 products.set(key, value);
             }
             account.token = action.payload.token;
+            console.log(action.payload.token)
 
             city.name = action.payload.city != null ? action.payload.city : 'Донецк';
 

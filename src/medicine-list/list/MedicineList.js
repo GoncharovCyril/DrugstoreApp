@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity, Activ
 import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import {ADD_PRODUCT, REMOVE_PRODUCT} from '../../redux/types';
+import {postCart} from '../../requests/BasketRequests'
 
 import { colorOrange, colorDarkGrey } from '../../Colors';
 
@@ -63,7 +64,9 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         country: [],
         release_form: []
     });
+    const storedToken = useSelector(state => state.appStore.account.token);
     let dataCopy = [];
+
 
     // console.log(shownData)
 
@@ -100,10 +103,21 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
 
     const dispatch = useDispatch();
-    const addProduct = (id) => {
+    const addProduct = async (id) => {
+        const count = products.get(id) != undefined ? products.get(id) : 0
+
+        console.log(products.get(id))
+        await postCart(id, count+1, storedToken).then(([status, text]) => {
+            console.log(status);
+        })
+
         dispatch({ type: ADD_PRODUCT, payload: {id: id} });
     };
-    const removeProduct = (id)=>{
+    const removeProduct = async (id)=>{
+        const count = products.get(id) != undefined ? products.get(id) : 0
+        await postCart(id, count-1, storedToken).then(([status, text]) => {
+            console.log(status);
+        })
         dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
     };
 
@@ -112,9 +126,11 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
             products={products}
             navigation={navigation}
             id={item.id}
-            name={item.name}
-            dealer={item.manufacturer}
-            price={item.min_price}
+            name_rus={item.name}
+            manufacturer={item.manufacturer}
+            min_price={item.min_price}
+            price={item['price']}
+            count={item['count']}
             availability={item.count > 0 ? 'В наличии' : 'Отсутствует'}
             dispatch={dispatch}
 

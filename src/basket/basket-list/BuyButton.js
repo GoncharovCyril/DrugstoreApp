@@ -32,11 +32,12 @@ const styles = StyleSheet.create({
 });
 
 
-const BuyButton = ({ navigation, id, products }) => {
+const BuyButton = ({ navigation, id, products, token }) => {
 
     // const  productsCounter = useSelector(state => state.appStore.products.get(id));
 
     const dispatch = useDispatch();
+
 
     const addProduct = React.useCallback(() => {
         dispatch({ type: ADD_PRODUCT, payload: {id: id} });

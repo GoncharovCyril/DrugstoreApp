@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({ navigation, id, name_rus, manufacturer, price, min_price, availability, products, count }) => {
+const DrugView = ({ navigation, id, name_rus, manufacturer, price, min_price, availability, products, token, count }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
 
@@ -116,7 +116,7 @@ const DrugView = ({ navigation, id, name_rus, manufacturer, price, min_price, av
                                             color: 'black'
                                         }}>{(price != undefined && price != null && price != '') ? `${price} руб.` : `от ${min_price} руб.`}</Text>
                                         <View style={{ flex: 1 }}>
-                                            <BuyButton navigation={navigation} id={id} products={products}/>
+                                            <BuyButton navigation={navigation} id={id} products={products} token={token} />
                                         </View>
                                     </View>
                                 </View>

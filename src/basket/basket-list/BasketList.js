@@ -4,43 +4,40 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 
-import {REMOVE_ALL_THIS_PRODUCT} from '../../redux/types';
+import {REMOVE_ALL_THIS_PRODUCT, ADD_PRODUCT, REMOVE_PRODUCT} from '../../redux/types';
+import { postCart, delCart } from '../../requests/BasketRequests';
 
-import ListItem from './MedicineItemView';
+// import ListItem from './MedicineItemView';
+import ListItem from '../../medicine-list/MedicineItemView'
 import MedicineSwipeableRow from './MedicineSwipeableRow';
 
 const medicineListStyles=StyleSheet.create({
 
 });
 
-const SwipeableRow = ({ item, id, separators, products, navigation }) => {
+const SwipeableRow = ({ item, id, separators, products, navigation, addProduct, removeProduct, removeAllProduct }) => {
     // const product = useSelector(state => state.appStore.products.get(item.id));
-    const dispatch = useDispatch();
-
-    const removeAllProduct = React.useCallback(()=>{
-        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
-    }, [dispatch]);
-
-    console.log('ID',item.id);
-
+    
     return (
         <View>
             {
-                /*products.get(item.id.toString())*/ 5 != undefined 
+                products.get(item.id.toString()) != undefined 
                 ?
                     <View>
                         {
-                            <MedicineSwipeableRow action={removeAllProduct}>
+                            <MedicineSwipeableRow action={()=>{removeAllProduct(item.id)}}>
                                 <ListItem
                                     navigation={navigation}
                                     id={item.id}
                                     name_rus={item.name_rus}
-                                    dealer={item.dealer}
+                                    manufacturer={item.manufacturer}
                                     price={item.price}
                                     min_price={item.min_price}
                                     availability={item.availability}
                                     products={products}
                                     count={item.count}
+                                    addProduct={addProduct}
+                                    removeProduct={removeProduct}
                                 />
                             </MedicineSwipeableRow>
                         }
@@ -51,20 +48,41 @@ const SwipeableRow = ({ item, id, separators, products, navigation }) => {
     )
 };
 
-const MedicineList = ({navigation, data}) => {
+const BasketList = ({navigation, data, token, products}) => {
 
-    const productSelector = createSelector(
-        state => {
-            return state.appStore.products.entries()
-        },
-        mapArray => new Map(mapArray)
-    )
 
     // const productsCounter = useSelector(state => {
     //     return state.appStore.products;
     // });
 
-    const products = useSelector(productSelector);
+
+
+    const dispatch = useDispatch();
+    const addProduct = async (id) => {
+        const count = products.get(id) != undefined ? products.get(id).count : 0
+
+        await postCart(id, count+1, token).then(([status, text]) => {
+            console.log(status);
+        })
+
+        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+    };
+    const removeProduct = async (id)=>{
+        const count = products.get(id) != undefined ? products.get(id).count : 0
+        await postCart(id, count-1, token).then(([status, text]) => {
+            console.log(status);
+        })
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+    };
+
+    const removeAllProduct = async (id)=>{
+        await delCart(id, token).then(([status, text]) => {
+            console.log(status);
+        })
+        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: id } });
+    };
+
+    // console.log(products);
 
 
     return (
@@ -84,6 +102,10 @@ const MedicineList = ({navigation, data}) => {
                                 separators={separators} 
                                 products={products}
                                 navigation={navigation}
+
+                                addProduct = {addProduct}
+                                removeProduct = {removeProduct}
+                                removeAllProduct={removeAllProduct}
                             />
                         )}
                         keyExtractor={item => item.id.toString()}
@@ -98,4 +120,4 @@ const MedicineList = ({navigation, data}) => {
 };
 
 
-export default MedicineList;
+export default BasketList;

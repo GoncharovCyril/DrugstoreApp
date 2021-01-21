@@ -11,6 +11,7 @@ import TitleHead from '../header/TitleHead';
 
 import { headerStyles, smallHeight, shopHeigt } from "../navigationHeadStyles";
 import { colorOrange } from '../Colors';
+import { delAllCart } from '../requests/BasketRequests';
 
 
 const headStyles = StyleSheet.create({
@@ -50,10 +51,12 @@ const mainHeader = {
             : scene.route.name;
 
         const productsCounter = useSelector(state => state.appStore.products.size);
+        const storedToken = useSelector(state => state.appStore.account.token)
 
         const dispatch = useDispatch();
 
-        const removeAllProduct = React.useCallback(()=>{
+        const removeAllProduct = React.useCallback(async ()=>{
+            await delAllCart(storedToken)
             dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
         }, [dispatch])
 
