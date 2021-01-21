@@ -43,7 +43,7 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
             }}>
                 <TouchableWithoutFeedback
                     onPress={() => {
-                        navigation.navigate('MedicineItemScreen', {id: id, name: name});
+                        navigation.navigate('MedicineItemScreen', {id: id, name: name_rus});
                     }}
                     style={{ flex: 1 }}
                 >

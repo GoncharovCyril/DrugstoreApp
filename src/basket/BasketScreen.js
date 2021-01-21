@@ -4,7 +4,8 @@ import { useFocusEffect, TabActions } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Dimensions } from 'react-native';
 
-import {getMedicineItem} from '../requests/ProductsRequests';
+import { getMedicineItem } from '../requests/ProductsRequests';
+import { getCart } from '../requests/BasketRequests';
 
 import { colorOrange } from '../Colors';
 
@@ -18,31 +19,52 @@ import EmptyBasket from './EmptyBasket';
 
 {/* <MedicineList /> */}
 
-const loadData = async (products) => {
+const loadData = async (products, token) => {
     let resultData = [];
 
-    for (let [key, value] of products){
-        await getMedicineItem(key, null)
-        .then(([status, json]) => {
-            switch (status) {
-                case 200:
-                    console.log('json')
-                    resultData.push({
-                        id: json[0]['id'].toString(),
-                        name: json[0]['name_rus'],
-                        manufacturer: json[0]['manufacturer'],
-                        price: json[0]['price'],
-                        min_price: json[0]['min_price'],
-                        availability: 'availibility',
-                    })
-                    break;
-                default:
-                    alert(status)
-                    alert(json)
-                    break;
-            }
-        })
+    let isAuth = false;
+
+
+    await getCart(token).then(([status, text])=>{
+        switch (status) {
+            case 200:
+                resultData = JSON.parse(text).cart;
+                isAuth=true;
+                break;
+            case 401:
+                break;
+            default:
+                break;
+        }
+    })
+
+    if (!isAuth){
+        console.log("ISNT AUTH")
+        for (let [key, value] of products){
+            await getMedicineItem(key, null)
+            .then(([status, json]) => {
+                switch (status) {
+                    case 200:
+                        console.log('json')
+                        resultData.push({
+                            id: json[0]['id'].toString(),
+                            name_rus: json[0]['name_rus'],
+                            manufacturer: json[0]['manufacturer'],
+                            price: json[0]['price'],
+                            min_price: json[0]['min_price'],
+                            availability: 'Неизвестно',
+                            count: json[0]['count']
+                        })
+                        break;
+                    default:
+                        alert(status)
+                        alert(json)
+                        break;
+                }
+            })
+        }
     }
+   
 
     return resultData;
 }
@@ -73,6 +95,7 @@ const BasketScreen = ({route, navigation}) => {
     const products = useSelector(state => state.appStore.products);
     const productsCounter = useSelector(state => state.appStore.products.size);
     const selectedShop = useSelector(state => state.appStore.shop.id);
+    const storedToken = useSelector(state => state.appStore.account.token)
     const [isLoading, setLoading] = React.useState(true);
     const [busketData, setBusketData] = React.useState([]);
 
@@ -80,9 +103,9 @@ const BasketScreen = ({route, navigation}) => {
         React.useCallback(()=>{
             setLoading(true);
             setBusketData([]);
-            loadData(products)
+            loadData(products, storedToken)
                 .then(resultData => {
-                    console.log(resultData)
+                    console.log('result data=',resultData)
                     setBusketData(resultData);
                 })
                 .finally(() => {

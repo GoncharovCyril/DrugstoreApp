@@ -113,7 +113,7 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{count}</Text>
+                }}>{products.get(id)}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -138,7 +138,7 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
 
 
     return (
-        count == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
+        products.get(id) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
     );
 };
 

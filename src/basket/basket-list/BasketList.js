@@ -21,12 +21,12 @@ const SwipeableRow = ({ item, id, separators, products, navigation }) => {
         dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
     }, [dispatch]);
 
-    console.log(products.get(item.id.toString()));
+    console.log('ID',item.id);
 
     return (
         <View>
             {
-                products.get(item.id.toString()) != undefined 
+                /*products.get(item.id.toString())*/ 5 != undefined 
                 ?
                     <View>
                         {
@@ -34,12 +34,13 @@ const SwipeableRow = ({ item, id, separators, products, navigation }) => {
                                 <ListItem
                                     navigation={navigation}
                                     id={item.id}
-                                    name={item.name}
+                                    name_rus={item.name_rus}
                                     dealer={item.dealer}
                                     price={item.price}
                                     min_price={item.min_price}
                                     availability={item.availability}
                                     products={products}
+                                    count={item.count}
                                 />
                             </MedicineSwipeableRow>
                         }
@@ -64,6 +65,7 @@ const MedicineList = ({navigation, data}) => {
     // });
 
     const products = useSelector(productSelector);
+
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>

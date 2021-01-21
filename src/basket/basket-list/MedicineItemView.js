@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({ navigation, id, name, manufacturer, price, min_price, availability, products }) => {
+const DrugView = ({ navigation, id, name_rus, manufacturer, price, min_price, availability, products, count }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
 
@@ -50,7 +50,7 @@ const DrugView = ({ navigation, id, name, manufacturer, price, min_price, availa
             }}>
                 <TouchableWithoutFeedback
                     onPress={() => {
-                        navigation.navigate('MedicineItemScreen', {id: id, name: name});
+                        navigation.navigate('MedicineItemScreen', {id: id, name: name_rus});
                     }}
                     style={{ flex: 1 }}
                 >
@@ -86,7 +86,7 @@ const DrugView = ({ navigation, id, name, manufacturer, price, min_price, availa
                                     textAlign: 'center',
                                     fontSize: 11
                                 }}>
-                                    {availability}
+                                    {count > 0 ? 'В наличии':'Отсутствует'}
                                 </Text>
                             </ View>
                             <View style={{ flex: 2 }} />
@@ -97,7 +97,7 @@ const DrugView = ({ navigation, id, name, manufacturer, price, min_price, availa
                                         <Text style={{ 
                                             fontSize: 12.5,
                                             color: 'black' 
-                                            }}>{name}</Text>
+                                            }}>{name_rus}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
                                         <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{manufacturer}</Text>
