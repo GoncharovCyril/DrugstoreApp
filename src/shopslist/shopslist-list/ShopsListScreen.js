@@ -6,6 +6,8 @@ import { colorOrange } from '../../Colors';
 import MedicineStoreList from './MedicineStoreList';
 import { getPharmacies } from '../../requests/ShopsRequests';
 
+import * as Location from 'expo-location';
+
 const ShopsListScreen = ({route, navigation}) => {
     const city = useSelector(state => state.appStore.city);
     const [isLoading, setLoading] = React.useState(true);
@@ -15,31 +17,79 @@ const ShopsListScreen = ({route, navigation}) => {
         []
         );
 
+    const [location, setLocation] = React.useState(null);
+
+
+
     const getShopsByCity = (json) => {
 
         if (city.name == 'Все города') return json;
 
         return json.filter(object => object.city === city.name);
     };
+    const getDistance = (latit1, longit1, latit2, longit2) => {
+        return Math.pow((
+            Math.pow(latit2-latit1, 2)
+            +
+            Math.pow(longit2-longit1, 2)
+        ),0.5)
+    }
 
     useFocusEffect(
         React.useCallback(()=> {
-            setShopsData([]);
-            setLoading(true);
-            getPharmacies()
-                .then(([status, json]) => {
-                    switch (status) {
-                        case 200:
-                            setShopsData(getShopsByCity(json));
-                            break;
-                        default:
-                            alert(`${status}:\n${json}`);
-                            break;
-                    }
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
+            const load = async() => {
+                let {status} = await Location.requestPermissionsAsync();
+                let location = null;
+                if (status === 'granted') {
+                    location = await Location.getCurrentPositionAsync({});
+                }
+                setLocation(location);
+                console.log(location)
+                setShopsData([]);
+                setLoading(true);
+                await getPharmacies()
+                    .then(([status, json]) => {
+                        switch (status) {
+                            case 200:
+                                const tempShops = getShopsByCity(json).slice();
+
+                                if (location != null){
+                                    console.log('sort shops')
+                                    tempShops.sort((a, b)=>{
+                                        const [latitA, longitA] = a.coordinates.split(', ');
+                                        const [latitB, longitB] = b.coordinates.split(', ');
+                                        const latitU = location['coords']['latitude']
+                                        const longitU = location['coords']['longitude']
+                                        
+                                        const distA = getDistance(latitA, longitA, latitU,longitU);
+                                        const distB = getDistance(latitB, longitB, latitU,longitU);
+
+                                        if (distA < distB) {
+                                            return -1
+                                        }
+                                        if (distA > distB) {
+                                            return 1
+                                        }
+                                        return 0                                        
+                                    })
+                                }
+                                console.log(tempShops.length);
+                                
+                                // console.log(tempShops);
+                                setShopsData(tempShops.slice());
+                                break;
+                            default:
+                                alert(`${status}:\n${json}`);
+                                break;
+                        }
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    })
+            };
+
+            load();
+            
         },[])
     );
 
