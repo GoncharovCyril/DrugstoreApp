@@ -138,7 +138,7 @@ const MedicineStoreItem = ({
                         </View>
                         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
                             <View style={{ height: "100%", width: '100%' }}>
-                                <ChooseButton system_id={system_id} address={address} storedShopId={storedShopId} />
+                                <ChooseButton id={id} system_id={system_id} address={address} storedShopId={storedShopId} />
                             </View>
 
                         </View>

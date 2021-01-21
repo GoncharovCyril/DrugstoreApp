@@ -18,6 +18,9 @@ import DATA from '../medicine-list/test-data/testMedicineData';
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import ShopsListScreen from '../shopslist/ShopsList';
+import PersonalAreaScreen from '../personal-area/PersonalArea';
+
 import FilterScreen from '../medicine-list/filter/FilterScreen';
 import FilterHeader from '../medicine-list/filter/FilterHeader';
 
@@ -116,9 +119,13 @@ const Catalog = () => {
                 <CatalogStack.Screen name="CatalogResultScreen" component={CatalogResultScreen} options={subcatalogHeader} />
                 <CatalogStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
 
+                <CatalogStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}} />
+
                 <CatalogStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
                 <CatalogStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
                 <CatalogStack.Screen name="FilterScreen" component={FilterScreen} options={FilterHeader} />
+
+                <CatalogStack.Screen name="ShopsListScreen" component={ShopsListScreen} options={{headerShown: false}} />
                 
                 
             </CatalogStack.Navigator>

@@ -91,7 +91,7 @@ const BuyButton = ({ navigation, id, products }) => {
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{products.get(id)}</Text>
+                }}>{products.get(id.toString())}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
@@ -113,7 +113,7 @@ const BuyButton = ({ navigation, id, products }) => {
 
 
     return (
-        products.get(id) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
+        products.get(id.toString()) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
     );
 };
 

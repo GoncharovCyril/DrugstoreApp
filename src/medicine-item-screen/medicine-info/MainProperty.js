@@ -21,7 +21,7 @@ const MainProperty = ({ propertyName, propertyValue }) => {
                 style={{
                     marginLeft: '5%',
                     fontSize: 15,
-                    color: 'black'
+                    color: colorDarkGrey
                 }}
                 numberOfLines={1}
             >{propertyValue.trim()}</Text>

@@ -21,10 +21,12 @@ const SwipeableRow = ({ item, id, separators, products, navigation }) => {
         dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: item.id } });
     }, [dispatch]);
 
+    console.log(products.get(item.id.toString()));
+
     return (
         <View>
             {
-                products.get(item.id) != undefined 
+                products.get(item.id.toString()) != undefined 
                 ?
                     <View>
                         {
@@ -35,6 +37,7 @@ const SwipeableRow = ({ item, id, separators, products, navigation }) => {
                                     name={item.name}
                                     dealer={item.dealer}
                                     price={item.price}
+                                    min_price={item.min_price}
                                     availability={item.availability}
                                     products={products}
                                 />

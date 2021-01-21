@@ -21,7 +21,7 @@ const headStyles = StyleSheet.create({
     },
 });
 
-const Header = ({navigation, backButton, title}) => {
+const Header = ({navigation, backButton, title, route}) => {
     return (
         <View style={headStyles.headContainer}>
             <LinearGradient
@@ -35,7 +35,7 @@ const Header = ({navigation, backButton, title}) => {
                 }}
             />
             <TitleHead backButton={backButton} title={title}/>
-            <ShopHead navigation={navigation} />
+            <ShopHead navigation={navigation} route={route} />
         </View>
     );
 };
@@ -62,6 +62,7 @@ const medicineHeader = {
             <View style={options.headerStyle} >
                 <Header 
                 navigation={navigation} 
+                route={scene.route}
                 backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 }

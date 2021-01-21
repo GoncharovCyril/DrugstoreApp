@@ -136,6 +136,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
         case SET_SHOP:
             shop.id = action.payload.id;
+            console.log(shop.id)
             shop.address = action.payload.address;
             storeShop(JSON.stringify(shop));
             break;

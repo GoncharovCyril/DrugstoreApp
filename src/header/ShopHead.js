@@ -45,7 +45,7 @@ const EmptyShop = ({ navigation }) => {
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
-                navigation.navigate('Drug');
+                navigation.navigate('ShopsListScreen');
             }}
         >
             <View style={headStyles.drugstorePicker}>
@@ -64,18 +64,20 @@ const EmptyShop = ({ navigation }) => {
     )
 };
 
-const Shop = ({ navigation, shop }) => {
+const Shop = ({ navigation, shop, route }) => {
 
     const dispatch = useDispatch();
 
     const setNoShop = React.useCallback(()=> {
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+        // console.log(route['name'])
+        // navigation.navigate(route.name);
     }, [dispatch])
 
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
-                navigation.navigate('Drug');
+                navigation.navigate('ShopsListScreen');
             }}
         >
             <View style={headStyles.drugstorePicked}>
@@ -104,13 +106,13 @@ const Shop = ({ navigation, shop }) => {
     )
 }
 
-const ShopHead = ({ navigation }) => {
+const ShopHead = ({ navigation, route }) => {
 
     const selectedShop = useSelector(state => state.appStore.shop.id);
     const selectedShopAddress = useSelector(state => state.appStore.shop.address);
 
     return (
-        selectedShop != null ? <Shop shop={selectedShopAddress} /> : <EmptyShop navigation={navigation} />
+        selectedShop != null ? <Shop route={route} navigation={navigation} shop={selectedShopAddress} /> : <EmptyShop navigation={navigation} />
     );
 };
 

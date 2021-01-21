@@ -56,30 +56,24 @@ const RoundButtons = ({ navigation }) => {
     return (
         <View style={styles.roundButtonsContainer}>
             <View style={{ width: 10 }} />
-            <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openVk}>
-                    <VkBrandsRound color="white" roundColor={colorOrange}/>
+                    <VkBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
-            </BoxShadow>
 
             <View style={{ width: 10 }} />
-            <BoxShadow setting={shadowOpt} >
+            {/* <BoxShadow setting={shadowOpt} > */}
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openTelegram}>
-                    <TelegramPlaneBrandsRound color="white" roundColor={colorOrange}/>
+                    <TelegramPlaneBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
-            </BoxShadow>
+            {/* </BoxShadow> */}
             <View style={{ width: 10 }} />
-            <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openOk}>
-                    <OdnoklassnikiBrandsRound color="white" roundColor={colorOrange}/>
+                    <OdnoklassnikiBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
-            </BoxShadow>
             <View style={{ width: 10 }} />
-            <BoxShadow setting={shadowOpt} >
                 <TouchableOpacity style={{ height: buttonSize, width: buttonSize }} onPress={openInstagram}>
-                    <InstagramBrandsRound color="white" roundColor={colorOrange}/>
+                    <InstagramBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
-            </BoxShadow>
             <View style={{ width: 10 }} />
         </View>
     );

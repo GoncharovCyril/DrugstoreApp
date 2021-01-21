@@ -39,6 +39,7 @@ const BuyButton = ({ navigation, id }) => {
     const dispatch = useDispatch();
 
     const addProduct = React.useCallback(() => {
+        
         dispatch({ type: ADD_PRODUCT, payload: {id: id} });
     }, [dispatch]);
 

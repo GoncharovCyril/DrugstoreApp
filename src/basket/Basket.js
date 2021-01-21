@@ -9,6 +9,8 @@ import BasketSelectedShopHeader from './BasketSelectedShopHeader';
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import PersonalAreaScreen from '../personal-area/PersonalArea';
+
 import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
 import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
@@ -25,6 +27,7 @@ const Basket = ({navigation}) => {
         <BasketStack.Navigator initialRouteName="BasketScreen">
             <BasketStack.Screen name="BasketScreen" component={BasketScreen} options={selectedShop == null ? BasketHeader : BasketSelectedShopHeader} />
             <BasketStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}}/>
+            <BasketStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}}/>
 
             <BasketStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
             <BasketStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />

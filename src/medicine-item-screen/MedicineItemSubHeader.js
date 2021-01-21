@@ -7,7 +7,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import BackButton from '../BackButton';
 import TitleHead from '../header/TitleNoLogoHead';
-import ShopHead from '../header/ShopHead';
 
 import { headerStyles, smallHeight, shopHeigt } from "../navigationHeadStyles";
 import { colorOrange } from '../Colors';

@@ -6,7 +6,7 @@ function InstagramBrands(props) {
   return (
       <View style={{
           aspectRatio: 1,
-          borderRadius: 10000,
+          borderRadius: 15,
           backgroundColor: props.roundColor,
           justifyContent: 'center',
           alignItems: 'center',

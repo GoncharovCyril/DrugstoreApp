@@ -115,7 +115,7 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
             name={item.name}
             dealer={item.manufacturer}
             price={item.min_price}
-            availability={'item.availability'}
+            availability={item.count > 0 ? 'В наличии' : 'Отсутствует'}
             dispatch={dispatch}
 
             addProduct={addProduct}

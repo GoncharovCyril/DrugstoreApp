@@ -12,6 +12,10 @@ import MedicineItemSubHeader from '../medicine-item-screen/MedicineItemSubHeader
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import ShopsListScreen from '../shopslist/ShopsList';
+
+import PersonalAreaScreen from '../personal-area/PersonalArea';
+
 import Scroller from './Scroller';
 import { searchHeigt } from '../navigationHeadStyles';
 
@@ -52,6 +56,10 @@ const MainScreen = ({navigation, route}) => {
             <MainStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
 
             <MainStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
+
+            <MainStack.Screen name="ShopsListScreen" component={ShopsListScreen} options={{headerShown: false}} />
+
+            <MainStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}} />
         </MainStack.Navigator>
     )
 };

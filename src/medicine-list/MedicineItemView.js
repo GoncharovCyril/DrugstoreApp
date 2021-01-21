@@ -92,7 +92,8 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                     <View style={{ flex: 6., flexDirection: 'row' }}>
                                         <Text style={{ 
                                             fontSize: 14,
-                                            marginTop: '2%'
+                                            marginTop: '2%',
+                                            color: 'black',
                                         }}
                                         numberOfLines={2}
                                         >{name}</Text>
@@ -114,6 +115,7 @@ const DrugView = ({navigation, id, name, dealer, price, availability, products, 
                                             flex: 1,
                                             textAlignVertical: 'center',
                                             fontWeight: 'bold',
+                                            color: 'black'
                                         }}>от {price} руб.</Text>
                                         <View style={{ flex: 1 }}>
                                             <BuyButton 

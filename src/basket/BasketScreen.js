@@ -4,6 +4,8 @@ import { useFocusEffect, TabActions } from '@react-navigation/native';
 
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator, Dimensions } from 'react-native';
 
+import {getMedicineItem} from '../requests/ProductsRequests';
+
 import { colorOrange } from '../Colors';
 
 import BasketList from './basket-list/BasketList';
@@ -18,12 +20,30 @@ import EmptyBasket from './EmptyBasket';
 
 const loadData = async (products) => {
     let resultData = [];
-    for (let item of DATA) {
-        if (products.has(item.id)){
-            resultData.push(item);
-        }
-        // busketData.push(appStore.products.get(item.id));
+
+    for (let [key, value] of products){
+        await getMedicineItem(key, null)
+        .then(([status, json]) => {
+            switch (status) {
+                case 200:
+                    console.log('json')
+                    resultData.push({
+                        id: json[0]['id'].toString(),
+                        name: json[0]['name_rus'],
+                        manufacturer: json[0]['manufacturer'],
+                        price: json[0]['price'],
+                        min_price: json[0]['min_price'],
+                        availability: 'availibility',
+                    })
+                    break;
+                default:
+                    alert(status)
+                    alert(json)
+                    break;
+            }
+        })
     }
+
     return resultData;
 }
 
@@ -62,6 +82,7 @@ const BasketScreen = ({route, navigation}) => {
             setBusketData([]);
             loadData(products)
                 .then(resultData => {
+                    console.log(resultData)
                     setBusketData(resultData);
                 })
                 .finally(() => {

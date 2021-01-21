@@ -5,7 +5,7 @@ import BuyButton from './BuyButton';
 
 
 
-const Footer = ({navigation, id, price}) => {
+const Footer = ({navigation, id, price, min_price}) => {
     return (
         <View style={{ 
             flex: 1, 
@@ -17,14 +17,22 @@ const Footer = ({navigation, id, price}) => {
         >
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 {
-                    price != '' ?
+                    (price != undefined && price!='' && price != null)?
+                    <Text
+                            style={{
+                                fontSize: 20,
+                                color: colorGreen
+                            }}
+                        >{price} руб.</Text>
+                        : (min_price != '' && min_price != undefined && min_price != null) ?
                         <Text
                             style={{
                                 fontSize: 20,
                                 color: colorGreen
                             }}
-                        >от {price} руб.</Text>
+                        >от {min_price} руб.</Text>
                         : undefined
+                    
                 }
                 
             </View>

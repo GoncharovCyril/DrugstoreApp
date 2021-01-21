@@ -8,6 +8,8 @@ const Title = ({ name_rus, name_eng }) => {
     return (
         <View style={{ backgroundColor: 'white' }}>
             {/* <View style={{ height: 60 }}> */}
+            {
+                (name_rus !== '' && name_rus !== null) ?
                 <Text
                     style={{
                         marginLeft: '5%',
@@ -19,6 +21,9 @@ const Title = ({ name_rus, name_eng }) => {
                     }}
                     numberOfLines={2}
                 >{name_rus.trim()}</Text>
+                :<View />
+            }
+                
             {/* </View> */}
             {
                 (name_eng !== '' && name_eng !== null) ?

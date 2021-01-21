@@ -19,7 +19,7 @@ const headStyles = StyleSheet.create({
     },
 });
 
-const Header = ({navigation, backButton, title}) => {
+const Header = ({navigation, backButton, title, route}) => {
     return (
         <View style={headStyles.headContainer}>
             <LinearGradient
@@ -34,7 +34,7 @@ const Header = ({navigation, backButton, title}) => {
             />
             <TitleHead backButton={backButton} title={title}/>
             <SearchHead navigation={navigation} />
-            <ShopHead navigation={navigation} />
+            <ShopHead navigation={navigation} route={route}/>
         </View>
     );
 };
@@ -54,6 +54,7 @@ const subHeader = {
             <View style={options.headerStyle} >
                 <Header 
                     navigation={navigation} 
+                    route={scene.route}
                     // title={subcatalogNames[scene.route.params.id]}
                     title={scene.route.params.title}
                     backButton={

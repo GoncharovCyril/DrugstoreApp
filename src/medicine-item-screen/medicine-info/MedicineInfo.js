@@ -65,7 +65,7 @@ export const MedicineInfo = ({route, navigation, data}) => {
           <AdditionalProperty propertyName='Условия хранения' propertyValue={data['storage_conditions']} navigation={navigation} />
         </ScrollView>
       </SafeAreaView>
-      <Footer navigation={navigation} id={data['id']} price={data['min_price']} />
+      <Footer navigation={navigation} id={data['id']} price={data['price']} min_price={data['min_price']} />
     </View>
   )
 };

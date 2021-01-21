@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({ navigation, id, name, dealer, price, availability, products }) => {
+const DrugView = ({ navigation, id, name, manufacturer, price, min_price, availability, products }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
+
 
     return (
         <View
@@ -93,10 +94,13 @@ const DrugView = ({ navigation, id, name, dealer, price, availability, products 
                                 <View style={{ flex: 160 }}>
                                     <View style={{ flex: 6., flexDirection: 'row' }}>
                                         <View style={{ width: 2 }} />
-                                        <Text style={{ fontSize: 12.5 }}>{name}</Text>
+                                        <Text style={{ 
+                                            fontSize: 12.5,
+                                            color: 'black' 
+                                            }}>{name}</Text>
                                     </View>
                                     <View style={{ flex: 4 }}>
-                                        <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{dealer}</Text>
+                                        <Text style={{ color: colorDarkGrey, fontSize: 12 }}>{manufacturer}</Text>
                                     </View>
                                 </View>
 
@@ -109,9 +113,8 @@ const DrugView = ({ navigation, id, name, dealer, price, availability, products 
                                             flex: 1,
                                             textAlignVertical: 'center',
                                             fontWeight: 'bold',
-                                        }}>
-                                            {price}
-                                        </Text>
+                                            color: 'black'
+                                        }}>{(price != undefined && price != null && price != '') ? `${price} руб.` : `от ${min_price} руб.`}</Text>
                                         <View style={{ flex: 1 }}>
                                             <BuyButton navigation={navigation} id={id} products={products}/>
                                         </View>
