@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     phoneText: {
-        color: colorGreen,
+        color: colorDarkGrey,
         fontSize: 16
     },
     infoText: {

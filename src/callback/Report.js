@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
         flex: 2.5,
     },
     middleContiner: {
-        flex: 4,
+        flex: 4.1,
     },
     bottomContainer: {
-        flex: 1.5,
+        flex: 1.4,
     },
     headerText: {
         color: colorDarkGrey,
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 15,
         marginTop: '1%',
-        marginBottom: '1%',
+        marginBottom: '3%',
     },
     reportInput: {
         flex: 1,
