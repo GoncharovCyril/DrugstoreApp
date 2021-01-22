@@ -14,6 +14,8 @@ import SearchHeader from '../search/SearchInputHeader';
 
 import CallbackScreen from '../callback/Callback';
 import CallbackHeader from '../callback/CallbackHeader';
+import OrderHelpScreen from '../order-help/OrderHelp';
+import OrderHelpHeader from '../order-help/OrderHelpHeader';
 
 import ShopsListScreen from '../shopslist/ShopsList';
 
@@ -36,6 +38,7 @@ const Main = ({navigation, route}) => {
 
             <MainStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
             <MainStack.Screen name="CallbackScreen" component={CallbackScreen} options={CallbackHeader} />
+            <MainStack.Screen name="OrderHelpScreen" component={OrderHelpScreen} options={OrderHelpHeader} />
 
             <MainStack.Screen name="ShopsListScreen" component={ShopsListScreen} options={{headerShown: false}} />
 

@@ -36,8 +36,9 @@ const MainScreen = ({ navigation }) => {
                 title="Как сделать заказ"
                 icon={<PlusSolid color={colorOrange} />}
                 onPress={()=> {
-
-            }} />
+                    navigation.navigate('OrderHelpScreen')       
+                }} 
+            />
             <MainButton 
                 title="Каталог"
                 icon={<CatalogIcon color={colorOrange} />}
