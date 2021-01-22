@@ -24,6 +24,9 @@ import PersonalAreaScreen from '../personal-area/PersonalArea';
 import FilterScreen from '../medicine-list/filter/FilterScreen';
 import FilterHeader from '../medicine-list/filter/FilterHeader';
 
+import CallbackScreen from '../callback/Callback';
+import CallbackHeader from '../callback/CallbackHeader';
+
 import MedicineItemScreen from '../medicine-item-screen/MedicineItemScreen';
 import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
 import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
@@ -122,6 +125,7 @@ const Catalog = () => {
                 <CatalogStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}} />
 
                 <CatalogStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
+                <CatalogStack.Screen name="CallbackScreen" component={CallbackScreen} options={CallbackHeader} />
                 <CatalogStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
                 <CatalogStack.Screen name="FilterScreen" component={FilterScreen} options={FilterHeader} />
 

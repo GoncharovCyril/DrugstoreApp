@@ -12,50 +12,30 @@ import MedicineItemSubHeader from '../medicine-item-screen/MedicineItemSubHeader
 import SearchScreen from '../search/SearchScreen';
 import SearchHeader from '../search/SearchInputHeader';
 
+import CallbackScreen from '../callback/Callback';
+import CallbackHeader from '../callback/CallbackHeader';
+
 import ShopsListScreen from '../shopslist/ShopsList';
 
 import PersonalAreaScreen from '../personal-area/PersonalArea';
 
-import Scroller from './Scroller';
-import { searchHeigt } from '../navigationHeadStyles';
+import MainScreen from './MainScreen';
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        //alignItems: 'stretch',
-        justifyContent: 'flex-start',
-        width: '100%',
-    },
-});
-
-
-const Main = ({ navigation }) => {
-    return (
-        <View style={{flex: 1,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'center'}}>
-        <View style={styles.container}>
-            <Scroller navigation={navigation} />
-        </ View>
-        </View>
-    );
-};
 
 const MainStack = createStackNavigator();
 
-const MainScreen = ({navigation, route}) => {
+const Main = ({navigation, route}) => {
 
 
     return (
-        <MainStack.Navigator initialRouteName="Main" screenOptions={{headerShown: true}}>
-            <MainStack.Screen name="Main" component={Main} options={mainHeader}/>
+        <MainStack.Navigator initialRouteName="MainScreen" screenOptions={{headerShown: true}}>
+            <MainStack.Screen name="MainScreen" component={MainScreen} options={mainHeader}/>
 
             <MainStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
             <MainStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
 
             <MainStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
+            <MainStack.Screen name="CallbackScreen" component={CallbackScreen} options={CallbackHeader} />
 
             <MainStack.Screen name="ShopsListScreen" component={ShopsListScreen} options={{headerShown: false}} />
 
@@ -66,4 +46,4 @@ const MainScreen = ({navigation, route}) => {
 
 
 
-export default MainScreen;
+export default Main;

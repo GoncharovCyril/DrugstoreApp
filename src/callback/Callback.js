@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
    
 });
 
-const PersonalAreaScreen = ({navigation}) => {
+const CallbackScreen = ({navigation}) => {
     return (
         <View>
 
@@ -72,4 +72,4 @@ const App = () => (
 );
 
 
-export default App;
+export default CallbackScreen;

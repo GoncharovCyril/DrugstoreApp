@@ -15,19 +15,19 @@ const ConnectButton = ({navigation}) => {
                 backgroundColor: 'white',
                 alignItems: 'center'
             }}
-            onPress={() => {
-                // navigation.navigate('');
+            onPress={()=>{
+                navigation.navigate('CallbackScreen')
             }}
         >
             <View style={{flex: 26}} />
-            <View style={{flex: 48}} >
+            <View style={{flex: 48, height: '50%'}} >
                 <CommentMedicalSolid color={colorOrange} />
             </View>
             <View style={{flex: 17}} />
             <View style={{flex: 682}}>
                 <Text style={{fontSize: 16}}>Обратная связь</Text>
             </ View>
-            <View style={{flex: 30}}>
+            <View style={{flex: 30, height: '30%'}}>
                 <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />

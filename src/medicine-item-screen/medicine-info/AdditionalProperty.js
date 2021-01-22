@@ -32,7 +32,7 @@ const AdditionalProperty = ({ propertyName, propertyValue, navigation }) => {
                             numberOfLines={1}
                         >{propertyName.trim()}</Text>
                     </View>
-                    <View style={{ flex: 30 }}>
+                    <View style={{ flex: 30, height: '30%' }}>
                         <ShevronRightSolid color={colorOrange} />
                     </ View>
                     <View style={{ flex: 25 }} />

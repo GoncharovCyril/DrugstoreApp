@@ -35,7 +35,6 @@ const Header = ({navigation, backButton}) => {
             />
             <BigLogoHead backButton={backButton}/>
             <SearchHead navigation={navigation} />
-            <ShopHead navigation={navigation} />
         </View>
     );
 };

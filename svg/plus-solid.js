@@ -4,13 +4,15 @@ import Svg, { Path } from "react-native-svg"
 
 function PlusSolid(props) {
   return (
-      <View style={{ aspectRatio: 1, width: "100%", height: "100%"}}>
+      <View style={{ aspectRatio: 1, width: '100%', height: '100%'}}>
             <Svg
               aria-hidden="true"
               data-prefix="fas"
               data-icon="plus"
               className="prefix__svg-inline--fa prefix__fa-plus prefix__fa-w-14"
               viewBox="0 0 448 512"
+              width='100%'
+              height='100%'
             >
               <Path
                 fill={props.color}

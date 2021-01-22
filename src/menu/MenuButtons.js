@@ -37,7 +37,7 @@ const MenuButton = (props) => {
             <View style={{flex: 741}}>
                 <Text style={{fontSize: 16}}>{props.text}</Text>
             </ View>
-            <View style={{flex: 30}}>
+            <View style={{flex: 30, height: '30%'}}>
                 <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />
@@ -52,14 +52,14 @@ const MenuButtonConnect = (props) => {
             onPress={props.onPress}
         >
             <View style={{flex: 26}} />
-            <View style={{flex: 48}} >
+            <View style={{flex: 48, height: '40%'}} >
                 <CommentMedicalSolid color={colorOrange} />
             </View>
             <View style={{flex: 17}} />
             <View style={{flex: 682}}>
                 <Text style={{fontSize: 16}}>{props.text}</Text>
             </ View>
-            <View style={{flex: 30}}>
+            <View style={{flex: 30, height: '30%'}}>
                 <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />

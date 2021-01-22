@@ -13,7 +13,7 @@ const Logo = (props) => {
                 source={require('../img/logo.png')}
                 resizeMode="contain"
                 fadeDuration={0}
-                resizeMethod='scale'
+                resizeMethod='resize'
             />
         </View>
     );

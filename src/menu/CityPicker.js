@@ -40,7 +40,7 @@ const CityPicker = ({navigation}) => {
             <View style={{flex: 670}}>
                 <Text style={{color: colorDarkGrey, fontSize: 16}}>{cityName}</Text>
             </View>
-            <View style={{flex: 30}}>
+            <View style={{flex: 30, height: '30%'}}>
                 <ShevronRightSolid color={colorOrange} />
             </ View>
             <View style={{flex: 25}} />

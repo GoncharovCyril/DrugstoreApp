@@ -5,13 +5,15 @@ import Svg, { Path } from "react-native-svg"
 
 function ShevronRightSolid(props) {
   return (
-      <View style={{ aspectRatio: 1}}>
+      <View style={{ aspectRatio: 1, width: '100%', height: '100%'}}>
         <Svg
           aria-hidden="true"
           data-prefix="fas"
           data-icon="chevron-right"
           className="prefix__svg-inline--fa prefix__fa-chevron-right prefix__fa-w-10"
           viewBox="0 0 320 512"
+          width='100%'
+          height='100%'
           {...props}
         >
           <Path

@@ -111,19 +111,24 @@ const BasketScreen = ({route, navigation}) => {
 
     useFocusEffect(
         React.useCallback(()=>{
+            const loadScreen = async () => {
+                console.log(storedToken);
+                setLoading(true);
+                setBusketData([]);
+                await loadData(products, storedToken)
+                    .then(resultData => {
+                        console.log('result data=',resultData)
+                        setBusketData(resultData.slice());
+                        console.log(busketData)
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    })
+            }
 
-            console.log(storedToken);
-            setLoading(true);
-            setBusketData([]);
-            loadData(products, storedToken)
-                .then(resultData => {
-                    console.log('result data=',resultData)
-                    setBusketData(resultData);
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
-        },[])
+            loadScreen();
+            
+        },[storedToken, products])
     );
 
     return (
