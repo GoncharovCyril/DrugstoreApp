@@ -29,9 +29,9 @@ const ShopsListScreen = ({route, navigation}) => {
     };
     const getDistance = (latit1, longit1, latit2, longit2) => {
         return Math.pow((
-            Math.pow(latit2-latit1, 2)
+            Math.pow(latit1-latit2, 2)
             +
-            Math.pow(longit2-longit1, 2)
+            Math.pow(longit1-longit2, 2)
         ),0.5)
     }
 
@@ -73,7 +73,6 @@ const ShopsListScreen = ({route, navigation}) => {
                                         return 0                                        
                                     })
                                 }
-                                console.log(tempShops.length);
                                 
                                 // console.log(tempShops);
                                 setShopsData(tempShops.slice());

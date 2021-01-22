@@ -18,6 +18,7 @@ import { getPharmacies } from '../../requests/ShopsRequests';
 // import PlusSolid from '../../../svg/rounds/plus-solid-round';
 import BottomSheet from 'reanimated-bottom-sheet';
 
+import * as Location from 'expo-location';
 
 
 const styles = StyleSheet.create({
@@ -58,6 +59,8 @@ const styles = StyleSheet.create({
 
 const ShopsListMapScreen = ({ route, navigation }) => {
     const [isLoading, setLoading] = React.useState(true);
+    const [location, setLocation] = React.useState(null);
+
     // const [selectedShop, setSelectedShop] = React.useState(
     //     // route.params.hasOwnProperty('selectedShop') ? route.params['selectedShop'] : undefined
     //     undefined
@@ -174,30 +177,42 @@ const ShopsListMapScreen = ({ route, navigation }) => {
 
     useFocusEffect(
         React.useCallback(()=> {
-            setShopsData([]);
-            // setInitialsnap(route['params'] == undefined ? 0 : route.params['selectedShop'] == undefined ? 0 : 1);
-            setLoading(true);
-            setSelectedShop(storedSelectedShop);
-            // console.log(selectedShop);
-            setInitialsnap(storedSelectedShop.id != null ? 1 : 0);
-            // console.log(storedSelectedShop.id);
-            getPharmacies()
-                .then(([status, json]) => {
-                    switch (status) {
-                        case 200:
-                            // alert(200);
-                            setShopsData(json);
-                            break;
-                        default:
-                            alert(`${status}:\n${json}`);
-                            break;
-                    }
-                })
-                .finally(() => {
-                    setLoading(false);
-                })
-            
-            return () => setNoSelectedShop();
+            const load = async () => {
+                setShopsData([]);
+                // setInitialsnap(route['params'] == undefined ? 0 : route.params['selectedShop'] == undefined ? 0 : 1);
+                setLoading(true);
+
+                let {status} = await Location.requestPermissionsAsync();
+                let location = null;
+                if (status === 'granted') {
+                    location = await Location.getCurrentPositionAsync({});
+                }
+                setLocation(location);
+                console.log(location)
+
+                setSelectedShop(storedSelectedShop);
+                // console.log(selectedShop);
+                setInitialsnap(storedSelectedShop.id != null ? 1 : 0);
+                // console.log(storedSelectedShop.id);
+                getPharmacies()
+                    .then(([status, json]) => {
+                        switch (status) {
+                            case 200:
+                                // alert(200);
+                                setShopsData(json);
+                                break;
+                            default:
+                                alert(`${status}:\n${json}`);
+                                break;
+                        }
+                    })
+                    .finally(() => {
+                        setLoading(false);
+                    })
+                
+                return () => setNoSelectedShop();
+            }
+            load();
         },[])
     );
 
@@ -215,15 +230,29 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                             style={{ flex: 1 }}
                             provider={PROVIDER_GOOGLE}
                             initialRegion={{
-                                latitude: selectedShop.coordinates == null 
-                                    ? 47.993331 : parseFloat(selectedShop.coordinates.split(', ')[0]),
-                                longitude: selectedShop.coordinates == null 
-                                    ? 37.853775 : parseFloat(selectedShop.coordinates.split(', ')[1]),
+                                latitude: selectedShop.coordinates != null 
+                                    ? parseFloat(selectedShop.coordinates.split(', ')[0]) : 
+                                    location != null ? location['coords']['latitude'] : 47.993331,
+                                longitude: selectedShop.coordinates != null 
+                                    ? parseFloat(selectedShop.coordinates.split(', ')[1]) :
+                                    location != null ? location['coords']['longitude'] : 37.853775,
                                 latitudeDelta: 0.0922,
                                 longitudeDelta: 0.0421
                             }}
                             // showsUserLocation={true}
                         >
+                            {
+                                location != null ?
+                                <Marker
+                                    key = {location['timestamp']}
+                                    coordinate={{
+                                        latitude: location['coords']['latitude'],
+                                        longitude: location['coords']['longitude']
+                                    }}
+                                    title="Вы находитесь здесь"
+                                ></Marker>
+                                : undefined
+                            }
                             {
                                 shopsData.map(item => {
                                     const [latit, longit] = item.coordinates.split(', ');
