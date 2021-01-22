@@ -1,75 +1,53 @@
-import React, {useRef, useEffect} from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Animated, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, KeyboardAvoidingView, Platfrom} from 'react-native';
 
+import RoundButtons from './RoundButtons';
+import PhoneInfo from './PhoneInfo';
+import Report from './Report';
+
+const bW = 0;
 const styles = StyleSheet.create({
-   
+    screenContainer: {
+        flex: 1,
+        marginTop: '5%',
+        marginBottom: '5%'
+    },
+    socButtonContainer: {
+        borderWidth: bW,
+        flex: 1,
+        marginRight: '10%',
+        marginLeft: '10%',
+    },
+    phoneInfoContainer: {
+        borderWidth: bW,
+        flex: 4,
+    },
+    reportContainer: {
+        borderWidth: bW,
+        flex: 5
+    }
 });
+
 
 const CallbackScreen = ({navigation}) => {
     return (
-        <View>
-
-        </View>
-    );
-};
-
-
-const LoadingView = (props) => {
-    const fadeAnim = useRef(new Animated.Value(0)).current;
-
-    useEffect(() => {
-        Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 3000,
-        }).start();        
-    }, [fadeAnim]);
-
-    const onPress = () => {
-            Animated.timing(fadeAnim, {
-                toValue: 0,
-                duration: 3000,
-            }).start();        
-    };
-
-    return (
-        <TouchableOpacity
-            style={{
-                ...props.style,
-                alignItems: 'center',
-            }}
-            onPress={onPress}
-
+        <KeyboardAvoidingView 
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.screenContainer}
         >
-            <Animated.View style={{
-                flex: 1,
-                transform: [{
-                    rotateZ: fadeAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: ["0deg", "360deg"],
-                    }),
-                }],
-                alignItems: 'center',
-
-            }}>
-                <Animated.View
-                    style={{
-                        backgroundColor: 'green',
-                        width: "5%",
-                        height: "5%",
-                        borderWidth: 1,
-                        borderRadius: 100,
-                    }}
-                />
-            </Animated.View>
-        </TouchableOpacity>
-        
+            <View style={styles.socButtonContainer}>
+                <RoundButtons />
+            </View>
+            <View style={styles.phoneInfoContainer}>
+                <PhoneInfo />
+            </View>
+            <View style={styles.reportContainer}>
+                <Report navigation={navigation} />
+            </View>
+            
+        </KeyboardAvoidingView>
     );
 };
-const App = () => (
-    <View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-        <LoadingView style={{width: 200, height: 200}} />
-    </View>
-);
 
 
 export default CallbackScreen;

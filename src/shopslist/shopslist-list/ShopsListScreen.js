@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, Text } from 'react-native';
+import { View, ActivityIndicator, Text, Alert } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { colorOrange } from '../../Colors';
@@ -42,6 +42,13 @@ const ShopsListScreen = ({route, navigation}) => {
                 let location = null;
                 if (status === 'granted') {
                     location = await Location.getCurrentPositionAsync({});
+                } else {
+                    Alert.alert(
+                        "Внимание",
+                        "Аптеки не будут отсортированы по близости к вашему устройству",
+                        [],
+                        {cancelable: true}
+                    )
                 }
                 setLocation(location);
                 console.log(location)

@@ -5,7 +5,8 @@ import {
     ActivityIndicator, 
     Image, 
     TouchableOpacity, 
-    StyleSheet } from 'react-native';
+    StyleSheet,
+    Alert } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_SHOP, SET_SELECTED_SHOP } from '../../redux/types';
@@ -186,6 +187,13 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                 let location = null;
                 if (status === 'granted') {
                     location = await Location.getCurrentPositionAsync({});
+                } else {
+                    Alert.alert(
+                        "Внимание",
+                        "Ваше местопложение не будет показано на карте",
+                        [],
+                        {cancelable: true}
+                    )
                 }
                 setLocation(location);
                 console.log(location)

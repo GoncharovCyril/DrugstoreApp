@@ -19,19 +19,25 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         textAlignVertical: 'center',
         fontSize: 16,
-    }
+    },
+    textButtonBig: {
+        color: "white",
+        alignSelf: "center",
+        textAlignVertical: 'center',
+        fontSize: 20,
+    },
 });
 
 
 
-const AcceptButton = ({ onPress, title }) => {
+const AcceptButton = ({ onPress, title, isBig }) => {
 
     return (
         <TouchableOpacity
             style={styles.button}
             onPress={onPress}
         >
-            <Text numberOfLines={1} style={styles.textButton}>{title}</Text>
+            <Text numberOfLines={1} style={isBig ? styles.textButtonBig : styles.textButton}>{title}</Text>
         </TouchableOpacity>
     );
 };
