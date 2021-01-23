@@ -32,7 +32,7 @@ export const MedicineItemScreen = ({route, navigation}) => {
                         setMedicineData(json)
                         break;
                     default:
-                        // alert(`${status}:\n${json}`);
+                      
                         break;
                 }
 

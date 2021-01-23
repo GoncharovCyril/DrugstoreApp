@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 
-import {REMOVE_ALL_THIS_PRODUCT, ADD_PRODUCT, REMOVE_PRODUCT} from '../../redux/types';
+import {REMOVE_ALL_THIS_PRODUCT, REMOVE_PRICE_FROM_SUM} from '../../redux/types';
 import { postCart, delCart } from '../../requests/BasketRequests';
 
 // import ListItem from './MedicineItemView';
@@ -24,6 +24,13 @@ const SwipeableRow = ({ item, navigation}) => {
     const removeAllProduct = async (id)=>{
         delCart(id, storedToken);
         dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: id } });
+        const tempPrice = item.count *
+            (
+                (item.price != undefined && item.price != null && item.price != '')
+                    ? item.price : item.min_price
+            )
+        dispatch({ type: REMOVE_PRICE_FROM_SUM, payload: {price: tempPrice} });
+
     };
 
 
@@ -57,37 +64,34 @@ const SwipeableRow = ({ item, navigation}) => {
 const BasketList = ({navigation, data, token, products}) => {
 
 
-    // const productsCounter = useSelector(state => {
-    //     return state.appStore.products;
-    // });
 
+
+    const [sumPrice, setSumPrice] = React.useState()
 
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
-            <View style={{flex: 6}} >
-                <SafeAreaView style={{flex: 1}}>
-                    <FlatList 
-                        data={data}
-                        // ListFooterComponent={Footer}
-                        // ListHeaderComponent={
-                        //     headVisible ? Header : undefined
-                        // }
-                        renderItem={({item, id, separators}) => (
-                            <SwipeableRow 
-                                item={item} 
-                                // id={id} 
-                                separators={separators} 
-                                products={products}
-                                navigation={navigation}
-                            />
-                        )}
-                        keyExtractor={item => item.id.toString()}
-                        // refreshing={refreshing} 
-                        // onEndReached={onRefresh}
-                        // onEndReachedThreshold={1}
-                    />
-                </SafeAreaView>
-            </ View>
+            <SafeAreaView style={{ flex: 6 }}>
+                <FlatList
+                    data={data}
+                    // ListFooterComponent={Footer}
+                    // ListHeaderComponent={
+                    //     headVisible ? Header : undefined
+                    // }
+                    renderItem={({ item, id, separators }) => (
+                        <SwipeableRow
+                            item={item}
+                            // id={id} 
+                            separators={separators}
+                            products={products}
+                            navigation={navigation}
+                        />
+                    )}
+                    keyExtractor={item => item.id.toString()}
+                // refreshing={refreshing} 
+                // onEndReached={onRefresh}
+                // onEndReachedThreshold={1}
+                />
+            </SafeAreaView>
         </View>
     );
 };

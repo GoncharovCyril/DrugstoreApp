@@ -43,7 +43,7 @@ const Footer = ({navigation, id, price, min_price}) => {
                 marginRight: "2%",
                 marginBottom: '2%'
             }}>
-                <BuyButton navigation={navigation} id={id} />
+                <BuyButton navigation={navigation} id={id} price={(price != undefined && price!='' && price != null)? price: min_price} />
             </View>
         </View>
     )

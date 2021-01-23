@@ -33,38 +33,34 @@ const styles = StyleSheet.create({
 });
 
 
-const BuyButton = ({ navigation, id }) => {
+const BuyButton = ({ navigation, id, price }) => {
 
     console.log(id);
-    const  productsCounter = useSelector(state => state.appStore.products.get(id == null ? null : id.toString()));
+    const  productsCounter = useSelector(state => state.appStore.products.get(id.toString()));
     const storedToken = useSelector(state => state.appStore.account.token);
 
 
     const dispatch = useDispatch();
 
-    const addProduct = React.useCallback(() => {
-        if(id != null) {
-            const tempCount = productsCounter == undefined ? 0 : productsCounter;
-            postCart(id.toString(), tempCount + 1, storedToken);
-            dispatch({ type: ADD_PRODUCT, payload: {id: id == null ? null : id.toString()} });
-        }
-        
-    }, [dispatch]);
+    const addProduct = async (id) => {
+        const tempCount = productsCounter == undefined ? 0 : productsCounter;
+        postCart(id, tempCount+1, storedToken);
 
-    const removeProduct = React.useCallback(()=>{
-        if(id != null) {
-            const tempCount = productsCounter == undefined ? 0 : productsCounter;
-            postCart(id.toString(), tempCount - 1, storedToken);
-            dispatch({ type: REMOVE_PRODUCT, payload: {id: id == null ? null : id.toString()} });
-        }
-        
-    }, [dispatch]);
+        dispatch({ type: ADD_PRODUCT, payload: {id: id.toString(), price: price} });
+    };
+    const removeProduct = async (id)=>{
+        const tempCount = productsCounter == undefined ? 0 : productsCounter;
+        postCart(id, tempCount-1, storedToken);
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id.toString(), price: price} });
+    };
 
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
-            onPress={addProduct}
+            onPress={()=>{
+                addProduct(id)
+            }}
         >
             <Text style={{
                 color: "white",
@@ -84,7 +80,9 @@ const BuyButton = ({ navigation, id }) => {
         >
             <TouchableOpacity 
                 style={{ flex: 30, flexDirection: 'row' }}
-                onPress={removeProduct}
+                onPress={() => {
+                    removeProduct(id);
+                }}
             >
                 <View style={{ flex: 15 }} />
                 <Text style={{
@@ -109,7 +107,9 @@ const BuyButton = ({ navigation, id }) => {
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
-                onPress={addProduct}
+                onPress={()=>{
+                    addProduct(id)
+                }}
             >
                 <Text style={{
                     flex: 85,

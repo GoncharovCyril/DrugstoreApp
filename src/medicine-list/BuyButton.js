@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {useFocusEffect} from '@react-navigation/native';
 import { colorGreen} from '../Colors';
 
-import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
+import { ADD_PRODUCT, REMOVE_PRODUCT, ADD_PRICE_TO_SUM, REMOVE_PRICE_FROM_SUM } from '../redux/types';
 import {postCart} from '../requests/BasketRequests';
 
 const styles = StyleSheet.create({
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
 
 
-const BuyButton = ({ navigation, id, products, /*dispatch, addProduct, removeProduct*/}) => {
+const BuyButton = ({ navigation, id, products, price /*dispatch, addProduct, removeProduct*/}) => {
 
     const count = useSelector(state => state.appStore.products.get(id.toString()));
     const storedToken = useSelector(state => state.appStore.account.token);
@@ -44,12 +44,17 @@ const BuyButton = ({ navigation, id, products, /*dispatch, addProduct, removePro
         const tempCount = count == undefined ? 0 : count;
         postCart(id, tempCount+1, storedToken);
 
-        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+        dispatch({ type: ADD_PRODUCT, payload: {id: id.toString(), price: price} });
+
+        // dispatch({ type: ADD_PRICE_TO_SUM, payload: {price: price} });
     };
     const removeProduct = async (id)=>{
         const tempCount = count == undefined ? 0 : count;
         postCart(id, tempCount-1, storedToken);
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id.toString(), price: price} });
+
+        // dispatch({ type: REMOVE_PRICE_FROM_SUM, payload: {price: price} });
     };
 
     const Button1 = ({ navigation}) => (

@@ -121,6 +121,7 @@ const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, cou
                                             <BuyButton 
                                             navigation={navigation} 
                                             id={id} 
+                                            price={(price != undefined && price!=null && price!='') ? price : min_price }
                                             />
                                         </View>
                                     </View>

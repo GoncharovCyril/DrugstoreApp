@@ -4,15 +4,24 @@ import {
     REMOVE_PRODUCT, 
     LOAD_FROM_STORE, 
     CLEAR_ALL_PRODUCTS, 
+    REMOVE_ALL_THIS_PRODUCT,
+
+    SET_PRODUCTS_SUM_PRICE,
+    ADD_PRICE_TO_SUM,
+    REMOVE_PRICE_FROM_SUM,
+
     SET_TOKEN, 
+    SET_PHONE,
+
     SET_SHOP, 
     SET_SELECTED_SHOP,
+
     SET_CITY,
-    REMOVE_ALL_THIS_PRODUCT,
+
     SET_SEARCH_VALUE,
     ADD_SEARCH_VALUE_TO_HISTORY,
     CLEAR_SEARCH_HISTORY,
-    SET_PHONE
+
 } from './types';
 
 import {
@@ -26,6 +35,9 @@ import {
 
 const INITIAL_STATE = {
     products: new Map(),
+    productsPrice: {
+        sumPrice: 0
+    },
     account: {
         token: '',
         phone: '',
@@ -58,6 +70,7 @@ const INITIAL_STATE = {
 const appReducer = (state = INITIAL_STATE, action) => {
     const {
         products,
+        productsPrice,
         account,
         shop,
         selectedShop,
@@ -93,6 +106,8 @@ const appReducer = (state = INITIAL_STATE, action) => {
                 action.payload.id, 
                 products.get(action.payload.id) === undefined ? 1 : products.get(action.payload.id)+1
                 );
+
+            productsPrice.sumPrice = parseFloat(productsPrice.sumPrice) + parseFloat(action.payload.price)
             storeData(products);
             break;
 
@@ -100,6 +115,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
             if (products.has(action.payload.id)) {
                 products.set(action.payload.id, products.get(action.payload.id) - 1);
+                productsPrice.sumPrice = parseFloat(productsPrice.sumPrice) - parseFloat(action.payload.price)
                 if (products.get(action.payload.id) == 0) {
                     products.delete(action.payload.id);
                 }
@@ -120,6 +136,18 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
             products.clear();
             storeData(products);
+            break;
+
+        case SET_PRODUCTS_SUM_PRICE:
+            productsPrice.sumPrice = parseFloat(action.payload.sumPrice);
+            break;
+
+        case ADD_PRICE_TO_SUM:
+            productsPrice.sumPrice = parseFloat(productsPrice.sumPrice) + parseFloat(action.payload.price)
+            break;
+
+        case REMOVE_PRICE_FROM_SUM:
+            productsPrice.sumPrice = parseFloat(productsPrice.sumPrice) - parseFloat(action.payload.price)
             break;
 
         case SET_TOKEN:
@@ -187,6 +215,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
     return { 
         products, 
+        productsPrice,
         account, 
         shop, 
         selectedShop, 

@@ -91,8 +91,6 @@ const SubCatalog = ({navigation, route}) => {
                 data: DATA,
                 request: item.title
             });
-            // navigation.navigate(item.next);
-            // alert(route.params);
         }} />
     );
 

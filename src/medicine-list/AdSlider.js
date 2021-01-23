@@ -26,7 +26,6 @@ const AdSlider = ({ navigation }) => {
                     resizeMode="stretch"
 
                     onCurrentImagePressed={ index => {
-                        // alert(index);
                         navigation.navigate("MedicineItemScreen");
 
                     }}

@@ -99,6 +99,7 @@ const MenuButtons = ({route, navigation}) => {
                     //             break;
                     //         default:
                     //             alert(`${status}:\n${json}`);
+                    //              break;
                     //     }
                     // })
                     navigation.navigate("PersonalAreaScreen", {baseRouteName: route.name});
