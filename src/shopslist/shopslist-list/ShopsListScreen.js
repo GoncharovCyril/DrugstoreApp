@@ -6,7 +6,11 @@ import { colorOrange } from '../../Colors';
 import MedicineStoreList from './MedicineStoreList';
 import { getPharmacies } from '../../requests/ShopsRequests';
 
+import {getDistanceFromLatLonInKm} from '../funcs/distanceFunc'
+
 import * as Location from 'expo-location';
+
+
 
 const ShopsListScreen = ({route, navigation}) => {
     const city = useSelector(state => state.appStore.city);
@@ -60,19 +64,21 @@ const ShopsListScreen = ({route, navigation}) => {
                                 const tempShops = getShopsByCity(json).slice();
 
                                 if (location != null){
-                                    tempShops.sort((a, b)=>{
-                                        const [latitA, longitA] = a.coordinates.split(', ');
-                                        const [latitB, longitB] = b.coordinates.split(', ');
+
+                                    tempShops.forEach((item, index, array) =>{
+                                        const [latit, longit] = item.coordinates.split(', ');
                                         const latitU = location['coords']['latitude']
                                         const longitU = location['coords']['longitude']
-                                        
-                                        const distA = getDistance(latitA, longitA, latitU,longitU);
-                                        const distB = getDistance(latitB, longitB, latitU,longitU);
 
-                                        if (distA < distB) {
+                                        array[index]['distance'] = getDistanceFromLatLonInKm(latit,longit,latitU,longitU);
+                                    })
+
+                                    tempShops.sort((a, b)=>{
+
+                                        if (a.distance < b.distance) {
                                             return -1
                                         }
-                                        if (distA > distB) {
+                                        if (a.distance > b.distance) {
                                             return 1
                                         }
                                         return 0                                        

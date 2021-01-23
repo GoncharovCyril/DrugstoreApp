@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 });
 
-const viewH = 130;
+const viewH = 160;
 const viewW = 345;
 
 const MedicineStoreItem = ({ 
@@ -30,6 +30,7 @@ const MedicineStoreItem = ({
     photo, 
     phone, 
     working_time,
+    distance
 }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
@@ -104,19 +105,37 @@ const MedicineStoreItem = ({
                         // borderWidth: 1,
                         // borderColor: colorGreen
                     }}>
-                    <View style={{ flex: 2 }}>
+                    <View style={{ flex: 1.9 }}>
                         <View style={{ flex: 1, marginLeft: "5%", marginTop: '3%' }}>
-                            <Text style={{ fontSize: 14, color: colorDarkGrey }}>{city}</Text>
-                            <Text style={{ fontSize: 18, color: colorGreen }}>{name}</Text>
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{address}</Text>
-                            <View style={{ height: 10, color: colorDarkGrey }} />
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{phone}</Text>
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{working_time}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey }}
+                            >{city}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 18, color: colorGreen }}
+                            >{name}</Text>
+                            <Text numberOfLines={2} style={{ fontSize: 16, color: colorDarkGrey }}
+                            >{address}</Text>
+                            {
+                                distance != undefined ?
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ height: 14, width: 14, borderWidth: 1 }}>
+
+                                        </View>
+                                        <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey, marginLeft: '3%' }}
+                                        >{distance != undefined ?
+                                            `${distance.toFixed(2)} км`
+                                            : undefined}</Text>
+                                    </View>
+                                    : undefined
+                            }
+                            
+                            <Text numberOfLines={1} style={{ fontSize: 16, color: colorDarkGrey }}
+                            >{phone}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey }}
+                            >{working_time}</Text>
                         </View>
 
                     </View>
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={{ flex: 6, width: '100%' }}>
+                    <View style={{ flex: 1.1, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{ flex: 7, width: '100%' }}>
                             {
                                 photo != null ?
                                     <Image

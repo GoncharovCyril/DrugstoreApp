@@ -13,6 +13,8 @@ import { SET_SHOP, SET_SELECTED_SHOP } from '../../redux/types';
 
 import { useFocusEffect } from '@react-navigation/native';
 
+import { getDistanceFromLatLonInKm } from '../funcs/distanceFunc';
+
 import { colorGreen, colorDarkGrey, colorOrange } from '../../Colors';
 
 import { getPharmacies } from '../../requests/ShopsRequests';
@@ -145,12 +147,24 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     undefined :
                     <View style={{flex: 97, flexDirection: 'row'}}>
                         <View style={{ flex: 70, marginLeft: "5%", marginTop: '0%' }}>
-                            <Text style={{ fontSize: 14, color: colorDarkGrey }}>{selectedShop['city']}</Text>
-                            <Text style={{ fontSize: 18, color: colorGreen }}>{selectedShop['name']}</Text>
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['address']}</Text>
-                            <View style={{ height: 10, color: colorDarkGrey }} />
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['phone']}</Text>
-                            <Text style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['working_time']}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey }}>{selectedShop['city']}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 18, color: colorGreen }}>{selectedShop['name']}</Text>
+                            <Text numberOfLines={2} style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['address']}</Text>
+                            {
+                                selectedShop['distance'] != undefined ?
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ height: 14, width: 14, borderWidth: 1 }}>
+
+                                        </View>
+                                        <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey, marginLeft: '3%' }}
+                                        >{selectedShop['distance'] != undefined ?
+                                            `${selectedShop['distance'].toFixed(2)} км`
+                                            : undefined}</Text>
+                                    </View>
+                                    : undefined
+                            }
+                            <Text numberOfLines={1} style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['phone']}</Text>
+                            <Text numberOfLines={1} style={{ fontSize: 16, color: colorDarkGrey }}>{selectedShop['working_time']}</Text>
                         </View>
                         <View style={{ flex: 30, justifyContent: 'flex-start' }}>
                             <View style={{height: '25%', justifyContent: 'center'}}>
@@ -201,8 +215,31 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     .then(([status, json]) => {
                         switch (status) {
                             case 200:
-                                // alert(200);
-                                setShopsData(json);
+
+                                const tempShops = json.slice();
+
+                                if (location != null){
+
+                                    tempShops.forEach((item, index, array) =>{
+                                        const [latit, longit] = item.coordinates.split(', ');
+                                        const latitU = location['coords']['latitude']
+                                        const longitU = location['coords']['longitude']
+
+                                        array[index]['distance'] = getDistanceFromLatLonInKm(latit,longit,latitU,longitU);
+                                    })
+
+                                    tempShops.sort((a, b)=>{
+
+                                        if (a.distance < b.distance) {
+                                            return -1
+                                        }
+                                        if (a.distance > b.distance) {
+                                            return 1
+                                        }
+                                        return 0                                        
+                                    })
+                                }
+                                setShopsData(tempShops.slice());
                                 break;
                             default:
                                 alert(`${status}:\n${json}`);
