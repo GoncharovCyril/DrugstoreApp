@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {colorGreen} from '../../Colors'
 
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../../redux/types';
+import {postCart} from '../../requests/BasketRequests';
 
 const styles = StyleSheet.create({
     button1: {
@@ -34,17 +35,29 @@ const styles = StyleSheet.create({
 
 const BuyButton = ({ navigation, id }) => {
 
-    const  productsCounter = useSelector(state => state.appStore.products.get(id));
+    console.log(id);
+    const  productsCounter = useSelector(state => state.appStore.products.get(id == null ? null : id.toString()));
+    const storedToken = useSelector(state => state.appStore.account.token);
+
 
     const dispatch = useDispatch();
 
     const addProduct = React.useCallback(() => {
+        if(id != null) {
+            const tempCount = productsCounter == undefined ? 0 : productsCounter;
+            postCart(id.toString(), tempCount + 1, storedToken);
+            dispatch({ type: ADD_PRODUCT, payload: {id: id == null ? null : id.toString()} });
+        }
         
-        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
     }, [dispatch]);
 
     const removeProduct = React.useCallback(()=>{
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+        if(id != null) {
+            const tempCount = productsCounter == undefined ? 0 : productsCounter;
+            postCart(id.toString(), tempCount - 1, storedToken);
+            dispatch({ type: REMOVE_PRODUCT, payload: {id: id == null ? null : id.toString()} });
+        }
+        
     }, [dispatch]);
 
 

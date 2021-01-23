@@ -73,7 +73,6 @@ const MedicineList = ({navigation, data}) => {
     )
 
     // const productsCounter = useSelector(state => {
-    //     console.log('ping', id)
     //     return state.appStore.products;
     // });
 

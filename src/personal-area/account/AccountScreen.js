@@ -23,8 +23,6 @@ const AccountScreen = ({ navigation, route }) => {
         React.useCallback(() => {
             getUser(storedToken)
                 .then(([status, json]) => {
-                    console.log('request')
-                    console.log(json);
                     switch (status) {
                         case 401:
                             navigation.navigate("PhoneNumberScreen");

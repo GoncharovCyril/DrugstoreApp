@@ -20,12 +20,7 @@ const medicineListStyles=StyleSheet.create({
 
 
 const MedicineList = ({route, navigation, data}) => {
-   
-
-    const storedShopId = useSelector(state => {
-        return state.appStore.shop.id
-    });
-
+    
     const listData = data;
 
     
@@ -41,7 +36,6 @@ const MedicineList = ({route, navigation, data}) => {
             photo={item.photo}
             phone={item.phone}
             working_time={item.working_time}
-            storedShopId={storedShopId}
         />
     );
 

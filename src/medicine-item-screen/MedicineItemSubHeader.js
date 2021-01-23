@@ -55,7 +55,6 @@ const medicineHeader = {
             ? 'Medicine'
             : scene.route.params['name']
 
-        // console.log(scene.route['params'])
 
         return (
             <View style={options.headerStyle} >

@@ -16,11 +16,9 @@ const styles = StyleSheet.create({
 const viewH = 180;
 const viewW = 345;
 
-const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, count, availability, products, dispatch, addProduct, removeProduct}) => {
+const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, count, availability}) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
-
-    console.log('dv', products)
     
     return (
         <View 
@@ -45,7 +43,7 @@ const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, cou
             }}>
                 <TouchableWithoutFeedback
                     onPress={() => {
-                        navigation.navigate('MedicineItemScreen', {id: id, name: name_rus});
+                        navigation.navigate('MedicineItemScreen', {id: id.toString(), name: name_rus});
                     }}
                     style={{ flex: 1 }}
                 >
@@ -121,12 +119,8 @@ const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, cou
                                         }}>{(price != undefined && price != null && price != '') ? `${price} руб.` : `от ${min_price} руб.`}</Text>
                                         <View style={{ flex: 1 }}>
                                             <BuyButton 
-                                            products={products} 
                                             navigation={navigation} 
                                             id={id} 
-                                            dispatch={dispatch} 
-                                            addProduct={addProduct}
-                                            removeProduct={removeProduct}
                                             />
                                         </View>
                                     </View>

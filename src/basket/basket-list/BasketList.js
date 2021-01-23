@@ -15,17 +15,26 @@ const medicineListStyles=StyleSheet.create({
 
 });
 
-const SwipeableRow = ({ item, id, separators, products, navigation, addProduct, removeProduct, removeAllProduct }) => {
-    // const product = useSelector(state => state.appStore.products.get(item.id));
+const SwipeableRow = ({ item, navigation}) => {
+    const product = useSelector(state => state.appStore.products.get(item.id.toString()));
+    const storedToken = useSelector(state => state.appStore.account.token);
     
+    const dispatch = useDispatch();
+
+    const removeAllProduct = async (id)=>{
+        delCart(id, storedToken);
+        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: id } });
+    };
+
+
     return (
         <View>
             {
-                products.get(item.id.toString()) != undefined 
+                product != undefined 
                 ?
                     <View>
                         {
-                            <MedicineSwipeableRow action={()=>{removeAllProduct(item.id)}}>
+                            <MedicineSwipeableRow action={()=>{removeAllProduct(item.id.toString())}}>
                                 <ListItem
                                     navigation={navigation}
                                     id={item.id}
@@ -34,10 +43,7 @@ const SwipeableRow = ({ item, id, separators, products, navigation, addProduct, 
                                     price={item.price}
                                     min_price={item.min_price}
                                     availability={item.availability}
-                                    products={products}
                                     count={item.count}
-                                    addProduct={addProduct}
-                                    removeProduct={removeProduct}
                                 />
                             </MedicineSwipeableRow>
                         }
@@ -56,35 +62,6 @@ const BasketList = ({navigation, data, token, products}) => {
     // });
 
 
-
-    const dispatch = useDispatch();
-    const addProduct = async (id) => {
-        const count = products.get(id) != undefined ? products.get(id).count : 0
-
-        await postCart(id, count+1, token).then(([status, text]) => {
-            console.log(status);
-        })
-
-        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
-    };
-    const removeProduct = async (id)=>{
-        const count = products.get(id) != undefined ? products.get(id).count : 0
-        await postCart(id, count-1, token).then(([status, text]) => {
-            console.log(status);
-        })
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
-    };
-
-    const removeAllProduct = async (id)=>{
-        await delCart(id, token).then(([status, text]) => {
-            console.log(status);
-        })
-        dispatch({ type: REMOVE_ALL_THIS_PRODUCT, payload: { id: id } });
-    };
-
-    // console.log(products);
-
-
     return (
         <View style={{flex: 1, justifyContent: 'flex-start'}}>
             <View style={{flex: 6}} >
@@ -98,14 +75,10 @@ const BasketList = ({navigation, data, token, products}) => {
                         renderItem={({item, id, separators}) => (
                             <SwipeableRow 
                                 item={item} 
-                                id={id} 
+                                // id={id} 
                                 separators={separators} 
                                 products={products}
                                 navigation={navigation}
-
-                                addProduct = {addProduct}
-                                removeProduct = {removeProduct}
-                                removeAllProduct={removeAllProduct}
                             />
                         )}
                         keyExtractor={item => item.id.toString()}

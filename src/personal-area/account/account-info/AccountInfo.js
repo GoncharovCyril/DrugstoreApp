@@ -112,8 +112,7 @@ const AccountInfo = ({ navigation, accountData }) => {
     const dispatch = useDispatch();
     //Выход с аккаунта
     const logout = React.useCallback(()=>{
-        
-        dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
+        // dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
         dispatch({ type: SET_TOKEN, payload: {token: ''} });
     }, [dispatch])
 

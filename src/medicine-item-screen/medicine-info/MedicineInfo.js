@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 
 export const MedicineInfo = ({route, navigation, data}) => {
 
+  console.log(`data['id']=${data['id']}`)
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeAreaView}>

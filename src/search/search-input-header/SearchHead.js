@@ -51,7 +51,6 @@ const Space = (props) => {
 
 // if (textValue.length > 0) {
     //     searchMedicine(textValue).then(([status, text]) => {
-    //         // console.log(JSON.parse(text).length);
     //         switch (status) {
     //             case 200:
     //                 // setResult(json);
@@ -97,7 +96,6 @@ const SearchHead = ({ navigation, setDataAction }) => {
 
     const search = (textValue) => {
         searchMedicine(textValue, 10).then(([status, text]) => {
-            // console.log(JSON.parse(text).length);
             switch (status) {
                 case 200:
                     // setResult(json);
@@ -146,7 +144,6 @@ const SearchHead = ({ navigation, setDataAction }) => {
     useFocusEffect(
         React.useCallback(() => {
             if (tRef.current != null) {
-                // console.log('focus')
                 tRef.current.focus();
                 // tRef.current.clear();
             }
@@ -186,7 +183,6 @@ const SearchHead = ({ navigation, setDataAction }) => {
                         defaultValue={searchValue}
                         ref={tRef}
                         onLayout={() => {
-                            // console.log('lay')
                             tRef.current.focus();
                         }}
                         // onContentSizeChange={({ nativeEvent: { contentSize: { width, height } } }) => { setDataAction(JSON.parse(text)); }}

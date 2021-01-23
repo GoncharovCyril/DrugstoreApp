@@ -24,12 +24,10 @@ const loadData = async (products, token) => {
 
     let isAuth = false;
 
-    console.log('load: ', token)
 
     await getCart(token).then(([status, text])=>{
         switch (status) {
             case 200:
-                console.log(text);
                 try{
                     resultData = JSON.parse(text).cart;
                     isAuth=true;
@@ -40,7 +38,6 @@ const loadData = async (products, token) => {
                 }
                 break;
             case 401:
-                console.log('unauth')
                 isAuth=false;
                 break;
             default:
@@ -49,13 +46,11 @@ const loadData = async (products, token) => {
     })
 
     if (!isAuth){
-        console.log("ISNT AUTH")
         for (let [key, value] of products){
             await getMedicineItem(key, null)
             .then(([status, json]) => {
                 switch (status) {
                     case 200:
-                        console.log('json')
                         resultData.push({
                             id: json[0]['id'].toString(),
                             name_rus: json[0]['name_rus'],
@@ -112,14 +107,11 @@ const BasketScreen = ({route, navigation}) => {
     useFocusEffect(
         React.useCallback(()=>{
             const loadScreen = async () => {
-                console.log(storedToken);
                 setLoading(true);
                 setBusketData([]);
                 await loadData(products, storedToken)
                     .then(resultData => {
-                        console.log('result data=',resultData)
                         setBusketData(resultData.slice());
-                        console.log(busketData)
                     })
                     .finally(() => {
                         setLoading(false);

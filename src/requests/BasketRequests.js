@@ -30,7 +30,6 @@ export const postCart = async(drugId, count, token) => {
         "count": count
     }
     try {
-        console.log('body:',data)
         let response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify(data),

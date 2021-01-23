@@ -30,7 +30,6 @@ const CatalogResultScreen = ({route, navigation}) => {
                     .then(([status, text]) => {
                         switch (status) {
                             case 200:
-                                // console.log(resultData.length)
                                 JSON.parse(text).forEach(element => {
                                     resultData.push(element);
                                 });
@@ -48,7 +47,6 @@ const CatalogResultScreen = ({route, navigation}) => {
                     })
                     .finally(() => {
                         setLoading(false);
-                        // console.log(resultData.length)
                     })
             } else {
                 setMessage('Введен пустой запрос')
@@ -63,19 +61,14 @@ const CatalogResultScreen = ({route, navigation}) => {
     // useFocusEffect(
     //     React.useCallback(()=>{
 
-    //         console.log(resultData.length)
     //         setResultdata(['a'])
-    //         console.log(resultData.length);
             
     //     }, [resultData, setResultdata])
     // );
 
     // React.useEffect(() => {
     //     navigation.addListener('focus', ()=> {
-    //         console.log('focus')
-    //         console.log(resultData.length)
     //         setResultdata(['a'])
-    //         console.log(resultData.length)
 
     //     });
     // }, [navigation])

@@ -25,11 +25,8 @@ export const MedicineItemScreen = ({route, navigation}) => {
   
       // }
 
-      console.log(selectedShop)
-
       getMedicineItem(route.params['id'], selectedShop)
             .then(([status, json]) => {
-              console.log(selectedShop)
                 switch (status) {
                     case 200:
                         setMedicineData(json)

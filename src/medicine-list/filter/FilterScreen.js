@@ -20,8 +20,6 @@ const FilterScreen = ({ navigation, route }) => {
 
 
     const renderItem = ({ item, index, section }) => {
-        // console.log(chosenFilters)
-
         return (
             chosenFilters.find((element) => element['title'] == section.title).data.indexOf(item) == -1
                 ? <TouchableOpacity
@@ -30,7 +28,6 @@ const FilterScreen = ({ navigation, route }) => {
                         const tArr = chosenFilters.slice();
                         tArr.find((element) => element.title == section.title).data.push(item)// = [item]
                         setChosenFilters(tArr);
-                        // console.log(getChosenFilters());
                     }}>
                     <View style={styles.chooseBox} />
                     <Text style={styles.chooseText}>{item.trim()}</Text>
@@ -42,7 +39,6 @@ const FilterScreen = ({ navigation, route }) => {
                         const itemId = tArr.find((element) => element.title == section.title).data.indexOf(item);
                         tArr.find((element) => element.title == section.title).data.splice(itemId, 1)// = [item]
                         setChosenFilters(tArr);
-                        // console.log(getChosenFilters());
                     }}>
                     <View style={styles.unchooseBox} />
                     <Text style={styles.chooseText}>{item.trim()}</Text>
@@ -60,9 +56,6 @@ const FilterScreen = ({ navigation, route }) => {
                     onPress={() => {
                         const tArr = shownData.slice();
                         const possibleData = route.params.possibleFilters[title];
-
-                        // console.log(possibleData);
-                        // setShownData(tArr);
 
                         const sectionData = tArr.find((element) => element.title == title).data;
 
@@ -100,7 +93,6 @@ const FilterScreen = ({ navigation, route }) => {
                                 }
                                 sArr.find((element) => element.title == title).state = !sArr.find((element) => element.title == title).state; 
 
-                                // console.log(route.params.possibleFilters[title]);
                                 // tArr.find((element) => element.title == title).data = [];
                                 // tArr.find((element) => element.title == title).data.splice(0, tArr.find((element) => element.title == title).data.length)
                                 // tArr.find((element) => element.title == title).data = route.params.possibleFilters[title].slice();
@@ -126,7 +118,6 @@ const FilterScreen = ({ navigation, route }) => {
                     const tArr = shownData.slice();
                     const possibleData = route.params.possibleFilters[title];
 
-                    // console.log(possibleData);
                     // setShownData(tArr);
 
                     const sectionData = tArr.find((element) => element.title == title).data;
@@ -161,9 +152,7 @@ const FilterScreen = ({ navigation, route }) => {
 
     useFocusEffect(
         React.useCallback(() => {
-            // console.log('asd');
 
-            // console.log(route.params['possibleFilters'])
             // route.params['possibleFilters'].forEach(element => {
 
             // });
@@ -200,8 +189,6 @@ const FilterScreen = ({ navigation, route }) => {
             // setChosenFilters(route.params['activeFilters']['manufacturer']);
             setChosenFilters(tempArr3);
             setSelectStates(tempArr4);
-            // console.log(getChosenFilters())
-            // console.log(route.params['activeFilters'])
 
         }, [])
     );

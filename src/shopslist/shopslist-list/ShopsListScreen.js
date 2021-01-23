@@ -51,7 +51,6 @@ const ShopsListScreen = ({route, navigation}) => {
                     )
                 }
                 setLocation(location);
-                console.log(location)
                 setShopsData([]);
                 setLoading(true);
                 await getPharmacies()
@@ -61,7 +60,6 @@ const ShopsListScreen = ({route, navigation}) => {
                                 const tempShops = getShopsByCity(json).slice();
 
                                 if (location != null){
-                                    console.log('sort shops')
                                     tempShops.sort((a, b)=>{
                                         const [latitA, longitA] = a.coordinates.split(', ');
                                         const [latitB, longitB] = b.coordinates.split(', ');
@@ -81,7 +79,6 @@ const ShopsListScreen = ({route, navigation}) => {
                                     })
                                 }
                                 
-                                // console.log(tempShops);
                                 setShopsData(tempShops.slice());
                                 break;
                             default:

@@ -17,9 +17,6 @@ export const MedicineItemScreen = ({ route, navigation }) => {
                 // .replace(/\\v/g, '\v')
                 // .replace(/\\t/g, '\t')
             )
-
-            // console.log(text)
-            // console.log(text.replace(/\\n/g, '\n'))
         }
     }, [text]))
 

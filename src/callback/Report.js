@@ -69,14 +69,11 @@ const Report = ({ navigation }) => {
             await getUser(storedToken).then(async([status, json]) => {
                 switch (status) {
                     case 200:
-                        console.log(json);
                         const name = json['name'] != null ? json['name'] : 'unknown'
                         const phone = json['phone']
                         const email = json['email'] != null ? json['email'] : 'unknown'
-                        console.log(name, phone, email)
 
                         await putContacts(storedToken, phone, name, email, reportMsg).then((status, text) => {
-                            console.log(status[0])
 
                             switch(status[0]){
                                 case 200:

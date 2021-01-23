@@ -45,11 +45,6 @@ const medicineHeader = {
     headerStyle: headerStyles.medicineItemHeader,
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
-        // const title = options.headerTitle !== undefined
-        //     ? options.headerTitle
-        //     : options.title !== undefined
-        //     ? options.title
-        //     : scene.route.name;
 
         const title = scene.route['params'] === undefined 
             ? 'Medicine'

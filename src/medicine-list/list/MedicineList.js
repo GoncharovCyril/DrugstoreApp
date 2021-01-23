@@ -33,7 +33,6 @@ const Footer = () => (<ActivityIndicator size="large" color={colorOrange} />);
 
 
 // const productsCounter = useSelector(state => {
-//     console.log('ping', id)
 //     return state.appStore.products;
 // });
 
@@ -45,8 +44,6 @@ const initFilters={
 }
 
 const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
-
-    
 
     const [refreshing, setRefreshing] = React.useState(false);
     const [shownData, setShownData] = React.useState(sourceData.slice(0,10));
@@ -68,32 +65,16 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
     let dataCopy = [];
 
 
-    // console.log(shownData)
-
-
     // let dataCopy = sourceData;
-
-    const productSelector = createSelector(
-        state => {
-            return state.appStore.products.entries()
-        },
-        mapArray => {
-            return new Map(mapArray)
-        }
-    )
-    const products = useSelector(productSelector);
 
     const onRefresh = React.useCallback(() => {
 
-        console.log(nonshownData.length,';',shownData.length)
 
         if (shownData.length < nonshownData.length) {
             setRefreshing(true);
             setBottom(<Footer />)
-            console.log('refresh')
 
             setShownData(shownData.concat(nonshownData.slice(shownData.length, shownData.length + 1)));
-            // console.log(shownData.length)
 
             setBottom(undefined);
             setRefreshing(false)
@@ -102,55 +83,28 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
     }, [refreshing, bottom, shownData]);
 
 
-    const dispatch = useDispatch();
-    const addProduct = async (id) => {
-        const count = products.get(id) != undefined ? products.get(id) : 0
-
-        console.log(products.get(id))
-        await postCart(id, count+1, storedToken).then(([status, text]) => {
-            console.log(status);
-        })
-
-        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
-    };
-    const removeProduct = async (id)=>{
-        const count = products.get(id) != undefined ? products.get(id) : 0
-        await postCart(id, count-1, storedToken).then(([status, text]) => {
-            console.log(status);
-        })
-        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
-    };
-
     const renderItem = ({ item }) => (
         <ListItem
-            products={products}
             navigation={navigation}
-            id={item.id}
+            id={item.id.toString()}
             name_rus={item.name}
             manufacturer={item.manufacturer}
             min_price={item.min_price}
             price={item['price']}
             count={item['count']}
             availability={item.count > 0 ? 'В наличии' : 'Отсутствует'}
-            dispatch={dispatch}
 
-            addProduct={addProduct}
-            removeProduct={removeProduct}
         />
     );
 
 
     useFocusEffect(React.useCallback(() => {
         // dataCopy = sourceData;
-        // console.log(dataCopy.length);
         // setShownData([])
         setRefreshing(false);
         setLoading(true)
         // setDataCopy(sourceData);
         // dataCopy=sourceData.slice();
-
-        console.log()
-
         
 
 
@@ -164,8 +118,6 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
 
         initPossibleFilters();
         if (route['params'] != undefined) {
-            // console.log('params')
-            // console.log(route.params['activeFilters'])
             if (route.params['activeFilters'] != undefined) {
                 filters = route.params['activeFilters'];
                 setActiveFilters(route.params['activeFilters']);
@@ -173,28 +125,17 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
             
         }
 
-        // console.log('before filter',nonshownData.length);
-
-        // console.log(Object.entries(activeFilters))
-
-        // for (let [filterKey, filterValue] of Object.entries(activeFilters)) {
-        //     console.log(filterKey, ':\t', filterValue)
-        // }
 
         // const tempArrForFilter = sourceData.filter((item) => {
 
         //     for (let [filterKey, filterValue] of Object.entries(activeFilters)){
-        //         // console.log(filterKey,':\t',filterValue)
         //         if (filterValue.length>0){
-        //             // console.log(filterValue, item[filterKey])
-        //             // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
         //             if (filterValue.indexOf(item[filterKey]) == -1){
         //                 return false;
         //             }
         //             // return filterValue.indexOf(item[filterKey]) != -1
         //         }
         //         // else {
-        //         //     // console.log(filterKey, '-filter is empty')
         //         //     return true;
         //         // }
         //     }
@@ -202,51 +143,18 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         // }).slice();
 
 
-        // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
-        // console.log('before sort', sourceData.length)
-        // console.log(filters)
-        // console.log('after sort ', sourceData
-        //     .filter((item) => {
-
-        //         for (let [filterKey, filterValue] of Object.entries(filters)) {
-        //             // console.log(filterKey,':\t',filterValue)
-        //             if (filterValue.length > 0) {
-        //                 // console.log(filterValue, item[filterKey])
-        //                 // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
-        //                 if (filterValue.indexOf(item[filterKey]) == -1) {
-        //                     return false;
-        //                 }
-        //                 // return filterValue.indexOf(item[filterKey]) != -1
-        //             }
-        //             // else {
-        //             //     // console.log(filterKey, '-filter is empty')
-        //             //     return true;
-        //             // }
-        //         }
-        //         return true;
-        //     })
-        //     .sort(Sorters.find((element, index, array) => {
-        //         return element.id == selectedSorter;
-        //     }).compareFunction).length)
-        // // *******************ТЕСТ ФИЛЬТРАЦИИ*******************
-
-
         setNonshownData(
             sourceData
             .filter((item) => {
 
             for (let [filterKey, filterValue] of Object.entries(filters)){
-                // console.log(filterKey,':\t',filterValue)
                 if (filterValue.length>0){
-                    // console.log(filterValue, item[filterKey])
-                    // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
                     if (filterValue.indexOf(item[filterKey]) == -1){
                         return false;
                     }
                     // return filterValue.indexOf(item[filterKey]) != -1
                 }
                 // else {
-                //     // console.log(filterKey, '-filter is empty')
                 //     return true;
                 // }
             }
@@ -261,17 +169,13 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
             .filter((item) => {
 
             for (let [filterKey, filterValue] of Object.entries(filters)){
-                // console.log(filterKey,':\t',filterValue)
                 if (filterValue.length>0){
-                    // console.log(filterValue, item[filterKey])
-                    // console.log('check-',item[filterKey],':\t',filterValue.indexOf(item[filterKey]) != -1)
                     if (filterValue.indexOf(item[filterKey]) == -1){
                         return false;
                     }
                     // return filterValue.indexOf(item[filterKey]) != -1
                 }
                 // else {
-                //     // console.log(filterKey, '-filter is empty')
                 //     return true;
                 // }
             }
@@ -286,7 +190,6 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         // ФИЛЬТРАЦИЯ ДАННЫХ
         // setDataCopy(tempArrForFilter);
         // dataCopy = tempArrForFilter.slice()
-        // console.log('temp len = ',tempArrForFilter.length);
 
         // setDataCopy(dataCopy.sort(Sorters.find((element, index, array)=> {
         //     return element.id  == selectedSorter;
@@ -299,7 +202,6 @@ const MedicineList = ({ route, navigation, setLoading, sourceData }) => {
         // }).compareFunction);
 
         // setShownData(nonshownData.slice(0, 10));
-        // console.log('shown_data',shownData.slice());
 
         setLoading(false);
     }, []))

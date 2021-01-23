@@ -2,10 +2,11 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
-
+import {useFocusEffect} from '@react-navigation/native';
 import { colorGreen} from '../Colors';
 
 import { ADD_PRODUCT, REMOVE_PRODUCT } from '../redux/types';
+import {postCart} from '../requests/BasketRequests';
 
 const styles = StyleSheet.create({
     button1: {
@@ -32,44 +33,30 @@ const styles = StyleSheet.create({
 
 
 
-const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProduct}) => {
+const BuyButton = ({ navigation, id, products, /*dispatch, addProduct, removeProduct*/}) => {
 
-    // const productSelector = createSelector(
-    //     state => {
-    //         return state.appStore.products.entries()
-    //     },
-    //     mapArray => {
-    //         console.log('ping2');
-    //         return new Map(mapArray)}
-    // )
+    const count = useSelector(state => state.appStore.products.get(id.toString()));
+    const storedToken = useSelector(state => state.appStore.account.token);
 
-    const [count, setCount] = React.useState(products.get(id));
+    const dispatch = useDispatch();
 
-    console.log(id);
+    const addProduct = async (id) => {
+        const tempCount = count == undefined ? 0 : count;
+        postCart(id, tempCount+1, storedToken);
 
-
-    // const productsCounter = useSelector(productSelector);
-        // // const productsCounter = useSelector(state => {
-    // //     console.log('ping', id)
-    // //     return state.appStore.products;
-    // // });
-
-    // const dispatch = useDispatch();
-
-    // const addProduct = React.useCallback(() => {
-    //     dispatch({ type: ADD_PRODUCT, payload: {id: id} });
-    // }, [dispatch]);
-
-    // const removeProduct = React.useCallback(()=>{
-    //     dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
-    // }, [dispatch]);
+        dispatch({ type: ADD_PRODUCT, payload: {id: id} });
+    };
+    const removeProduct = async (id)=>{
+        const tempCount = count == undefined ? 0 : count;
+        postCart(id, tempCount-1, storedToken);
+        dispatch({ type: REMOVE_PRODUCT, payload: {id: id} });
+    };
 
     const Button1 = ({ navigation}) => (
         <TouchableOpacity
             style={styles.button1}
             onPress={()=>{
                 addProduct(id)
-                setCount(1)
             }}
         >
             <Text style={{
@@ -92,7 +79,6 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
                 style={{ flex: 30, flexDirection: 'row' }}
                 onPress={() => {
                     removeProduct(id);
-                    setCount(count-1)
                 }}
             >
                 <View style={{ flex: 15 }} />
@@ -114,13 +100,12 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
                     textAlignVertical: 'center',
                     fontSize: 15,
                     flex: 1
-                }}>{products.get(id)}</Text>
+                }}>{count}</Text>
             </View>
             <TouchableOpacity 
                 style={{ flex: 30, justifyContent: 'center', flexDirection: 'row', alignItems: 'center' }}
                 onPress={() => {
                     addProduct(id);
-                    setCount(count+1)
                 }}
             >
                 <Text style={{
@@ -139,7 +124,7 @@ const BuyButton = ({ navigation, id, products, dispatch, addProduct, removeProdu
 
 
     return (
-        products.get(id) == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
+        count == undefined ? <Button1 navigation={navigation} id={id} /> : <Button2 navigation={navigation} id={id} />
     );
 };
 

@@ -91,7 +91,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     const dispatch = useDispatch();
 
     const setStoredShop = React.useCallback(()=> {
-        dispatch({ type: SET_SHOP, payload: {id: selectedShop['system_id'], address: selectedShop['address'] } });
+        dispatch({ type: SET_SHOP, payload: {id: selectedShop['id'], address: selectedShop['address'] } });
         
     }, [dispatch, selectedShop]);
     const setNoStoredShop = React.useCallback(()=>{
@@ -99,7 +99,6 @@ const ShopsListMapScreen = ({ route, navigation }) => {
         
     }, [dispatch]);
     const setNoSelectedShop = React.useCallback(() => {
-        // console.log('blur2')
         dispatch({ type: SET_SELECTED_SHOP, payload: {
             id: null,
             system_id: null,
@@ -156,7 +155,7 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                         <View style={{ flex: 30, justifyContent: 'flex-start' }}>
                             <View style={{height: '25%', justifyContent: 'center'}}>
                                 {
-                                    storedShopId !== selectedShop['system_id'] ? <ButtonSetStoredShop /> : <ButtonSetNoStoredShop />
+                                    storedShopId !== selectedShop['id'] ? <ButtonSetStoredShop /> : <ButtonSetNoStoredShop />
                                 }
                             </View>
                             
@@ -196,12 +195,8 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                     )
                 }
                 setLocation(location);
-                console.log(location)
-
                 setSelectedShop(storedSelectedShop);
-                // console.log(selectedShop);
                 setInitialsnap(storedSelectedShop.id != null ? 1 : 0);
-                // console.log(storedSelectedShop.id);
                 getPharmacies()
                     .then(([status, json]) => {
                         switch (status) {

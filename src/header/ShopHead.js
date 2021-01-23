@@ -70,7 +70,6 @@ const Shop = ({ navigation, shop, route }) => {
 
     const setNoShop = React.useCallback(()=> {
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
-        // console.log(route['name'])
         // navigation.navigate(route.name);
     }, [dispatch])
 

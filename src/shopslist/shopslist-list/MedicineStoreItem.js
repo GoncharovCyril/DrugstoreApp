@@ -30,7 +30,6 @@ const MedicineStoreItem = ({
     photo, 
     phone, 
     working_time,
-    storedShopId 
 }) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
@@ -138,7 +137,7 @@ const MedicineStoreItem = ({
                         </View>
                         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
                             <View style={{ height: "100%", width: '100%' }}>
-                                <ChooseButton id={id} system_id={system_id} address={address} storedShopId={storedShopId} />
+                                <ChooseButton id={id} system_id={system_id} address={address} />
                             </View>
 
                         </View>

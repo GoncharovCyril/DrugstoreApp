@@ -92,7 +92,6 @@ const VerificationCodeScreen = ({ navigation, route }) => {
                         //                 navigation.navigate("AccountScreen");
                         //                 break;
                         //             default:
-                        //                 console.log('2')
                         //                 alert(status);
                         //                 alert(JSON.stringify(json));
                         //                 break;
@@ -102,7 +101,6 @@ const VerificationCodeScreen = ({ navigation, route }) => {
                         break;
 
                     default:
-                        console.log('3')
                         alert(status);
                         alert(JSON.stringify(json));
                         break;

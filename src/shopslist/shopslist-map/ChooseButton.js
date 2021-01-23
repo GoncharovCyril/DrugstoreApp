@@ -40,9 +40,22 @@ const styles = StyleSheet.create({
 });
 
 
-const ChooseButton = ({ system_id, address, storedShopId, shopItem }) => {
+const ChooseButton = ({ id, system_id, address, shopItem }) => {
 
     // const shopId = useSelector(state => state.appStore.shop.id);
+
+
+    const shopId = useSelector(state => state.appStore.shop.id);
+
+    const dispatch = useDispatch();
+
+    const setShop = React.useCallback(()=> {
+        console.log(`id=${shopItem['id']}`)
+        dispatch({ type: SET_SHOP, payload: {id: shopItem['id'], address: address } });
+    }, [dispatch]);
+    const setNoShop = React.useCallback(()=>{
+        dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
+    }, [dispatch]);
 
 
 
@@ -66,7 +79,7 @@ const ChooseButton = ({ system_id, address, storedShopId, shopItem }) => {
 
 
     return (
-        storedShopId !== shopItem['system_id'] ? <Button1 /> : <Button2 />
+        shopId !== shopItem['id'] ? <Button1 /> : <Button2 />
     );
 };
 
