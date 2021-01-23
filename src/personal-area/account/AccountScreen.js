@@ -5,6 +5,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import AccountInfo from './account-info/AccountInfo';
 
 import {getUser} from '../../requests/AccountRequests'; 
+import {delAllCart, postCart} from '../../requests/BasketRequests'
 
 import { colorOrange } from '../../Colors';
 import { useSelector } from 'react-redux';
@@ -13,16 +14,28 @@ const styles = StyleSheet.create({
 
 });
 
+
+const synchronizeBaskets = async(products, token) =>{
+
+    await delAllCart(token);
+
+    for (let [key, value] of products){
+        await postCart(key, value, token);
+    }
+}
+
 const AccountScreen = ({ navigation, route }) => {
 
     const [isLoading, setLoading] = React.useState(true);
     const [accountData, setAccountData] = React.useState({});
     const storedToken = useSelector(state => state.appStore.account.token)
+    const storedProducts = useSelector(state => state.appStore.products);
 
     useFocusEffect(
         React.useCallback(() => {
-            getUser(storedToken)
-                .then(([status, json]) => {
+            const loadScreen = async() => {
+                getUser(storedToken)
+                .then(async ([status, json]) => {
                     switch (status) {
                         case 401:
                             navigation.navigate("PhoneNumberScreen");
@@ -30,14 +43,35 @@ const AccountScreen = ({ navigation, route }) => {
 
                         case 200:
                             setAccountData(json);
+
+
+                            await synchronizeBaskets(storedProducts, storedToken);
+
+
+
+
+                            //!!! СИНХРОНИЗАЦИЯ ЛОКАЛЬНОЙ КОРЗИНЫ С СЕРВЕРНОЙ
+
+
+
+
+
+
+                            
+                            
+                            
+                            
+                            
                             setLoading(false);
                             break;
                         default:
                             alert(`${status}:\n${json}`);
                     }
                 })
-                .finally(()=>{
-                })
+
+            }
+            loadScreen();
+            
         }, [storedToken])
     );
 
