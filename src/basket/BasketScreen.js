@@ -16,6 +16,7 @@ import BasketList from './basket-list/BasketList';
 import DATA from '../medicine-list/test-data/testMedicineData';
 import EmptyBasket from './EmptyBasket';
 import SelectShopFooter from './SelectShopFooter';
+import MakeOrderFooter from './MakeOrderFooter';
 
 
 {/* <MedicineList navigation={navigation} data={sectionData}/> */}
@@ -168,7 +169,7 @@ const BasketScreen = ({route, navigation}) => {
                                 selectedShop == null ?
                                 <SelectShopFooter navigation={navigation}/>
                                 // !!! Сюда вставить кнопку оформления заказа
-                                : undefined
+                                : <MakeOrderFooter navigation={navigation}/>
                             }
                             </View>
                             

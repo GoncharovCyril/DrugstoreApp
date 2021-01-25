@@ -25,7 +25,8 @@ const Basket = ({navigation}) => {
     
     return (
         <BasketStack.Navigator initialRouteName="BasketScreen">
-            <BasketStack.Screen name="BasketScreen" component={BasketScreen} options={selectedShop == null ? BasketHeader : BasketSelectedShopHeader} />
+            {/* <BasketStack.Screen name="BasketScreen" component={BasketScreen} options={selectedShop == null ? BasketHeader : BasketSelectedShopHeader} /> */}
+            <BasketStack.Screen name="BasketScreen" component={BasketScreen} options={BasketHeader} />
             <BasketStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}}/>
             <BasketStack.Screen name="PersonalAreaScreen" component={PersonalAreaScreen} options={{headerShown: false}}/>
 

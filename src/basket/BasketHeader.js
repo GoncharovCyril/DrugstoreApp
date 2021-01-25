@@ -8,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import TrashButton from "./TrashButton";
 import BackButton from '../BackButton';
 import TitleHead from '../header/TitleHead';
+import ShopHead from '../header/ShopHead';
 
 import { headerStyles, smallHeight, shopHeigt } from "../navigationHeadStyles";
 import { colorOrange } from '../Colors';
@@ -21,7 +22,7 @@ const headStyles = StyleSheet.create({
     },
 });
 
-const Header = ({navigation, backButton, trashButton}) => {
+const Header = ({navigation, backButton, trashButton, storedShop, route}) => {
     return (
         <View style={headStyles.headContainer}>
             <LinearGradient
@@ -31,27 +32,26 @@ const Header = ({navigation, backButton, trashButton}) => {
                     left: 0,
                     right: 0,
                     top: 0,
-                    height: smallHeight,
+                    height: storedShop == null ? smallHeight : smallHeight,
                 }}
             />
-            <TitleHead backButton={backButton} trashButton={trashButton} title='Корзина'/>
+            <TitleHead backButton={backButton} trashButton={trashButton} title='Корзина' />
+            {storedShop != null ?
+                <ShopHead navigation={navigation} route={route} />
+                : undefined
+                }
         </View>
     );
 };
 
 const mainHeader = {
     headerMode: "screen",
-    headerStyle: headerStyles.basketHeader,
+    // headerStyle: headerStyles.basketHeader,
     header: ({ scene, previous, navigation }) => {
-        const { options } = scene.descriptor;
-        const title = options.headerTitle !== undefined
-            ? options.headerTitle
-            : options.title !== undefined
-            ? options.title
-            : scene.route.name;
 
         const productsCounter = useSelector(state => state.appStore.products.size);
         const storedToken = useSelector(state => state.appStore.account.token)
+        const storedShop = useSelector(state => state.appStore.shop.id)
 
         const dispatch = useDispatch();
 
@@ -60,10 +60,13 @@ const mainHeader = {
             dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
         }, [dispatch])
 
+
         return (
-            <View style={options.headerStyle} >
+            <View style={storedShop == null ? headerStyles.basketHeader : headerStyles.basketSelectedShopHeader} >
                 <Header 
+                storedShop={storedShop}
                 navigation={navigation} 
+                route={scene.route}
                 backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 }

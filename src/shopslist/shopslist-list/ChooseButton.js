@@ -55,6 +55,12 @@ const ChooseButton = ({ navigation, id, system_id, address }) => {
 
     const setShop = React.useCallback(()=> {
         dispatch({ type: SET_SHOP, payload: {id: id, address: address } });
+        console.log(navigation)
+        // if (navigation != undefined && navigation.canGoBack()){
+        //     navigation.goBack();
+        // }
+        console.log('parent=',navigation.dangerouslyGetParent().state)
+        // navigation.goBack();
     }, [dispatch]);
     const setNoShop = React.useCallback(()=>{
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });

@@ -8,8 +8,7 @@ import { colorGreen, colorOrange } from '../Colors';
 
 
 
-const SelectShopFooter = ({navigation}) => {
-    const jumpToCatalog = TabActions.jumpTo('ShopsList', {});
+const MakeOrderFooter = ({navigation}) => {
     return (
     <TouchableOpacity
         style={{
@@ -24,13 +23,13 @@ const SelectShopFooter = ({navigation}) => {
         }}
 
         onPress={() => {
-            // navigation.dispatch(jumpToCatalog);
-            navigation.navigate('ShopsListScreen');
+            navigation.navigate('OrderScreen');
+
         }}
 
     >
-        <Text style={{ fontSize: 18, color: 'white' }}>Выбрать аптеку</Text>
+        <Text style={{ fontSize: 18, color: 'white' }}>Оформить заказ</Text>
     </TouchableOpacity>)
 }
 
-export default SelectShopFooter;
+export default MakeOrderFooter;

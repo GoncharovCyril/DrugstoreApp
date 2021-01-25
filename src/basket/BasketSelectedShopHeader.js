@@ -36,7 +36,6 @@ const Header = ({navigation, backButton, trashButton, route}) => {
             />
             <TitleHead backButton={backButton} trashButton={trashButton} title='Корзина'/>
             <ShopHead navigation={navigation} route={route} />
-
         </View>
     );
 };
