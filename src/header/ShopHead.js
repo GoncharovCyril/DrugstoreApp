@@ -41,7 +41,7 @@ const Space = (props) => {
     );
 };
 
-const EmptyShop = ({ navigation }) => {
+const EmptyShop = ({ navigation, route }) => {
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
@@ -112,7 +112,7 @@ const ShopHead = ({ navigation, route }) => {
     const selectedShopAddress = useSelector(state => state.appStore.shop.address);
 
     return (
-        selectedShop != null ? <Shop route={route} navigation={navigation} shop={selectedShopAddress} /> : <EmptyShop navigation={navigation} />
+        selectedShop != null ? <Shop route={route} navigation={navigation} shop={selectedShopAddress} /> : <EmptyShop route={route} navigation={navigation} />
     );
 };
 
