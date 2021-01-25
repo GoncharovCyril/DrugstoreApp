@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, Dimensions } f
 import { event } from 'react-native-reanimated';
 
 import { BoxShadow } from 'react-native-shadow';
+import { useDispatch } from 'react-redux';
 import { colorGreen, colorDarkGrey } from '../Colors';
+import { SET_SELECTED_PRODUCT } from '../redux/types';
 
 import BuyButton from './BuyButton';
 import Poster from './Poster';
@@ -19,6 +21,8 @@ const viewW = 345;
 const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, count, availability}) => {
 
     const [viewWidth, setWidth] = React.useState(Dimensions.get('window').width*0.94);
+
+    const dispatch = useDispatch();
     
     return (
         <View 
@@ -43,6 +47,7 @@ const DrugView = ({navigation, id, name_rus, manufacturer, price, min_price, cou
             }}>
                 <TouchableWithoutFeedback
                     onPress={() => {
+                        dispatch({type: SET_SELECTED_PRODUCT, payload: {id: id.toString(), name: name_rus}})
                         navigation.navigate('MedicineItemScreen', {id: id.toString(), name: name_rus});
                     }}
                     style={{ flex: 1 }}

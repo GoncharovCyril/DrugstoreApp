@@ -46,11 +46,13 @@ const medicineHeader = {
     header: ({ scene, previous, navigation }) => {
         const { options } = scene.descriptor;
 
-        const title = scene.route['params'] === undefined 
-            ? 'Medicine'
-            : scene.route.params['name'] === undefined
-            ? 'Medicine'
-            : scene.route.params['name']
+        const selectedProductName = useSelector(state => state.appStore.selectedProduct.name)
+
+        // const title = scene.route['params'] === undefined 
+        //     ? 'Medicine'
+        //     : scene.route.params['name'] === undefined
+        //     ? 'Medicine'
+        //     : scene.route.params['name']
 
 
         return (
@@ -61,7 +63,7 @@ const medicineHeader = {
                 backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 }
-                title={title} />
+                title={selectedProductName} />
 
             </View>          
         );

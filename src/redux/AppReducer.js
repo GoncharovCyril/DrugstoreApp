@@ -21,6 +21,7 @@ import {
     SET_SEARCH_VALUE,
     ADD_SEARCH_VALUE_TO_HISTORY,
     CLEAR_SEARCH_HISTORY,
+    SET_SELECTED_PRODUCT,
 
 } from './types';
 
@@ -37,6 +38,10 @@ const INITIAL_STATE = {
     products: new Map(),
     productsPrice: {
         sumPrice: 0
+    },
+    selectedProduct: {
+        id: null,
+        name: null,
     },
     account: {
         token: '',
@@ -71,6 +76,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
     const {
         products,
         productsPrice,
+        selectedProduct,
         account,
         shop,
         selectedShop,
@@ -133,7 +139,6 @@ const appReducer = (state = INITIAL_STATE, action) => {
             break;
         
         case CLEAR_ALL_PRODUCTS:
-
             products.clear();
             storeData(products);
             break;
@@ -148,6 +153,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
 
         case REMOVE_PRICE_FROM_SUM:
             productsPrice.sumPrice = parseFloat(productsPrice.sumPrice) - parseFloat(action.payload.price)
+            break;
+
+        case SET_SELECTED_PRODUCT: 
+            selectedProduct.id = action.payload.id;
+            selectedProduct.name = action.payload.name;
             break;
 
         case SET_TOKEN:
@@ -216,6 +226,7 @@ const appReducer = (state = INITIAL_STATE, action) => {
     return { 
         products, 
         productsPrice,
+        selectedProduct,
         account, 
         shop, 
         selectedShop, 

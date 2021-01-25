@@ -20,7 +20,7 @@ const headStyles = StyleSheet.create({
 
 
 
-const Header = ({navigation, backButton}) => {
+const Header = ({navigation, backButton, route}) => {
     return (
         <View style={headStyles.headContainer}>
             <LinearGradient
@@ -35,7 +35,7 @@ const Header = ({navigation, backButton}) => {
             />
             <TitleHead backButton={backButton} title='Поиск'/>
             <SearchHead navigation={navigation} />
-            <ShopHead navigation={navigation} />
+            <ShopHead navigation={navigation} route={route} />
         </View>
     );
 };
@@ -53,7 +53,10 @@ const searchHeader = {
 
         return (
             <View style={options.headerStyle} >
-                <Header navigation={navigation} backButton={
+                <Header 
+                route = {scene.route}
+                navigation={navigation} 
+                backButton={
                     previous ? <BackButton action={navigation.goBack} /> : undefined
                 } />  
             </View>          

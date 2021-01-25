@@ -16,6 +16,7 @@ export const MedicineItemScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = React.useState(true);
     const [medicineData, setMedicineData] = React.useState([])
     const selectedShop = useSelector(state => state.appStore.shop.id);
+    const selectedProductId = useSelector(state => state.appStore.selectedProduct.id);
   
   
     useFocusEffect(React.useCallback(()=> {
@@ -25,7 +26,7 @@ export const MedicineItemScreen = ({route, navigation}) => {
   
       // }
 
-      getMedicineItem(route.params['id'], selectedShop)
+      getMedicineItem(selectedProductId, selectedShop)
             .then(([status, json]) => {
                 switch (status) {
                     case 200:
