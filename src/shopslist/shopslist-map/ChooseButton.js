@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
+import BaseRouteContext from '../BaseRouteContext';
+
 import {colorGreen} from '../../Colors';
 
 const styles = StyleSheet.create({
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
 });
 
 
-const ChooseButton = ({ id, system_id, address, shopItem }) => {
+const ChooseButton = ({ id, system_id, address, shopItem, navigation }) => {
 
     // const shopId = useSelector(state => state.appStore.shop.id);
 
@@ -48,10 +50,13 @@ const ChooseButton = ({ id, system_id, address, shopItem }) => {
     const shopId = useSelector(state => state.appStore.shop.id);
 
     const dispatch = useDispatch();
+    const baseRouteName = React.useContext(BaseRouteContext)
 
     const setShop = React.useCallback(()=> {
-        console.log(`id=${shopItem['id']}`)
         dispatch({ type: SET_SHOP, payload: {id: shopItem['id'], address: address } });
+        if (baseRouteName != undefined) {
+            navigation.navigate(baseRouteName);
+        }
     }, [dispatch]);
     const setNoShop = React.useCallback(()=>{
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });

@@ -21,7 +21,6 @@ import Main from './src/main/Main';
 import MainHeader from "./src/main/MainHeader";
 
 import Catalog from './src/catalog/Catalog';
-import catalogHeader from './src/catalog/CatalogHeader';
 
 import Basket from './src/basket/Basket';
 import ShopsList from './src/shopslist/ShopsList';

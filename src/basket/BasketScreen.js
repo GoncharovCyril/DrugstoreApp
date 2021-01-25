@@ -167,7 +167,7 @@ const BasketScreen = ({route, navigation}) => {
                             <View style={{flex: 1}}>
                             {
                                 selectedShop == null ?
-                                <SelectShopFooter navigation={navigation}/>
+                                <SelectShopFooter navigation={navigation} route={route}/>
                                 // !!! Сюда вставить кнопку оформления заказа
                                 : <MakeOrderFooter navigation={navigation}/>
                             }

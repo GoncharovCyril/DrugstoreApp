@@ -8,8 +8,7 @@ import { colorGreen, colorOrange } from '../Colors';
 
 
 
-const SelectShopFooter = ({navigation}) => {
-    const jumpToCatalog = TabActions.jumpTo('ShopsList', {});
+const SelectShopFooter = ({navigation, route}) => {
     return (
     <TouchableOpacity
         style={{
@@ -25,7 +24,7 @@ const SelectShopFooter = ({navigation}) => {
 
         onPress={() => {
             // navigation.dispatch(jumpToCatalog);
-            navigation.navigate('ShopsListScreen');
+            navigation.navigate('ShopsListScreen', {baseRouteName: route.name});
         }}
 
     >

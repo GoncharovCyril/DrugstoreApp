@@ -45,7 +45,7 @@ const EmptyShop = ({ navigation }) => {
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
-                navigation.navigate('ShopsListScreen');
+                navigation.navigate('ShopsListScreen', {baseRouteName: route.name});
             }}
         >
             <View style={headStyles.drugstorePicker}>
@@ -76,7 +76,8 @@ const Shop = ({ navigation, shop, route }) => {
     return (
         <TouchableOpacity style={headStyles.drugstorePickerContainer}
             onPress={() => {
-                navigation.navigate('ShopsListScreen');
+                console.log(route['name'])
+                navigation.navigate('ShopsListScreen', {baseRouteName: route.name});
             }}
         >
             <View style={headStyles.drugstorePicked}>

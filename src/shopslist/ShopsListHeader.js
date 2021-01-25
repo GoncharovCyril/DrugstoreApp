@@ -6,6 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import BackButton from "../BackButton";
 import TitleHead from '../header/TitleHead';
 
+import BaseRouteContext from './BaseRouteContext';
+
 
 import { headerStyles, smallHeight, searchHeigt } from "../navigationHeadStyles";
 import { colorOrange } from '../Colors';
@@ -54,10 +56,13 @@ const shopslistHeader = {
 
         const title=titles[scene.route.name];
 
+        const baseRouteName = React.useContext(BaseRouteContext)
+
+
         return (
             <View style={options.headerStyle} >
                 <Header title="Аптеки" navigation={navigation} backButton={
-                    previous ? <BackButton action={navigation.goBack} /> : undefined
+                    previous ? <BackButton action={()=>{navigation.navigate(baseRouteName)}} /> : undefined
                 } />  
             </View>
             

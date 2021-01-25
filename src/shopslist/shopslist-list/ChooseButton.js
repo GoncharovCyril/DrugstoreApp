@@ -1,7 +1,10 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
+
+import BaseRouteContext from '../BaseRouteContext';
 
 import {colorGreen} from  '../../Colors';
 
@@ -47,21 +50,20 @@ const styles = StyleSheet.create({
 });
 
 
-const ChooseButton = ({ navigation, id, system_id, address }) => {
+const ChooseButton = ({ navigation, id, system_id, address, route }) => {
 
     const shopId = useSelector(state => state.appStore.shop.id);
 
     const dispatch = useDispatch();
 
+    const baseRouteName = React.useContext(BaseRouteContext)
+
     const setShop = React.useCallback(()=> {
         dispatch({ type: SET_SHOP, payload: {id: id, address: address } });
-        console.log(navigation)
-        // if (navigation != undefined && navigation.canGoBack()){
-        //     navigation.goBack();
-        // }
-        console.log('parent=',navigation.dangerouslyGetParent().state)
-        // navigation.goBack();
-    }, [dispatch]);
+        if (baseRouteName != undefined) {
+            navigation.navigate(baseRouteName);
+        }
+    }, [dispatch,navigation]);
     const setNoShop = React.useCallback(()=>{
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
     }, [dispatch]);

@@ -13,6 +13,7 @@ import { SET_SHOP, SET_SELECTED_SHOP } from '../../redux/types';
 
 import { useFocusEffect } from '@react-navigation/native';
 
+import BaseRouteContext from '../BaseRouteContext';
 import { getDistanceFromLatLonInKm } from '../funcs/distanceFunc';
 
 import { colorGreen, colorDarkGrey, colorOrange } from '../../Colors';
@@ -91,11 +92,16 @@ const ShopsListMapScreen = ({ route, navigation }) => {
     
 
     const dispatch = useDispatch();
+    const baseRouteName = React.useContext(BaseRouteContext)
 
     const setStoredShop = React.useCallback(()=> {
         dispatch({ type: SET_SHOP, payload: {id: selectedShop['id'], address: selectedShop['address'] } });
+        if (baseRouteName != undefined) {
+            navigation.navigate(baseRouteName);
+        }
         
     }, [dispatch, selectedShop]);
+    
     const setNoStoredShop = React.useCallback(()=>{
         dispatch({ type: SET_SHOP, payload: {id: null, address: null } });
         

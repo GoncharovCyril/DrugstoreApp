@@ -110,7 +110,7 @@ const ShopsListScreen = ({route, navigation}) => {
                         <ActivityIndicator size="large" color={colorOrange} />
                         <Text style={{ textAlign: 'center', fontSize: 18 }}>Загружаем список аптек</Text>
                     </View>
-                        : <MedicineStoreList data={shopsData} navigation={navigation} />
+                        : <MedicineStoreList data={shopsData} navigation={navigation} route={route} />
                 }
                
         </View>

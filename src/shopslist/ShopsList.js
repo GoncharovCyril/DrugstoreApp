@@ -16,6 +16,8 @@ import ShopsListTabBar from './ShopsTabBar';
 import ShopsListScreen from './shopslist-list/ShopsListScreen';
 import ShopsListMapScreen from './shopslist-map/ShopsListMapScreen';
 
+import BaseRouteContext from './BaseRouteContext';
+
 
 const ShopsStack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -79,19 +81,35 @@ const ShopsListTabs = ({route, navigation }) => {
     )
 }
 
-const ShopsList = ({ navigation }) => {
-    const [isLoading, setLoading] = React.useState(false);
+// const BaseRouteContext = React.createContext(undefined);
+
+const ShopsList = ({ route, navigation }) => {
+    const [baseRoute, setBaseRoute] = React.useState(undefined);    
+
+
+    // const BaseRouteContext = React.createContext(undefined);
+
+    useFocusEffect(React.useCallback(()=>{
+        console.log('route=', route)
+        setBaseRoute(route.params != undefined ? route.params['baseRouteName'] : undefined);
+    },[]))
+
+
 
     return (
-        <ShopsStack.Navigator initialRouteName="ShopsListTabs">
-            <ShopsStack.Screen
-                name="ShopsListTabs"
-                // initialParams={{
-                //     cityShops: shopsData,
-                //     allShops: allshopsData,
-                // }}
-                component={ShopsListTabs} options={ShopsListHeader} />
-        </ShopsStack.Navigator>
+        <BaseRouteContext.Provider value={baseRoute}>
+            <ShopsStack.Navigator initialRouteName="ShopsListTabs">
+                
+                <ShopsStack.Screen
+                    name="ShopsListTabs"
+                    // initialParams={{
+                    //     cityShops: shopsData,
+                    //     allShops: allshopsData,
+                    // }}
+                    component={ShopsListTabs} options={ShopsListHeader} />
+            </ShopsStack.Navigator>
+        </BaseRouteContext.Provider>
+        
     )
 }
 

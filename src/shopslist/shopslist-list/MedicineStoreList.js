@@ -37,6 +37,7 @@ const MedicineList = ({route, navigation, data}) => {
             phone={item.phone}
             working_time={item.working_time}
             distance={item['distance']}
+            route={route}
         />
     );
 

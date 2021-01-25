@@ -147,7 +147,9 @@ function MedicineTab({ state, descriptors, navigation }) {
             });
 
             if (!isFocused && !event.defaultPrevented) {
+              // navigation.jumpTo(route.name);
               navigation.navigate(route.name);
+              // navigation.pop();
             }
           };
 

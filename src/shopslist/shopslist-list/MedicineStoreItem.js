@@ -22,6 +22,7 @@ const viewW = 345;
 
 const MedicineStoreItem = ({ 
     navigation, 
+    route,
     id, 
     system_id, 
     name, city, 
@@ -156,7 +157,7 @@ const MedicineStoreItem = ({
                         </View>
                         <View style={{ flex: 3, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
                             <View style={{ height: "100%", width: '100%' }}>
-                                <ChooseButton id={id} system_id={system_id} address={address} navigation={navigation} />
+                                <ChooseButton id={id} system_id={system_id} address={address} navigation={navigation} route={route}/>
                             </View>
 
                         </View>
