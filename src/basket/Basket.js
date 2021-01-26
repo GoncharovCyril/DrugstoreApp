@@ -16,7 +16,12 @@ import MedicineItemHeader from '../medicine-item-screen/MedicineItemHeader';
 import MedicineItemSubScreen from '../medicine-item-screen/MedicineItemSubScreen';
 import MedicineItemSubHeader from '../medicine-item-screen/MedicineItemSubHeader';
 
+import MakeOrderScreen from '../make-order/MakeOrderScreen';
+import MakeOrderHeader from '../make-order/MakeOrderHeader'
+
 import ShopsListScreen from '../shopslist/ShopsList';
+
+import MakeOrderFooter from './MakeOrderFooter';
 
 
 const BasketStack = createStackNavigator();
@@ -36,6 +41,8 @@ const Basket = ({navigation}) => {
 
             <BasketStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
             <BasketStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
+
+            <BasketStack.Screen name="MakeOrderScreen" component={MakeOrderScreen} options={MakeOrderHeader} />
         </BasketStack.Navigator>
     );
 };

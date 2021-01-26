@@ -13,7 +13,6 @@ import { colorGreen, colorOrange } from '../Colors';
 
 import BasketList from './basket-list/BasketList';
 
-import DATA from '../medicine-list/test-data/testMedicineData';
 import EmptyBasket from './EmptyBasket';
 import SelectShopFooter from './SelectShopFooter';
 import MakeOrderFooter from './MakeOrderFooter';

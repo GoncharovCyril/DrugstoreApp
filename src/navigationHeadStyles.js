@@ -11,6 +11,11 @@ export const statusBarHeight = 0;
 
 
 export const headerStyles = {
+    smallHeader: {
+        height: smallHeight,
+        backgroundColor: backgroundColor,
+        marginTop: statusBarHeight,
+    },
     mainHeader: {
         height: smallHeight + searchHeigt,
         backgroundColor: backgroundColor,

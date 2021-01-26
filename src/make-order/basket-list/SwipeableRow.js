@@ -1,19 +1,10 @@
-// import 'react-native-gesture-handler';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { createSelector } from 'reselect';
-import { StyleSheet, Text, View, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 
-import {REMOVE_ALL_THIS_PRODUCT, REMOVE_PRICE_FROM_SUM} from '../../redux/types';
-import { postCart, delCart } from '../../requests/BasketRequests';
+import { useDispatch, useSelector } from 'react-redux';
 
-// import ListItem from './MedicineItemView';
+import MedicineSwipeableRow from '../../basket/basket-list/MedicineSwipeableRow'
 import ListItem from '../../medicine-list/MedicineItemView'
-import MedicineSwipeableRow from './MedicineSwipeableRow';
-
-const medicineListStyles=StyleSheet.create({
-
-});
 
 const SwipeableRow = ({ item, navigation}) => {
     const product = useSelector(state => state.appStore.products.get(item.id.toString()));
@@ -61,34 +52,4 @@ const SwipeableRow = ({ item, navigation}) => {
     )
 };
 
-const BasketList = ({navigation, data, token, products}) => {
-    return (
-        <View style={{flex: 1, justifyContent: 'flex-start'}}>
-            <SafeAreaView style={{ flex: 6 }}>
-                <FlatList
-                    data={data}
-                    // ListFooterComponent={Footer}
-                    // ListHeaderComponent={
-                    //     headVisible ? Header : undefined
-                    // }
-                    renderItem={({ item, id, separators }) => (
-                        <SwipeableRow
-                            item={item}
-                            // id={id} 
-                            separators={separators}
-                            products={products}
-                            navigation={navigation}
-                        />
-                    )}
-                    keyExtractor={item => item.id.toString()}
-                // refreshing={refreshing} 
-                // onEndReached={onRefresh}
-                // onEndReachedThreshold={1}
-                />
-            </SafeAreaView>
-        </View>
-    );
-};
-
-
-export default BasketList;
+export default SwipeableRow;

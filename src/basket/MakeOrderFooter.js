@@ -23,7 +23,7 @@ const MakeOrderFooter = ({navigation}) => {
         }}
 
         onPress={() => {
-            navigation.navigate('OrderScreen');
+            navigation.navigate('MakeOrderScreen');
 
         }}
 
