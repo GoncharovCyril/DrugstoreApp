@@ -2,8 +2,8 @@ import React from 'react';
 import { View, SafeAreaView, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native'
 
-import AcceptButton from '../../personal-area/AcceptButton';
-import CancelButton from '../../personal-area/CancelButton';
+import AcceptButton from '../../AcceptButton';
+import CancelButton from '../../CancelButton';
 import { colorDarkGrey, colorGreen, colorOrange } from '../../Colors';
 import ChevronBottomSolid from '../../../svg/chevron-bottom-solid';
 import ChevronUpSolid from '../../../svg/chevron-up-solid';

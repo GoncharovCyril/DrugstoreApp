@@ -7,8 +7,8 @@ import { SET_PHONE } from '../../redux/types';
 import {colorDarkGrey} from '../../Colors'
 import { sendVerificationCode } from '../../requests/AccountRequests';
 
-import AcceptButton from '../AcceptButton';
-import CancelButton from '../CancelButton';
+import AcceptButton from '../../AcceptButton';
+import CancelButton from '../../CancelButton';
 
 const labelHeight = 45;
 const textInputHeight = 50;

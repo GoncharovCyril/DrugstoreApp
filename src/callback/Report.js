@@ -5,7 +5,7 @@ import { getUser } from '../requests/AccountRequests';
 import { putContacts } from '../requests/ContactRequests'
 import { colorDarkGrey } from '../Colors';
 
-import AcceptButton from '../personal-area/AcceptButton'
+import AcceptButton from '../AcceptButton'
 
 
 const styles = StyleSheet.create({

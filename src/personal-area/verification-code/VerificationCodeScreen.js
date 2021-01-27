@@ -8,8 +8,8 @@ import { SET_TOKEN } from '../../redux/types';
 
 import {colorDarkGrey} from '../../Colors'
 
-import AcceptButton from '../AcceptButton';
-import CancelButton from '../CancelButton';
+import AcceptButton from '../../AcceptButton';
+import CancelButton from '../../CancelButton';
 
 const buttonHeight = 45;
 const textInputHeight = 50;

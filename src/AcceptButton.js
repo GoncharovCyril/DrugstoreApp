@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { colorGreen } from '../Colors';
+import { colorGreen } from './Colors';
 
 
 const styles = StyleSheet.create({

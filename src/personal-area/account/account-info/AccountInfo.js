@@ -6,8 +6,8 @@ import {CLEAR_ALL_PRODUCTS, SET_TOKEN} from '../../../redux/types'
 
 import Avatar from './Avatar';
 import RadioButtonGroup from './RadioButtonGroup';
-import AcceptButton from '../../AcceptButton';
-import CancelButton from '../../CancelButton';
+import AcceptButton from '../../../AcceptButton';
+import CancelButton from '../../../CancelButton';
 
 
 const labelHeight = 50;

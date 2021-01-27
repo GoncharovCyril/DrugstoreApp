@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { View, ActivityIndicator, FlatList, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { colorOrange } from '../Colors';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -97,8 +97,9 @@ const MakeOrderScreen = ({route, navigation}) => {
             <SafeAreaView style={styles.safeAreaView}>
                 <FlatList
                     data={basketData}
-                    ListFooterComponent={ListFooter}
+                    ListFooterComponent={<ListFooter navigation={navigation} route={route} />}
                     ListHeaderComponent={<ListHeader navigation={navigation} route={route} />}
+                    ListEmptyComponent={<Text>porno</Text>}
                     renderItem={({ item, id, separators }) => (
                         <SwipeableRow
                             item={item}
