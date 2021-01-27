@@ -4,7 +4,7 @@ import { TabActions } from '@react-navigation/native';
 
 import {colorOrange} from '../Colors';
 
-const bRadius = 25;
+const bRadius = 15;
 
 const EmptyBasket = ({route, navigation}) => {
     const jumpToCatalog = TabActions.jumpTo('Catalog', {});

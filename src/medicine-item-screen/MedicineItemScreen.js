@@ -26,7 +26,8 @@ export const MedicineItemScreen = ({route, navigation}) => {
   
       // }
 
-      getMedicineItem(selectedProductId, selectedShop)
+      // getMedicineItem(selectedProductId, selectedShop)
+      getMedicineItem(selectedProductId, null)
             .then(([status, json]) => {
                 switch (status) {
                     case 200:

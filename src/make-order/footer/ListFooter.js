@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TabActions } from '@react-navigation/native';
 
 import AcceptButton from '../../AcceptButton';
+import UnactiveButton from '../../UnactiveButton';
 import { colorDarkGrey } from '../../Colors';
 import { makeOrder } from '../../requests/OrderRequests';
 import { CLEAR_ALL_PRODUCTS } from '../../redux/types'
@@ -119,7 +120,13 @@ const ListFooter = ({route, navigation})=>{
                 <Text style={styles.sumPriceText}>{`${sumPrice} руб.`}</Text>
             </View>
             <View style={styles.confirmButtonContainer}>
-                <AcceptButton title="Подтвердить заказ" isBig={true} onPress={confirmOrder} />
+                {
+                    productsSize>0 && chosenShop!=null ?
+                    <AcceptButton title="Подтвердить заказ" isBig={true} onPress={confirmOrder} />
+                    :
+                    <UnactiveButton title="Подтвердить заказ" isBig={true} />
+                }
+                
 
             </View>
         </View>

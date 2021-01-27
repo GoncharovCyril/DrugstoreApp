@@ -134,7 +134,10 @@ const ListHeader = ({ route, navigation }) => {
                 </View>
                 {
                     isLoading ?
-                        <ActivityIndicator color={colorOrange} size="large" />
+                        <View style={{height: 80, justifyContent: 'center'}}>
+                            <ActivityIndicator color={colorOrange} size="large" />
+                            <Text style={{color:'black', textAlign: 'center', fontSize: 16}}>Загружаем информацию об аптеке</Text>
+                        </View>
                         :
                         shopId != null ?
                             <View style={styles.shopInfoContainer}>
