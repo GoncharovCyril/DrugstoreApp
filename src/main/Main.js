@@ -23,6 +23,9 @@ import PersonalAreaScreen from '../personal-area/PersonalArea';
 
 import MainScreen from './MainScreen';
 
+import ChooseCityScreen from '../city/ChooseCityScreen';
+import ChooseCityHeader from '../menu/MenuHeader';
+
 
 const MainStack = createStackNavigator();
 
@@ -35,6 +38,8 @@ const Main = ({navigation, route}) => {
 
             <MainStack.Screen name="MedicineItemScreen" component={MedicineItemScreen} options={MedicineItemHeader} />
             <MainStack.Screen name="MedicineItemSubScreen" component={MedicineItemSubScreen} options={MedicineItemSubHeader} />
+
+            <MainStack.Screen name="ChooseCityScreen" component={ChooseCityScreen} options={ChooseCityHeader} />
 
             <MainStack.Screen name="SearchScreen" component={SearchScreen} options={{headerShown: false}} />
             <MainStack.Screen name="CallbackScreen" component={CallbackScreen} options={CallbackHeader} />

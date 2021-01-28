@@ -54,7 +54,7 @@ const loadData = async (token) => {
         }
     })
 
-    return [resultData, sumPrice];
+    return [resultData, sumPrice, isAuth];
 }
 
 const MakeOrderScreen = ({ route, navigation }) => {
@@ -75,9 +75,15 @@ const MakeOrderScreen = ({ route, navigation }) => {
                 setLoading(true);
                 setBasketData([]);
                 await loadData(storedToken)
-                    .then(([resultData, sumPrice]) => {
-                        setBasketData(resultData.slice());
-                        dispatch({ type: SET_PRODUCTS_SUM_PRICE, payload: { sumPrice: sumPrice } });
+                    .then(([resultData, sumPrice, isAuth]) => {
+                        if (isAuth){
+                            setBasketData(resultData.slice());
+                            dispatch({ type: SET_PRODUCTS_SUM_PRICE, payload: { sumPrice: sumPrice } });
+                        }
+                        else {
+                            navigation.navigate('PersonalAreaScreen', {baseRouteName: route.name})
+                        }
+                        
                     })
                     .finally(() => {
                         setLoading(false);
