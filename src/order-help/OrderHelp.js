@@ -70,6 +70,7 @@ const OrderHelpScreen = ({ route, navigation }) => {
     const jumpToCatalog = TabActions.jumpTo('Catalog', {});
     const jumpToBasket = TabActions.jumpTo('Basket', {});
     const jumpToShops = TabActions.jumpTo('ShopsList');
+    const jumpToAccount = TabActions.jumpTo('Account');
     return (
         <View style={styles.orderhelpContainer} >
             <SafeAreaView style={styles.safeAreaView}>
@@ -86,7 +87,7 @@ const OrderHelpScreen = ({ route, navigation }) => {
                         <Text style={styles.infoText}>{step1}</Text>
 
                         <View style={{marginLeft: '25%', marginRight: '25%', marginTop: '3%'}}>
-                            <TouchableOpacity style={styles.buttonContainer} onPress={()=>{navigation.navigate('PersonalAreaScreen', {baseRouteName: route.name})}}>
+                            <TouchableOpacity style={styles.buttonContainer} onPress={()=>{navigation.dispatch(jumpToAccount)}}>
                                 <Text style={styles.buttonText}>{accountState}</Text>
                             </TouchableOpacity>
                         </View>
@@ -107,7 +108,7 @@ const OrderHelpScreen = ({ route, navigation }) => {
                         <Text style={styles.infoText}>{step3}</Text>
                         <View style={{marginLeft: '3%', marginRight: '3%', marginTop: '3%', flexDirection: 'row'}}>
                             <View style={{flex: 1}}>
-                            <TouchableOpacity style={styles.buttonContainer} onPress={()=>{navigation.dispatch(jumpToCatalog);}}>
+                            <TouchableOpacity style={styles.buttonContainer} onPress={()=>{navigation.dispatch(jumpToCatalog)}}>
                                 <Text style={styles.buttonText}>Каталог</Text>
                             </TouchableOpacity>
                             </View>

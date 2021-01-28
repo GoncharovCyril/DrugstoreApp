@@ -111,11 +111,11 @@ const PhoneNumberScreen = ({route, navigation}) => {
                 placeholder="Введите номер телефона"
             />
             <View style={styles.buttonsContainer}>
-                <View style={styles.cancelButton}>
+                {/* <View style={styles.cancelButton}>
                     <CancelButton title="Отмена" onPress={()=>{
                         navigation.navigate(route.params['baseRouteName'])
                     }} />
-                </View>
+                </View> */}
                 <View style={styles.acceptButton}>
                     <AcceptButton title="Подтвердить" onPress={getVerificationCode} />
                 </View>   

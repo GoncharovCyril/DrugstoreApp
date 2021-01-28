@@ -4,6 +4,10 @@ import { View, StyleSheet, ActivityIndicator, Text, Alert } from 'react-native';
 import { useSelector } from 'react-redux';
 import { colorOrange, colorDarkGrey, colorGreen } from '../../Colors';
 
+import RouteSolid from '../../../svg/route-solid'
+import ExchangeAltSolid from '../../../svg/exchange-alt-solid'
+
+
 import { getPharmacies } from '../../requests/ShopsRequests';
 
 import {getDistanceFromLatLonInKm} from '../../shopslist/funcs/distanceFunc'
@@ -128,8 +132,10 @@ const ListHeader = ({ route, navigation }) => {
                             navigation.navigate('ShopsListScreen', {baseRouteName: route.name})
                         }}
                     >
-                        <View style={{borderWidth: 1, height: 16, width: 16}}></View>
-                        <Text style={styles.changeShopText}>Изменить</Text>
+                        <View style={{height: 16, width: 16}}>
+                            <ExchangeAltSolid color={colorGreen} />
+                        </View>
+                        <Text style={styles.changeShopText}> Изменить</Text>
                     </TouchableOpacity>
                 </View>
                 {
@@ -150,8 +156,8 @@ const ListHeader = ({ route, navigation }) => {
                                 {
                                     shopItem['distance'] != undefined ?
                                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                            <View style={{ height: 16, width: 16, borderWidth: 1 }}>
-
+                                            <View style={{ height: 16, width: 16 }}>
+                                                <RouteSolid color={colorDarkGrey} />
                                             </View>
                                             <Text numberOfLines={1} style={{ fontSize: 16, color: colorDarkGrey, marginLeft: '3%' }}
                                             >{shopItem['distance'] != undefined ?

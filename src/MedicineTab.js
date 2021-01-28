@@ -10,7 +10,7 @@ import HomeSolid from '../svg/home-solid';
 import ListUlSolid from '../svg/list-ul-solid';
 import ShoppingBasketSolid from '../svg/shopping-basket-solid2';
 import MapMarketAltSolid from '../svg/map-market-alt-solid';
-import BarsSolid from '../svg/bars-solid';
+import UserSolid from '../svg/user-solid';
 
 import {colorOrange, colorGreen} from './Colors';
 
@@ -165,7 +165,7 @@ function MedicineTab({ state, descriptors, navigation }) {
             Catalog: (<ListUlSolid color={isFocused ? colorOrange : colorGreen} />),
             Basket: (<ShoppingBasketSolid color={isFocused ? colorOrange : colorGreen} />),
             ShopsList: (<MapMarketAltSolid color={isFocused ? colorOrange : colorGreen} />),
-            Menu: (<BarsSolid color={isFocused ? colorOrange : colorGreen} />),
+            Account: (<UserSolid color={isFocused ? colorOrange : colorGreen} />),
             // Main: (<HomeSolid color={color} />),
             // Catalog: (<ListUlSolid color={color} />),
             // Basket: (<ShoppingBasketSolid color={color} />),
@@ -177,7 +177,7 @@ function MedicineTab({ state, descriptors, navigation }) {
             Catalog: "Каталог",
             Basket: "Корзина",
             ShopsList: "Аптеки",
-            Menu: "Меню",
+            Account: "Аккаунт",
           }
 
           return (

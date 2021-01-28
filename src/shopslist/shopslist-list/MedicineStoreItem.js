@@ -10,6 +10,8 @@ import { colorGreen, colorDarkGrey } from '../../Colors';
 import ChooseButton from './ChooseButton';
 import LittleLogo from '../../LittleLogo';
 
+import RouteSolid from '../../../svg/route-solid'
+
 
 
 
@@ -117,8 +119,8 @@ const MedicineStoreItem = ({
                             {
                                 distance != undefined ?
                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <View style={{ height: 14, width: 14, borderWidth: 1 }}>
-
+                                        <View style={{ height: 14, width: 14}}>
+                                            <RouteSolid color={colorDarkGrey} />
                                         </View>
                                         <Text numberOfLines={1} style={{ fontSize: 14, color: colorDarkGrey, marginLeft: '3%' }}
                                         >{distance != undefined ?

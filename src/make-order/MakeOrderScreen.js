@@ -81,7 +81,7 @@ const MakeOrderScreen = ({ route, navigation }) => {
                             dispatch({ type: SET_PRODUCTS_SUM_PRICE, payload: { sumPrice: sumPrice } });
                         }
                         else {
-                            navigation.navigate('PersonalAreaScreen', {baseRouteName: route.name})
+                            navigation.dispatch(TabActions.jumpTo('Account'))
                         }
                         
                     })

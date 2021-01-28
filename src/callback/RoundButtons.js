@@ -5,6 +5,7 @@ import VkBrandsRound from '../../svg/rounds/vk-brands-round';
 import TelegramPlaneBrandsRound from '../../svg/rounds/telegram-plane-brands-round';
 import OdnoklassnikiBrandsRound from '../../svg/rounds/odnoklassniki-brands-round';
 import InstagramBrandsRound from '../../svg/rounds/instagram-brands-round';
+import FacebookBrandsRound from '../../svg/rounds/facebook-brands-round';
 
 import { BoxShadow } from 'react-native-shadow';
 
@@ -57,7 +58,7 @@ const openSite = (url) => {
 const RoundButtons = ({ navigation }) => {
     
     const openVk = openSite("https://vk.com/club172375146");
-    const openTelegram = openSite("https://www.facebook.com/groups/696310800761799/");
+    const openFacebook = openSite("https://www.facebook.com/groups/696310800761799/");
     const openOk = openSite("https://ok.ru/group/54231360864470");
     const openInstagram = openSite("https://www.instagram.com/aptekanarodnaya/");
 
@@ -67,8 +68,8 @@ const RoundButtons = ({ navigation }) => {
                     <VkBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
             {/* <BoxShadow setting={shadowOpt} > */}
-                <TouchableOpacity style={styles.buttonContainer} onPress={openTelegram}>
-                    <TelegramPlaneBrandsRound color="white" roundColor={colorGreen}/>
+                <TouchableOpacity style={styles.buttonContainer} onPress={openFacebook}>
+                    <FacebookBrandsRound color="white" roundColor={colorGreen}/>
                 </ TouchableOpacity>
             {/* </BoxShadow> */}
                 <TouchableOpacity style={styles.buttonContainer} onPress={openOk}>

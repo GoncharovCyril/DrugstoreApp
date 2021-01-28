@@ -25,19 +25,19 @@ const PersonalAreaScreen = ({route, navigation}) => {
     return(
             <PersonalAreaStack.Navigator initialRouteName='AccountScreen'>
                 <PersonalAreaStack.Screen 
-                    initialParams={{baseRouteName: route.params['baseRouteName']}} 
+                    // initialParams={{baseRouteName: route.params['baseRouteName']}} 
                     name="PhoneNumberScreen" 
                     component={PhoneNumberScreen}
                     options={PhoneNumberHeader}
                 />
                 <PersonalAreaStack.Screen 
-                    initialParams={{baseRouteName: route.params['baseRouteName']}} 
+                    // initialParams={{baseRouteName: route.params['baseRouteName']}} 
                     name="VerificationCodeScreen" 
                     component={VerificationCodeScreen}
                     options={VerificationCodeHeader}
                 />
                 <PersonalAreaStack.Screen 
-                    initialParams={{baseRouteName: route.params['baseRouteName']}} 
+                    // initialParams={{baseRouteName: route.params['baseRouteName']}} 
                     name="AccountScreen" 
                     component={AccountScreen}
                     options={AccountHeader}

@@ -10,6 +10,8 @@ import { SET_SHOP } from '../redux/types';
 
 import PlusSolid from '../../svg/rounds/plus-solid-round';
 import ShevronRightSolid from '../../svg/chevron-right-solid';
+import TimesSolid from '../../svg/times-solid';
+
 
 
 const headStyles = StyleSheet.create({
@@ -96,8 +98,10 @@ const Shop = ({ navigation, shop, route }) => {
                 </View>
 
                 <View style={{ flex: 10, alignItems: 'flex-end'}}>
-                    <TouchableOpacity style={{marginRight: "15%", marginTop: -5}} onPress={setNoShop}>
-                        <Text style={{fontSize: 20, fontWeight: 'bold'}}>X</Text>
+                    <TouchableOpacity style={{marginRight: "10%", marginTop: '2%'}} onPress={setNoShop}>
+                        <View style={{height: 20, width: 20}}>
+                            <TimesSolid color={colorDarkGrey} />
+                        </View>
                     </TouchableOpacity>
                     
                 </View>

@@ -46,11 +46,12 @@ const menuHeader = {
 
         return (
             <View style={options.headerStyle} >
-                <Header title={"Личный кабинет"} navigation={navigation} backButton={
+                {/* <Header title={"Личный кабинет"} navigation={navigation} backButton={
                     previous ? <BackButton action={()=>{
                         navigation.navigate(scene.route.params['baseRouteName'])
                     }} /> : undefined
-                } />  
+                } />   */}
+                <Header title={"Личный кабинет"} navigation={navigation} backButton={undefined} />  
             </View>
             
         );

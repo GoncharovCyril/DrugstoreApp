@@ -24,7 +24,8 @@ import Catalog from './src/catalog/Catalog';
 
 import Basket from './src/basket/Basket';
 import ShopsList from './src/shopslist/ShopsList';
-import Menu from './src/menu/Menu';
+// import Menu from './src/menu/Menu';
+import Account from './src/personal-area/PersonalArea';
 
 
 const styles = StyleSheet.create({
@@ -131,7 +132,7 @@ const App = () => {
                             <Tab.Screen name="Catalog" component={Catalog} />
                             <Tab.Screen name="Basket" component={Basket} />
                             <Tab.Screen name="ShopsList" component={ShopsList} />
-                            <Tab.Screen name="Menu" component={Menu} />
+                            <Tab.Screen name="Account" component={Account} />
                         </Tab.Navigator>
                     </NavigationContainer>
 

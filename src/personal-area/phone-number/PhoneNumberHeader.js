@@ -61,11 +61,12 @@ const menuHeader = {
 
         return (
             <View style={options.headerStyle} >
-                <Header title={"Ввод номера\nтелефона"} navigation={navigation} backButton={
+                {/* <Header title={"Ввод номера\nтелефона"} navigation={navigation} backButton={
                     previous ? <BackButton action={()=>{
                         navigation.navigate(scene.route.params['baseRouteName'])
                     }} /> : undefined
-                } />  
+                } />   */}
+                <Header title={"Ввод номера\nтелефона"} navigation={navigation} backButton={undefined} />  
             </View>
             
         );
