@@ -18,12 +18,15 @@ import { getDistanceFromLatLonInKm } from '../funcs/distanceFunc';
 
 import { colorGreen, colorDarkGrey, colorOrange } from '../../Colors';
 import RouteSolid from '../../../svg/route-solid'
+import MarkerGreen from '../../../svg/map-markers/marker-green';
+import MarkerYellow from '../../../svg/map-markers/marker-yellow';
 
 import { getPharmacies } from '../../requests/ShopsRequests';
 // import PlusSolid from '../../../svg/rounds/plus-solid-round';
 import BottomSheet from 'reanimated-bottom-sheet';
 
 import * as Location from 'expo-location';
+
 
 
 const styles = StyleSheet.create({
@@ -318,17 +321,9 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                             }}
                                         >
                                             {
-                                                <View style={{ width: 23, height: 23, justifyContent: "center", alignSelf: "center" }}>
-                                                    {/* {<PlusSolid color="white" colorDarkGreyack=colorOrange/>} */}
-                                                    <Image
-                                                        style={{
-                                                            width: "100%",
-                                                            height: "100%"
-                                                        }}
-                                                        source={require('../../../assets/plus-marker.png')}
-                                                        resizeMode="stretch"
-                                                    />
-                                                </ View>
+                                                <View style={{ width: 30, height: 30, justifyContent: "center", alignSelf: "center" }}>
+                                                <MarkerYellow />
+                                            </View>
                                             }
                                         </Marker>
                                         : 
@@ -344,6 +339,9 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                                 sheetRef.current.snapTo(1);                                                
                                             }}
                                         >
+                                            <View style={{ width: 30, height: 30, justifyContent: "center", alignSelf: "center" }}>
+                                                <MarkerGreen />
+                                            </View>
                                            
                                         </Marker>
                                     )
