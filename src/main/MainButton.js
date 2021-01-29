@@ -11,7 +11,8 @@ const bW = 0;
 const styles = StyleSheet.create({
     buttonContainer: {
         backgroundColor: 'white',
-        flex: 1,
+        // flex: 1,
+        height: 65,
         marginTop: '1%',
         justifyContent: 'flex-start',
         flexDirection: 'row',
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
        borderWidth: bW, 
        flex: 1,
        marginLeft: '2%',
-       height: '20%',
+       height: '30%',
        alignItems: 'center'
     },
     titleText: {

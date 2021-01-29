@@ -12,6 +12,9 @@ import VerificationCodeHeader from './verification-code/VerificationCodeHeader';
 import AccountScreen from './account/AccountScreen';
 import AccountHeader from './account/AccountHeader';
 
+import ChooseCityScreen from '../city/ChooseCityScreen';
+import ChooseCityHeader from '../menu/MenuHeader';
+
 import LoadingScreen from './LoadingScreen';
 
 const styles = StyleSheet.create({
@@ -41,6 +44,12 @@ const PersonalAreaScreen = ({route, navigation}) => {
                     name="AccountScreen" 
                     component={AccountScreen}
                     options={AccountHeader}
+                />
+                <PersonalAreaStack.Screen 
+                    // initialParams={{baseRouteName: route.params['baseRouteName']}} 
+                    name="ChooseCityScreen" 
+                    component={ChooseCityScreen}
+                    options={ChooseCityHeader}
                 />
             </PersonalAreaStack.Navigator>
     );

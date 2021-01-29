@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, TextInput, Alert, ScrollView, SafeAreaView } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { colorDarkGrey, colorLightGrey } from '../../../Colors';
-import {CLEAR_ALL_PRODUCTS, SET_TOKEN} from '../../../redux/types'
+import { colorDarkGrey, colorLightGrey, colorLightYellow, colorOrange } from '../../../Colors';
+import { CLEAR_ALL_PRODUCTS, SET_TOKEN } from '../../../redux/types'
 
 import Avatar from './Avatar';
 import RadioButtonGroup from './RadioButtonGroup';
 import AcceptButton from '../../../AcceptButton';
 import CancelButton from '../../../CancelButton';
+import CityPicker from './CityPicker';
 
 
 const labelHeight = 50;
@@ -19,6 +20,9 @@ const styles = StyleSheet.create({
     },
     avatar: {
         flex: 2.5,
+    },
+    cityContainer: {
+        height: labelHeight,
     },
     nameContainer: {
         height: labelHeight + textInputHeight,
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
         height: labelHeight + textInputHeight,
     },
     buttonsContainer: {
-        height: labelHeight+5,
+        height: labelHeight + 5,
         flexDirection: 'row'
     },
     saveButton: {
@@ -111,9 +115,9 @@ const AccountInfo = ({ navigation, accountData }) => {
 
     const dispatch = useDispatch();
     //Выход с аккаунта
-    const logout = React.useCallback(()=>{
+    const logout = React.useCallback(() => {
         // dispatch({ type: CLEAR_ALL_PRODUCTS, payload: {} });
-        dispatch({ type: SET_TOKEN, payload: {token: ''} });
+        dispatch({ type: SET_TOKEN, payload: { token: '' } });
     }, [dispatch])
 
 
@@ -134,6 +138,13 @@ const AccountInfo = ({ navigation, accountData }) => {
                 {/* <View style={styles.avatarContainer}>
                 <Avatar avatar_uri={accountData['avatar']} />
             </View> */}
+
+                <View style={styles.cityContainer}>
+                    <CityPicker navigation={navigation} />
+                </View>
+                <View style={{height: 3, backgroundColor: colorOrange, borderRadius: 15}} />
+
+
                 <View style={styles.nameContainer}>
                     <Text style={styles.label}>Ваше имя</Text>
                     <TextInput
@@ -179,39 +190,39 @@ const AccountInfo = ({ navigation, accountData }) => {
                         editable={false}
                     />
                 </View>
-                <View style={{height: 15}} />
+                <View style={{ height: 15 }} />
                 <View style={styles.buttonsContainer}>
                     <View style={styles.logoutButton}>
-                        <CancelButton 
+                        <CancelButton
                             title="Выйти с аккаунта"
                             onPress={() => {
-                                
-                                    return Alert.alert(
-                                        '',
-                                        'Вы уверены, что хотите выйти с аккаунта?',
-                                        [
-                                            {
-                                                text: 'НЕТ',
-                                                onPress: () => {},
-                                                style: 'cancel'
-                                            },
-                                            {
-                                                text: 'ДА',
-                                                onPress: logout
-                                                // !!! кнопка сохранения настроек аккаунта  
-                                            },
-                                        ],
-                                        { cancelable: true }
-                                    );
-                            }} 
+
+                                return Alert.alert(
+                                    '',
+                                    'Вы уверены, что хотите выйти с аккаунта?',
+                                    [
+                                        {
+                                            text: 'НЕТ',
+                                            onPress: () => { },
+                                            style: 'cancel'
+                                        },
+                                        {
+                                            text: 'ДА',
+                                            onPress: logout
+                                            // !!! кнопка сохранения настроек аккаунта  
+                                        },
+                                    ],
+                                    { cancelable: true }
+                                );
+                            }}
                         />
                     </View>
                     <View style={styles.saveButton}>
-                        <AcceptButton 
+                        <AcceptButton
                             title="Сохранить"
-                            onPress={() => { 
+                            onPress={() => {
                                 // !!! кнопка сохранения настроек аккаунта 
-                            }} 
+                            }}
                         />
                     </View>
 

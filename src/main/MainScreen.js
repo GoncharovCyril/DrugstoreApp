@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         //alignItems: 'stretch',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         width: '100%',
-        marginTop: '40%',
-        marginBottom: '50%',
+        // marginTop: '40%',
+        // marginBottom: '50%',
     },
 });
 
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
 const MainScreen = ({ navigation }) => {
     const jumpToCatalog = TabActions.jumpTo('Catalog', {});
     return (
-        <View style={{flex: 1,
-        backgroundColor: colorLightGrey,
-        alignItems: 'center',
-        justifyContent: 'center'}}>
+        // <View style={{flex: 1,
+        // backgroundColor: colorLightGrey,
+        // alignItems: 'center',
+        // justifyContent: 'center'}}>
         <View style={styles.container}>
             <MainButton 
                 title="Как сделать заказ"
@@ -68,7 +68,7 @@ const MainScreen = ({ navigation }) => {
             />
 
         </ View>
-        </View>
+        // </View>
     );
 };
 
