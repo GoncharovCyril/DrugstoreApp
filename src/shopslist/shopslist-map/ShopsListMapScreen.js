@@ -304,8 +304,10 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                 shopsData.map(item => {
                                     const [latit, longit] = item.coordinates.split(', ');
                                     return (
+                                        selectedShop.id != item.id ?
+                                        // Маркер невыбранных магазинов
                                         <Marker
-                                            key={item.system_id}
+                                            key={item.id}
                                             coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
                                             title={item.name}
                                             // icon={require('./plus-marker.png')}
@@ -328,6 +330,21 @@ const ShopsListMapScreen = ({ route, navigation }) => {
                                                     />
                                                 </ View>
                                             }
+                                        </Marker>
+                                        : 
+                                        // Маркер выбранного магазина
+                                        <Marker
+                                            key={item.id}
+                                            coordinate={{ latitude: parseFloat(latit), longitude: parseFloat(longit) }}
+                                            title={item.name}
+                                            // icon={require('./plus-marker.png')}
+                                            onPress={() => {
+                                                setSelectedShop(item);
+                                                // setSnappoints(item['photo'] == undefined ? ['0%', '20%'] : ['0%', '20%'])
+                                                sheetRef.current.snapTo(1);                                                
+                                            }}
+                                        >
+                                           
                                         </Marker>
                                     )
                                 })
